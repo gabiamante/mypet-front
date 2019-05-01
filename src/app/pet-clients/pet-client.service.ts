@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { rootRenderNodes } from '@angular/core/src/view';
 import { PetClient } from './pet-client';
+import { Observable } from 'rxjs';
 
 const API = 'http://localhost:8080';
 
@@ -19,8 +20,12 @@ export class PetClientService {
         public delete(id: string){
                 return this.http.delete(API + '/petclients/' + id)
               }
-        public salvar (petClient: PetClient){
+       /* public salvar (petClient: PetClient){
                 return this.http.post<PetClient>(API + '/petclients/', petClient.id)
 
+        }*/
+        public salvar(petClient:PetClient): Observable<PetClient> {
+          petClient.tipoPerfil = 1;
+          return this.http.post<PetClient>(API + '/petclients/', petClient.id);
         }
 }

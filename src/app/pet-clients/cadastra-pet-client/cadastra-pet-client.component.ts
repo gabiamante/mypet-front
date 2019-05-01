@@ -9,22 +9,19 @@ import { PetClient } from 'src/app/pet-clients/pet-client';
 })
 export class CadastraPetClientComponent implements OnInit {
 
-  public petclient: PetClient = new PetClient()
+  public petclient: PetClient = new PetClient();
 
   constructor(private petClientService: PetClientService) { }
 
   ngOnInit() {
   }
 
-  public salvar(){
+  public salvar() {
     this.petClientService.salvar(this.petclient).subscribe(
       response => {
-        alert("Salvo com sucesso!")
-      },
-      error => {
-        error.log();
+        alert('Salvo com sucesso!');
       }
-    )
-   
+    );
+
 }
 }

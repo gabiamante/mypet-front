@@ -1,15 +1,75 @@
 <div class="ui-g ui-fluid">
   <div class="ui-g-12 ui-md-4">
       <div class="ui-inputgroup">
-          <input type="text"  [(ngModel)]="petclient.nomeCompleto"  pInputText placeholder="Nome">         
+          <input type="text"  [(ngModel)]="petclient.nomeCompleto"  pInputText placeholder="Nome">
+      </div>
+  </div>
+    <div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+          <input type="date"  [(ngModel)]="petclient.dataNascimento"  pInputText placeholder="Password">
       </div>
   </div>
   <div class="ui-g-12 ui-md-4">
       <div class="ui-inputgroup">
-          <input type="email"  [(ngModel)]="petclient.email"  pInputText placeholder="Email">         
+          <input type="email"  [(ngModel)]="petclient.email"  pInputText placeholder="Email">
       </div>
   </div>
+  <div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+          <input type="password"  [(ngModel)]="petclient.password"  pInputText placeholder="Password">
+      </div>
+  </div>
+
+   <!--  <div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+          <input type="number"  [(ngModel)]="petclient.tipoPerfil"  pInputText placeholder="TipoPerfil">
+      </div>
+  </div>
+{{petclient.tipoPerfil}} = 1
+
+    <div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+          <input type="number"  [(ngModel)]="petclient.avaliacao"  pInputText placeholder="avaliacao">
+      </div>
+  </div>  -->
+  <div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+          <input type="text"  [(ngModel)]="petclient.cpf"  pInputText placeholder="cpf">
+      </div>
+  </div>
+<div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+          <input type="text"  [(ngModel)]="petclient.telefone1"  pInputText placeholder="telefone1">
+      </div>
+  </div>
+<div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+          <input type="text"  [(ngModel)]="petclient.telefone2"  pInputText placeholder="telefone2">
+      </div>
+  </div>
+  <div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+          <input type="text"  [(ngModel)]="petclient.logradouro"  pInputText placeholder="logradouro">
+      </div>
+  </div>
+    <div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+          <input type="text"  [(ngModel)]="petclient.numero"  pInputText placeholder="numero">
+      </div>
+  </div>
+    <div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+          <input type="text"  [(ngModel)]="petclient.complemento"  pInputText placeholder="complemento">
+      </div>
+  </div>
+      <div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+          <input type="text"  [(ngModel)]="petclient.cep"  pInputText placeholder="cep">
+      </div>
+  </div>
+
+
   <div>
-      <button pButton  (click)="salvar()" label="Salvar"></button>
+      <button pButton  (click)="salvar()" label="Salvar">Teste</button>
   </div>
 </div>
