@@ -21,5 +21,6 @@ export class BuscaPetClientComponent implements OnInit {
 
     this.petClientService.listFromUser()
       .subscribe(petclients => this.petclients = petclients);
+
   }
 }

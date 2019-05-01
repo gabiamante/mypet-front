@@ -11,7 +11,6 @@ export class PetClientService {
         constructor(private http: HttpClient) {}
 
         listFromUser() {
-
             return this.http
                 .get<PetClient[]>(API + '/petclients');
         }

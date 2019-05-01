@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PetClient } from '../../pet-client';
 import { PetClientService } from '../../pet-client.service';
-import { ConfirmationService } from 'primeng/api';
+import {TableModule} from 'primeng/table';
 
 @Component({
   selector: 'app-tabela-pet-clients',
@@ -11,11 +11,17 @@ import { ConfirmationService } from 'primeng/api';
 export class TabelaPetClientsComponent implements OnInit {
 
   @Input() petclients: PetClient[] = [];
+  @Input() cols: any[];
 
   constructor(private petClientService: PetClientService) { }
 
   ngOnInit() {
-    this.listFromUser()
+
+    this.listFromUser();
+
+    this.cols = [
+      {field: 'nomeCompleto', header: 'Nome Completo'}
+    ];
   }
 
   public listFromUser(){
@@ -27,6 +33,6 @@ export class TabelaPetClientsComponent implements OnInit {
           r => {
             this.listFromUser()
           }
-        ) 
+        )
     }
 }
