@@ -20,12 +20,14 @@ export class PetClientService {
         public delete(id: string){
                 return this.http.delete(API + '/petclients/' + id)
               }
-       /* public salvar (petClient: PetClient){
-                return this.http.post<PetClient>(API + '/petclients/', petClient.id)
 
-        }*/
         public salvar(petClient:PetClient): Observable<PetClient> {
           petClient.tipoPerfil = 1;
-          return this.http.post<PetClient>(API + '/petclients/', petClient.id);
+          alert(JSON.stringify(petClient));
+          return this.http.post<PetClient>(API + '/petclients', petClient);
+        }
+
+        public atualizar(petClient:PetClient): Observable<PetClient>{
+
         }
 }
