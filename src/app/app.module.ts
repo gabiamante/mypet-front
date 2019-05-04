@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { PetClientsModule } from './pet-clients/pet-clients.module';
 import { AppRoutingModule } from './app.routing.module';
 import { ErrorsModule } from './errors/errors.module';
+import { LoginModule } from './login-geral/login/login.module';
+import { EscolhaPerfilModule } from './login-geral/escolha-perfil/escolha-perfil.module';
+import { AcaoPerfilModule } from './login-geral/acao-perfil/acao-perfil.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { ErrorsModule } from './errors/errors.module';
     BrowserModule,
     PetClientsModule,
     AppRoutingModule,
-    ErrorsModule
+    ErrorsModule,
+    LoginModule,
+    EscolhaPerfilModule,
+    AcaoPerfilModule
   ],
   providers: [],
   bootstrap: [AppComponent]

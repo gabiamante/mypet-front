@@ -6,7 +6,10 @@
   </div>
     <div class="ui-g-12 ui-md-4">
       <div class="ui-inputgroup">
+          <!--
           <input type="date"  [(ngModel)]="petclient.dataNascimento"  pInputText placeholder="Data nascimento">
+          -->
+          <p-inputMask mask="99/99/9999" [(ngModel)]="petclient.dataNascimento" placeholder="99/99/9999" slotChar="dd/mm/yyyy"></p-inputMask>
       </div>
   </div>
   <div class="ui-g-12 ui-md-4">
@@ -20,18 +23,6 @@
       </div>
   </div>
 
-   <!--  <div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <input type="number"  [(ngModel)]="petclient.tipoPerfil"  pInputText placeholder="TipoPerfil">
-      </div>
-  </div>
-{{petclient.tipoPerfil}} = 1
-
-    <div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <input type="number"  [(ngModel)]="petclient.avaliacao"  pInputText placeholder="avaliacao">
-      </div>
-  </div>  -->
   <div class="ui-g-12 ui-md-4">
       <div class="ui-inputgroup">
           <input type="text"  [(ngModel)]="petclient.cpf"  pInputText placeholder="cpf">
