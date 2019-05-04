@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PetClient } from '../../pet-client';
 import { PetClientService } from '../../pet-client.service';
-import {TableModule} from 'primeng/table';
 
 @Component({
   selector: 'app-tabela-pet-clients',
