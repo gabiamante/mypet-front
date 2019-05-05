@@ -8,6 +8,8 @@ import { ErrorsModule } from './errors/errors.module';
 import { LoginModule } from './login-geral/login/login.module';
 import { EscolhaPerfilModule } from './login-geral/escolha-perfil/escolha-perfil.module';
 import { AcaoPerfilModule } from './login-geral/acao-perfil/acao-perfil.module';
+import { AtualizaPetClientModule } from './pet-clients/atualiza-pet-client/atualiza-pet-client.module';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { AcaoPerfilModule } from './login-geral/acao-perfil/acao-perfil.module';
     ErrorsModule,
     LoginModule,
     EscolhaPerfilModule,
-    AcaoPerfilModule
+    AcaoPerfilModule,
+    AtualizaPetClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
