@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PetClientService } from '../pet-client.service';
 import { PetClient } from '../pet-client';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-busca-pet-client',
@@ -14,13 +15,16 @@ export class BuscaPetClientComponent implements OnInit {
   petclients: PetClient[] = [];
   petclient: PetClient;
 
-  constructor(private petClientService: PetClientService) {
-
+  constructor(private activatedRoute: ActivatedRoute,
+              private router: Router) {
+                this.router = router;
   }
   ngOnInit(): void {
 
-    this.petClientService.listFromUser()
-      .subscribe(petclients => this.petclients = petclients);
+    this.petclients = this.activatedRoute.snapshot.data['petclients'];
 
+  }
+  public voltar(){
+    this.router.navigate(['logingeral', 'menu-crud']);
   }
 }
