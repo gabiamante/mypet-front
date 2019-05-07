@@ -9,17 +9,19 @@ import { PetClientService } from '../../pet-client.service';
 })
 export class TabelaPetClientsComponent implements OnInit {
 
-  @Input() petclients: PetClient[] = [];
-  @Input() cols: any[];
+  @Input() petclients: PetClient[];
+  cols: any[];
 
-  constructor(private petClientService: PetClientService) { }
+  constructor(private petClientService: PetClientService) {
+               }
 
   ngOnInit() {
 
     this.listFromUser();
 
     this.cols = [
-      {field: 'nomeCompleto', header: 'Nome Completo'}
+      {field: 'nomeCompleto', header: 'Nome Completo'},
+      {field: 'email', header: 'E-mail'}
     ];
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PetClientService } from '../pet-client.service';
 import { PetClient } from 'src/app/pet-clients/pet-client';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastra-pet-client',
@@ -11,7 +12,9 @@ export class CadastraPetClientComponent implements OnInit {
 
   public petclient: PetClient = new PetClient();
 
-  constructor(private petClientService: PetClientService) { }
+  constructor(private petClientService: PetClientService,
+              private router: Router) {
+    this.router = router; }
 
   ngOnInit() {
   }
@@ -22,6 +25,8 @@ export class CadastraPetClientComponent implements OnInit {
         alert('Salvo com sucesso!');
       }
     );
-
+  }
+  public voltar(){
+    this.router.navigate(['logingeral', 'menu-crud']);
 }
 }
