@@ -10,7 +10,6 @@ import {InputMaskModule} from 'primeng/inputmask';
 import {TableModule} from 'primeng/table';
 import { AtualizaPetClientComponent } from './atualiza-pet-client/atualiza-pet-client.component';
 
-
 @NgModule({
   imports: [
     CommonModule,

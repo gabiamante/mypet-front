@@ -9,6 +9,7 @@ import { AcaoPerfilComponent } from './login-geral/acao-perfil/acao-perfil.compo
 import { AtualizaPetClientComponent } from './pet-clients/atualiza-pet-client/atualiza-pet-client.component';
 import { TabelaPetClientResolver } from './pet-clients/busca-pet-client/tabela-pet-clients/tabela-pet-client.resolver';
 import { MenuCrudComponent } from './login-geral/menu-crud/menu-crud.component';
+import { MenuInicialAdminComponent } from './administrador/menu-inicial-admin/menu-inicial-admin.component';
 
 const routes: Routes = [
     { path: 'petclients/busca', component: BuscaPetClientComponent,
@@ -21,6 +22,7 @@ const routes: Routes = [
     { path: 'logingeral/escolhaperfil', component: EscolhaPerfilComponent },
     { path: 'logingeral/acaoperfil', component: AcaoPerfilComponent },
     { path: 'logingeral/menu-crud', component: MenuCrudComponent },
+    { path: 'administrador/menu-inicial-admin', component: MenuInicialAdminComponent },
     { path: '', pathMatch: 'full', redirectTo: '/logingeral/login'},
     { path: '**', component: NotFoundComponent }
 ];

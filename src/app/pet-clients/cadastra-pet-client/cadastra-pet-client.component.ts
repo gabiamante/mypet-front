@@ -27,6 +27,6 @@ export class CadastraPetClientComponent implements OnInit {
     );
   }
   public voltar(){
-    this.router.navigate(['logingeral', 'menu-crud']);
+    this.router.navigate(['administrador', 'menu-inicial-admin']);
 }
 }
