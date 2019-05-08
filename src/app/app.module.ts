@@ -9,6 +9,7 @@ import { EscolhaPerfilModule } from './login-geral/escolha-perfil/escolha-perfil
 import { AcaoPerfilModule } from './login-geral/acao-perfil/acao-perfil.module';
 import { AtualizaPetClientModule } from './pet-clients/atualiza-pet-client/atualiza-pet-client.module';
 import { LoginGeralModule } from './login-geral/login-geral.module';
+import { AdministradorModule } from './administrador/administrador.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { LoginGeralModule } from './login-geral/login-geral.module';
     EscolhaPerfilModule,
     AcaoPerfilModule,
     AtualizaPetClientModule,
-    LoginGeralModule
+    LoginGeralModule,
+    AdministradorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
