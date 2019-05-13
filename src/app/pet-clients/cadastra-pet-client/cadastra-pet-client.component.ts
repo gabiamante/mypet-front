@@ -19,14 +19,14 @@ export class CadastraPetClientComponent implements OnInit {
   ngOnInit() {
   }
 
-  public salvar() {
-    this.petClientService.salvar(this.petclient).subscribe(
-      response => {
-        alert('Salvo com sucesso!');
-      }
-    );
+    public salvar() {
+      this.petClientService.salvar(this.petclient).subscribe(
+        response => {
+          alert('Salvo com sucesso!');
+        }
+      );
+    }
+    public voltar(){
+      this.router.navigate(['administrador', 'menu-inicial-admin']);
   }
-  public voltar(){
-    this.router.navigate(['administrador', 'menu-inicial-admin']);
-}
 }

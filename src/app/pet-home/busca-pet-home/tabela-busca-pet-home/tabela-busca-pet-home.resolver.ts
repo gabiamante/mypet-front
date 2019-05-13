@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
+import { PetHome } from '../../pet-home';
+import { PetHomeService } from '../../pet-home.service';
 
-import { PetClient } from '../../pet-client';
-import { PetClientService } from '../../pet-client.service';
+
 
 @Injectable({ providedIn: 'root'})
-export class TabelaPetClientResolver implements Resolve<Observable<PetClient[]>>{
+export class TabelaBuscaPetHomeResolver implements Resolve<Observable<PetHome[]>>{
 
-    constructor(private service: PetClientService) {}
+    constructor(private service: PetHomeService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const nomeCompleto = route.params.nomeCompleto;
         return this.service.listFromUser();
     }
 }

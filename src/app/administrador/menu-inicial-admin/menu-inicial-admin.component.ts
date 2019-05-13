@@ -17,29 +17,67 @@ export class MenuInicialAdminComponent implements OnInit {
 
     ngOnInit() {
         this.items = [{
-            label: 'File',
+            label: 'Admin',
             items: [
-                {label: 'New', icon: 'pi pi-fw pi-plus'},
-                {label: 'Download', icon: 'pi pi-fw pi-download'}
+                {label: 'Alterar senha', icon: ''},
+                {label: 'Logout', icon: ''}
             ]
         },
         {
-            label: 'Edit',
+            label: '',
             items: [
-                {label: 'Add User', icon: 'pi pi-fw pi-user-plus'},
-                {label: 'Remove User', icon: 'pi pi-fw pi-user-minus'}
+                {label: '', icon: ''},
+                {label: '', icon: ''}
             ]
         }];
     }
 
-    public cadastro(){
-      this.router.navigate(['petclients', 'cadastro']);
+    //PET CLIENT
+    public cadastrarPetClient(){
+      this.router.navigate(['petclients', 'cadastrar']);
       }
-    public buscar(){
-      this.router.navigate(['petclients', 'busca']);
+    public buscarPetClient(){
+      this.router.navigate(['petclients', 'buscar']);
     }
-    public atualizar(){
-      this.router.navigate(['petclients', 'atualiza']);
+    public deletarPetClient(){
+      this.router.navigate(['petclients', 'deletar']);
+    }
+    public atualizarPetClient(){
+      this.router.navigate(['petclients', 'atualizar']);
+    }
+
+    //PET HOME
+    public cadastrarPetHome(){
+      this.router.navigate(['pethome', 'cadastrar']);
+    }
+
+    public buscarPetHome(){
+      this.router.navigate(['pethome', 'buscar']);
+    }
+
+    public deletarPetHome(){
+      this.router.navigate(['pethome', 'deletar']);
+    }
+
+    public atualizarPetHome(){
+      this.router.navigate(['pethome', 'atualizar']);
+    }
+
+    //PET SHOP
+    public atualizarPetShop(){
+      this.router.navigate(['petshop', 'atualizar']);
+    }
+
+    public cadastrarPetShop(){
+      this.router.navigate(['petshop', 'cadastrar']);
+    }
+
+    public buscarPetShop(){
+      this.router.navigate(['petshop', 'buscar']);
+    }
+
+    public deletarPetShop(){
+      this.router.navigate(['petshop', 'deletar']);
     }
 
 }

@@ -3,11 +3,11 @@ import { PetClient } from '../../pet-client';
 import { PetClientService } from '../../pet-client.service';
 
 @Component({
-  selector: 'app-tabela-pet-clients',
-  templateUrl: './tabela-pet-clients.component.html',
-  styleUrls: ['./tabela-pet-clients.component.css']
+  selector: 'app-tabela-busca-pet-clients',
+  templateUrl: './tabela-busca-pet-clients.component.html',
+  styleUrls: ['./tabela-busca-pet-clients.component.css']
 })
-export class TabelaPetClientsComponent implements OnInit {
+export class TabelaBuscaPetClientsComponent implements OnInit {
 
   @Input() petclients: PetClient[];
   cols: any[];
@@ -28,12 +28,4 @@ export class TabelaPetClientsComponent implements OnInit {
   public listFromUser(){
     this.petClientService.listFromUser().subscribe(petclients => this.petclients = petclients);
   }
-
-  public deletar(id: string) {
-        this.petClientService.delete(id).subscribe(
-          r => {
-            this.listFromUser()
-          }
-        )
-    }
 }

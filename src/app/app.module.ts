@@ -7,9 +7,11 @@ import { AppRoutingModule } from './app.routing.module';
 import { ErrorsModule } from './errors/errors.module';
 import { EscolhaPerfilModule } from './login-geral/escolha-perfil/escolha-perfil.module';
 import { AcaoPerfilModule } from './login-geral/acao-perfil/acao-perfil.module';
-import { AtualizaPetClientModule } from './pet-clients/atualiza-pet-client/atualiza-pet-client.module';
 import { LoginGeralModule } from './login-geral/login-geral.module';
 import { AdministradorModule } from './administrador/administrador.module';
+import { PetHomeModule } from './pet-home/pet-home.module';
+import { PetShopModule } from './pet-shop/pet-shop.module';
+import { HomeModule } from './home/home.module';
 
 
 @NgModule({
@@ -19,13 +21,16 @@ import { AdministradorModule } from './administrador/administrador.module';
   imports: [
     BrowserModule,
     PetClientsModule,
+    PetHomeModule,
+    PetShopModule,
+    HomeModule,
     AppRoutingModule,
     ErrorsModule,
     EscolhaPerfilModule,
     AcaoPerfilModule,
-    AtualizaPetClientModule,
     LoginGeralModule,
-    AdministradorModule
+    AdministradorModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

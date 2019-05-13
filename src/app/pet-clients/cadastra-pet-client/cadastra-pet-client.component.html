@@ -1,67 +1,69 @@
-<div><button (click)="voltar()" label="Voltar">Voltar</button></div>
-<div class="ui-g ui-fluid">
-  <div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <input type="text"  [(ngModel)]="petclient.nomeCompleto"  pInputText placeholder="Nome">
-      </div>
-  </div>
-    <div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <!--
-          <input type="date"  [(ngModel)]="petclient.dataNascimento"  pInputText placeholder="Data nascimento">
-          -->
-          <p-inputMask mask="99/99/9999" [(ngModel)]="petclient.dataNascimento" placeholder="99/99/9999" slotChar="dd/mm/yyyy"></p-inputMask>
-      </div>
-  </div>
-  <div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <input type="email"  [(ngModel)]="petclient.email"  pInputText placeholder="Email">
-      </div>
-  </div>
-  <div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <input type="password"  [(ngModel)]="petclient.password"  pInputText placeholder="Password">
-      </div>
-  </div>
-
-  <div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <input type="text"  [(ngModel)]="petclient.cpf"  pInputText placeholder="cpf">
-      </div>
-  </div>
-<div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <input type="text"  [(ngModel)]="petclient.telefone1"  pInputText placeholder="telefone1">
-      </div>
-  </div>
-<div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <input type="text"  [(ngModel)]="petclient.telefone2"  pInputText placeholder="telefone2">
-      </div>
-  </div>
-  <div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <input type="text"  [(ngModel)]="petclient.logradouro"  pInputText placeholder="logradouro">
-      </div>
-  </div>
-    <div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <input type="text"  [(ngModel)]="petclient.numero"  pInputText placeholder="numero">
-      </div>
-  </div>
-    <div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <input type="text"  [(ngModel)]="petclient.complemento"  pInputText placeholder="complemento">
-      </div>
-  </div>
-      <div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <input type="text"  [(ngModel)]="petclient.cep"  pInputText placeholder="cep">
-      </div>
-  </div>
-
-
-  <div>
-      <button pButton  (click)="salvar()" label="Salvar">Cadastrar  </button>
-  </div>
-</div>
+<!DOCTYPE html>
+<html>
+    <head>
+	
+    </head>
+    <body>
+		<h2> Cadastrar novo Pet Client</h2>
+		<div class="form-row">
+			<div class="form-group col-md-5">
+				<label for="nomeCompleto">Nome Completo:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.nomeCompleto" pInputText placeholder="Ex: Maria do Carmo" required>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" class="form-control" [(ngModel)]="petclient.dataNascimento" pInputText required>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="cpf">CPF:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.cpf" required="required" pInputText placeholder=" CPF">
+            </div>
+		</div>
+		<div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="email">E-mail:</label>
+                <input type="email" class="form-control" [(ngModel)]="petclient.email"  required="required" pInputText placeholder=" E-mail">
+		    </div>
+		    <div class="form-group col-md-3">
+			    <label for="senha">Senha:</label>
+			    <input type="password" class="form-control" [(ngModel)]="petclient.password"  required="required" pInputText placeholder=" Senha">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label for="telefone1">Telefone Fixo:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.telefone1"  pInputText placeholder=" Telefone Fixo">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="telefone2">Celular:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.telefone2" required="required" pInputText placeholder=" Telefone Celular">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label for="logradouro">Endereço:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.logradouro" required="required" pInputText placeholder=" Endereço">
+            </div>
+            <div class="form-group col-md-1">
+                <label for="numero">Nº:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.numero" required="required" pInputText placeholder=" Número">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="complemento">Complemento:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.complemento" required="required" pInputText placeholder=" Complemento">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="cep">CEP:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.cep" required="required" pInputText placeholder=" CEP">       
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <button type="button" (click)="salvar()" label="Cadastrar" class="btn btn-outline-light" data-toggle="modal" data-target="#modalLogin" style="background-color: #f7b733">Cadastrar</button>
+            </div>
+            <div>
+                <button type="button" (click)="voltar()" label="Voltar" class="btn btn-outline-light" data-toggle="modal" data-target="#modalLogin" style="background-color: #f7b733">Voltar</button>
+            </div>
+        </div>
+	</body>
+</html>
