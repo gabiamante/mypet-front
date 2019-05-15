@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	
+    </head>
+    <body>
+		<h2> Alterar Pet Client - MUDAR CAMPOS</h2>
+		<div class="form-row">
+			<div class="form-group col-md-5">
+				<label for="nomeCompleto">Nome Completo:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.nomeCompleto" pInputText placeholder="Ex: Maria do Carmo" required>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" class="form-control" [(ngModel)]="petclient.dataNascimento" pInputText required>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="cpf">CPF:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.cpf" required="required" pInputText placeholder=" CPF">
+            </div>
+		</div>
+		<div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="email">E-mail:</label>
+                <input type="email" class="form-control" [(ngModel)]="petclient.email"  required="required" pInputText placeholder=" E-mail">
+		    </div>
+		    <div class="form-group col-md-3">
+			    <label for="senha">Senha:</label>
+			    <input type="password" class="form-control" [(ngModel)]="petclient.password"  required="required" pInputText placeholder=" Senha">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label for="telefone1">Telefone Fixo:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.telefone1"  pInputText placeholder=" Telefone Fixo">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="telefone2">Celular:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.telefone2" required="required" pInputText placeholder=" Telefone Celular">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label for="logradouro">Endereço:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.logradouro" required="required" pInputText placeholder=" Endereço">
+            </div>
+            <div class="form-group col-md-1">
+                <label for="numero">Nº:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.numero" required="required" pInputText placeholder=" Número">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="complemento">Complemento:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.complemento" required="required" pInputText placeholder=" Complemento">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="cep">CEP:</label>
+                <input type="text" class="form-control" [(ngModel)]="petclient.cep" required="required" pInputText placeholder=" CEP">       
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <button type="button" (click)="salvar()" label="Atualizar" class="btn btn-outline-light" data-toggle="modal" data-target="#modalLogin" style="background-color: #f7b733">Atualizar</button>
+            </div>
+            <div>
+                <button type="button" (click)="voltar()" label="Voltar" class="btn btn-outline-light" data-toggle="modal" data-target="#modalLogin" style="background-color: #f7b733">Voltar</button>
+            </div>
+        </div>
+	</body>
+</html>

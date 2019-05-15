@@ -1,0 +1,23 @@
+color-default {
+    background-color: #A37A74;
+}
+
+a {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: white;
+}
+
+.btn-default {
+    background-color: #f7b732;
+}
+
+.font-color-default {
+    color: black;
+}

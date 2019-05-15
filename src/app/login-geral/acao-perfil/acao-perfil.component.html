@@ -1,0 +1,6 @@
+<h3 class="first">Tipo 1 : Ações</h3>
+<p-menu [model]="items"></p-menu>
+
+<h3>Tipo 2 : Ações</h3>
+<p-menu #menu [popup]="true" [model]="items"></p-menu>
+<button type="button" pButton icon="pi pi-bars" label="Show" (click)="menu.toggle($event)">Ações</button>
