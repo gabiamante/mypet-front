@@ -1,6 +1,71 @@
-.carousel-item img {
-    max-width:500px;
-    max-height:300px;
-    width: auto;
-    height: auto;
+body {font-family: "Lato", sans-serif;}
+
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
+
+#London {background-color:red;}
+#Paris {background-color:green;}
+#Tokyo {background-color:blue;}
+#Oslo {background-color:orange;}
+
+
+/* Aqui começa o topnav*/
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #4ABDAC;
+    overflow: hidden;
+	margin: 0px 360px 0px 0px;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+	background-color: #F7B733;
+	/* [disabled]color: black; */
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #F7B733;
+  color: #000;
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-center {
+  float: center;
+}
+
+#formulario{
+	margin: 100px 0px 0px 0px;
 }

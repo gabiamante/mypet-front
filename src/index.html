@@ -1,64 +1,64 @@
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <style>
-    body{
-        background-color: #dfdce3
-    }
-  </style>
     <meta charset="utf-8">
-      <title>Mypet</title>
-      <base href="/">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mypet</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="http://1.bp.blogspot.com/-ZKvaIQ4QJss/VYr4hNxgLQI/AAAAAAAAAto/TcNOr1R9KzI/s1600/icons_pets.png">
-</head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    
+  </head>
 <body>
-    <nav class="navbar navbar-light" style="background-color: #4abdac">
-        <!-- Navbar -->
 
-        <!-- Logo + Nome -->
-        <img src="http://1.bp.blogspot.com/-ZKvaIQ4QJss/VYr4hNxgLQI/AAAAAAAAAto/TcNOr1R9KzI/s1600/icons_pets.png" width="50" height="50" class="d-inline-block align-top"
-            alt="">
-        <h3 class="mr-auto pl-3">MyPet</h3>
+<!-- Navbar -->
+<nav class="navbar navbar-light" style="background-color: #4abdac"></nav>
 
-        <form class="form-inline my-2 my-lg-0">
-            <!-- botões Login/Cadastro -->
+  <!-- Logo + Nome -->
+  <img src="http://1.bp.blogspot.com/-ZKvaIQ4QJss/VYr4hNxgLQI/AAAAAAAAAto/TcNOr1R9KzI/s1600/icons_pets.png" width="50" height="50" class="d-inline-block align-top"
+      alt="">
+  <h3 class="mr-auto pl-3">MyPet</h3>
 
-            <div class="btn-group" role="group">
-                <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#modalLogin" style="background-color: #f7b733">
-                    <!-- Botão Login -->
-                    Login
-                </button>
-                <button type="button" class="btn btn-outline-light btn-default" data-toggle="modal" data-target="#modalCadastro" style="background-color: #f7b733">
-                    <!-- Botão Cadastro -->
-                    <a href="logingeral/escolhaperfil" >Cadastro</a>
-                </button>
-            </div>
-        </form>
+  <form class="form-inline my-2 my-lg-0">
+  <!--MENU NAVBAR-->
+  <div class="topnav">
+    <a class="active" href="#">Home</a>
+    <a href="#">Sobre Nós</a>
+    <a href="#">Contato</a>
+  </div>              
+  <!-- botões Login/Cadastro -->
+  <div class="btn-group" role="group">
+      <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#modalLogin" style="background-color: #f7b733">     
+    <!-- Botão Login -->
+          Login
+      </button>
+      <button type="button" class="btn btn-outline-light btn-default" data-toggle="modal" data-target="#modalCadastro" style="background-color: #f7b733">
+          <!-- Botão Cadastro -->
+          <a href="logingeral/escolhaperfil" >Cadastro</a>
+      </button>
+  </div>
+  </form>
 
-    </nav>
-    <div class="collapse" id="collapseLogin">
-        <div class="card card-body col-md-4 ml-auto">
-          <form>
-            <div class="form-group">
-              <!--  <label for="formGroupExampleInput">Email</label> -->
-              <input type="text" class="form-control" id="inputEmail"
-                placeholder="Email">
-            </div>
-            <div class="form-group">
-              <!--  <label for="formGroupExampleInput2">Senha</label> -->
-              <input type="Password" class="form-control" id="inputPassword"
-                placeholder="Senha">
-            </div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-outline-success">Acessar</button>
-            </div>
-          </form>
-        </div>
+</nav>
+<div class="collapse" id="collapseLogin">
+  <div class="card card-body col-md-4 ml-auto">
+    <form>
+      <div class="form-group">
+        <!--  <label for="formGroupExampleInput">Email</label> -->
+        <input type="text" class="form-control" id="inputEmail"
+          placeholder="Email">
       </div>
-
-  <app-root></app-root>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      <div class="form-group">
+        <!--  <label for="formGroupExampleInput2">Senha</label> -->
+        <input type="Password" class="form-control" id="inputPassword"
+          placeholder="Senha">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-outline-success">Acessar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
 	<script
@@ -69,5 +69,6 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+  <app-root></app-root>
 </body>
 </html>

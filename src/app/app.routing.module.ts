@@ -19,6 +19,7 @@ import { DeletaPetHomeComponent } from './pet-home/deleta-pet-home/deleta-pet-ho
 import { CadastraPetShopComponent } from './pet-shop/cadastra-pet-shop/cadastra-pet-shop.component';
 import { HomeComponent } from './home/home/home.component';
 import { CadastraPetVetComponent } from './pet-vet/cadastra-pet-vet/cadastra-pet-vet.component';
+import { PesquisarComponent } from './home/pesquisar/pesquisar.component';
 
 const routes: Routes = [
     { path: 'petclients/buscar', component: BuscaPetClientComponent,
@@ -38,6 +39,7 @@ const routes: Routes = [
     { path: 'petvet/cadastrar', component: CadastraPetVetComponent},
 
     { path: 'home/home', component: HomeComponent},
+    { path: 'home/:petProvider', component: PesquisarComponent},
 
     { path: 'logingeral/login', component: LoginComponent },
     { path: 'logingeral/escolhaperfil', component: EscolhaPerfilComponent },

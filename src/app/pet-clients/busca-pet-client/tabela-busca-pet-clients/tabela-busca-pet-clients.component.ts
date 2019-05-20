@@ -10,22 +10,6 @@ import { PetClientService } from '../../pet-client.service';
 export class TabelaBuscaPetClientsComponent implements OnInit {
 
   @Input() petclients: PetClient[];
-  cols: any[];
-
-  constructor(private petClientService: PetClientService) {
-               }
-
-  ngOnInit() {
-
-    this.listFromUser();
-
-    this.cols = [
-      {field: 'nomeCompleto', header: 'Nome Completo'},
-      {field: 'email', header: 'E-mail'}
-    ];
-  }
-
-  public listFromUser(){
-    this.petClientService.listFromUser().subscribe(petclients => this.petclients = petclients);
-  }
+  
+  ngOnInit() { }
 }
