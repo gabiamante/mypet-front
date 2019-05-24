@@ -1,72 +1,53 @@
-<!-- Slide -->
 
-<div id="petWalker" class="tabcontent">
-    <h1>Pet Walker</h1>
-    <p>Deixe seu Pet conosco para levarmos para passear!</p>
-  </div>
-  
-  <div id="petVet" class="tabcontent">
-    <h1>Pet Vet</h1>
-    <p>Cuidamos da saúde do seu Pet!</p> 
-  </div>
-  
-  <div id="petShop" class="tabcontent">
-    <h1>Pet Shop</h1>
-    <p>A beleza do seu Pet fica nas nossas mãos!</p>
-  </div>
-  
-  <div id="petHome" class="tabcontent">
-    <h1>Pet Home</h1>
-    <p>Aqui seu Pet tem a estadia mais aconchegante e segura!</p>
-  </div>
-  
-  <button class="tablink" onclick="openPetProvider('petWalker', this, 'red')" id="defaultOpen">Pet Walker</button>
-  <button class="tablink" onclick="openPetProvider('petVet', this, 'green')">Pet Vet</button>
-  <button class="tablink" onclick="openPetProvider('petShop', this, 'blue')">Pet Shop</button>
-  <button class="tablink" onclick="openPetProvider('petHome', this, 'orange')">Pet Home</button>
-  
-  <div id="formulario">
-      <form>
-        <div class="row">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Cidade">
+
+  <div class="pet-image-home">
+    <div class="pet-text-home">
+
+      <h1 style="font-size:50px">MyPet</h1>
+      <h3>Seu Pet com os melhores!</h3>
+      <br/>
+      <div class="btn-group">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Escolha o tipo de prestador que procura  
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/pethome/buscar">PetHome</a>
+            <a class="dropdown-item" href="/petvet/buscar">PetVet</a>
+            <a class="dropdown-item" href="/petshop/buscar">PetShop</a>
+            <a class="dropdown-item" href="/petwalker/buscar">PetWalker</a>
           </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Bairro">
-          </div>
-          <div class="col">
-            <div class="form-group">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option> - </option>
-            <option>Pet Walker</option>
-            <option>Pet Vet</option>
-            <option>Pet Shop</option>
-            <option>Pet Home</option>
-          </select>
+        </div>      
+    </div>
+  </div>
+
+
+  <div class="card-deck">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> PetWalker</h5>
+          <p class="card-text"><strong>PetWalker está a disposição para levar seu pet para um passeio! Ele cuida do seu pet no momento que você mais precisa!</strong></p>
         </div>
-        <div class="col">
-            <button class="btn btn-primary" type="submit">Pesquisar</button>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> PetHome</h5>
+          <p class="card-text"><strong>Vai viajar sem seu pet? Temos muitos PetHomes disponíveis para que seu pet tenha a melhor estadia possível, só não é melhor que a sua própria casa, mas daí nem tem como competir!</strong></p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> PetVet</h5>
+          <p class="card-text"><strong>Seu pet precisa de uma consulta veterinária? Precisa de uma vacina! Temos as melhores clínicas para que seu pet venha ser tratado com a melhor qualidade!</strong></p>
+        </div>
+      </div>
+      <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"> PetShop</h5>
+            <p class="card-text"><strong>O PetShop cuida da beleza e bem-estar do seu pet! Existem muitos PetShops que possuem farmácia, banho, tosa, produtos destinados aos pets e muito mais! Confira o mais perto de você!</strong></p>
           </div>
         </div>
-      </form>
-      </div> 
+    </div>
 
-  <script>
-  function openPetProvider(cityName,elmnt,color) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].style.backgroundColor = "";
-    }
-    document.getElementById(cityName).style.display = "block";
-    elmnt.style.backgroundColor = color;
   
-  }
-  // Get the element with id="defaultOpen" and click on it
-  document.getElementById("defaultOpen").click();
-  </script> 
-         
+
+  

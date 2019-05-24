@@ -14,6 +14,7 @@ import { PetShopModule } from './pet-shop/pet-shop.module';
 import { HomeModule } from './home/home.module';
 import { PetVetModule } from './pet-vet/pet-vet.module';
 import { PetWalkerModule } from './pet-walker/pet-walker.module';
+import { PessoaModule } from './pessoa/pessoa.module';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { PetWalkerModule } from './pet-walker/pet-walker.module';
     AcaoPerfilModule,
     LoginGeralModule,
     AdministradorModule,
+    PessoaModule
 
   ],
   providers: [],

@@ -1,71 +1,61 @@
-body {font-family: "Lato", sans-serif;}
-
-.tablink {
-  background-color: #555;
-  color: white;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 25%;
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.tablink:hover {
-  background-color: #777;
+.pet-image-home {
+  background-image: url("https://cdn.pixabay.com/photo/2015/07/09/19/32/dog-838281_1280.jpg");
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
-/* Style the tab content */
-.tabcontent {
-  color: white;
-  display: none;
-  padding: 50px;
+.pet-text-home {
   text-align: center;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #397880;
+  font-style: italic;
 }
 
-#London {background-color:red;}
-#Paris {background-color:green;}
-#Tokyo {background-color:blue;}
-#Oslo {background-color:orange;}
-
-
-/* Aqui começa o topnav*/
-
-/* Add a black background color to the top navigation */
-.topnav {
-    background-color: #4ABDAC;
-    overflow: hidden;
-	margin: 0px 360px 0px 0px;
+.btn-secondary{
+  background-color: #5CC1CC;
 }
 
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: #000;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+.flex {
+	display: flex;
 }
 
-/* Change the color of links on hover */
-.topnav a:hover {
-	background-color: #F7B733;
-	/* [disabled]color: black; */
+.container {
+	max-width: 300px;
+	margin: 0 auto;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #F7B733;
-  color: #000;
+.card-deck{
+  margin:30px;
 }
 
-/* Right-aligned section inside the top navigation */
-.topnav-center {
-  float: center;
+.card-title{
+  background-color: #6D97B3;
+  color: white;
+  font-size: larger;
+  font-variant: small-caps;
 }
 
-#formulario{
-	margin: 100px 0px 0px 0px;
+.card{
+  background-color: #B4E1FF;
+  color: white;
+}
+
+.card-text{
+  font-size: large;
 }

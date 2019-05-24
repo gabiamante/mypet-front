@@ -1,0 +1,10 @@
+.center_div {
+    margin: 0 auto;
+    width: 80%/* value of your choice which suits your alignment */
+}
+
+body{
+    /*background-image: url("https://cdn.pixabay.com/photo/2018/07/13/10/17/cat-3535399_1280.jpg");*/
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -1,17 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
-
-a {
-    color: white;
+.modal-body{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
-a:visited {
-    color: white;
-}
-
-a:hover {
-    color: white;
-}
-
-.btn-default {
-    background-color: #f7b732;
+.modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

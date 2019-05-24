@@ -20,6 +20,8 @@ import { CadastraPetShopComponent } from './pet-shop/cadastra-pet-shop/cadastra-
 import { HomeComponent } from './home/home/home.component';
 import { CadastraPetVetComponent } from './pet-vet/cadastra-pet-vet/cadastra-pet-vet.component';
 import { PesquisarComponent } from './home/pesquisar/pesquisar.component';
+import { CadastroFisicaComponent } from './pessoa/pessoa-fisica/cadastro-fisica/cadastro-fisica.component';
+import { CadastroJuridicaComponent } from './pessoa/pessoa-juridica/cadastro-juridica/cadastro-juridica.component';
 
 const routes: Routes = [
     { path: 'petclients/buscar', component: BuscaPetClientComponent,
@@ -40,6 +42,9 @@ const routes: Routes = [
 
     { path: 'home/home', component: HomeComponent},
     { path: 'home/:petProvider', component: PesquisarComponent},
+
+    { path: 'pessoa/fisica/cadastrar', component: CadastroFisicaComponent},
+    { path: 'pessoa/juridica/cadastrar', component: CadastroJuridicaComponent},
 
     { path: 'logingeral/login', component: LoginComponent },
     { path: 'logingeral/escolhaperfil', component: EscolhaPerfilComponent },
