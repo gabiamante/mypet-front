@@ -15,6 +15,7 @@ import { HomeModule } from './home/home.module';
 import { PetVetModule } from './pet-vet/pet-vet.module';
 import { PetWalkerModule } from './pet-walker/pet-walker.module';
 import { PessoaModule } from './pessoa/pessoa.module';
+import { FornecedoresComponent } from './home/fornecedores/fornecedores.component';
 
 
 @NgModule({
@@ -36,7 +37,6 @@ import { PessoaModule } from './pessoa/pessoa.module';
     LoginGeralModule,
     AdministradorModule,
     PessoaModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]

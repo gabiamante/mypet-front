@@ -1,161 +1,152 @@
-<!DOCTYPE html>
-<html>
-    <head>
-
-    </head>
-    <body>
-    <div class="container center_div">
-		<h2> Cadastrar pessoa física</h2>
-
-    <div>
-		<div class="form-row align-items-center">
-			<div class="form-group col-auto">
-				<label for="nomeCompleto">Nome Completo:</label>
-                <input type="text" class="form-control" [(ngModel)]="pessoaFisica.nomeCompleto"
-                pInputText placeholder="Ex: Maria do Carmo" required>
-			</div>
-            <div class="form-group col-auto">
-                <label for="cpf">CPF:</label>
-                <input type="text" class="form-control" [(ngModel)]="pessoaFisica.cpf"
-                required="required" pInputText placeholder=" CPF">
-            </div>
-      </div>
-      <div class="form-row align-items-center">
-			<div class="form-group col-auto">
-				<label for="dataNascimento">Data de Nascimento:</label>
-                <input type="date" class="form-control" [(ngModel)]="pessoaFisica.dataNascimento"
-                pInputText required>
-            </div>
-		</div>
-
-		<div class="form-row align-items-center">
-            <div class="form-group col-auto">
-                <label for="email">E-mail:</label>
-                <input type="email" class="form-control" [(ngModel)]="pessoaFisica.email"
-                required="required" pInputText placeholder=" E-mail">
-		    </div>
-
-		    <div class="form-group col-auto">
-			    <label for="senha">Senha:</label>
-			    <input type="password" class="form-control" [(ngModel)]="pessoaFisica.senha"
-          required="required" pInputText placeholder=" Senha">
-            </div>
-        </div>
-
-        <div class="form-row align-items-center">
-            <div class="form-group col-auto">
-                <label for="telefone1">Telefone Fixo:</label>
-                <input type="text" class="form-control" [(ngModel)]="pessoaFisica.telefone1"
-                pInputText placeholder=" Telefone Fixo">
-            </div>
-
-            <div class="form-group col-auto">
-                <label for="telefone2">Celular:</label>
-                <input type="text" class="form-control" [(ngModel)]="pessoaFisica.telefone2"
-                required="required" pInputText placeholder=" Telefone Celular">
-            </div>
-        </div>
-
-        <div class="form-row align-items-center">
-            <div class="form-group col-auto">
-                <label for="logradouro">Endereço:</label>
-                <input type="text" class="form-control" [(ngModel)]="pessoaFisica.logradouro"
-                required="required" pInputText placeholder=" Endereço">
-            </div>
-            <div class="form-group col-auto">
-                <label for="cep">CEP:</label>
-                <input type="text" class="form-control" [(ngModel)]="pessoaFisica.cep" r
-                equired="required" pInputText placeholder=" CEP">
-            </div>
-        </div>
-
-        <div class="form-row align-items-center">
-            <div class="form-group col-auto">
-                <label for="bairro">Bairro:</label>
-                <input type="text" class="form-control" [(ngModel)]="pessoaFisica.bairro"
-                required="required" pInputText placeholder=" Bairro">
-            </div>
-        </div>
-
-        <div class="form-row align-items-center">
-            <div class="form-group col-auto">
-                <label for="cidade">Cidade</label>
-                <input type="text" class="form-control" [(ngModel)]="pessoaFisica.cidade"
-                required="required" pInputText placeholder="Cidade">
-            </div>
-            <div class="form-group col-auto">
-                <label for="estado">Estado:</label>
-                <input type="text" class="form-control" [(ngModel)]="pessoaFisica.estado"
-                required="required" pInputText placeholder="Estado">
-            </div>
-        </div>
-
-
-        <div class="form-row align-items-center">
-            <div class="form-group col-auto">
-                <label for="numero">Nº:</label>
-                <input type="text" class="form-control" [(ngModel)]="pessoaFisica.numero"
-                required="required" pInputText placeholder=" Número">
-            </div>
-            <div class="form-group col-auto">
-                <label for="complemento">Complemento:</label>
-                <input type="text" class="form-control" [(ngModel)]="pessoaFisica.complemento"
-                required="required" pInputText placeholder=" Complemento">
-            </div>
-        </div>
-
-        <div class="form-row align-items-center">
-           <div class="form-group col-auto">
-                <p>Foto perfil</p>
-              <br/>
-              <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"
-              maxFileSize="1000000" (onUpload)="onBasicUpload($event)"></p-fileUpload>
-              <br/>
-              <br/>
-           </div>
-           </div>
-
-<div class="container center_div">
-<div class="form-row align-items-center">
-<div class="form-group col-auto">
-<label for="petWalker">
-    <input type="checkbox" id="petWalker" />
-    Você é petwalker ?
-</label>
-<hr />
-<div id="petWalkerFile" style="display: none">
-    <p>Coloque fotos do serviço</p>
-  <br/>
-  <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"
-  maxFileSize="1000000" (onUpload)="onBasicUpload($event)"
-  id="petWalkerFile"></p-fileUpload>
-  <br/>
-  <br/>
-  <label for="descricao">Descrição:</label>
-                <textarea type="text" class="form-control" [(ngModel)]="pessoaFisica.descricao"
-                required="required" pInputTextarea></textarea>
-</div>
-
-</div>
-</div>
-</div>
-
-
-
-  <div class="form-row align-items-center">
+<form>
+            <div class="container center_div">
+                <h2> Cadastrar pessoa física</h2>
+        
             <div>
-                <button type="button" (click)="salvar()" label="Cadastrar" class="btn btn-outline-light"
-                data-toggle="modal" data-target="#modalLogin" style="background-color: #f7b733">Cadastrar
-                </button>
-            </div>
-            <div>
-                <button type="button" (click)="voltar()" label="Voltar" class="btn btn-outline-light"
-                data-toggle="modal" data-target="#modalLogin" style="background-color: #f7b733">Voltar
-                </button>
-            </div>
+                <div class="form-row align-items-center">
+                    <div class="form-group col-auto">
+                        <label for="nomeCompleto">Nome Completo:</label>
+                        <input type="text" class="form-control" [(ngModel)]="pessoaFisica.nomeCompleto"
+                        pInputText placeholder="Ex: Maria do Carmo" required>
+                    </div>
+                    <div class="form-group col-auto">
+                        <label for="cpf">CPF:</label>
+                        <input type="text" class="form-control" [(ngModel)]="pessoaFisica.cpf"
+                        required="required" pInputText placeholder=" CPF">
+                    </div>
+              </div>
+              <div class="form-row align-items-center">
+                    <div class="form-group col-auto">
+                        <label for="dataNascimento">Data de Nascimento:</label>
+                        <input type="date" class="form-control" [(ngModel)]="pessoaFisica.dataNascimento"
+                        pInputText required>
+                    </div>
+                </div>
+        
+                <div class="form-row align-items-center">
+                    <div class="form-group col-auto">
+                        <label for="email">E-mail:</label>
+                        <input type="email" class="form-control" [(ngModel)]="pessoaFisica.email"
+                        required="required" pInputText placeholder=" E-mail">
+                    </div>
+        
+                    <div class="form-group col-auto">
+                        <label for="senha">Senha:</label>
+                        <input type="password" class="form-control" [(ngModel)]="pessoaFisica.senha"
+                  required="required" pInputText placeholder=" Senha">
+                    </div>
+                </div>
+        
+                <div class="form-row align-items-center">
+                    <div class="form-group col-auto">
+                        <label for="telefone1">Telefone Fixo:</label>
+                        <input type="text" class="form-control" [(ngModel)]="pessoaFisica.telefone1"
+                        pInputText placeholder=" Telefone Fixo">
+                    </div>
+        
+                    <div class="form-group col-auto">
+                        <label for="telefone2">Celular:</label>
+                        <input type="text" class="form-control" [(ngModel)]="pessoaFisica.telefone2"
+                        required="required" pInputText placeholder=" Telefone Celular">
+                    </div>
+                </div>
+        
+                <div class="form-row align-items-center">
+                    <div class="form-group col-auto">
+                        <label for="logradouro">Endereço:</label>
+                        <input type="text" class="form-control" [(ngModel)]="pessoaFisica.logradouro"
+                        required="required" pInputText placeholder=" Endereço">
+                    </div>
+                    <div class="form-group col-auto">
+                        <label for="cep">CEP:</label>
+                        <input type="text" class="form-control" [(ngModel)]="pessoaFisica.cep" 
+                        required="required" pInputText placeholder=" CEP">
+                    </div>
+                </div>
+        
+                <div class="form-row align-items-center">
+                    <div class="form-group col-auto">
+                        <label for="bairro">Bairro:</label>
+                        <input type="text" class="form-control" [(ngModel)]="pessoaFisica.bairro"
+                        required="required" pInputText placeholder=" Bairro">
+                    </div>
+                </div>
+        
+                <div class="form-row align-items-center">
+                    <div class="form-group col-auto">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" class="form-control" [(ngModel)]="pessoaFisica.cidade"
+                        required="required" pInputText placeholder="Cidade">
+                    </div>
+                    <div class="form-group col-auto">
+                        <label for="estado">Estado:</label>
+                        <input type="text" class="form-control" [(ngModel)]="pessoaFisica.estado"
+                        required="required" pInputText placeholder="Estado">
+                    </div>
+                </div>
+        
+        
+                <div class="form-row align-items-center">
+                    <div class="form-group col-auto">
+                        <label for="numero">Nº:</label>
+                        <input type="text" class="form-control" [(ngModel)]="pessoaFisica.numero"
+                        required="required" pInputText placeholder=" Número">
+                    </div>
+                    <div class="form-group col-auto">
+                        <label for="complemento">Complemento:</label>
+                        <input type="text" class="form-control" [(ngModel)]="pessoaFisica.complemento"
+                        required="required" pInputText placeholder=" Complemento">
+                    </div>
+                </div>
+        
+                <div class="form-row align-items-center">
+                   <div class="form-group col-auto">
+                        <p>Foto perfil</p>
+                      <br/>
+                      <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"
+                      maxFileSize="1000000" (onUpload)="onBasicUpload($event)"></p-fileUpload>
+                      <br/>
+                      <br/>
+                   </div>
+                   </div>
+        
+        <div class="container center_div">
+        <div class="form-row align-items-center">
+        <div class="form-group col-auto">
+        <label for="petWalker">
+            <input type="checkbox" id="petWalker" />
+            Você é petwalker ?
+        </label>
+        <hr />
+        <div id="petWalkerFile" style="display: none">
+            <p>Coloque fotos do serviço</p>
+          <br/>
+          <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"
+          maxFileSize="1000000" (onUpload)="onBasicUpload($event)"
+          id="petWalkerFile"></p-fileUpload>
+          <br/>
+          <br/>
+          <label for="descricao">Descrição:</label>
+                        <textarea type="text" class="form-control" [(ngModel)]="pessoaFisica.descricao"
+                        required="required" pInputTextarea></textarea>
         </div>
-    </div>
-    </div>
-
-	</body>
-</html>
+        
+        </div>
+        </div>
+        </div>
+        
+          <div class="form-row align-items-center">
+                    <div>
+                        <button type="button" (click)="salvar()" label="Cadastrar" class="btn btn-outline-light"
+                        style="background-color: #f7b733">Cadastrar
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" (click)="voltar()" label="Voltar" class="btn btn-outline-light"
+                        style="background-color: #f7b733">Voltar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div> 
+        </form>     

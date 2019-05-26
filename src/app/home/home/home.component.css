@@ -52,10 +52,22 @@ body {
 }
 
 .card{
-  background-color: #B4E1FF;
-  color: white;
+    background-color: #B4E1FF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 180px;
 }
 
-.card-text{
-  font-size: large;
+.card-img-top{
+    height: 100px;
+    width: 100px;
+}
+
+btn-primary{
+    display: flex;
+    align-items: center;
+    justify-content: center;    
 }
