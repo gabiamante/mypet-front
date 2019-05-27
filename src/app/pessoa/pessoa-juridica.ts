@@ -14,19 +14,23 @@ export class PessoaJuridica {
   public email: string;
   public senha: string;
   public fotoPerfil: string;
-  /* Para PetShop */
+
+  public  PetShop :  boolean;
   public farmacia: boolean;
   public banho: boolean;
   public tosa: boolean;
   public loja: boolean;
   public descricaoPetShop: string;
-  /* Para PetVet */
+
+  public petVet : boolean;
   public vacinacao: boolean;
   public consulta: boolean;
   public exames: boolean;
   public descricaoPetVet: string;
-  /* Para PetHome */
-  public apartamentoCasa: boolean;
+
+  public PetHome: boolean;
+  public apartamento: boolean;
+  public casa: boolean;
   public fumante: boolean;
   public telado: boolean;
   public descricaoPetHome: string;
@@ -50,19 +54,20 @@ export class PessoaJuridica {
      this.email = '' ;
      this.senha = '' ;
      this.fotoPerfil = '' ;
-     /* Para PetShop */
+     this.PetShop = false;
      this.farmacia = false;
      this.banho = false;
      this.tosa = false;
      this.loja = false;
      this.descricaoPetShop = '';
-     /* Para PetVet */
+     this.petVet = false;
     this.vacinacao = false;
     this.consulta = false;
     this.exames = false;
     this.descricaoPetVet = '';
-    /* Para PetHome */
-    this.apartamentoCasa = false;
+    this.PetHome = false;
+    this.apartamento = false;
+    this.casa = false;
     this.fumante = false;
     this.telado = false;
     this.descricaoPetHome = '';

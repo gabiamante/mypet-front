@@ -1,5 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+
+
+
     <h2> Cadastrar pessoa jurídica</h2>
-    <form>
+
         <div class="form-row align-items-center">
             <div class="form-group col-md-4">
                     <label for="razaoSocial">Nome Completo:</label>
@@ -95,7 +104,7 @@
                     <br/>
             </div>
         </div>
-        
+
          <!--Inicio das escolhas de perfis-->
          <div class="form-check form-check-inline">
                 <!--Petshop-->
@@ -122,11 +131,11 @@
                     <label for="farmacia"></label>
                     <input type="checkbox" id="farmacia" style="display: none"/>
                     Farmácia
-                
+
                     <label for="banho"></label>
                     <input type="checkbox" id="banho" style="display: none"/>
                     Banho
-                
+
                     <label for="tosa"></label>
                     <input type="checkbox" id="tosa" style="display: none"/>
                     Tosa
@@ -163,11 +172,11 @@
                                 <label for="vacinacao"></label>
                                 <input type="checkbox" id="vacinacao" style="display: none"/>
                                 Vacinação
-                            
+
                                 <label for="consulta"></label>
                                 <input type="checkbox" id="consulta" style="display: none"/>
                                 Consulta
-                            
+
                                 <label for="exames"></label>
                                 <input type="checkbox" id="exames" style="display: none"/>
                                 Exames
@@ -199,7 +208,7 @@
                                 <textarea type="text" class="form-control" [(ngModel)]="pessoaJuridica.descricaoPetHome"
                                 required="required" pInputTextarea></textarea>
 
-                        <p id="opcoesPetHome" style="display: none">Marque o que seu Petshop tem</p>
+                        <p id="opcoesPetHome" style="display: none">Marque o que seu PetHome tem</p>
 
                         <form>
                         <input type="radio" name="radio" value="casa"/>Casa<br/>
@@ -222,14 +231,15 @@
 
                 <!--Fim das escolhas de perfis-->
 
-                        <div>
+                        <div class="button-cadastro">
                             <button type="button" (click)="salvar()" label="Cadastrar" class="btn btn-outline-light"
-                            data-toggle="modal" data-target="#modalLogin" style="background-color: #f7b733">Cadastrar
+                            style="background-color: #f7b733">Cadastrar
                             </button>
-                        </div>
-                        <div>
                             <button type="button" (click)="voltar()" label="Voltar" class="btn btn-outline-light"
-                            data-toggle="modal" data-target="#modalLogin" style="background-color: #f7b733">Voltar
+                            style="background-color: #f7b733">Voltar
                             </button>
                         </div>
-    </form>
+
+
+	</body>
+    </html>
