@@ -17,6 +17,7 @@ export class PessoaFisica {
   public senha: string;
   public fotoPerfil: string;
   /* Para PetWalker */
+  public petWalker: boolean;
   public descricao: string;
   public fotos: string;
 

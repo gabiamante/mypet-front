@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { PesquisarService } from '../pesquisar.service';
+import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
+import { projection } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-home',
@@ -8,15 +11,23 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) {
+  cidade: string;
+  estado: string;
+  bairro: string;
+  @Input() pj: PessoaJuridica[];
+  @Input() pessoas: PessoaJuridica [];
+  pessoa: PessoaJuridica;
+  i: number;
+
+  constructor(private router: Router, private pesquisarService: PesquisarService) {
     this.router = router;
   }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
 
-  public buscarPetClient(){
-    this.router.navigate(['petclients', 'buscar']);
-  }
-
+    }
+    pesquisar(bairro, cidade, estado){
+      this.pesquisarService.buscar()
+      .subscribe(pj => this.pj = pj);
+    }
 }

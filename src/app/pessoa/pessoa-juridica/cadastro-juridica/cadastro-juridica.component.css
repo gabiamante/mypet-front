@@ -1,16 +1,22 @@
-.center_div {
-    margin: 0 auto;
-    width: 30%;
-}
-
-body{
-    background-image: url("https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_1280.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+.container {
+	max-width: 170vh;
+	max-height: 200vh;
+    align-items: center;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-style: solid;
 }
 
 .button-cadastro{
-    display: flex;
-    justify-content: flex-end;
-    margin: 30px;
+    display: flex;   
+    flex-flow:row-reverse wrap-reverse;
+    margin-bottom: 20px;
 }
+
+/*.body{
+    background-image: url("https://cdn.pixabay.com/photo/2019/05/14/18/49/dog-4203166_1280.jpg"); 
+    background-repeat: no-repeat;
+    background-position: center center; 
+    background-size: cover;
+    color: black;   
+}*/

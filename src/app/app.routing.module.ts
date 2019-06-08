@@ -8,20 +8,11 @@ import { CadastroFisicaComponent } from './pessoa/pessoa-fisica/cadastro-fisica/
 import { CadastroJuridicaComponent } from './pessoa/pessoa-juridica/cadastro-juridica/cadastro-juridica.component';
 import { FornecedoresComponent } from './home/fornecedores/fornecedores.component';
 import { QuemSomosComponent } from './home/quem-somos/quem-somos.component';
-import { PetHomeComponent } from './home/pesquisar/pet-home/pet-home.component';
-import { PetVetComponent } from './home/pesquisar/pet-vet/pet-vet.component';
-import { PetShopComponent } from './home/pesquisar/pet-shop/pet-shop.component';
-import { PetWalkerComponent } from './home/pesquisar/pet-walker/pet-walker.component';
 
 const routes: Routes = [
     { path: 'home/home', component: HomeComponent},
     { path: 'home/fornecedores', component: FornecedoresComponent},
     { path: 'home/quem-somos', component: QuemSomosComponent},
-
-    { path: 'home/pesquisa/pet-home', component: PetHomeComponent},
-    { path: 'home/pesquisa/pet-vet', component: PetVetComponent},
-    { path: 'home/pesquisa/pet-shop', component: PetShopComponent},
-    { path: 'home/pesquisa/pet-walker', component: PetWalkerComponent},
 
     { path: 'pessoa/fisica/cadastrar', component: CadastroFisicaComponent},
     { path: 'pessoa/juridica/cadastrar', component: CadastroJuridicaComponent},

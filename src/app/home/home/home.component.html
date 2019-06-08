@@ -1,52 +1,40 @@
 
 <div class="pet-image-home">
     <div class="pet-text-home">
-
       <h1 style="font-size:50px">MyPet</h1>
       <h3>Seu Pet com os melhores!</h3>
       <br/>
-      <div class="btn-group">
-          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Escolha o tipo de prestador que procura  
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="/home/pesquisa/pet-home">PetHome</a>
-            <a class="dropdown-item" href="/home/pesquisa/pet-vet">PetVet</a>
-            <a class="dropdown-item" href="/home/pesquisa/pet-shop">PetShop</a>
-            <a class="dropdown-item" href="/home/pesquisa/pet-walker">PetWalker</a>
-          </div>
-        </div>      
+    </div>
+      <div class="form-group col-md-3">
+          <input type="text" class="form-control"  required="required" placeholder="Estado" id="estado">
+      </div>
+      <div class="form-group col-md-3">
+        <input type="text" class="form-control"  required="required" placeholder="Cidade" id="cidade">
+      </div>
+      <div class="form-group col-md-3">
+        <input type="text" class="form-control"  required="required" placeholder="Bairro" id="bairro">
+      </div>
+    <div>
+      <button type="button" (click)="pesquisar(bairro, cidade, estado)" label="Pesquisar" class="btn btn-outline-light" style="background-color: blue">Pesquisar</button>
     </div>
   </div>
 
-
-  <div class="card-deck">
-      <div class="card" >
-        <img class="card-img-top" src="https://image.flaticon.com/icons/png/512/22/22732.png" alt="Imagem de capa do card">
-        <div class="card-body"> 
-          <a href="/home/fornecedores" class="btn btn-primary">O que é PetWalker?</a>
-        </div>
-      </div>
-      <div class="card">
-          <img class="card-img-top" src="http://download.seaicons.com/icons/icons8/windows-8/512/Animals-Dog-House-icon.png" alt="Imagem de capa do card">
-          <div class="card-body">
-            <a href="/home/fornecedores" class="btn btn-primary">O que é PetHome?</a>
-          </div>
-      </div>
-      <div class="card">
-          <img class="card-img-top" src="http://best1.hospedagemdesites.ws/wp-content/uploads/2018/08/LogoIcone-300x300.png" alt="Imagem de capa do card">
-        <div class="card-body">
-            <a href="/home/fornecedores" class="btn btn-primary">O que é PetVet?</a>
-        </div>
-      </div>
-      <div class="card">
-          <img class="card-img-top" src="https://image.flaticon.com/icons/png/512/103/103725.png" alt="Imagem de capa do card">
-        <div class="card-body">
-            <a href="/home/fornecedores" class="btn btn-primary">O que é PetShop?</a>
-        </div>
-      </div>
-    </div>
-
-  
-
-  
+  <h3 class="first">Pessoa Jurídica</h3>
+  <p-table [value]="pj">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Razão Social</th>
+              <th>E-mail</th>
+              <th>Bairro</th>
+              <th>Cidade</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-pessoa>
+          <tr>
+              <td>{{pessoa.razaoSocial}}</td>
+              <td>{{pessoa.email}}</td>
+              <td>{{pessoa.bairro}}</td>
+              <td>{{pessoa.cidade}}</td>
+          </tr>
+      </ng-template>
+  </p-table>

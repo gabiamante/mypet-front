@@ -40,7 +40,7 @@ export class CadastroFisicaComponent implements OnInit {
     this.pessoaFisicaService.salvarPessoaFisica(this.pessoaFisica).subscribe(
       response => {
         alert('Salvo com sucesso!');
-        window.location.href = 'pessoaFisica/inicial';
+        window.location.href = '/home/home';
       }
     );
   }

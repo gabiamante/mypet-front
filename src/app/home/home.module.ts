@@ -4,33 +4,25 @@ import { HomeComponent } from './home/home.component';
 import { ButtonModule } from 'primeng/button';
 import { FornecedoresComponent } from './fornecedores/fornecedores.component';
 import { QuemSomosComponent } from './quem-somos/quem-somos.component';
-import { PetHomeComponent } from './pesquisar/pet-home/pet-home.component';
-import { PetShopComponent } from './pesquisar/pet-shop/pet-shop.component';
-import { PetVetComponent } from './pesquisar/pet-vet/pet-vet.component';
-import { PetWalkerComponent } from './pesquisar/pet-walker/pet-walker.component';
+import { HttpModule } from '@angular/http';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
     HomeComponent,
     FornecedoresComponent,
-    QuemSomosComponent,
-    PetHomeComponent,
-    PetShopComponent,
-    PetVetComponent,
-    PetWalkerComponent
+    QuemSomosComponent
   ],
   imports: [
     CommonModule,
-    ButtonModule
+    ButtonModule,
+    HttpModule,
+    TableModule
   ],
   exports:[
     HomeComponent,
     FornecedoresComponent,
-    QuemSomosComponent,
-    PetHomeComponent,
-    PetShopComponent,
-    PetVetComponent,
-    PetWalkerComponent
+    QuemSomosComponent
   ],
   bootstrap: [
     HomeComponent

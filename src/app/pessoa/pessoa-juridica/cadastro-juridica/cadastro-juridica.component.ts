@@ -3,8 +3,6 @@ import { PessoaJuridica } from '../../pessoa-juridica';
 import { PessoaService } from '../../pessoa.service';
 import { Router } from '@angular/router';
 
-
-
 declare var $: any;
 
 @Component({
@@ -22,7 +20,6 @@ export class CadastroJuridicaComponent implements OnInit {
     this.router = router; }
 
   ngOnInit() {
-
 
     $(function () {
       $('#petShop').click(function () {
@@ -70,10 +67,10 @@ $(function () {
       if ($(this).is(':checked')) {
           $('#petHomeFile').show();
           $('#apartamentoCasa').show();
-            $('#fumante').show();
-            $('#telado').show();
-            $('#descricaoPetHome').show();
-            $('#opcoesPetHomes').show();
+          $('#fumante').show();
+          $('#telado').show();
+          $('#descricaoPetHome').show();
+          $('#opcoesPetHomes').show();
 
       } else {
           $('#petHomeFile').hide();
@@ -86,10 +83,7 @@ $(function () {
       }
   });
 });
-
-
-
-  }
+}
 
   public salvar() {
     this.pessoaJuridicaService.salvarPessoaJuridica(this.pessoaJuridica).subscribe(

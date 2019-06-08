@@ -11,6 +11,10 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
 }
 
 .pet-text-home {
@@ -70,4 +74,8 @@ btn-primary{
     display: flex;
     align-items: center;
     justify-content: center;    
+}
+
+.check-servico{
+    background-color: white;
 }
