@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home/home.component';
 import { ButtonModule } from 'primeng/button';
 import { FornecedoresComponent } from './fornecedores/fornecedores.component';
 import { QuemSomosComponent } from './quem-somos/quem-somos.component';
 import { HttpModule } from '@angular/http';
 import {TableModule} from 'primeng/table';
+import { HomeComponent } from './home/home.component';
+import { PesquisarComponent } from './home/pesquisar/pesquisar.component';
+import { FiltroPelaCidade } from './home/filtro-pela-cidade.pipe';
 
 @NgModule({
   declarations: [
-    HomeComponent,
     FornecedoresComponent,
-    QuemSomosComponent
+    QuemSomosComponent,
+    HomeComponent,
+    PesquisarComponent,
+    FiltroPelaCidade
+
   ],
   imports: [
     CommonModule,
@@ -20,11 +25,8 @@ import {TableModule} from 'primeng/table';
     TableModule
   ],
   exports:[
-    HomeComponent,
     FornecedoresComponent,
-    QuemSomosComponent
-  ],
-  bootstrap: [
+    QuemSomosComponent,
     HomeComponent
   ]
 })

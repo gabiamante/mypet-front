@@ -15,6 +15,7 @@ export class PessoaJuridica {
   public senha: string;
   public fotoPerfil: string;
 
+
   public petShop:  boolean;
   public farmacia: boolean;
   public banho: boolean;

@@ -1,8 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { PesquisarService } from '../pesquisar.service';
+import { Component, OnInit } from '@angular/core';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
-import { projection } from '@angular/core/src/render3';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,23 +9,15 @@ import { projection } from '@angular/core/src/render3';
 })
 export class HomeComponent implements OnInit {
 
-  cidade: string;
-  estado: string;
-  bairro: string;
-  @Input() pj: PessoaJuridica[];
-  @Input() pessoas: PessoaJuridica [];
+  pessoas: PessoaJuridica[] = [];
   pessoa: PessoaJuridica;
-  i: number;
+  filter: string;
 
-  constructor(private router: Router, private pesquisarService: PesquisarService) {
-    this.router = router;
+  constructor() {
   }
 
-    ngOnInit() {
+  ngOnInit() {
+      this.filter = '';
+  }
 
-    }
-    pesquisar(bairro, cidade, estado){
-      this.pesquisarService.buscar()
-      .subscribe(pj => this.pj = pj);
-    }
 }

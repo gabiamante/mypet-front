@@ -1,0 +1,12 @@
+<p-table [value]="pj">
+    <ng-template pTemplate="body" let-pessoa>
+        <div class="card">
+            <h5 class="card-header">{{pessoa.razaoSocial}}</h5>
+            <div class="card-body">
+            <p class="card-text">{{pessoa.cidade}}</p>
+            <p class="card-text">{{pessoa.bairro}}</p>
+            <a href="#" class="btn btn-primary">+ Infos</a>
+            </div>
+        </div>
+    </ng-template>
+</p-table>
