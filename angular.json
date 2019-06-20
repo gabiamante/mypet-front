@@ -33,7 +33,7 @@
               "node_modules/primeflex/primeflex.css"
             ],
             "scripts": [
-              
+              "node_modules/jquery/dist/detalhesFornecedor.js"
             ]
           },
           "configurations": {

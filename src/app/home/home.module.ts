@@ -5,17 +5,20 @@ import { FornecedoresComponent } from './fornecedores/fornecedores.component';
 import { QuemSomosComponent } from './quem-somos/quem-somos.component';
 import { HttpModule } from '@angular/http';
 import {TableModule} from 'primeng/table';
+import { FiltroPelaCidade } from './home/filtro-pela-cidade.pipe';
 import { HomeComponent } from './home/home.component';
 import { PesquisarComponent } from './home/pesquisar/pesquisar.component';
-import { FiltroPelaCidade } from './home/filtro-pela-cidade.pipe';
+import { DetalhesComponent } from './home/detalhes/detalhes.component';
+
 
 @NgModule({
   declarations: [
     FornecedoresComponent,
     QuemSomosComponent,
+    FiltroPelaCidade,
     HomeComponent,
     PesquisarComponent,
-    FiltroPelaCidade
+    DetalhesComponent
 
   ],
   imports: [
@@ -27,7 +30,10 @@ import { FiltroPelaCidade } from './home/filtro-pela-cidade.pipe';
   exports:[
     FornecedoresComponent,
     QuemSomosComponent,
-    HomeComponent
+    FiltroPelaCidade,
+    HomeComponent,
+    PesquisarComponent,
+    DetalhesComponent
   ]
 })
 export class HomeModule { }

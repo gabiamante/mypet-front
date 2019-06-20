@@ -28,7 +28,7 @@ export class CadastroJuridicaComponent implements OnInit {
               $('#farmacia').show();
               $('#banho').show();
               $('#tosa').show();
-              $('#opcoesPetShop').show()
+              $('#opcoesPetShop').show();
           } else {
               $('#petShopFile').hide();
               $('#farmacia').hide();

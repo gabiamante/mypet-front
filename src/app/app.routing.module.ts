@@ -8,11 +8,16 @@ import { CadastroFisicaComponent } from './pessoa/pessoa-fisica/cadastro-fisica/
 import { CadastroJuridicaComponent } from './pessoa/pessoa-juridica/cadastro-juridica/cadastro-juridica.component';
 import { FornecedoresComponent } from './home/fornecedores/fornecedores.component';
 import { QuemSomosComponent } from './home/quem-somos/quem-somos.component';
+import { DetalhesComponent } from './home/home/detalhes/detalhes.component';
+import { AprovarPessoaComponent } from './aprovacao/aprovar-pessoa/aprovar-pessoa.component';
 
 const routes: Routes = [
     { path: 'home/home', component: HomeComponent},
     { path: 'home/fornecedores', component: FornecedoresComponent},
     { path: 'home/quem-somos', component: QuemSomosComponent},
+    { path: 'home/detalhes/:id', component: DetalhesComponent},
+
+    { path: 'aprovacao/pessoa', component: AprovarPessoaComponent},
 
     { path: 'pessoa/fisica/cadastrar', component: CadastroFisicaComponent},
     { path: 'pessoa/juridica/cadastrar', component: CadastroJuridicaComponent},

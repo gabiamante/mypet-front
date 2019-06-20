@@ -1,5 +1,6 @@
 export class PessoaFisica {
   public id: number;
+  public username: string;
   public nomeCompleto: string;
   public dataNascimento: string;
   public telefone1: string;
@@ -25,6 +26,7 @@ export class PessoaFisica {
   constructor() {
       this.id = 0;
      this.nomeCompleto = '' ;
+     this.username = '';
      this.dataNascimento = '' ;
      this.telefone1 = '' ;
      this.telefone2 = '' ;

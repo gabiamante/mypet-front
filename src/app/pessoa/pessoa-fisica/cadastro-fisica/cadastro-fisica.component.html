@@ -2,6 +2,12 @@
 <div class="container">
     <h4 align="center">Cadastrar Pessoa Física</h4>
         <div class="form-row align-items-center">
+               <!-- <div class="form-group col-md-3">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" [(ngModel)]="pessoaFisica.username"
+                        pInputText placeholder="Ex: maria_carmo" required>
+                    </div>   -->
+
                 <div class="form-group col-md-3">
                     <label for="nomeCompleto">Nome Completo:</label>
                     <input type="text" class="form-control" [(ngModel)]="pessoaFisica.nomeCompleto"
@@ -31,6 +37,11 @@
                     <input type="password" class="form-control" [(ngModel)]="pessoaFisica.senha"
               required="required" pInputText placeholder=" Senha">
                 </div>
+                <div class="form-group col-auto">
+                        <label for="senha">Confirmar Senha:</label>
+                        <input type="password" class="form-control" 
+                  required="required" pInputText placeholder=" Confirmar Senha">
+                    </div>
                 <div class="form-group col-md-2">
                     <label for="telefone1">Telefone Fixo:</label>
                     <input type="text" class="form-control" [(ngModel)]="pessoaFisica.telefone1"

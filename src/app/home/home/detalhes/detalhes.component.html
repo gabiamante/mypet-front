@@ -1,0 +1,91 @@
+
+  <!--<h2 style="text-align:center">Slideshow Gallery</h2>
+  
+  <div class="container">
+    <div class="mySlides">
+      <div class="numbertext">1 / 6</div>
+      <img src="./assets/bulldog-4187023_1280.jpg" style="width:100%">
+    </div>
+  
+    <div class="mySlides">
+      <div class="numbertext">2 / 6</div>
+      <img src="./assets/cat-1652822_1280.jpg" style="width:100%">
+    </div>
+  
+    <div class="mySlides">
+      <div class="numbertext">3 / 6</div>
+      <img src="./assets/bulldog-4187023_1280.jpg" style="width:100%">
+    </div>
+      
+    <div class="mySlides">
+      <div class="numbertext">4 / 6</div>
+      <img src="./assets/cat-1652822_1280.jpg" style="width:100%">
+    </div>
+  
+    <div class="mySlides">
+      <div class="numbertext">5 / 6</div>
+      <img src="./assets/bulldog-4187023_1280.jpg" style="width:100%">
+    </div>
+      
+    <div class="mySlides">
+      <div class="numbertext">6 / 6</div>
+      <img src="./assets/cat-1652822_1280.jpg" style="width:100%">
+    </div>
+      
+    <a class="prev" onclick="plusSlides(-1)"> Prev </a>
+    <a class="next" onclick="plusSlides(1)"> Next </a>
+  
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+  
+    <div class="row">
+      <div class="column">
+        <img class="demo cursor" src="./assets/bulldog-4187023_1280.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods" id=image>
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="./assets/cat-1652822_1280.jpg" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="./assets/bulldog-4187023_1280.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="./assets/cat-1652822_1280.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="./assets/bulldog-4187023_1280.jpg" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
+      </div>    
+      <div class="column">
+        <img class="demo cursor" src="./assets/cat-1652822_1280.jpg" style="width:100%" (click)="currentSlide(6)" alt="Snowy Mountains">
+      </div>
+    </div>
+  </div>
+  <p-table [value]="listaPessoas">
+      <ng-template pTemplate="body" ngFor let-pessoa [ngForOf]="pessoa">
+          <div class="card">
+              <h5 class="card-header">{{pessoa.razaoSocial}}</h5>
+              <div class="card-body">
+                  <label class="card-text">Cidade: {{pessoa.cidade}}</label><br/>
+                  <label class="card-text">Bairro: {{pessoa.bairro}} </label><br/>
+                  <label class="card-text">ID: {{pessoa.id}}</label><br/>           
+              </div>
+          </div>
+      </ng-template>
+  </p-table>
+-->
+<p-table [value]="listaPessoas">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Razão Social</th>
+            <th>Cidade</th>
+            <th>Bairro</th> 
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-listaPessoas>
+        <tr>
+            <td>{{listaPessoas.razaoSocial}}</td>
+            <td>{{listaPessoas.cidade}}</td>
+            <td>{{listaPessoas.bairro}}</td>
+        </tr>
+    </ng-template>
+</p-table>

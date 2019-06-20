@@ -1,4 +1,5 @@
 export class PessoaJuridica {
+  public id: number;
   public razaoSocial: string;
   public cnpj: string;
   public telefone1: string;
@@ -14,6 +15,8 @@ export class PessoaJuridica {
   public email: string;
   public senha: string;
   public fotoPerfil: string;
+  public situacaoAprovacao: string;
+  public checkStatus: boolean;
 
 
   public petShop:  boolean;
@@ -40,6 +43,7 @@ export class PessoaJuridica {
 
 
   constructor() {
+     this.id = 0;
      this.razaoSocial = '' ;
      this.cnpj = '' ;
      this.telefone1 = '' ;
@@ -55,6 +59,8 @@ export class PessoaJuridica {
      this.email = '' ;
      this.senha = '' ;
      this.fotoPerfil = '' ;
+     this.situacaoAprovacao = '';
+     this.checkStatus = false;
      this.petShop = false;
      this.farmacia = false;
      this.banho = false;

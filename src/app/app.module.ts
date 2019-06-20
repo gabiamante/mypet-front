@@ -7,6 +7,7 @@ import { ErrorsModule } from './errors/errors.module';
 import { AdministradorModule } from './administrador/administrador.module';
 import { HomeModule } from './home/home.module';
 import { PessoaModule } from './pessoa/pessoa.module';
+import { AprovaoPessoaModule } from './aprovacao/aprovar-pessoa/aprovao-pessoa/aprovao-pessoa.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PessoaModule } from './pessoa/pessoa.module';
     AppRoutingModule,
     ErrorsModule,
     AdministradorModule,
-    PessoaModule
+    PessoaModule,
+    AprovaoPessoaModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,15 +9,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  filter: string = '';
   pessoas: PessoaJuridica[] = [];
-  pessoa: PessoaJuridica;
-  filter: string;
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute,
+    private router: Router) {
+      this.router = router;
   }
 
   ngOnInit() {
-      this.filter = '';
+    //this.pessoas = this.activatedRoute.snapshot.data['pessoas'];
   }
 
 }

@@ -1,19 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 
-@Pipe({ name: 'filtroCidade'})
+@Pipe({ name: 'filtroPelaCidade'})
 export class FiltroPelaCidade implements PipeTransform {
 
-    transform(pj: PessoaJuridica[], cidade: string) {
-        cidade = cidade.trim().toLowerCase();
+    transform(people: PessoaJuridica[], nomeQuery: string) {
 
-        if (cidade) {
-            console.log('if');
-            return pj.filter(pessoa => pessoa.cidade.toLowerCase().includes(cidade)
+        nomeQuery = nomeQuery.trim().toLowerCase();
+        if (nomeQuery) {
+            return people.filter(pessoa => pessoa.razaoSocial.toLowerCase().includes(nomeQuery)
             );
         } else {
-            console.log('else');
-            return pj;
+            return people;
         }
     }
 }
