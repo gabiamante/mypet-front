@@ -10,6 +10,9 @@ import { FornecedoresComponent } from './home/fornecedores/fornecedores.componen
 import { QuemSomosComponent } from './home/quem-somos/quem-somos.component';
 import { DetalhesComponent } from './home/home/detalhes/detalhes.component';
 import { AprovarPessoaComponent } from './aprovacao/aprovar-pessoa/aprovar-pessoa.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { CookieListComponent } from './pages/cookie-list/cookie-list.component';
 
 const routes: Routes = [
     { path: 'home/home', component: HomeComponent},
@@ -24,8 +27,14 @@ const routes: Routes = [
 
     { path: 'administrador/menu-inicial-admin', component: MenuInicialAdminComponent },
     { path: '', pathMatch: 'full', redirectTo: '/home/home'},
-    { path: '**', component: NotFoundComponent }
-];
+    { path: '**', component: NotFoundComponent },
+
+    { path: 'auth/login', component: LoginComponent }
+
+
+
+
+  ];
 
 @NgModule({
     imports: [

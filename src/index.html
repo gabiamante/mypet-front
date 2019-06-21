@@ -1,78 +1,72 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
+
 <head>
     <title>MyPet</title>
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/x-icon" href="http://1.bp.blogspot.com/-ZKvaIQ4QJss/VYr4hNxgLQI/AAAAAAAAAto/TcNOr1R9KzI/s1600/icons_pets.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
+</head>
 
-  <body>
+<body>
 
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
         <h5 class="my-0 mr-md-auto font-weight-normal"><a class="p-2 text-dark" href="/home/home">MyPet</a></h5>
         <nav class="my-2 my-md-0 mr-md-3">
-          <a class="p-2 text-dark" href="/home/quem-somos">Quem Somos</a>
-          <a class="p-2 text-dark" href="/home/fornecedores">Nossos Fornecedores</a>
+            <a class="p-2 text-dark" href="/home/quem-somos">Quem Somos</a>
+            <a class="p-2 text-dark" href="/home/fornecedores">Nossos Fornecedores</a>
         </nav>
         <a class="btn btn-outline-primary" data-toggle="modal" data-target="#modalCadastro">Cadastre-se</a>
         <a class="btn btn-outline-primary" data-toggle="modal" data-target="#modalLogin">Login</a>
-      </div>
+    </div>
 
-      <!-- Modal Cadastro -->
-      <div class="modal fade" id="modalCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal Cadastro -->
+    <div class="modal fade" id="modalCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Que tipo de cliente você é?</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Que tipo de cliente você é?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                 <span aria-hidden="true">&times;</span>
               </button>
+                </div>
+                <div class="modal-body">
+                    <a class="btn btn-primary" href="/pessoa/fisica/cadastrar">Pessoa Física</a>
+                    <a class="btn btn-primary" href="/pessoa/juridica/cadastrar">Pessoa Jurídica</a>
+                </div>
             </div>
-            <div class="modal-body">
-                <a class="btn btn-primary" href="/pessoa/fisica/cadastrar">Pessoa Física</a>
-                <a class="btn btn-primary" href="/pessoa/juridica/cadastrar">Pessoa Jurídica</a>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
 
-      <!-- Modal Login -->
-      <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal Login -->
+    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Faça seu Login</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Faça seu Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                 <span aria-hidden="true">&times;</span>
               </button>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Seu email" required="" autofocus="">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Login</button>
+                </div>
             </div>
-            <div class="form-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Seu email" required="" autofocus="">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-              <button type="button" class="btn btn-primary">Login</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
 
     <app-root></app-root>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  </body>
+</body>
+
 </html>
