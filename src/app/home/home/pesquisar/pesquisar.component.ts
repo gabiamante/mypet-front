@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PesquisarService } from '../../home.service';
+import { HomeService } from '../../home.service';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -12,7 +12,7 @@ export class PesquisarComponent implements OnInit {
 
   @Input() pessoas: PessoaJuridica[] = [];
 
-  constructor(private pesquisarService: PesquisarService,
+  constructor(private pesquisarService: HomeService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
 
@@ -21,7 +21,6 @@ export class PesquisarComponent implements OnInit {
 
   ngOnInit() {
 
-    const id = this.activatedRoute.snapshot.params.id;
     this.pesquisar();
 
   }
@@ -32,7 +31,6 @@ export class PesquisarComponent implements OnInit {
   }
 
   public pesquisarDetalhes(forn: PessoaJuridica){
-    console.log(forn);
     this.router.navigate(['home', 'detalhes', forn.id]);
   }
 }

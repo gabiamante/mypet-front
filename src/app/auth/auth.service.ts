@@ -4,7 +4,7 @@ import { TokenService } from './token.service';
 
 import { HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Credentials } from '../credentials/credentials';
+import { Credentials } from './credentials/credentials';
 
 @Injectable({
   providedIn: 'root'

@@ -8,17 +8,18 @@ import { AdministradorModule } from './administrador/administrador.module';
 import { HomeModule } from './home/home.module';
 import { PessoaModule } from './pessoa/pessoa.module';
 import { AprovaoPessoaModule } from './aprovacao/aprovar-pessoa/aprovao-pessoa/aprovao-pessoa.module';
-import { LoginComponent } from './auth/login/login.component';
 import { FormsModule } from '@angular/forms';
-import { JwtTokenInterceptor } from './auth/interceptors/jwt.token.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HeaderComponent } from './auth/layout/header/header.component';
+import { CookieListComponent } from './auth/pages/cookie-list/cookie-list.component';
+import { LoginComponent } from './auth/login/login.component';
 import { FooterComponent } from './auth/layout/footer/footer.component';
-
+import { HeaderComponent } from './auth/layout/header/header.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtTokenInterceptor } from './auth/interceptors/jwt.token.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CookieListComponent,
     LoginComponent,
     FooterComponent,
     HeaderComponent
@@ -32,15 +33,8 @@ import { FooterComponent } from './auth/layout/footer/footer.component';
     AdministradorModule,
     PessoaModule,
     FormsModule,
-    AprovaoPessoaModule,
-    LoginComponent,
-    FooterComponent,
-    HeaderComponent
-
-
+    AprovaoPessoaModule
   ],
-
-
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

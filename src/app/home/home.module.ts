@@ -9,6 +9,7 @@ import { FiltroPelaCidade } from './home/filtro-pela-cidade.pipe';
 import { HomeComponent } from './home/home.component';
 import { PesquisarComponent } from './home/pesquisar/pesquisar.component';
 import { DetalhesComponent } from './home/detalhes/detalhes.component';
+import { HomeService } from './home.service';
 
 
 @NgModule({
@@ -34,6 +35,9 @@ import { DetalhesComponent } from './home/detalhes/detalhes.component';
     HomeComponent,
     PesquisarComponent,
     DetalhesComponent
+  ],
+  providers:[
+    HomeService
   ]
 })
 export class HomeModule { }

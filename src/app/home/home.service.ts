@@ -3,7 +3,7 @@ import 'rxjs/add/operator/toPromise';
 import { PessoaJuridica } from '../pessoa/pessoa-juridica';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import {catchError, map, take} from 'rxjs/operators';
-import {throwError} from 'rxjs';
+import {throwError, Observable} from 'rxjs';
 
 const API = 'http://localhost:8080';
 
@@ -14,9 +14,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class PesquisarService {
-
-  private num: number;
+export class HomeService {
 
   constructor(private http: HttpClient) { }
 
@@ -25,8 +23,8 @@ export class PesquisarService {
   }
 
   buscarDetalhes(id: number) {
-    return this.http.get<PessoaJuridica[]>(API + '/pessoajuridica/' + id)
-    .pipe(map((data: any) => data.result ),
-      catchError(error => { return throwError('Its a Trap!')}));
+        return this.http.get<PessoaJuridica[]>(API + '/pessoajuridica/' + id)
+          .pipe(map((pj: any) => pj.result ),
+          catchError(error => { return throwError('Its a Trap!')}));
     }
 }

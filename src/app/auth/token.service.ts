@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
-import { Credentials } from '../credentials/credentials';
-
+import { environment } from '../../environments/environment';
+import { Credentials } from 'src/app/auth/credentials/credentials';
 
 
 const httpOptions = {

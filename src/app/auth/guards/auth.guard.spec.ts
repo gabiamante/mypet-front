@@ -1,7 +1,7 @@
 import { TestBed, inject, getTestBed } from '@angular/core/testing';
 
 import { AuthGuard } from './auth.guard';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
