@@ -10,19 +10,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PesquisarComponent implements OnInit {
 
-
   @Input() pessoas: PessoaJuridica[];
   private _pessoas: PessoaJuridica[];
-
-
 
 constructor(private pesquisarService: PesquisarService,
   private activatedRoute: ActivatedRoute,
   private router: Router) {
     this.router = router;
   }
-
-
 
   ngOnInit() {
 

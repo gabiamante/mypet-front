@@ -10,8 +10,8 @@ import { PesquisarService } from '../../home.service';
 })
 export class DetalhesComponent implements OnInit {
 
-  pessoa: PessoaJuridica;
-  @Input() listaPessoas: PessoaJuridica[];
+  @Input() pessoas: PessoaJuridica[];
+  private _pessoas: PessoaJuridica[];
 
   constructor(private pesquisarService: PesquisarService,
               private activatedRoute: ActivatedRoute) { }
@@ -19,7 +19,7 @@ export class DetalhesComponent implements OnInit {
   ngOnInit() {
 
     const pessoa = this.activatedRoute.snapshot.params.id;
-    console.log('ng init detalhes: ', pessoa);
-    this.pesquisarService.buscarDetalhes(pessoa).subscribe(forn => this.listaPessoas = forn);
+    console.log('ng init detalhes: ' +  this.pesquisarService.buscarDetalhes(pessoa).subscribe(forn => this.pessoas = forn));
+    this.pesquisarService.buscarDetalhes(pessoa).subscribe(pessoas => this.pessoas = pessoas);
   }
 }

@@ -25,7 +25,7 @@ export class PesquisarService {
   }
 
   buscarDetalhes(id: number) {
-    return this.http.get<PessoaJuridica[]>(API + '/pessoajuridica/' + id)
+    return this.http.get<PessoaJuridica>(API + '/pessoajuridica/' + id)
     .pipe(map((data: any) => data.result ),
       catchError(error => { return throwError('Its a Trap!')}));
     }

@@ -73,19 +73,17 @@
       </ng-template>
   </p-table>
 -->
-<p-table [value]="listaPessoas">
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Razão Social</th>
-            <th>Cidade</th>
-            <th>Bairro</th> 
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-listaPessoas>
-        <tr>
-            <td>{{listaPessoas.razaoSocial}}</td>
-            <td>{{listaPessoas.cidade}}</td>
-            <td>{{listaPessoas.bairro}}</td>
-        </tr>
-    </ng-template>
+
+
+<p-table [value]="pessoas">
+  <ng-template pTemplate="body" *ngFor="let pessoa of pessoas" >
+      <div class="card">
+          <h5 class="card-header">{{pessoa.razaoSocial}}</h5>
+          <div class="card-body">
+              <label class="card-text">Cidade: {{pessoa.cidade}}</label><br/>
+              <label class="card-text">Bairro: {{pessoa.bairro}} </label><br/>
+              <label class="card-text">ID: {{pessoa.id}}</label><br/>
+          </div>
+      </div>
+  </ng-template>
 </p-table>
