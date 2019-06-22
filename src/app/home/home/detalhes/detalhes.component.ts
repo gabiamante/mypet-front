@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { ActivatedRoute } from '@angular/router';
-import { HomeService } from '../../home.service';
+import { PesquisarService } from '../../home.service';
 
 @Component({
   selector: 'app-detalhes',
@@ -10,18 +10,16 @@ import { HomeService } from '../../home.service';
 })
 export class DetalhesComponent implements OnInit {
 
-  @Input() pessoas: PessoaJuridica[] = [];
+  pessoa: PessoaJuridica;
+  @Input() listaPessoas: PessoaJuridica[];
 
-  constructor(private pesquisarService: HomeService,
+  constructor(private pesquisarService: PesquisarService,
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    const p = this.activatedRoute.snapshot.params.id;
-    console.log('ngOnInit antes: ', p);
 
-    this.pesquisarService.buscarDetalhes(p)
-    .subscribe(pessoas => this.pessoas = pessoas);
-
-    console.log('ngOnInit depois: ', this.pessoas);
+    const pessoa = this.activatedRoute.snapshot.params.id;
+    console.log('ng init detalhes: ', pessoa);
+    this.pesquisarService.buscarDetalhes(pessoa).subscribe(forn => this.listaPessoas = forn);
   }
 }

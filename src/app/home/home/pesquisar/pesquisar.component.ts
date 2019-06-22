@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { HomeService } from '../../home.service';
+import { Component, OnInit, Input, SimpleChanges, SimpleChange } from '@angular/core';
+import { PesquisarService } from '../../home.service';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -10,27 +10,35 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PesquisarComponent implements OnInit {
 
-  @Input() pessoas: PessoaJuridica[] = [];
 
-  constructor(private pesquisarService: HomeService,
-              private activatedRoute: ActivatedRoute,
-              private router: Router) {
+  @Input() pessoas: PessoaJuridica[];
+  private _pessoas: PessoaJuridica[];
 
-                this.router = router;
+
+
+constructor(private pesquisarService: PesquisarService,
+  private activatedRoute: ActivatedRoute,
+  private router: Router) {
+    this.router = router;
   }
+
+
 
   ngOnInit() {
 
-    this.pesquisar();
+    const id = this.activatedRoute.snapshot.params.id;
+    this.pesquisarService.buscar().subscribe(pessoas => this.pessoas = pessoas);
+    console.log('Init component pesquisar = ' + this.pesquisarService.buscar().subscribe(pessoas => this.pessoas = pessoas));
 
   }
 
-  public pesquisar(){
+  public pesquisar() {
     this.pesquisarService.buscar()
     .subscribe(pessoas => this.pessoas = pessoas);
   }
 
-  public pesquisarDetalhes(forn: PessoaJuridica){
+  public pesquisarDetalhes(forn: PessoaJuridica) {
+    console.log(forn);
     this.router.navigate(['home', 'detalhes', forn.id]);
   }
 }

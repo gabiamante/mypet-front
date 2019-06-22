@@ -4,14 +4,16 @@ import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 @Pipe({ name: 'filtroPelaCidade'})
 export class FiltroPelaCidade implements PipeTransform {
 
-    transform(people: PessoaJuridica[], nomeQuery: string) {
+    transform(pessoas: PessoaJuridica[], cidadeQuery: string) {
 
-        nomeQuery = nomeQuery.trim().toLowerCase();
-        if (nomeQuery) {
-            return people.filter(pessoa => pessoa.razaoSocial.toLowerCase().includes(nomeQuery)
-            );
+      cidadeQuery = cidadeQuery.trim().toLowerCase();
+      console.log('Log da lista de nomeQuery = ' + cidadeQuery);
+      console.log('Log da lista de pessoas juridicas = ' + pessoas);
+        if (cidadeQuery) {
+            return pessoas.filter(pessoa =>
+              pessoa.cidade.toLowerCase().includes(cidadeQuery));
         } else {
-            return people;
+            return pessoas;
         }
     }
 }

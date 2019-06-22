@@ -141,7 +141,11 @@ changeData(rowData) {
   if (this.pessoaJuridica.situacaoAprovacao == null) {
     this.pessoaJuridica.situacaoAprovacao = 'Reprovado';
   }
-
+  
+  if (this.pessoaJuridica.situacaoAprovacao == '') {
+    this.pessoaJuridica.situacaoAprovacao = 'Reprovado';
+  }
+  
   else if (this.pessoaJuridica.situacaoAprovacao == 'Reprovado') {
     this.pessoaJuridica.situacaoAprovacao = 'Aprovado';
   }
