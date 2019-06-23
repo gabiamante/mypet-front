@@ -7,7 +7,7 @@
       <div class="form-group col-md-3">
       <form>
           <input name="data[search]" class="form-control" id="search" type="search"
-          placeholder="Pesquisar" autofocus
+          placeholder="Insira uma cidade" autofocus
           (keyup) = "filter = $event.target.value">
       </form>
       </div>
@@ -18,4 +18,8 @@
 
 <app-pesquisar-fornecedor [pessoas]="pessoas | filtroPelaCidade: filter  " ></app-pesquisar-fornecedor>
 
-{{filter | uppercase}}
+
+
+
+
+

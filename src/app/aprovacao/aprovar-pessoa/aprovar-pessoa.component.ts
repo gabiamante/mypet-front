@@ -50,7 +50,7 @@ export class AprovarPessoaComponent implements OnInit {
     descricaoPetShop: '', petVet: false, vacinacao: false, consulta: false,
     exames: false, descricaoPetVet: '', petHome: false, apartamento: false,
     casa: false, fumante: false, telado: false, descricaoPetHome: '', situacaoAprovacao: '',
-    checkStatus: false}) {
+    checkStatus: false}){
 
   }
 
@@ -78,7 +78,9 @@ showDialogToAdd() {
 
 save() {
     let listaPessoaJuridica = [...this.listaPessoaJuridica];
+    let i = 0;
 
+    /*
     if (this.novaPessoaJuridica) {
       //alert('Entrou no if');
       listaPessoaJuridica.push(this.pessoaJuridica);
@@ -86,10 +88,22 @@ save() {
       //alert('Entrou no else');
       listaPessoaJuridica[this.listaPessoaJuridica.indexOf(this.pessoaJuridicaSelecionada)] = this.pessoaJuridica;
     }
+    */
 
-    this.listaPessoaJuridica = listaPessoaJuridica;
+    for (i = 0; i < listaPessoaJuridica.length; i++) {
+        if (listaPessoaJuridica[i].situacaoAprovacao == 'Aprovado'
+        || listaPessoaJuridica[i].situacaoAprovacao == 'Reprovado') {
+          /*console.log('Atualizar tabela = ' +
+          this.pessoaJuridicaService.atualizaPessoaJuridica(listaPessoaJuridica[i]));*/
+
+          this.pessoaJuridicaService.atualizaPessoaJuridica(listaPessoaJuridica[i])
+          .subscribe(response => {});
+        }
+    }
+
+    //this.listaPessoaJuridica = listaPessoaJuridica;
     //this.pessoaJuridica = null;
-    this.displayDialog = false;
+    //this.displayDialog = false;
 }
 
 delete() {
@@ -136,16 +150,16 @@ expand(i) {
 
 changeData(rowData) {
   this.pessoaJuridica = rowData;
-  console.log(this.pessoaJuridica);
+  //console.log(this.pessoaJuridica);
 
   if (this.pessoaJuridica.situacaoAprovacao == null) {
     this.pessoaJuridica.situacaoAprovacao = 'Reprovado';
   }
-  
+
   if (this.pessoaJuridica.situacaoAprovacao == '') {
     this.pessoaJuridica.situacaoAprovacao = 'Reprovado';
   }
-  
+
   else if (this.pessoaJuridica.situacaoAprovacao == 'Reprovado') {
     this.pessoaJuridica.situacaoAprovacao = 'Aprovado';
   }

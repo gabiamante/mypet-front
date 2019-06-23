@@ -1,18 +1,25 @@
 <p class="text-center text-muted" *ngIf="!pessoas.length">
     Não foi possível achar essa cidade.
 </p>
+
+
 <p-table [value]="pessoas">
     <ng-template pTemplate="body" ngFor let-pessoa >
-        <div class="card">
+        <div class="card" (click)="abrirDetalhe(pessoa)">
             <h5 class="card-header">{{pessoa.razaoSocial}}</h5>
             <div class="card-body">
                 <label class="card-text">Cidade: {{pessoa.cidade}}</label><br/>
                 <label class="card-text">Bairro: {{pessoa.bairro}} </label><br/>
                 <label class="card-text">ID: {{pessoa.id}}</label><br/>
-            <!--a href="/home/detalhes/1" class="btn btn-primary">Detalhes</a -->
-            <button type="button" (click)="pesquisarDetalhes(pessoa)" label="Detalhes" class="btn btn-outline-light"
+                <label class="card-text" style="display: none"  id="descricaoDetalhe">
+                Descrição: {{pessoa.descricaoPetShop}}</label><br/>
+            <a href="/home/teste/1" class="btn btn-primary">Detalhes</a
+            <button type="button" (click)="abrirDetalhe(pessoa)" label="Detalhes" class="btn btn-outline-light"
                             style="background-color: #f7b733">Detalhes
                             </button>
+            <!--<h3>Detalhes - {{checked}}</h3>
+            <p-checkbox [(ngModel)]="detalheCheck" binary="true" id="detalheCheck"></p-checkbox >-->
+
             </div>
         </div>
     </ng-template>

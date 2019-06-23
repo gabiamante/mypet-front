@@ -11,6 +11,7 @@ import { QuemSomosComponent } from './home/quem-somos/quem-somos.component';
 import { DetalhesComponent } from './home/home/detalhes/detalhes.component';
 import { AprovarPessoaComponent } from './aprovacao/aprovar-pessoa/aprovar-pessoa.component';
 import { LoginComponent } from './auth/login/login.component';
+import { PesquisarComponent } from './home/home/pesquisar/pesquisar.component';
 
 const routes: Routes = [
     { path: 'home/home', component: HomeComponent},
