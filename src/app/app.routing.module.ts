@@ -11,6 +11,8 @@ import { QuemSomosComponent } from './home/quem-somos/quem-somos.component';
 import { DetalhesComponent } from './home/home/detalhes/detalhes.component';
 import { AprovarPessoaComponent } from './aprovacao/aprovar-pessoa/aprovar-pessoa.component';
 import { LoginComponent } from './auth/login/login.component';
+import { LoginAdminComponent } from './administrador/auth/login/login-admin.component';
+import { DeletaPetClientComponent } from './administrador/menu-inicial-admin/deleta-pet-client/deleta-pet-client.component';
 
 const routes: Routes = [
     { path: 'home/home', component: HomeComponent},
@@ -18,7 +20,8 @@ const routes: Routes = [
     { path: 'home/quem-somos', component: QuemSomosComponent},
     { path: 'home/detalhes/:id', component: DetalhesComponent},
 
-    { path: 'login', component: LoginComponent},
+    { path: 'login', component: LoginComponent}, //login cliente e fornecedor
+    { path: 'admin/login', component: LoginAdminComponent}, //login admin
 
     { path: 'aprovacao/pessoa', component: AprovarPessoaComponent},
 
@@ -26,6 +29,7 @@ const routes: Routes = [
     { path: 'pessoa/juridica/cadastrar', component: CadastroJuridicaComponent},
 
     { path: 'administrador/menu-inicial-admin', component: MenuInicialAdminComponent },
+    { path: 'administrador/deleta-pet-client', component: DeletaPetClientComponent },
     { path: '', pathMatch: 'full', redirectTo: '/home/home'},
     { path: '**', component: NotFoundComponent }
   ];

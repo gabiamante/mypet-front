@@ -10,16 +10,13 @@ import { PesquisarService } from '../../home.service';
 })
 export class DetalhesComponent implements OnInit {
 
-  @Input() pessoas: PessoaJuridica[];
-  private _pessoas: PessoaJuridica[];
+  pessoa: PessoaJuridica;
 
   constructor(private pesquisarService: PesquisarService,
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-
     const pessoa = this.activatedRoute.snapshot.params.id;
-    console.log('ng init detalhes: ' +  this.pesquisarService.buscarDetalhes(pessoa).subscribe(forn => this.pessoas = forn));
-    this.pesquisarService.buscarDetalhes(pessoa).subscribe(pessoas => this.pessoas = pessoas);
+    this.pesquisarService.buscarDetalhes(pessoa).subscribe(retorno => this.pessoa = retorno);
   }
 }

@@ -6,9 +6,13 @@ import {TabViewModule} from 'primeng/tabview';
 import {ButtonModule} from 'primeng/button';
 import { PanelModule } from 'primeng/primeng';
 import { FormsModule } from '@angular/forms';
+import { DeletaPetClientComponent } from './menu-inicial-admin/deleta-pet-client/deleta-pet-client.component';
 
 @NgModule({
-  declarations: [MenuInicialAdminComponent],
+  declarations: [
+    MenuInicialAdminComponent,
+    DeletaPetClientComponent
+  ],
   imports: [
     CommonModule,
     MenuModule,

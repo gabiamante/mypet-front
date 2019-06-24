@@ -15,6 +15,7 @@ import { FooterComponent } from './auth/layout/footer/footer.component';
 import { HeaderComponent } from './auth/layout/header/header.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtTokenInterceptor } from './auth/interceptors/jwt.token.interceptor';
+import { LoginAdminComponent } from './administrador/auth/login/login-admin.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { JwtTokenInterceptor } from './auth/interceptors/jwt.token.interceptor';
     CookieListComponent,
     LoginComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginAdminComponent
 
   ],
   imports: [

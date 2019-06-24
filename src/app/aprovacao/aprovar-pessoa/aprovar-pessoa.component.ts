@@ -77,19 +77,17 @@ showDialogToAdd() {
 }
 
 save() {
-    let listaPessoaJuridica = [...this.listaPessoaJuridica];
+  let listaPessoaJuridica = [...this.listaPessoaJuridica];
+  let i = 0;
 
-    if (this.novaPessoaJuridica) {
-      //alert('Entrou no if');
-      listaPessoaJuridica.push(this.pessoaJuridica);
-    } else {
-      //alert('Entrou no else');
-      listaPessoaJuridica[this.listaPessoaJuridica.indexOf(this.pessoaJuridicaSelecionada)] = this.pessoaJuridica;
-    }
-
-    this.listaPessoaJuridica = listaPessoaJuridica;
-    //this.pessoaJuridica = null;
-    this.displayDialog = false;
+  for (i = 0; i < listaPessoaJuridica.length; i++) {
+      if (listaPessoaJuridica[i].situacaoAprovacao == 'Aprovado'
+      || listaPessoaJuridica[i].situacaoAprovacao == 'Reprovado') {
+        this.pessoaJuridicaService.atualizaPessoaJuridica(listaPessoaJuridica[i])
+        .subscribe(response => {});
+      }
+  }
+  alert('Salvo com sucesso!');
 }
 
 delete() {

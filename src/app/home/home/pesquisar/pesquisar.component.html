@@ -8,7 +8,7 @@
             <div class="card-body">
                 <label class="card-text">Cidade: {{pessoa.cidade}}</label><br/>
                 <label class="card-text">Bairro: {{pessoa.bairro}} </label><br/>
-                <label class="card-text">ID: {{pessoa.id}}</label><br/>
+                <label class="card-text">Descrição: </label><br/>
             <!--a href="/home/detalhes/1" class="btn btn-primary">Detalhes</a -->
             <button type="button" (click)="pesquisarDetalhes(pessoa)" label="Detalhes" class="btn btn-outline-light"
                             style="background-color: #f7b733">Detalhes
@@ -17,3 +17,7 @@
         </div>
     </ng-template>
 </p-table>
+
+<div class="footer">
+    <a href="/admin/login">Admin Login</a>
+</div>

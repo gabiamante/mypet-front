@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PessoaJuridica } from '../../pessoa-juridica';
 import { PessoaService } from '../../pessoa.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 declare var $: any;
 
@@ -12,89 +13,39 @@ declare var $: any;
 })
 export class CadastroJuridicaComponent implements OnInit {
 
+  private formulario: FormGroup;
   public pessoaJuridica: PessoaJuridica = new PessoaJuridica();
 
-  constructor(private pessoaJuridicaService: PessoaService
-  ,
-              private router: Router) {
-    this.router = router; }
+  constructor(private pessoaJuridicaService: PessoaService,
+              private router: Router,
+              private formBuilder: FormBuilder) {
+
+    this.router = router;
+    this.formulario = this.formBuilder.group({
+      razaoSocial: ['', Validators.required],
+      email: ['', Validators.email]
+  });
+}
 
   ngOnInit() {
 
-    $(function () {
-      $('#petShop').click(function () {
-          if ($(this).is(':checked')) {
-              $('#petShopFile').show();
-              $('#farmacia').show();
-              $('#banho').show();
-              $('#tosa').show();
-              $('#opcoesPetShop').show();
-          } else {
-              $('#petShopFile').hide();
-              $('#farmacia').hide();
-              $('#banho').hide();
-              $('#tosa').hide();
-              $('#opcoesPetShop').hide();
-
-          }
-      });
-  });
-
-  $(function () {
-    $('#petVet').click(function () {
-        if ($(this).is(':checked')) {
-            $('#petVetFile').show();
-            $('#vacinacao').show();
-            $('#consulta').show();
-            $('#exames').show();
-            $('#descricaoPetVet').show();
-            $('#opcoesPetVet').show();
-
-        } else {
-            $('#petVetFile').hide();
-            $('#vacinacao').hide();
-            $('#consulta').hide();
-            $('#exames').hide();
-            $('#descricaoPetVet').hide();
-            $('#opcoesPetVet').hide();
-
-        }
-    });
-});
-
-$(function () {
-  $('#petHome').click(function () {
-      if ($(this).is(':checked')) {
-          $('#petHomeFile').show();
-          $('#apartamentoCasa').show();
-          $('#fumante').show();
-          $('#telado').show();
-          $('#descricaoPetHome').show();
-          $('#opcoesPetHomes').show();
-
-      } else {
-          $('#petHomeFile').hide();
-          $('#apartamentoCasa').hide();
-          $('#fumante').hide();
-          $('#telado').hide();
-          $('#descricaoPetHome').hide();
-          $('#opcoesPetHome').hide();
-
-      }
-  });
-});
-}
+  }
 
   public salvar() {
     this.pessoaJuridicaService.salvarPessoaJuridica(this.pessoaJuridica).subscribe(
       response => {
         alert('Salvo com sucesso!');
-        window.location.href = 'pessoaJuridica/inicial';
+        window.location.href = 'home/home';
       }
     );
   }
   public voltar() {
     this.router.navigate(['administrador', 'menu-inicial-admin']);
-}
+  }
 
+  logForm() {
+    console.log(this.formulario.value);
+    console.log(this.formulario.controls.email);
+
+  }
 }

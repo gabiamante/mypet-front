@@ -18,7 +18,7 @@
             <a class="p-2 text-dark" href="/home/fornecedores">Nossos Fornecedores</a>
         </nav>
         <a class="btn btn-outline-primary" data-toggle="modal" data-target="#modalCadastro">Cadastre-se</a>
-        <a class="btn btn-outline-primary" data-toggle="modal" data-target="#modalLogin">Login</a>
+        <a class="btn btn-outline-primary" href="/login">Login</a>
     </div>
 
     <!-- Modal Cadastro -->
@@ -26,36 +26,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Que tipo de cliente você é?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Você é: </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                 <span aria-hidden="true">&times;</span>
               </button>
                 </div>
                 <div class="modal-body">
-                    <a class="btn btn-primary" href="/pessoa/fisica/cadastrar">Pessoa Física</a>
-                    <a class="btn btn-primary" href="/pessoa/juridica/cadastrar">Pessoa Jurídica</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Login -->
-    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Faça seu Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                <span aria-hidden="true">&times;</span>
-              </button>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Seu email" required="" autofocus="">
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Login</button>
+                    <a class="btn btn-primary" href="/pessoa/fisica/cadastrar">Cliente</a>
+                    <a class="btn btn-primary" href="/pessoa/juridica/cadastrar">Fornecedor</a>
                 </div>
             </div>
         </div>
