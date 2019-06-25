@@ -38,5 +38,19 @@ export class MenuInicialAdminComponent implements OnInit {
     public aprovarFornecedor(){
       this.router.navigate(['aprovacao', 'pessoa']);
       }
+    //DELETAR
+    public deletarPetClient(){
+      this.router.navigate(['administrador', 'deletar-cliente']);
+      }
+    public deletarPetProvider(){
+      this.router.navigate(['administrador', 'deletar-fornecedor']);
+      }
+    //BUSCAR
+    public buscarPetProvider(){
+      this.router.navigate(['administrador', 'buscar-fornecedor']);
+      }
+      public buscarPetClient(){
+        this.router.navigate(['administrador', 'buscar-cliente']);
+        }
 
 }

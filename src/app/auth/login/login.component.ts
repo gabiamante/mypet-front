@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit{
 
   public login(): void {
     this.authService.login(this.credentials);
+    window.location.href = 'home/home';
   }
 
 }

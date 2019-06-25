@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PesquisarService } from '../../home.service';
 
 @Component({
@@ -13,10 +13,20 @@ export class DetalhesComponent implements OnInit {
   pessoa: PessoaJuridica;
 
   constructor(private pesquisarService: PesquisarService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { 
+                this.router = router;
+              }
 
   ngOnInit() {
     const pessoa = this.activatedRoute.snapshot.params.id;
     this.pesquisarService.buscarDetalhes(pessoa).subscribe(retorno => this.pessoa = retorno);
+  }
+
+  agendar(){
+    this.router.navigate(['login']);
+  }
+  voltar(){
+    this.router.navigate(['home', 'home']);
   }
 }

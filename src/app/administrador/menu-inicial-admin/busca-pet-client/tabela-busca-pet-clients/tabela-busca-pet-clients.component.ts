@@ -3,11 +3,11 @@ import { PessoaService } from 'src/app/pessoa/pessoa.service';
 import { PessoaFisica } from 'src/app/pessoa/pessoa-fisica';
 
 @Component({
-  selector: 'app-tabela-deleta-pet-clients',
-  templateUrl: './tabela-deleta-pet-clients.component.html',
-  styleUrls: ['./tabela-deleta-pet-clients.component.css']
+  selector: 'app-tabela-busca-pet-clients',
+  templateUrl: './tabela-busca-pet-clients.component.html',
+  styleUrls: ['./tabela-busca-pet-clients.component.css']
 })
-export class TabelaDeletaPetClientsComponent implements OnInit {
+export class TabelaBuscarPetClientsComponent implements OnInit {
 
   @Input() petclients: PessoaFisica[];
   petclient: PessoaFisica;

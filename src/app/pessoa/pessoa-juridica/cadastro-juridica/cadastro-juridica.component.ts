@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PessoaJuridica } from '../../pessoa-juridica';
 import { PessoaService } from '../../pessoa.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-declare var $: any;
 
 @Component({
   selector: 'app-cadastro-juridica',
@@ -13,18 +10,12 @@ declare var $: any;
 })
 export class CadastroJuridicaComponent implements OnInit {
 
-  private formulario: FormGroup;
   public pessoaJuridica: PessoaJuridica = new PessoaJuridica();
 
   constructor(private pessoaJuridicaService: PessoaService,
-              private router: Router,
-              private formBuilder: FormBuilder) {
+              private router: Router) {
 
     this.router = router;
-    this.formulario = this.formBuilder.group({
-      razaoSocial: ['', Validators.required],
-      email: ['', Validators.email]
-  });
 }
 
   ngOnInit() {
@@ -39,13 +30,8 @@ export class CadastroJuridicaComponent implements OnInit {
       }
     );
   }
+
   public voltar() {
     this.router.navigate(['administrador', 'menu-inicial-admin']);
-  }
-
-  logForm() {
-    console.log(this.formulario.value);
-    console.log(this.formulario.controls.email);
-
   }
 }

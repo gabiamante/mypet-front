@@ -39,13 +39,13 @@ export class PessoaService {
 
         public salvarPessoaFisica(pessoaFisica: PessoaFisica): Observable<PessoaFisica> {
                 pessoaFisica.tipoPerfil = 1;
-                alert(JSON.stringify(pessoaFisica));
+                //alert(JSON.stringify(pessoaFisica));
                 return this.http.post<PessoaFisica>(API + '/pessoafisica', pessoaFisica);
         }
 
         public salvarPessoaJuridica(pessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
           pessoaJuridica.tipoPerfil = 2;
-          alert(JSON.stringify(pessoaJuridica));
+          //alert(JSON.stringify(pessoaJuridica));
           return this.http.post<PessoaJuridica>(API + '/pessoajuridica', pessoaJuridica);
         }
 

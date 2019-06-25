@@ -4,13 +4,19 @@
 <div class="p-grid">
     <div class="p-col">
         <p-panel header="Administração">
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="aprovarFornecedor()" label="Aprovar Fornecedores"></button>
+            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="aprovarFornecedor()" label="Aprovar PetProviders"></button>
             <br/>
             <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="aprovarFornecedor()" label="Desabilitar Cliente"></button>
+            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="deletarPetClient()" label="Desabilitar PetClient"></button>
             <br/>
             <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="aprovarFornecedor()" label="Desabilitar Fornecedor"></button>
+            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="deletarPetProvider()" label="Desabilitar PetProvider"></button>
+            <br/>
+            <br/>
+            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="buscarPetClient()" label="Buscar PetClient"></button>
+            <br/>
+            <br/>
+            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="buscarPetProvider()" label="Buscar PetProvider"></button>
             <br/>
             <br/>
         </p-panel>
