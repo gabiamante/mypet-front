@@ -11,11 +11,14 @@ import { QuemSomosComponent } from './home/quem-somos/quem-somos.component';
 import { DetalhesComponent } from './home/home/detalhes/detalhes.component';
 import { AprovarPessoaComponent } from './aprovacao/aprovar-pessoa/aprovar-pessoa.component';
 import { LoginComponent } from './auth/login/login.component';
+
 import { LoginAdminComponent } from './administrador/auth/login/login-admin.component';
 import { DeletaPetClientComponent } from './administrador/menu-inicial-admin/deleta-pet-client/deleta-pet-client.component';
 import { DeletaPetProviderComponent } from './administrador/menu-inicial-admin/deleta-pet-provider/deleta-pet-provider.component';
 import { BuscarPetProviderComponent } from './administrador/menu-inicial-admin/busca-pet-provider/busca-pet-provider.component';
 import { BuscarPetClientComponent } from './administrador/menu-inicial-admin/busca-pet-client/busca-pet-client.component';
+import { PesquisarComponent } from './home/home/pesquisar/pesquisar.component';
+
 
 const routes: Routes = [
     { path: 'home/home', component: HomeComponent},

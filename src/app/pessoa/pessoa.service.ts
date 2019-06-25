@@ -3,6 +3,10 @@ import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http
 import { PessoaFisica } from './pessoa-fisica';
 import { PessoaJuridica } from './pessoa-juridica';
 import { Observable, throwError } from 'rxjs';
+<<<<<<< HEAD
+=======
+import { catchError } from 'rxjs/operators';
+>>>>>>> aceacb31603c73de40a8f5aacb8609e4989e4db9
 
 
 const API = 'http://localhost:8080';
@@ -51,8 +55,17 @@ export class PessoaService {
 
         public atualizaPessoaJuridica(pessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
           httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
+<<<<<<< HEAD
           return this.http.put<PessoaJuridica>(API + '/pessoajuridica/' + pessoaJuridica.id
           , pessoaJuridica, httpOptions).pipe();
+=======
+          //console.log('Requisição ---> ' + API + '/pessoajuridica/' + pessoaJuridica.id);
+          //console.log('Pessoa para atualizar = ' + pessoaJuridica);
+          return this.http.put<PessoaJuridica>(API + '/pessoajuridica/' + pessoaJuridica.id
+          , pessoaJuridica, httpOptions).pipe(
+            //catchError(this.handleError('403'))
+          );
+>>>>>>> aceacb31603c73de40a8f5aacb8609e4989e4db9
         }
 
 
@@ -71,4 +84,8 @@ export class PessoaService {
           return throwError(
             'Something bad happened; please try again later.');
         };
+<<<<<<< HEAD
+=======
+
+>>>>>>> aceacb31603c73de40a8f5aacb8609e4989e4db9
 }

@@ -9,6 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { PesquisarComponent } from './home/pesquisar/pesquisar.component';
 import { DetalhesComponent } from './home/detalhes/detalhes.component';
 import { FiltroPelaCidade } from './home/filtro-pela-cidade.pipe';
+import {CardModule} from 'primeng/card';
+import {CheckboxModule} from 'primeng/checkbox';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule }  from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +29,11 @@ import { FiltroPelaCidade } from './home/filtro-pela-cidade.pipe';
     CommonModule,
     ButtonModule,
     TableModule,
-    HttpClientModule
+    HttpClientModule,
+    CardModule,
+    CheckboxModule,
+    BrowserAnimationsModule,
+    FormsModule
   ],
   exports: [
     FornecedoresComponent,

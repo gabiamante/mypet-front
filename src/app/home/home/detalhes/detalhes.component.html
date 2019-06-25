@@ -1,44 +1,44 @@
 
   <!--<h2 style="text-align:center">Slideshow Gallery</h2>
-  
+
   <div class="container">
     <div class="mySlides">
       <div class="numbertext">1 / 6</div>
       <img src="./assets/bulldog-4187023_1280.jpg" style="width:100%">
     </div>
-  
+
     <div class="mySlides">
       <div class="numbertext">2 / 6</div>
       <img src="./assets/cat-1652822_1280.jpg" style="width:100%">
     </div>
-  
+
     <div class="mySlides">
       <div class="numbertext">3 / 6</div>
       <img src="./assets/bulldog-4187023_1280.jpg" style="width:100%">
     </div>
-      
+
     <div class="mySlides">
       <div class="numbertext">4 / 6</div>
       <img src="./assets/cat-1652822_1280.jpg" style="width:100%">
     </div>
-  
+
     <div class="mySlides">
       <div class="numbertext">5 / 6</div>
       <img src="./assets/bulldog-4187023_1280.jpg" style="width:100%">
     </div>
-      
+
     <div class="mySlides">
       <div class="numbertext">6 / 6</div>
       <img src="./assets/cat-1652822_1280.jpg" style="width:100%">
     </div>
-      
+
     <a class="prev" onclick="plusSlides(-1)"> Prev </a>
     <a class="next" onclick="plusSlides(1)"> Next </a>
-  
+
     <div class="caption-container">
       <p id="caption"></p>
     </div>
-  
+
     <div class="row">
       <div class="column">
         <img class="demo cursor" src="./assets/bulldog-4187023_1280.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods" id=image>
@@ -54,7 +54,7 @@
       </div>
       <div class="column">
         <img class="demo cursor" src="./assets/bulldog-4187023_1280.jpg" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
-      </div>    
+      </div>
       <div class="column">
         <img class="demo cursor" src="./assets/cat-1652822_1280.jpg" style="width:100%" (click)="currentSlide(6)" alt="Snowy Mountains">
       </div>
@@ -67,13 +67,14 @@
               <div class="card-body">
                   <label class="card-text">Cidade: {{pessoa.cidade}}</label><br/>
                   <label class="card-text">Bairro: {{pessoa.bairro}} </label><br/>
-                  <label class="card-text">ID: {{pessoa.id}}</label><br/>           
+                  <label class="card-text">ID: {{pessoa.id}}</label><br/>
               </div>
           </div>
       </ng-template>
   </p-table>
 
 
+<<<<<<< HEAD
   <div class="button-cadastro">
       <button type="button" (click)="salvar()" label="Cadastrar" class="btn btn-outline-light" style="background-color: #f7b733">Agendar
                           </button>
@@ -116,3 +117,33 @@
       
       </div>
   </div>
+=======
+<!--
+<p-table [value]="pessoas">
+  <ng-template pTemplate="body" >
+      <div class="card">
+          <h5 class="card-header">{{pessoas.razaoSocial}}</h5>
+          <div class="card-body">
+              <label class="card-text">Cidade: {{pessoas.cidade}}</label><br/>
+              <label class="card-text">Bairro: {{pessoas.bairro}} </label><br/>
+              <label class="card-text">ID: {{pessoas.id}}</label><br/>
+          </div>
+      </div>
+  </ng-template>
+</p-table>
+-->
+
+<!--
+<p-card>
+<div class="card">
+          <p-header class="card-header">Razão social = {{pessoas.razaoSocial}}</p-header>
+          <div class="card-body">
+              <label class="card-text">Cidade: {{pessoas.cidade}}</label><br/>
+              <label class="card-text">Bairro: {{pessoas.bairro}} </label><br/>
+              <label class="card-text">ID: {{pessoas.id}}</label><br/>
+          </div>
+      </div>
+</p-card>
+-->
+
+>>>>>>> aceacb31603c73de40a8f5aacb8609e4989e4db9
