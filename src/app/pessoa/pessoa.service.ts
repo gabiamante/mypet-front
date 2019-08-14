@@ -38,12 +38,13 @@ export class PessoaService {
         softDeletePessoaFisica(varPessoaFisica: PessoaFisica): Observable<PessoaFisica> {
           const url = `${API}/pessoafisica/${varPessoaFisica.id}`;
           console.log('url: ' + url);
-          console.log('SERVICE: ' + varPessoaFisica.isActive);
+          console.log('SERVICE: ' + varPessoaFisica.active);
 
           // return this.http.put(url, resource).pipe(
           //   map(() => resource),
           //   catchError(this.handleError)
           // );
+          varPessoaFisica.active = false;
           return this.http.put<PessoaFisica>(url, varPessoaFisica);
         }
 

@@ -45,8 +45,8 @@ export class TabelaDeletaPetClientsComponent implements OnInit {
   }*/
 
   public changeStatus(varPessoaFisica: PessoaFisica) {
-    varPessoaFisica.isActive = false;
-    console.log('varPessoaFisica: ' + varPessoaFisica.isActive);
+    varPessoaFisica.active = false;
+    console.log('varPessoaFisica: ' + varPessoaFisica.active);
     this.petClientService.softDeletePessoaFisica(varPessoaFisica)
     .subscribe(
       // res => varPessoaFisica = res
