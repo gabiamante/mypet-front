@@ -21,6 +21,7 @@ export class PessoaFisica {
   public petWalker: boolean;
   public descricao: string;
   public fotos: string;
+  public isActive: boolean;
 
 
   constructor() {
@@ -45,6 +46,6 @@ export class PessoaFisica {
     /* Para PetWalker */
     this.descricao = '' ;
     this.fotos = '' ;
+    this.isActive = true;
   }
-
 }

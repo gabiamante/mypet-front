@@ -24,11 +24,6 @@ export class PesquisarService {
       return this.http.get<PessoaJuridica[]>(API + '/pessoajuridica');
   }
 
-<<<<<<< HEAD
-  buscarDetalhes(id: number) {
-    return this.http.get<PessoaJuridica>(API + '/pessoajuridica/' + id);
-  }
-=======
   buscarDetalhes(id: number): Observable<PessoaJuridica> {
     //let param = new HttpParams().set('id', id.toString());
     console.log('>>>>>>> Requisição = ' + API + '/pessoajuridica/' + id);
@@ -54,5 +49,4 @@ export class PesquisarService {
 
 
 
->>>>>>> aceacb31603c73de40a8f5aacb8609e4989e4db9
 }

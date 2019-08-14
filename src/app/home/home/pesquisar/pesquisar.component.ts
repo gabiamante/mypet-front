@@ -57,12 +57,8 @@ constructor(private pesquisarService: PesquisarService,
   }
 
   public abrirDetalhe(pessoa: PessoaJuridica) {
-    //console.log('Component pesquisar = ' + this.pesquisarService.abrirDetalhe(pessoa).subscribe(pessoa => this.varPessoa = pessoa));
 
-    //this.router.navigate(['home', 'detalhes', pessoa.id]);
     this.pesquisarService.abrirDetalhe(pessoa).subscribe(pessoa => this.varPessoa = pessoa);
-
-    //console.log('Router pesquisa component = ' + this.router.navigate(['home', 'detalhes', pessoa.id]));
 
   }
 }

@@ -77,19 +77,6 @@ showDialogToAdd() {
 }
 
 save() {
-<<<<<<< HEAD
-  let listaPessoaJuridica = [...this.listaPessoaJuridica];
-  let i = 0;
-
-  for (i = 0; i < listaPessoaJuridica.length; i++) {
-      if (listaPessoaJuridica[i].situacaoAprovacao == 'Aprovado'
-      || listaPessoaJuridica[i].situacaoAprovacao == 'Reprovado') {
-        this.pessoaJuridicaService.atualizaPessoaJuridica(listaPessoaJuridica[i])
-        .subscribe(response => {});
-      }
-  }
-  alert('Salvo com sucesso!');
-=======
     let listaPessoaJuridica = [...this.listaPessoaJuridica];
     let i = 0;
 
@@ -117,7 +104,6 @@ save() {
     //this.listaPessoaJuridica = listaPessoaJuridica;
     //this.pessoaJuridica = null;
     //this.displayDialog = false;
->>>>>>> aceacb31603c73de40a8f5aacb8609e4989e4db9
 }
 
 delete() {

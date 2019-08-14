@@ -26,15 +26,33 @@ export class TabelaDeletaPetClientsComponent implements OnInit {
     ];
   }
 
-  public listFromUser(){
+  public listFromUser() {
     this.petClientService.listPessoaFisica().subscribe(petclients => this.petclients = petclients);
   }
 
   public deletar(id: string) {
         this.petClientService.deletePessoaFisica(id).subscribe(
           r => {
-            this.listFromUser()
+            this.listFromUser();
           }
-        )
+        );
     }
+/*
+  public softDelete(varPessoaFisica: PessoaFisica) {
+      this.softDeletePessoaFisica(varPessoaFisica).subscribe(
+        response => varPessoaFisica = response
+      )
+  }*/
+
+  public changeStatus(varPessoaFisica: PessoaFisica) {
+    varPessoaFisica.isActive = false;
+    console.log('varPessoaFisica: ' + varPessoaFisica.isActive);
+    this.petClientService.softDeletePessoaFisica(varPessoaFisica)
+    .subscribe(
+      // res => varPessoaFisica = res
+      res => {
+        this.listFromUser();
+      }
+    );
+  }
 }
