@@ -36,4 +36,14 @@ export class TabelaBuscarPetProviderComponent implements OnInit {
           }
         )
     }
+
+    public softDelete(varPessoaJuridica: PessoaJuridica) {
+      varPessoaJuridica.active = false;
+      this.petProviderService.softDeletePessoaJuridica(varPessoaJuridica)
+      .subscribe(
+        res => {
+          this.listFromUser();
+        }
+      );
+    }
 }

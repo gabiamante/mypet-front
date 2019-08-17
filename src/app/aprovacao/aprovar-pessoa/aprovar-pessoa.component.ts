@@ -50,7 +50,7 @@ export class AprovarPessoaComponent implements OnInit {
     descricaoPetShop: '', petVet: false, vacinacao: false, consulta: false,
     exames: false, descricaoPetVet: '', petHome: false, apartamento: false,
     casa: false, fumante: false, telado: false, descricaoPetHome: '', situacaoAprovacao: '',
-    checkStatus: false}){
+    checkStatus: false, active: true}){
 
   }
 
@@ -132,7 +132,7 @@ cloneCar(c: PessoaJuridica): PessoaJuridica {
   descricaoPetShop: '', petVet: false, vacinacao: false, consulta: false,
   exames: false, descricaoPetVet: '', petHome: false, apartamento: false,
   casa: false, fumante: false, telado: false, descricaoPetHome: '', situacaoAprovacao: '',
-  checkStatus: false};
+  checkStatus: false, active: true};
   };
 // tslint:disable-next-line: forin
     for (const prop in c) {

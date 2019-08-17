@@ -39,6 +39,8 @@ export class PessoaJuridica {
   public telado: boolean;
   public descricaoPetHome: string;
 
+  public active: boolean;
+
 
 
 
@@ -78,6 +80,7 @@ export class PessoaJuridica {
     this.fumante = false;
     this.telado = false;
     this.descricaoPetHome = '';
+    this.active = true;
   }
 
 }

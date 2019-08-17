@@ -25,15 +25,26 @@ export class TabelaDeletaPetProviderComponent implements OnInit {
     ];
   }
 
-  public listFromUser(){
-    this.petProviderService.listPessoaJuridica().subscribe(petclients => this.pessoas = petclients);
+  public listFromUser() {
+    this.petProviderService.listPessoaJuridica().
+    subscribe(petProviders => this.pessoas = petProviders);
   }
 
   public deletar(id: string) {
         this.petProviderService.deletePessoaJuridica(id).subscribe(
-          r => {
-            this.listFromUser()
+          res => {
+            this.listFromUser();
           }
-        )
+        );
     }
+
+  public softDelete(varPessoaJuridica: PessoaJuridica) {
+    varPessoaJuridica.active = false;
+    this.petProviderService.softDeletePessoaJuridica(varPessoaJuridica)
+    .subscribe(
+      res => {
+        this.listFromUser();
+      }
+    );
+  }
 }

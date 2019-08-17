@@ -25,7 +25,8 @@ export class PessoaService {
         }
 
         listPessoaJuridica() {
-          return this.http.get<PessoaJuridica[]>(API + '/pessoajuridica');
+          return this.http
+          .get<PessoaJuridica[]>(API + '/pessoajuridica');
   }
 
 
@@ -37,16 +38,17 @@ export class PessoaService {
         //DELETE NÃO LOGICO
         softDeletePessoaFisica(varPessoaFisica: PessoaFisica): Observable<PessoaFisica> {
           const url = `${API}/pessoafisica/${varPessoaFisica.id}`;
-          console.log('url: ' + url);
-          console.log('SERVICE: ' + varPessoaFisica.active);
-
-          // return this.http.put(url, resource).pipe(
-          //   map(() => resource),
-          //   catchError(this.handleError)
-          // );
           varPessoaFisica.active = false;
           return this.http.put<PessoaFisica>(url, varPessoaFisica);
         }
+
+                //DELETE NÃO LOGICO
+        softDeletePessoaJuridica(varPessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
+          const url = `${API}/pessoajuridica/${varPessoaJuridica.id}`;
+          console.log('url: ' + url);
+          varPessoaJuridica.active = false;
+          return this.http.put<PessoaJuridica>(url, varPessoaJuridica);
+                }
 
         public deletePessoaJuridica(id: string) {
                 return this.http.delete(API + '/pessoajuridica/' + id);

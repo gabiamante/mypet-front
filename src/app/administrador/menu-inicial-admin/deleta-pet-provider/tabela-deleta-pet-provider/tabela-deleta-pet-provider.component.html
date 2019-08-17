@@ -4,7 +4,7 @@
         <tr>
             <th>Nome</th>
             <th>Email</th>
-            <th>CNPJ/th>
+            <th>CNPJ</th>
             <th>Opção</th>
         </tr>
     </ng-template>
@@ -13,7 +13,7 @@
             <td>{{pessoa.razaoSocial}}</td>
             <td>{{pessoa.email}}</td>
             <td>{{pessoa.cnpj}}</td>
-            <td><button class="ui-button-danger" (click)="deletar(pessoa.id)" label="Deletar">Deletar</button></td>
+            <td><button (click)="softDelete(pessoa)" label="Soft-delete">Deletar</button></td>
         </tr>
     </ng-template>
 </p-table>

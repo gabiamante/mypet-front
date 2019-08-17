@@ -27,7 +27,8 @@ export class TabelaDeletaPetClientsComponent implements OnInit {
   }
 
   public listFromUser() {
-    this.petClientService.listPessoaFisica().subscribe(petclients => this.petclients = petclients);
+    this.petClientService.listPessoaFisica().
+    subscribe(petclients => this.petclients = petclients);
   }
 
   public deletar(id: string) {
@@ -37,19 +38,12 @@ export class TabelaDeletaPetClientsComponent implements OnInit {
           }
         );
     }
-/*
-  public softDelete(varPessoaFisica: PessoaFisica) {
-      this.softDeletePessoaFisica(varPessoaFisica).subscribe(
-        response => varPessoaFisica = response
-      )
-  }*/
 
-  public changeStatus(varPessoaFisica: PessoaFisica) {
+
+  public softDelete(varPessoaFisica: PessoaFisica) {
     varPessoaFisica.active = false;
-    console.log('varPessoaFisica: ' + varPessoaFisica.active);
     this.petClientService.softDeletePessoaFisica(varPessoaFisica)
     .subscribe(
-      // res => varPessoaFisica = res
       res => {
         this.listFromUser();
       }
