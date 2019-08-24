@@ -68,8 +68,6 @@ export class PessoaService {
 
         public atualizaPessoaJuridica(pessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
           httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
-          //console.log('Requisição ---> ' + API + '/pessoajuridica/' + pessoaJuridica.id);
-          //console.log('Pessoa para atualizar = ' + pessoaJuridica);
           return this.http.put<PessoaJuridica>(API + '/pessoajuridica/' + pessoaJuridica.id
           , pessoaJuridica, httpOptions).pipe(
             //catchError(this.handleError('403'))

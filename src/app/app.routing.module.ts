@@ -18,6 +18,7 @@ import { DeletaPetProviderComponent } from './administrador/menu-inicial-admin/d
 import { BuscarPetProviderComponent } from './administrador/menu-inicial-admin/busca-pet-provider/busca-pet-provider.component';
 import { BuscarPetClientComponent } from './administrador/menu-inicial-admin/busca-pet-client/busca-pet-client.component';
 import { PesquisarComponent } from './home/home/pesquisar/pesquisar.component';
+import { FullCalendarProviderScheduleComponent } from './full-calendar-provider-schedule/full-calendar-provider-schedule.component';
 
 
 const routes: Routes = [
@@ -39,8 +40,14 @@ const routes: Routes = [
     { path: 'administrador/deletar-fornecedor', component: DeletaPetProviderComponent },
     { path: 'administrador/buscar-fornecedor', component: BuscarPetProviderComponent },
     { path: 'administrador/buscar-cliente', component: BuscarPetClientComponent },
+
+    { path: 'fullcalendar/provider', component: FullCalendarProviderScheduleComponent },
+
+
+
     { path: '', pathMatch: 'full', redirectTo: '/home/home'},
     { path: '**', component: NotFoundComponent }
+
   ];
 
 @NgModule({

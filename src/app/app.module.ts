@@ -16,6 +16,7 @@ import { HeaderComponent } from './auth/layout/header/header.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtTokenInterceptor } from './auth/interceptors/jwt.token.interceptor';
 import { LoginAdminComponent } from './administrador/auth/login/login-admin.component';
+import { FullCalendarProviderScheduleModule } from './full-calendar-provider-schedule/full-calendar-provider-schedule.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,6 @@ import { LoginAdminComponent } from './administrador/auth/login/login-admin.comp
     FooterComponent,
     HeaderComponent,
     LoginAdminComponent
-
   ],
   imports: [
     BrowserModule,
@@ -35,7 +35,8 @@ import { LoginAdminComponent } from './administrador/auth/login/login-admin.comp
     AdministradorModule,
     PessoaModule,
     FormsModule,
-    AprovaoPessoaModule
+    AprovaoPessoaModule,
+    FullCalendarProviderScheduleModule
   ],
   providers: [
     {
