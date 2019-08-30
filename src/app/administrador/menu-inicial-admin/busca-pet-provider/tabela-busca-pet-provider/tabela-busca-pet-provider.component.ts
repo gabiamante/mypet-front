@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { PessoaService } from 'src/app/pessoa/pessoa.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabela-busca-pet-provider',
@@ -12,7 +13,9 @@ export class TabelaBuscarPetProviderComponent implements OnInit {
   @Input() pessoas: PessoaJuridica[];
   cols: any[];
 
-  constructor(private petProviderService: PessoaService) {
+  constructor(private petProviderService: PessoaService,
+    private router: Router) {
+      this.router = router; 
                }
 
   ngOnInit() {
@@ -28,6 +31,11 @@ export class TabelaBuscarPetProviderComponent implements OnInit {
   public listFromUser(){
     this.petProviderService.listPessoaJuridica().subscribe(petclients => this.pessoas = petclients);
   }
+  public alterarPetProvider(petProvider: PessoaJuridica){
+    console.log(petProvider);
+    this.router.navigate(['administrador', 'alterar-fornecedor', petProvider.id]);
+  
+  }
 
   public deletar(id: string) {
         this.petProviderService.deletePessoaJuridica(id).subscribe(
@@ -35,15 +43,5 @@ export class TabelaBuscarPetProviderComponent implements OnInit {
             this.listFromUser()
           }
         )
-    }
-
-    public softDelete(varPessoaJuridica: PessoaJuridica) {
-      varPessoaJuridica.active = false;
-      this.petProviderService.softDeletePessoaJuridica(varPessoaJuridica)
-      .subscribe(
-        res => {
-          this.listFromUser();
-        }
-      );
     }
 }

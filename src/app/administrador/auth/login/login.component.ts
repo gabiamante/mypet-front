@@ -2,15 +2,16 @@ import { AuthService } from '../auth.service';
 
 import { Component, OnInit,  } from '@angular/core';
 import { Credentials } from '../credentials/credentials';
+import { error } from '@angular/compiler/src/util';
 
 
 
 @Component({
-  selector: 'app-login-admin',
-  templateUrl: './login-admin.component.html',
- styleUrls: ['./login-admin.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+ styleUrls: ['./login.component.scss']
 })
-export class LoginAdminComponent implements OnInit{
+export class LoginComponent implements OnInit{
 
   credentials: Credentials = new Credentials('', '');
 
@@ -21,8 +22,9 @@ export class LoginAdminComponent implements OnInit{
   }
 
   public login(): void {
+
     this.authService.login(this.credentials);
-    window.location.href = 'administrador/menu-inicial-admin';
+    error => {}
   }
 
 }

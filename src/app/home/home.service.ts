@@ -4,6 +4,7 @@ import { PessoaJuridica } from '../pessoa/pessoa-juridica';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import {catchError, map, take} from 'rxjs/operators';
 import {throwError, Observable} from 'rxjs';
+import { PessoaFisica } from '../pessoa/pessoa-fisica';
 
 const API = 'http://localhost:8080';
 
@@ -24,29 +25,21 @@ export class PesquisarService {
       return this.http.get<PessoaJuridica[]>(API + '/pessoajuridica');
   }
 
-  buscarDetalhes(id: number): Observable<PessoaJuridica> {
-    //let param = new HttpParams().set('id', id.toString());
-    console.log('>>>>>>> Requisição = ' + API + '/pessoajuridica/' + id);
-    /*console.log('RETORNO do GET estatico = ' + this.http.get<PessoaJuridica>(API + '/pessoajuridica/' + 2)
-    .pipe(map((data: any) => data.result ),
-      catchError(error => { return throwError('Its a Trap!')})));*/
-
-
-
-    return this.http.get<PessoaJuridica>(API + 'pessoajuridica/' + id)
-    .pipe(map((data: any) => data.result ),
-      catchError(error => { return throwError('Its a Trap!')}));
+    buscarDetalhes(id: number){
+    return this.http.get<PessoaJuridica>(API + '/pessoajuridica/' + id);
     }
+
+    buscarDetalhesPetClient(id: number){
+      //console.log("buscar detalhes Pet Client: " + id);
+      return this.http.get<PessoaFisica>(API + '/pessoafisica/' + id);
+      }
 
     updateDetalhes(id: number, value: any): Observable<PessoaJuridica> {
       return this.http.put<PessoaJuridica>(API + '$/pessoajuridica/${id}', value);
     }
 
-    abrirDetalhe(pessoa: PessoaJuridica): Observable<PessoaJuridica> {
-      console.log('Requisição ----> ' + API + '/pessoajuridica/' + pessoa.id);
+    abrirDetalhe(pessoa: PessoaJuridica){
+      console.log('Requisição ----> ABRIR DETALHES ' + API + '/pessoajuridica/' + pessoa.id);
       return this.http.get<PessoaJuridica>(API + '/pessoajuridica/' + pessoa.id);
     }
-
-
-
 }

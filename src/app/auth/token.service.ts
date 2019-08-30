@@ -20,6 +20,7 @@ export class TokenService {
 
   public getResponseHeaders(credentials: Credentials) {
     let loginUrl = API_URL + '/login';
+    console.log("loginUrl: " + loginUrl);
     return this.http.post(loginUrl, credentials, httpOptions);
   }
 

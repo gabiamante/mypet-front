@@ -14,9 +14,14 @@ import { LoginComponent } from './auth/login/login.component';
 import { FooterComponent } from './auth/layout/footer/footer.component';
 import { HeaderComponent } from './auth/layout/header/header.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtTokenInterceptor } from './auth/interceptors/jwt.token.interceptor';
-import { LoginAdminComponent } from './administrador/auth/login/login-admin.component';
+
+import { ErrorInterceptorProvider } from './auth/interceptors/error.interceptor';
+import { AuthService } from './auth/auth.service';
+import { StorageService } from './auth/storage.service';
+
+import { AuthInterceptorProvider } from './auth/interceptors/auth-interceptor';
 import { FullCalendarProviderScheduleModule } from './full-calendar-provider-schedule/full-calendar-provider-schedule.module';
+
 
 @NgModule({
   declarations: [
@@ -24,8 +29,8 @@ import { FullCalendarProviderScheduleModule } from './full-calendar-provider-sch
     CookieListComponent,
     LoginComponent,
     FooterComponent,
-    HeaderComponent,
-    LoginAdminComponent
+    HeaderComponent
+
   ],
   imports: [
     BrowserModule,
@@ -38,12 +43,10 @@ import { FullCalendarProviderScheduleModule } from './full-calendar-provider-sch
     AprovaoPessoaModule,
     FullCalendarProviderScheduleModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: JwtTokenInterceptor,
-      multi: true
-    }
+  providers: [AuthInterceptorProvider, ErrorInterceptorProvider,AuthService,
+    StorageService,
+
+
   ],
   bootstrap: [AppComponent]
 })

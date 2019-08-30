@@ -3,7 +3,6 @@ import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http
 import { PessoaFisica } from './pessoa-fisica';
 import { PessoaJuridica } from './pessoa-juridica';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
 
 
 const API = 'http://localhost:8080';
@@ -68,13 +67,20 @@ export class PessoaService {
 
         public atualizaPessoaJuridica(pessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
           httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
+          //console.log('Requisição ---> ' + API + '/pessoajuridica/' + pessoaJuridica.id);
+          //console.log('Pessoa para atualizar = ' + pessoaJuridica);
           return this.http.put<PessoaJuridica>(API + '/pessoajuridica/' + pessoaJuridica.id
           , pessoaJuridica, httpOptions).pipe(
             //catchError(this.handleError('403'))
           );
         }
-
-
+        
+        public atualizaPessoaFisica(pessoaFisica: PessoaFisica): Observable<PessoaFisica> {
+          httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
+          return this.http.put<PessoaFisica>(API + '/pessoafisica/' + pessoaFisica.id,
+          pessoaFisica, httpOptions).pipe();
+        }
+    
         private handleError(error: HttpErrorResponse) {
           if (error.error instanceof ErrorEvent) {
             // A client-side or network error occurred. Handle it accordingly.

@@ -2,6 +2,7 @@ import { AuthService } from '../auth.service';
 
 import { Component, OnInit,  } from '@angular/core';
 import { Credentials } from '../credentials/credentials';
+import { error } from '@angular/compiler/src/util';
 
 
 
@@ -21,8 +22,9 @@ export class LoginComponent implements OnInit{
   }
 
   public login(): void {
+
     this.authService.login(this.credentials);
-    window.location.href = 'home/home';
+    error => {}
   }
 
 }

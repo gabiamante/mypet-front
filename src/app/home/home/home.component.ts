@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     //this.pessoas = this.activatedRoute.snapshot.data['pessoas'];
     this.pesquisarService.buscar().subscribe(pessoas => this.pessoas = pessoas);
-
   }
 
 }

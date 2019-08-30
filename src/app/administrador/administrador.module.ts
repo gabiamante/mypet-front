@@ -16,6 +16,8 @@ import { BuscarPetProviderComponent } from './menu-inicial-admin/busca-pet-provi
 import { TabelaBuscarPetProviderComponent } from './menu-inicial-admin/busca-pet-provider/tabela-busca-pet-provider/tabela-busca-pet-provider.component';
 import { BuscarPetClientComponent } from './menu-inicial-admin/busca-pet-client/busca-pet-client.component';
 import { TabelaBuscarPetClientsComponent } from './menu-inicial-admin/busca-pet-client/tabela-busca-pet-clients/tabela-busca-pet-clients.component';
+import { AlteraPetClientComponent } from './menu-inicial-admin/altera-pet-client/altera-pet-client.component';
+import { AlteraPetProviderComponent } from './menu-inicial-admin/altera-pet-provider/altera-pet-provider.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { TabelaBuscarPetClientsComponent } from './menu-inicial-admin/busca-pet-
     BuscarPetProviderComponent,
     TabelaBuscarPetProviderComponent,
     BuscarPetClientComponent,
-    TabelaBuscarPetClientsComponent
+    TabelaBuscarPetClientsComponent,
+    AlteraPetClientComponent,
+    AlteraPetProviderComponent
     
 
   ],

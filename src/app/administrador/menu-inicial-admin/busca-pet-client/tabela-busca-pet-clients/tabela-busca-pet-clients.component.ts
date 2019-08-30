@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PessoaService } from 'src/app/pessoa/pessoa.service';
 import { PessoaFisica } from 'src/app/pessoa/pessoa-fisica';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabela-busca-pet-clients',
@@ -13,8 +14,8 @@ export class TabelaBuscarPetClientsComponent implements OnInit {
   petclient: PessoaFisica;
   cols: any[];
 
-  constructor(private petClientService: PessoaService) {
-               }
+  constructor(private petClientService: PessoaService, private router: Router) {
+    this.router = router;}
 
   ngOnInit() {
 
@@ -37,4 +38,9 @@ export class TabelaBuscarPetClientsComponent implements OnInit {
           }
         )
     }
+  public alterarPetClient(petClient: PessoaFisica){
+      console.log(petClient);
+      this.router.navigate(['administrador', 'alterar-cliente', petClient.id]);
+    
+  }
 }

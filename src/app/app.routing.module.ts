@@ -12,13 +12,14 @@ import { DetalhesComponent } from './home/home/detalhes/detalhes.component';
 import { AprovarPessoaComponent } from './aprovacao/aprovar-pessoa/aprovar-pessoa.component';
 import { LoginComponent } from './auth/login/login.component';
 
-import { LoginAdminComponent } from './administrador/auth/login/login-admin.component';
 import { DeletaPetClientComponent } from './administrador/menu-inicial-admin/deleta-pet-client/deleta-pet-client.component';
 import { DeletaPetProviderComponent } from './administrador/menu-inicial-admin/deleta-pet-provider/deleta-pet-provider.component';
 import { BuscarPetProviderComponent } from './administrador/menu-inicial-admin/busca-pet-provider/busca-pet-provider.component';
 import { BuscarPetClientComponent } from './administrador/menu-inicial-admin/busca-pet-client/busca-pet-client.component';
 import { PesquisarComponent } from './home/home/pesquisar/pesquisar.component';
 import { FullCalendarProviderScheduleComponent } from './full-calendar-provider-schedule/full-calendar-provider-schedule.component';
+import { AlteraPetClientComponent } from './administrador/menu-inicial-admin/altera-pet-client/altera-pet-client.component';
+import { AlteraPetProviderComponent } from './administrador/menu-inicial-admin/altera-pet-provider/altera-pet-provider.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,6 @@ const routes: Routes = [
     { path: 'home/detalhes/:id', component: DetalhesComponent},
 
     { path: 'login', component: LoginComponent}, //login cliente e fornecedor
-    { path: 'admin/login', component: LoginAdminComponent}, //login admin
 
     { path: 'aprovacao/pessoa', component: AprovarPessoaComponent},
 
@@ -40,14 +40,13 @@ const routes: Routes = [
     { path: 'administrador/deletar-fornecedor', component: DeletaPetProviderComponent },
     { path: 'administrador/buscar-fornecedor', component: BuscarPetProviderComponent },
     { path: 'administrador/buscar-cliente', component: BuscarPetClientComponent },
+    { path: 'administrador/alterar-cliente/:id', component: AlteraPetClientComponent },
+    { path: 'administrador/alterar-fornecedor/:id', component: AlteraPetProviderComponent },
 
     { path: 'fullcalendar/provider', component: FullCalendarProviderScheduleComponent },
-
-
-
+    
     { path: '', pathMatch: 'full', redirectTo: '/home/home'},
     { path: '**', component: NotFoundComponent }
-
   ];
 
 @NgModule({
