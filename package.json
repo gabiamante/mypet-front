@@ -26,6 +26,9 @@
     "@fullcalendar/angular": "^4.3.1",
     "@fullcalendar/core": "^4.3.1",
     "@fullcalendar/daygrid": "^4.3.0",
+    "@fullcalendar/interaction": "^4.3.0",
+    "@fullcalendar/timegrid": "^4.3.0",
+    "@sweetalert2/ngx-sweetalert2": "^6.0.1",
     "angular-filter": "^0.5.17",
     "angular2-jwt": "^0.2.3",
     "bootstrap": "^4.3.1",
@@ -42,6 +45,7 @@
     "rxjs": "6.5.1",
     "rxjs-compat": "^6.5.1",
     "script-ext-html-webpack-plugin": "^1.8.8",
+    "sweetalert2": "^8.17.1",
     "tslib": "^1.9.0",
     "zone.js": "^0.8.26"
   },

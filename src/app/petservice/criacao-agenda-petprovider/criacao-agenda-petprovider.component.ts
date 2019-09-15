@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CriacaoAgendaProvider } from './criacao-agenda-petprovider';
 import Swal from 'sweetalert2';
+import { CriacaoAgendaPetproviderService } from './criacao-agenda-petprovider.service';
 
 @Component({
   selector: 'app-criacao-agenda-petprovider',
@@ -19,6 +20,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
   qtdDiasSemanaSelecionados = 0;
   qtdDiasSemanaSelecionadosCopy = 0;
   timeValue: string;
+  criacaoAgendaService: CriacaoAgendaPetproviderService;
 
 
   constructor() {
@@ -111,11 +113,22 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
       .concat(' ' + varCriacaoAgendaProviderToAttach.siglaDia + 'Dom');
     }
     const siglasCorrecao = varCriacaoAgendaProviderToAttach.siglaDia.split(' ');
-    for (let i = 0; i <= siglasCorrecao.length; i ++) {
-      console.log(i + ' - ' + siglasCorrecao);
+    let maiorSigla = '';
+    for (let i = 0; i < siglasCorrecao.length; i ++) {
+      if (maiorSigla.length < siglasCorrecao[i].length)  {
+        maiorSigla = siglasCorrecao[i];
+      }
     }
-    // console.log('adicionaSiglaDias: ' + varCriacaoAgendaProviderToAttach.siglaDia);
-    // console.log('siglasCorrecao: ' + siglasCorrecao);
+
+    maiorSigla = maiorSigla.replace('Seg', '-Seg');
+    maiorSigla = maiorSigla.replace('Ter', '-Ter');
+    maiorSigla = maiorSigla.replace('Quar', '-Quar');
+    maiorSigla = maiorSigla.replace('Quin', '-Quin');
+    maiorSigla = maiorSigla.replace('Sex', '-Sex');
+    maiorSigla = maiorSigla.replace('Sab', '-Sab');
+    maiorSigla = maiorSigla.replace('Dom', '-Dom');
+
+    varCriacaoAgendaProviderToAttach.siglaDia = maiorSigla;
   }
 
   reiniciaDias(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider)  {
@@ -141,23 +154,19 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     varCriacaoAgendaProviderToAttach.tempoFim.getMinutes();
   }
 
-  correcaoSiglaDias(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider): string {
-      const siglasCorretas = '';
-      const aux = varCriacaoAgendaProviderToAttach.siglaDia.split(' ');
-      if (aux.includes('Seg') || aux.includes('Ter') || aux.includes('Quar') ||
-      aux.includes('Quin') || aux.includes('Sex') || aux.includes('Sab') ||
-      aux.includes('Dom'))   {
-        siglasCorretas.concat(varCriacaoAgendaProviderToAttach.siglaDia.split('Seg')[0]);
-        siglasCorretas.concat(varCriacaoAgendaProviderToAttach.siglaDia.split('Ter')[0]);
-        siglasCorretas.concat(varCriacaoAgendaProviderToAttach.siglaDia.split('Quar')[0]);
-        siglasCorretas.concat(varCriacaoAgendaProviderToAttach.siglaDia.split('Quin')[0]);
-        siglasCorretas.concat(varCriacaoAgendaProviderToAttach.siglaDia.split('Sex')[0]);
-        siglasCorretas.concat(varCriacaoAgendaProviderToAttach.siglaDia.split('Sab')[0]);
-        siglasCorretas.concat(varCriacaoAgendaProviderToAttach.siglaDia.split('Dom')[0]);
-      }
-      return siglasCorretas;
-  }
 
+
+  salvarAgendaProvider(lstCriacaoAgendaProvider: CriacaoAgendaProvider[])  {
+    lstCriacaoAgendaProvider = this.lstCriacaoAgendaProvider;
+    // console.log('lstCriacaoAgendaProvider: ' + lstCriacaoAgendaProvider);
+    alert(JSON.stringify(lstCriacaoAgendaProvider));
+    this.criacaoAgendaService.salvarCriacaoAgendaProvider(lstCriacaoAgendaProvider).subscribe(
+      response => {
+        alert('Salvo com sucesso!');
+        //window.location.href = '/home/home';
+      }
+    );
+  }
 
 
 }
