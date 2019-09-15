@@ -1,10 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+
+
+import { FullCalendarComponent } from '@fullcalendar/angular';
+import { EventInput } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGrigPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 
 import * as $ from 'jquery';
 import * as moment from 'moment';
 import 'fullcalendar';
 import { FullCalendarProviderScheduleService } from './full-calendar-provider-schedule.service';
+import { EventProvider } from './eventProvider';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -15,93 +25,40 @@ import { FullCalendarProviderScheduleService } from './full-calendar-provider-sc
 export class FullCalendarProviderScheduleComponent implements OnInit {
 
 varCalendarDaySchedule: FullCalendarProviderScheduleService;
+@ViewChild('calendar') calendarComponent: FullCalendarComponent;
 
-@Input()
-  set configurations(config: any) {
-    if (config) {
-      this.defaultConfigurations = config;
-         }
-      }
-@Input() eventData: any;
-   defaultConfigurations: any;
+calendarVisible = true;
+calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
+calendarWeekends = true;
+calendarEvents: EventInput[] = [
+  {
+    title: 'titulos',
+    description:'des',
+    start:'2019-09-06',
+     end:'2019-09-10'
 
-  constructor() {
+  },
 
-    /*
-    this.eventData = [
-      {
-         title: 'event1',
-         start: moment()
-      },
-      {
-         title: 'event2',
-         start: moment(),
-         end: moment().add(2, 'days')
-      },
-  ];*/
+];
 
-    this.defaultConfigurations = {
-      editable: true,
-               eventLimit: true,
-               titleFormat: 'MMM D YYYY',
-               header: {
-                  left: 'prev,next today',
-                  center: 'title',
-                  right: 'month,agendaWeek,agendaDay'
-               },
-               buttonText: {
-                  today: 'Today',
-                  month: 'Month',
-                  week: 'Week',
-                  day: 'Day'
-               },
-               views: {
-                  agenda: {
-                     eventLimit: 2
-                  }
-               },
-               allDaySlot: false,
-               slotDuration: moment.duration('00:15:00'),
-               slotLabelInterval: moment.duration('01:00:00'),
-               firstDay: 1,
-               selectable: true,
-               selectHelper: true,
-               events: this.eventData,
-               dayClick: (date, jsEvent, activeView) => {
-                this.dayClick(date, jsEvent, activeView);
-             },
-             eventDragStart: (timeSheetEntry, jsEvent, ui, activeView) => {
-                this.eventDragStart(
-                    timeSheetEntry, jsEvent, ui, activeView
-                );
-             },
-       eventDragStop: (timeSheetEntry, jsEvent, ui, activeView) => {
-                this.eventDragStop(
-                   timeSheetEntry, jsEvent, ui, activeView
-                );
-             },
+@Input() pessoas: EventProvider[] = [];
+        banco: EventProvider[]=[];
 
-            };
+  constructor(private event1: FullCalendarProviderScheduleService,private activatedRoute: ActivatedRoute,
+    private router: Router) {
+      this.router = router;
+
   }
+
 
   ngOnInit() {
-    $('#full-calendar-provider-schedule').fullCalendar(
-      this.defaultConfigurations
-   );
+     this.calendarEvents.push(this.event1.listEvent().subscribe(pessoa => this.pessoas = pessoa))
+  //   $('#full-calendar-provider-schedule').fullCalendar(
+  //     this.defaultConfigurations
+  //  );
   }
 
 
-  dayClick(date, jsEvent, activeView) {
-    console.log('day click: ' + date);
-
-    var m = moment(date);
-    m.stripTime();
-    m.hasTime();
-    m.stripZone();
-    m.format();
-    alert(m);
-
- }
 
  eventDragStart(timeSheetEntry, jsEvent, ui, activeView) {
     console.log('event drag start');
@@ -110,5 +67,46 @@ varCalendarDaySchedule: FullCalendarProviderScheduleService;
     console.log('event drag end');
  }
 
+ toggleVisible() {
+  this.calendarVisible = !this.calendarVisible;
+}
+
+toggleWeekends() {
+  this.calendarWeekends = !this.calendarWeekends;
+}
+
+gotoPast() {
+  let calendarApi = this.calendarComponent.getApi();
+  calendarApi.gotoDate('2000-01-01'); // call a method on the Calendar object
+
+}
+
+handleDateClick(arg) {
+  var nameTitle = prompt('Qual é o nome do evento ? ', '');
+  if (confirm('Gostaria de adicionar um evento no dia ' + arg.dateStr + ' ?')) {
+    this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
+      title: nameTitle,
+      start: arg.date,
+      allDay: arg.allDay,
+
+
+    }
+
+    );
+  }
+  alert(JSON.stringify(this.getEvents()));
+}
+
+getEvents(): EventInput[] {
+
+  alert(JSON.stringify(this.calendarEvents));
+  return this.calendarEvents
+}
+
+public listUser(){
+
+ // console.log(this.event1.listEvent().subscribe(eventMarcado => this.pessoas = eventMarcado));
+
+}
 
 }

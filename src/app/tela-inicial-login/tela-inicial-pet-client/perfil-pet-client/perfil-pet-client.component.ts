@@ -5,11 +5,11 @@ import { PesquisarService } from 'src/app/home/home.service';
 import { PessoaService } from 'src/app/pessoa/pessoa.service';
 
 @Component({
-  selector: 'app-altera-pet-client',
-  templateUrl: './altera-pet-client.component.html',
-  styleUrls: ['./altera-pet-client.component.css']
-})
-export class AlteraPetClientComponent implements OnInit {
+  selector: 'app-perfil-pet-client',
+  templateUrl: './perfil-pet-client.component.html',
+  styleUrls: ['./perfil-pet-client.component.css']
+}) 
+export class PerfilPetClientComponent implements OnInit {
 
   pessoa: PessoaFisica;
   public pessoaFisica: PessoaFisica = new PessoaFisica();
@@ -27,7 +27,7 @@ export class AlteraPetClientComponent implements OnInit {
   }
 
   public cancelar(){
-
+    
   }
 
   public alterar(){

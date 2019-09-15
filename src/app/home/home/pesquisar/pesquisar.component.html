@@ -2,29 +2,27 @@
     Não foi possível achar essa cidade.
 </p>
 
-
 <p-table [value]="pessoas">
     <ng-template pTemplate="body" ngFor let-pessoa >
-        <div class="card" (click)="abrirDetalhe(pessoa)">
-            <h5 class="card-header">{{pessoa.razaoSocial}}</h5>
-            <div class="card-body">
-                <label class="card-text">Cidade: {{pessoa.cidade}}</label><br/>
-                <label class="card-text">Bairro: {{pessoa.bairro}} </label><br/>
-                <label class="card-text">ID: {{pessoa.id}}</label><br/>
-                <label class="card-text" style="display: none"  id="descricaoDetalhe">
-                Descrição: {{pessoa.descricaoPetShop}}</label><br/>
-
-            <button type="button" (click)="pesquisarDetalhes(pessoa)" label="Detalhes" class="btn btn-outline-light"
-                            style="background-color: #f7b733">Detalhes</button>
-            <!--<h3>Detalhes - {{checked}}</h3>
-            <p-checkbox [(ngModel)]="detalheCheck" binary="true" id="detalheCheck"></p-checkbox >
-            <a href="/home/teste/1" class="btn btn-primary">Detalhes</a-->
-
+        <div class="card mb-3" style="max-width: 540px;" (click)="abrirDetalhe(pessoa)">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                <img src={{pessoa.fotoPerfil}} class="card-img">
+                </div>
+                <div class="col-md-8">
+                <div class="card-body">
+                        <label class="card-text">PetProvider: {{pessoa.razaoSocial}}</label><br/>
+                        <label class="card-text">Cidade: {{pessoa.cidade}}</label><br/>
+                        <label class="card-text">Bairro: {{pessoa.bairro}} </label><br/>
+                        <label class="card-text">ID: {{pessoa.id}}</label><br/>
+                        <label class="card-text" style="display: none"  id="descricaoDetalhe">
+                        Descrição: {{pessoa.descricaoPetShop}}</label><br/>
+                            <button type="button" (click)="pesquisarDetalhes(pessoa)" label="Detalhes" class="btn btn-outline-light"
+                             style="background-color: #f7b733">Detalhes</button>
+                        
+                </div>
+                </div>
             </div>
-        </div>
-    </ng-template>
+            </div>
+        </ng-template>
 </p-table>
-
-<div class="footer">
-    <a href="/admin/login">Admin Login</a>
-</div>

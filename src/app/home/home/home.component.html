@@ -7,18 +7,13 @@
       <div class="form-group col-md-3">
       <form>
           <input name="data[search]" class="form-control" id="search" type="search"
-          placeholder="Insira uma cidade" autofocus
-          (keyup) = "filter = $event.target.value">
+          placeholder="Digite a sua pesquisa aqui" autofocus
+          (click) = "filter = $event.target.value">
       </form>
       </div>
-
-    <div class="form-group col-md-3">
-    <form>
-        <input name="data[search]" class="form-control" id="search" type="search"
-        placeholder="Insira um bairro, cidade ou estado" autofocus
-        (keyup) = "filter = $event.target.value">
-    </form>
-    </div>
+      <diV>
+          <button pButton type="submit" label="Pesquisar" class="ui-button-raised"></button>
+      </diV>
 </div>
 
 <h3 align="center" class="first">Pesquise aqui os melhores fornecedores para seu pet!</h3>

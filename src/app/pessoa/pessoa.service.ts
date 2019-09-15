@@ -26,7 +26,11 @@ export class PessoaService {
         listPessoaJuridica() {
           return this.http
           .get<PessoaJuridica[]>(API + '/pessoajuridica');
-  }
+        }
+
+        buscarEmailLoginConjunto(email: string){  
+          return this.http.get(API + '/loginConjunto/email?value=' + email);
+        }
 
 
         //mesmo a id sendo number, fazemos ela em string para poder concatenar depois
@@ -75,12 +79,13 @@ export class PessoaService {
           );
         }
         
-        public atualizaPessoaFisica(pessoaFisica: PessoaFisica): Observable<PessoaFisica> {
+        atualizaPessoaFisica(id: number): Observable<PessoaFisica> {
           httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
-          return this.http.put<PessoaFisica>(API + '/pessoafisica/' + pessoaFisica.id,
-          pessoaFisica, httpOptions).pipe();
+          return this.http.put<PessoaFisica>(API + '$/pessoafisica/${id}', id);
         }
     
+
+
         private handleError(error: HttpErrorResponse) {
           if (error.error instanceof ErrorEvent) {
             // A client-side or network error occurred. Handle it accordingly.

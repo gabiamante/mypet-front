@@ -13,7 +13,6 @@ import { CookieListComponent } from './auth/pages/cookie-list/cookie-list.compon
 import { LoginComponent } from './auth/login/login.component';
 import { FooterComponent } from './auth/layout/footer/footer.component';
 import { HeaderComponent } from './auth/layout/header/header.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ErrorInterceptorProvider } from './auth/interceptors/error.interceptor';
 import { AuthService } from './auth/auth.service';
@@ -21,6 +20,10 @@ import { StorageService } from './auth/storage.service';
 
 import { AuthInterceptorProvider } from './auth/interceptors/auth-interceptor';
 import { FullCalendarProviderScheduleModule } from './full-calendar-provider-schedule/full-calendar-provider-schedule.module';
+import { RoleGuardService } from './auth/role-guard.service';
+import { TelaInicialLoginModule } from './tela-inicial-login/tela-inicial-login.module';
+import { CriacaoAgendaPetproviderModule } from './petservice/criacao-agenda-petprovider/criacao-agenda-petprovider.module';
+import { TempoAtendimentoAgendaPetproviderModule } from './petservice/tempo-atendimento-agenda-petprovider/tempo-atendimento-agenda-petprovider.module';
 
 
 @NgModule({
@@ -41,12 +44,13 @@ import { FullCalendarProviderScheduleModule } from './full-calendar-provider-sch
     PessoaModule,
     FormsModule,
     AprovaoPessoaModule,
-    FullCalendarProviderScheduleModule
+    FullCalendarProviderScheduleModule,
+    TelaInicialLoginModule,
+    CriacaoAgendaPetproviderModule,
+    TempoAtendimentoAgendaPetproviderModule
   ],
   providers: [AuthInterceptorProvider, ErrorInterceptorProvider,AuthService,
-    StorageService,
-
-
+    StorageService, RoleGuardService
   ],
   bootstrap: [AppComponent]
 })

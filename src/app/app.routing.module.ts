@@ -16,10 +16,14 @@ import { DeletaPetClientComponent } from './administrador/menu-inicial-admin/del
 import { DeletaPetProviderComponent } from './administrador/menu-inicial-admin/deleta-pet-provider/deleta-pet-provider.component';
 import { BuscarPetProviderComponent } from './administrador/menu-inicial-admin/busca-pet-provider/busca-pet-provider.component';
 import { BuscarPetClientComponent } from './administrador/menu-inicial-admin/busca-pet-client/busca-pet-client.component';
-import { PesquisarComponent } from './home/home/pesquisar/pesquisar.component';
 import { FullCalendarProviderScheduleComponent } from './full-calendar-provider-schedule/full-calendar-provider-schedule.component';
 import { AlteraPetClientComponent } from './administrador/menu-inicial-admin/altera-pet-client/altera-pet-client.component';
 import { AlteraPetProviderComponent } from './administrador/menu-inicial-admin/altera-pet-provider/altera-pet-provider.component';
+import { RoleGuardService as RoleGuard } from './auth/role-guard.service';
+import { TelaInicialPetProviderComponent } from './tela-inicial-login/tela-inicial-pet-provider/tela-inicial-pet-provider.component';
+import { TelaInicialPetClientComponent } from './tela-inicial-login/tela-inicial-pet-client/tela-inicial-pet-client.component';
+import { CriacaoAgendaPetproviderComponent } from './petservice/criacao-agenda-petprovider/criacao-agenda-petprovider.component';
+import { TempoAtendimentoAgendaPetproviderComponent } from './petservice/tempo-atendimento-agenda-petprovider/tempo-atendimento-agenda-petprovider.component';
 
 
 const routes: Routes = [
@@ -28,22 +32,28 @@ const routes: Routes = [
     { path: 'home/quem-somos', component: QuemSomosComponent},
     { path: 'home/detalhes/:id', component: DetalhesComponent},
 
-    { path: 'login', component: LoginComponent}, //login cliente e fornecedor
+    { path: 'login', component: LoginComponent},
 
-    { path: 'aprovacao/pessoa', component: AprovarPessoaComponent},
+    { path: 'aprovacao/pessoa', component: AprovarPessoaComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
 
     { path: 'pessoa/fisica/cadastrar', component: CadastroFisicaComponent},
     { path: 'pessoa/juridica/cadastrar', component: CadastroJuridicaComponent},
 
-    { path: 'administrador/menu-inicial-admin', component: MenuInicialAdminComponent },
-    { path: 'administrador/deletar-cliente', component: DeletaPetClientComponent },
-    { path: 'administrador/deletar-fornecedor', component: DeletaPetProviderComponent },
-    { path: 'administrador/buscar-fornecedor', component: BuscarPetProviderComponent },
-    { path: 'administrador/buscar-cliente', component: BuscarPetClientComponent },
-    { path: 'administrador/alterar-cliente/:id', component: AlteraPetClientComponent },
-    { path: 'administrador/alterar-fornecedor/:id', component: AlteraPetProviderComponent },
+    { path: 'administrador/menu-inicial-admin', component: MenuInicialAdminComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
+    { path: 'administrador/deletar-cliente', component: DeletaPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
+    { path: 'administrador/deletar-fornecedor', component: DeletaPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
+    { path: 'administrador/buscar-fornecedor', component: BuscarPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
+    { path: 'administrador/buscar-cliente', component: BuscarPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
+    { path: 'administrador/alterar-cliente/:id', component: AlteraPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
+    { path: 'administrador/alterar-fornecedor/:id', component: AlteraPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
 
     { path: 'fullcalendar/provider', component: FullCalendarProviderScheduleComponent },
+
+    { path: 'login/tela-inicial-pet-provider', component: TelaInicialPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
+    { path: 'login/tela-inicial-pet-client', component: TelaInicialPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
+
+    { path: 'agendar/cricao-petprovider', component: CriacaoAgendaPetproviderComponent },
+    { path: 'agendar/tempo-atendimento-agenda-petprovider', component: TempoAtendimentoAgendaPetproviderComponent },
     
     { path: '', pathMatch: 'full', redirectTo: '/home/home'},
     { path: '**', component: NotFoundComponent }
