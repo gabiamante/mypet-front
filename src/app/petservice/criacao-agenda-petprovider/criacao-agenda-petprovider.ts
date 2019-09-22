@@ -14,6 +14,9 @@ export class CriacaoAgendaProvider {
   tempoFimCorrecao = '';
   today = new Date();
   time = '';
+  selecaoHorario = false;
+  nomeCliente = '';
+  nomeProvider = '';
 
   constructor() {
     this.time = this.today.getHours() + ':' + this.today.getMinutes();
@@ -30,5 +33,8 @@ export class CriacaoAgendaProvider {
     this.tempoInicioCorrecao = this.time;
     this.tempoFimCorrecao = this.time;
     this.siglaDia =  '';
+    this.selecaoHorario = false;
+    this.nomeCliente = '';
+    this.nomeProvider = '';
   }
 }

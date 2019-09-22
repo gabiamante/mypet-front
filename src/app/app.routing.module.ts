@@ -24,6 +24,7 @@ import { TelaInicialPetProviderComponent } from './tela-inicial-login/tela-inici
 import { TelaInicialPetClientComponent } from './tela-inicial-login/tela-inicial-pet-client/tela-inicial-pet-client.component';
 import { CriacaoAgendaPetproviderComponent } from './petservice/criacao-agenda-petprovider/criacao-agenda-petprovider.component';
 import { TempoAtendimentoAgendaPetproviderComponent } from './petservice/tempo-atendimento-agenda-petprovider/tempo-atendimento-agenda-petprovider.component';
+import { ListaOpcoesHorariosServiceDisponiveisComponent } from './lista-opcoes-horarios-service-disponiveis/lista-opcoes-horarios-service-disponiveis.component';
 
 
 const routes: Routes = [
@@ -54,7 +55,9 @@ const routes: Routes = [
 
     { path: 'agendar/cricao-petprovider', component: CriacaoAgendaPetproviderComponent },
     { path: 'agendar/tempo-atendimento-agenda-petprovider', component: TempoAtendimentoAgendaPetproviderComponent },
-    
+
+    { path: 'agendamento-pet-service/horario-pet-service', component: ListaOpcoesHorariosServiceDisponiveisComponent },
+
     { path: '', pathMatch: 'full', redirectTo: '/home/home'},
     { path: '**', component: NotFoundComponent }
   ];

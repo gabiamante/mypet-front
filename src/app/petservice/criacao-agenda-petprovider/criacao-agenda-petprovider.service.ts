@@ -22,4 +22,9 @@ export class CriacaoAgendaPetproviderService {
     alert(JSON.stringify(lstCriacaoAgendaProviderToAttach));
     return this.http.post(API + '/agendaProvider/', lstCriacaoAgendaProviderToAttach);
   }
+
+  salvarCriacaoAgendaProviderTeste(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider): Observable<any> {
+    alert(JSON.stringify(varCriacaoAgendaProviderToAttach));
+    return this.http.post(API + '/agendaprovider/', varCriacaoAgendaProviderToAttach);
+  }
 }

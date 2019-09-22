@@ -11,6 +11,7 @@ import {CardModule} from 'primeng/card';
 import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown';
 import {TableModule} from 'primeng/table';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {TableModule} from 'primeng/table';
     CardModule,
     CalendarModule,
     DropdownModule,
-    TableModule
+    TableModule,
+    RadioButtonModule
   ],
   exports: [
     CriacaoAgendaPetproviderComponent

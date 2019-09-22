@@ -24,6 +24,7 @@ import { RoleGuardService } from './auth/role-guard.service';
 import { TelaInicialLoginModule } from './tela-inicial-login/tela-inicial-login.module';
 import { CriacaoAgendaPetproviderModule } from './petservice/criacao-agenda-petprovider/criacao-agenda-petprovider.module';
 import { TempoAtendimentoAgendaPetproviderModule } from './petservice/tempo-atendimento-agenda-petprovider/tempo-atendimento-agenda-petprovider.module';
+import { ListaOpcoesHorariosServiceDisponiveisModule } from './lista-opcoes-horarios-service-disponiveis/lista-opcoes-horarios-service-disponiveis.module';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { TempoAtendimentoAgendaPetproviderModule } from './petservice/tempo-aten
     FullCalendarProviderScheduleModule,
     TelaInicialLoginModule,
     CriacaoAgendaPetproviderModule,
-    TempoAtendimentoAgendaPetproviderModule
+    TempoAtendimentoAgendaPetproviderModule,
+    ListaOpcoesHorariosServiceDisponiveisModule
   ],
   providers: [AuthInterceptorProvider, ErrorInterceptorProvider,AuthService,
     StorageService, RoleGuardService

@@ -20,13 +20,20 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
   qtdDiasSemanaSelecionados = 0;
   qtdDiasSemanaSelecionadosCopy = 0;
   timeValue: string;
-  criacaoAgendaService: CriacaoAgendaPetproviderService;
 
 
-  constructor() {
+  date5: Date;
+  invalidDates: Array<Date>
+
+
+  constructor(private criacaoAgendaService: CriacaoAgendaPetproviderService) {
    }
 
   ngOnInit() {
+    let today = new Date();
+    let invalidDate = new Date();
+    invalidDate.setDate(today.getDate() - 1);
+    this.invalidDates = [today,invalidDate];
   }
 
 
@@ -120,13 +127,13 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
       }
     }
 
-    maiorSigla = maiorSigla.replace('Seg', '-Seg');
-    maiorSigla = maiorSigla.replace('Ter', '-Ter');
-    maiorSigla = maiorSigla.replace('Quar', '-Quar');
-    maiorSigla = maiorSigla.replace('Quin', '-Quin');
-    maiorSigla = maiorSigla.replace('Sex', '-Sex');
-    maiorSigla = maiorSigla.replace('Sab', '-Sab');
-    maiorSigla = maiorSigla.replace('Dom', '-Dom');
+    // maiorSigla = maiorSigla.replace('Seg', '-Seg');
+    // maiorSigla = maiorSigla.replace('Ter', '-Ter');
+    // maiorSigla = maiorSigla.replace('Quar', '-Quar');
+    // maiorSigla = maiorSigla.replace('Quin', '-Quin');
+    // maiorSigla = maiorSigla.replace('Sex', '-Sex');
+    // maiorSigla = maiorSigla.replace('Sab', '-Sab');
+    // maiorSigla = maiorSigla.replace('Dom', '-Dom');
 
     varCriacaoAgendaProviderToAttach.siglaDia = maiorSigla;
   }
@@ -168,5 +175,19 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     );
   }
 
+  salvarAgendaProviderTeste(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
+    //alert(JSON.stringify(varCriacaoAgendaProviderToAttach));
+    varCriacaoAgendaProviderToAttach = this.varCriacaoAgendaProviderToAttachCopy;
+    this.criacaoAgendaService.salvarCriacaoAgendaProviderTeste(varCriacaoAgendaProviderToAttach).subscribe(
+      response => {
+        alert('Salvo com sucesso!');
+        //window.location.href = '/home/home';
+      }
+    );
+  }
+
+  restricaoSelecaoDias(varCriacaoAgendaProvider: CriacaoAgendaProvider)  {
+
+  }
 
 }
