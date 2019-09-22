@@ -23,6 +23,11 @@ export class ListaOpcoesHorariosServiceDisponiveisService {
     .get<CriacaoAgendaProvider[]>(API + '/agendaprovider');
   }
 
+  listAgendaProviderFiltro(): Observable<CriacaoAgendaProvider[]>  {
+    return this.http
+    .get<CriacaoAgendaProvider[]>(API + '/agendaprovider');
+  }
+
 
   // colocar nos contratados
   salvarEmServicosContratados(varContratadosAgendaProvider: ServiceContratados): Observable<ServiceContratados> {

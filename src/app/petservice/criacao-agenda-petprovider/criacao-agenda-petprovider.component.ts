@@ -10,7 +10,10 @@ import { CriacaoAgendaPetproviderService } from './criacao-agenda-petprovider.se
 })
 export class CriacaoAgendaPetproviderComponent implements OnInit {
 
-  selectedService: string[] = [];
+  listaDeServicos: string[] = [];
+  servicoSelecionado: string;
+  lstServicosSelecionados: ServicosSelecionados[] = [];
+  varServicosSelecionados: ServicosSelecionados;
   clicks = 0;
   varCriacaoAgendaProvider: CriacaoAgendaProvider = new CriacaoAgendaProvider();
   lstCriacaoAgendaProvider: CriacaoAgendaProvider[] = [];
@@ -23,10 +26,15 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
 
 
   date5: Date;
-  invalidDates: Array<Date>
+  invalidDates: Array<Date>;
 
 
   constructor(private criacaoAgendaService: CriacaoAgendaPetproviderService) {
+    this.lstServicosSelecionados =
+    [
+      {label: 'Banho/Tosa', name: 'Banho/Tosa'},
+      {label: 'Walking/Andar', name: 'Walking/Andar'}
+    ];
    }
 
   ngOnInit() {
@@ -82,6 +90,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
       });
     } else {
       this.correcaoTempo(varCriacaoAgendaProviderToAttach);
+      this.adicionaServico(varCriacaoAgendaProviderToAttach, this.varServicosSelecionados);
       this.varCriacaoAgendaProviderToAttachCopy = Object.assign({}, varCriacaoAgendaProviderToAttach);
       this.adicionaSiglaDias(this.varCriacaoAgendaProviderToAttachCopy);
       this.lstCriacaoAgendaProvider.push(this.varCriacaoAgendaProviderToAttachCopy);
@@ -163,31 +172,19 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
 
 
 
-  salvarAgendaProvider(lstCriacaoAgendaProvider: CriacaoAgendaProvider[])  {
-    lstCriacaoAgendaProvider = this.lstCriacaoAgendaProvider;
-    // console.log('lstCriacaoAgendaProvider: ' + lstCriacaoAgendaProvider);
-    alert(JSON.stringify(lstCriacaoAgendaProvider));
-    this.criacaoAgendaService.salvarCriacaoAgendaProvider(lstCriacaoAgendaProvider).subscribe(
-      response => {
-        alert('Salvo com sucesso!');
-        //window.location.href = '/home/home';
-      }
-    );
-  }
-
   salvarAgendaProviderTeste(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
-    //alert(JSON.stringify(varCriacaoAgendaProviderToAttach));
     varCriacaoAgendaProviderToAttach = this.varCriacaoAgendaProviderToAttachCopy;
     this.criacaoAgendaService.salvarCriacaoAgendaProviderTeste(varCriacaoAgendaProviderToAttach).subscribe(
       response => {
         alert('Salvo com sucesso!');
+        this.lstCriacaoAgendaProvider = [];
         //window.location.href = '/home/home';
       }
     );
   }
 
-  restricaoSelecaoDias(varCriacaoAgendaProvider: CriacaoAgendaProvider)  {
-
+  adicionaServico(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider, varServicosSelecionados: ServicosSelecionados) {
+    varCriacaoAgendaProviderToAttach.servicoEscolhido = varServicosSelecionados.name;
   }
 
 }

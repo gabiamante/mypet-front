@@ -6,6 +6,7 @@
             <th>Tempo início</th>
             <th>Tempo fim</th>
             <th>Dia da semana</th>
+            <th>Serviço</th>
             <th>Clique para contrar este horário</th>
         </tr>
     </ng-template>
@@ -14,6 +15,7 @@
             <td>{{varCriacaoAgendaProvider.tempoInicioCorrecao}}</td>
             <td>{{varCriacaoAgendaProvider.tempoFimCorrecao}}</td>
             <td>{{varCriacaoAgendaProvider.siglaDia}}</td>
+            <td>{{varCriacaoAgendaProvider.servicoEscolhido}}</td>
             <td><p-toggleButton [(ngModel)]="varCriacaoAgendaProvider.selecaoHorario"
               onLabel="Selecionado" offLabel="X" onIcon="pi; pi-check" offIcon="pi pi-times"
               [style]="{'width':'150px'}"></p-toggleButton></td>

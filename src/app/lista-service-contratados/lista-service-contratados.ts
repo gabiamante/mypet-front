@@ -7,6 +7,8 @@ export class ServiceContratados  {
   tempoFim = '';
   tipoService = '';
   siglaDia = '';
+  idPetClient = '';
+  idPetProvider = '';
 
   constructor() {
     this.id = 0;
@@ -17,5 +19,7 @@ export class ServiceContratados  {
     this.tempoFim = '';
     this.tipoService = '';
     this.siglaDia = '';
+    this.idPetClient = '';
+    this.idPetProvider = '';
   }
 }

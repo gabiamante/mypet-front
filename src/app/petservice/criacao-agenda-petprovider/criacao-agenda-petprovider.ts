@@ -17,6 +17,9 @@ export class CriacaoAgendaProvider {
   selecaoHorario = false;
   nomeCliente = '';
   nomeProvider = '';
+  servicoEscolhido = '';
+  idPetClient = '';
+  idPetProvider = '';
 
   constructor() {
     this.time = this.today.getHours() + ':' + this.today.getMinutes();
@@ -36,5 +39,8 @@ export class CriacaoAgendaProvider {
     this.selecaoHorario = false;
     this.nomeCliente = '';
     this.nomeProvider = '';
+    this.servicoEscolhido = '';
+    this.idPetClient = '';
+    this.idPetProvider = '';
   }
 }

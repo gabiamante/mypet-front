@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { ListaServiceContratadosService } from './../lista-service-contratados/lista-service-contratados.service';
 import { ServiceContratados } from './../lista-service-contratados/lista-service-contratados';
 import { CriacaoAgendaPetproviderService } from './../petservice/criacao-agenda-petprovider/criacao-agenda-petprovider.service';
@@ -18,10 +19,15 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
   varServiceContratados: ServiceContratados;
 
 
-  constructor(private serviceCriacaoAgendaProvider: ListaOpcoesHorariosServiceDisponiveisService) {
+  constructor(private serviceCriacaoAgendaProvider: ListaOpcoesHorariosServiceDisponiveisService
+              , private activatedRoute: ActivatedRoute,
+              private router: Router) {
+                this.router = router;
     }
 
   ngOnInit() {
+    const varAux = this.activatedRoute.snapshot.params.id;
+    // alert(varAux);
     this.listAgendaProvider();
   }
 
@@ -34,15 +40,18 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
     const lstContratadoAgendaProvider: ServiceContratados[] = [];
     let count = 0;
 
-    for (let element of lstCriacaoAgendaProvider)  {
+    for (const element of lstCriacaoAgendaProvider)  {
       const varContratadoAgendaProvider: ServiceContratados = new ServiceContratados();
-      if (element.selecaoHorario === true) {
+      if (element.selecaoHorario) {
         varContratadoAgendaProvider.nomeCliente = element.nomeCliente;
         varContratadoAgendaProvider.nomeProvider = element.nomeProvider;
         varContratadoAgendaProvider.tempoInicio = element.tempoInicioCorrecao;
         varContratadoAgendaProvider.tempoFim = element.tempoFimCorrecao;
         varContratadoAgendaProvider.siglaDia = element.siglaDia;
+        varContratadoAgendaProvider.tipoService = element.servicoEscolhido;
         varContratadoAgendaProvider.dataEscolhida = null;
+        varContratadoAgendaProvider.idPetClient = element.idPetClient;
+        varContratadoAgendaProvider.idPetProvider = element.idPetProvider;
 
         this.serviceCriacaoAgendaProvider.salvarEmServicosContratados(varContratadoAgendaProvider)
         .subscribe((res) => {
@@ -51,6 +60,7 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
           });
       }
     }
+
 
   }
 
