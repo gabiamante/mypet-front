@@ -53,7 +53,7 @@ const routes: Routes = [
     { path: 'login/tela-inicial-pet-provider', component: TelaInicialPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
     { path: 'login/tela-inicial-pet-client', component: TelaInicialPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
 
-    { path: 'agendar/cricao-petprovider', component: CriacaoAgendaPetproviderComponent },
+    { path: 'agendar/criacao-petprovider', component: CriacaoAgendaPetproviderComponent },
     { path: 'agendamento-pet-service/agendamento-pet-service', component: ListaOpcoesHorariosServiceDisponiveisComponent },
 
     { path: 'agendamento-pet-service/horario-pet-service', component: ListaOpcoesHorariosServiceDisponiveisComponent },

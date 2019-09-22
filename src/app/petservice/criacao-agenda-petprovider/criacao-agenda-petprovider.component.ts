@@ -90,6 +90,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
       });
     } else {
       this.correcaoTempo(varCriacaoAgendaProviderToAttach);
+      this.correcaoDia(varCriacaoAgendaProviderToAttach);
       this.adicionaServico(varCriacaoAgendaProviderToAttach, this.varServicosSelecionados);
       this.varCriacaoAgendaProviderToAttachCopy = Object.assign({}, varCriacaoAgendaProviderToAttach);
       this.adicionaSiglaDias(this.varCriacaoAgendaProviderToAttachCopy);
@@ -168,6 +169,12 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     varCriacaoAgendaProviderToAttach.tempoInicio.getMinutes();
     varCriacaoAgendaProviderToAttach.tempoFimCorrecao = varCriacaoAgendaProviderToAttach.tempoFim.getHours() + ':' +
     varCriacaoAgendaProviderToAttach.tempoFim.getMinutes();
+  }
+
+  correcaoDia(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
+    varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao = varCriacaoAgendaProviderToAttach.dataCalendario.getDay()
+    + '/' + varCriacaoAgendaProviderToAttach.dataCalendario.getMonth() + '/'
+    + varCriacaoAgendaProviderToAttach.dataCalendario.getFullYear();
   }
 
 

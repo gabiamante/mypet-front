@@ -52,12 +52,17 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
         varContratadoAgendaProvider.dataEscolhida = null;
         varContratadoAgendaProvider.idPetClient = element.idPetClient;
         varContratadoAgendaProvider.idPetProvider = element.idPetProvider;
+        varContratadoAgendaProvider.dataCalendarioCorrecao = element.dataCalendarioCorrecao;
 
         this.serviceCriacaoAgendaProvider.salvarEmServicosContratados(varContratadoAgendaProvider)
         .subscribe((res) => {
           this.varServiceContratados = res;
           alert('salvo sucesso');
           });
+
+
+          // this.serviceCriacaoAgendaProvider.deleteCriacaoAgendaProvider(varContratadoAgendaProvider.idPetProvider)
+          // .subscribe(res => this.listAgendaProvider());
       }
     }
 

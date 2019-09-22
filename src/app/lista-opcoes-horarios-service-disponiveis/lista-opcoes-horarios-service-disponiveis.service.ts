@@ -34,4 +34,16 @@ export class ListaOpcoesHorariosServiceDisponiveisService {
     return this.http.post<ServiceContratados>(API + '/contratadoprovider/', varContratadosAgendaProvider);
   }
 
+  //DELETE NÃO LOGICO
+  softDeleteCriacaoAgendaProvider(varContratadosAgendaProvider: CriacaoAgendaProvider): Observable<CriacaoAgendaProvider> {
+    const url = `${API}/agendaprovider/${varContratadosAgendaProvider.id}`;
+    console.log('url: ' + url);
+    // varContratadosAgendaProvider.active = false;
+    return this.http.put<CriacaoAgendaProvider>(url, varContratadosAgendaProvider);
+          }
+
+  public deleteCriacaoAgendaProvider(idPetProvider: string) {
+          return this.http.delete(API + '/agendaprovider/' + idPetProvider);
+            }
+
 }

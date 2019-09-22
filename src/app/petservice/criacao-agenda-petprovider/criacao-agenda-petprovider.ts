@@ -20,6 +20,8 @@ export class CriacaoAgendaProvider {
   servicoEscolhido = '';
   idPetClient = '';
   idPetProvider = '';
+  dataCalendario = new Date();
+  dataCalendarioCorrecao = '';
 
   constructor() {
     this.time = this.today.getHours() + ':' + this.today.getMinutes();
@@ -42,5 +44,7 @@ export class CriacaoAgendaProvider {
     this.servicoEscolhido = '';
     this.idPetClient = '';
     this.idPetProvider = '';
+    this.dataCalendario = null;
+    this.dataCalendarioCorrecao = '';
   }
 }

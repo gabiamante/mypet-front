@@ -9,6 +9,7 @@ export class ServiceContratados  {
   siglaDia = '';
   idPetClient = '';
   idPetProvider = '';
+  dataCalendarioCorrecao = '';
 
   constructor() {
     this.id = 0;
@@ -21,5 +22,6 @@ export class ServiceContratados  {
     this.siglaDia = '';
     this.idPetClient = '';
     this.idPetProvider = '';
+    this.dataCalendarioCorrecao = '';
   }
 }
