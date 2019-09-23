@@ -1,4 +1,3 @@
-
 import {PessoaJuridica} from '../../pessoa/pessoa-juridica';
 import { PessoaService } from '../../pessoa/pessoa.service';
 import { OnInit } from '@angular/core';
@@ -19,7 +18,7 @@ export class TableCrudAprovarPessssoa implements OnInit {
 
     constructor(private pessoaJuridicaService: PessoaService) {
      this.pessoaJuridica.razaoSocial = '' ;
-     this.pessoaJuridica.cnpj = '' ;
+     this.pessoaJuridica.cpfOuCnpj = '' ;
      this.pessoaJuridica.telefone1 = '' ;
      this.pessoaJuridica.telefone2 = '' ;
      this.pessoaJuridica.logradouro = '' ;
@@ -57,7 +56,7 @@ export class TableCrudAprovarPessssoa implements OnInit {
 
       this.cols = [
           { field: 'razaoSocial', header: 'Razao Social' },
-          { field: 'cnpj', header: 'CNPJ' },
+          { field: 'cpfOuCnpj', header: 'CNPJ' },
           { field: 'telefone1', header: 'Telefone1' },
           { field: 'telefone2', header: 'Telefone2' }
       ];

@@ -1,4 +1,4 @@
-
+    
 import { Component, OnInit, Input } from '@angular/core';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,7 +15,7 @@ export class DetalhesComponent implements OnInit {
 
   constructor(private pesquisarService: PesquisarService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router) { 
                 this.router = router;
               }
 
@@ -24,10 +24,10 @@ export class DetalhesComponent implements OnInit {
     this.pesquisarService.buscarDetalhes(pessoa).subscribe(retorno => this.pessoa = retorno);
   }
 
-  agendar() {
-    this.router.navigate(['agendamento-pet-service', 'agendamento-pet-service']);
+  agendar(forn: PessoaJuridica){
+    this.router.navigate(['agendamento-pet-service', 'agendamento-pet-service', forn.id]);
   }
-  voltar() {
+  voltar(){
     this.router.navigate(['home', 'home']);
   }
 }

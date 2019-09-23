@@ -17,7 +17,7 @@ export class TelaInicialPetProviderComponent implements OnInit {
             label: 'PetProvider',
             items: [
                 {label: 'Meu Perfil', icon: 'pi pi-fw pi-user'},
-                {label: 'Publicar Agenda', icon: 'pi pi-fw pi-calendar-plus'},
+                {label: 'Publicar Agenda', icon: 'pi pi-fw pi-calendar-plus', url:'agendar/criacao-petprovider'},
                 {label: 'Publicar Anúncio', icon: 'pi pi-fw pi-globe'}
             ]
         }

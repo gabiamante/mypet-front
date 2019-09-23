@@ -26,14 +26,8 @@ export class PesquisarService {
   }
 
   buscarDetalhes(id: number): Observable<PessoaJuridica> {
-    //let param = new HttpParams().set('id', id.toString());
-    console.log('>>>>>>> Requisição = ' + API + '/pessoajuridica/' + id);
-    /*console.log('RETORNO do GET estatico = ' + this.http.get<PessoaJuridica>(API + '/pessoajuridica/' + 2)
-    .pipe(map((data: any) => data.result ),
-      catchError(error => { return throwError('Its a Trap!')})));*/
-    return this.http.get<PessoaJuridica>(API + 'pessoajuridica/' + id)
-    .pipe(map((data: any) => data.result ),
-      catchError(error => { return throwError('Its a Trap!')}));
+    return this.http.get<PessoaJuridica>(API + '/pessoajuridica/' + id)
+    .pipe()
     }
 
     updateDetalhes(id: number, value: any): Observable<PessoaJuridica> {
@@ -41,15 +35,12 @@ export class PesquisarService {
     }
 
     abrirDetalhe(pessoa: PessoaJuridica): Observable<PessoaJuridica> {
-      console.log('Requisição ----> ' + API + '/pessoajuridica/' + pessoa.id);
       return this.http.get<PessoaJuridica>(API + '/pessoajuridica/' + pessoa.id);
     }
 
     buscarDetalhesPetClient(id: number): Observable<PessoaFisica> {
-      console.log('>>>>>>> Requisição = ' + API + '/pessoafisica/' + id);
-      return this.http.get<PessoaFisica>(API + 'pessoafisica/' + id)
-      .pipe(map((data: any) => data.result ),
-        catchError(error => { return throwError('Its a Trap!')}));
+      return this.http.get<PessoaFisica>(API + '/pessoafisica/' + id)
+      .pipe()
       }
 
 }

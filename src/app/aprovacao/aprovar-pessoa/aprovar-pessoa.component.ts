@@ -42,7 +42,7 @@ export class AprovarPessoaComponent implements OnInit {
 
 
   constructor(private pessoaJuridicaService: PessoaService,
-    private pessoaJuridica: PessoaJuridica = {id: null, razaoSocial: '', cnpj: '',
+    private pessoaJuridica: PessoaJuridica = {id: null, razaoSocial: '', cpfOuCnpj: '',
     telefone1: '', telefone2: '', logradouro: '', numero: 0, tipoPerfil: 0,
     complemento: '', bairro: '', cidade: '', estado: '', cep: '', email: '',
     senha: '', fotoPerfil: '', petShop: false, farmacia: false, banho: false,
@@ -60,7 +60,7 @@ export class AprovarPessoaComponent implements OnInit {
 
     this.cols = [
         { field: 'razaoSocial', header: 'Razão Social' },
-        { field: 'cnpj', header: 'CNPJ' },
+        { field: 'cpfOuCnpj', header: 'CNPJ' },
         { field: 'telefone1', header: 'Telefone' },
         { field: 'telefone2', header: 'Celular' },
         { field: 'situacaoAprovacao', header: 'Situação' }
@@ -125,7 +125,7 @@ cloneCar(c: PessoaJuridica): PessoaJuridica {
 
   let varPessoaJuridica = new function () {
     this[this.pessoaJuridica] = {
-      id: null, razaoSocial: '', cnpj: '', telefone1: '', telefone2: '',
+      id: null, razaoSocial: '', cpfOuCnpj: '', telefone1: '', telefone2: '',
   logradouro: '', numero: 0, tipoPerfil: 0, complemento: '', bairro: '',
   cidade: '', estado: '', cep: '', email: '', senha: '', fotoPerfil: '',
   petShop: false, farmacia: false, banho: false, tosa: false, loja: false,
@@ -149,7 +149,7 @@ expand(i) {
 }
 
 changeData(rowData) {
-  this.pessoaJuridica = rowData;
+  this.pessoaJuridica = rowData; 
   //console.log(this.pessoaJuridica);
 
   if (this.pessoaJuridica.situacaoAprovacao == null) {

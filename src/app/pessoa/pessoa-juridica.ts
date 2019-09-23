@@ -1,7 +1,7 @@
 export class PessoaJuridica {
   public id: number;
   public razaoSocial: string;
-  public cnpj: string;
+  public cpfOuCnpj: string;
   public telefone1: string;
   public telefone2: string;
   public logradouro: string;
@@ -47,7 +47,7 @@ export class PessoaJuridica {
   constructor() {
      this.id = 0;
      this.razaoSocial = '' ;
-     this.cnpj = '' ;
+     this.cpfOuCnpj = '' ;
      this.telefone1 = '' ;
      this.telefone2 = '' ;
      this.logradouro = '' ;

@@ -171,10 +171,12 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     varCriacaoAgendaProviderToAttach.tempoFim.getMinutes();
   }
 
-  correcaoDia(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
-    varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao = varCriacaoAgendaProviderToAttach.dataCalendario.getDay()
-    + '/' + varCriacaoAgendaProviderToAttach.dataCalendario.getMonth() + '/'
+  correcaoDia(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {    
+    
+    varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao = varCriacaoAgendaProviderToAttach.dataCalendario.getDate()
+    + '/' + (varCriacaoAgendaProviderToAttach.dataCalendario.getMonth()+1) + '/'
     + varCriacaoAgendaProviderToAttach.dataCalendario.getFullYear();
+    // alert('varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao: ' + varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao);
   }
 
 
