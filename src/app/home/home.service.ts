@@ -41,6 +41,10 @@ export class PesquisarService {
     buscarDetalhesPetClient(id: number): Observable<PessoaFisica> {
       return this.http.get<PessoaFisica>(API + '/pessoafisica/' + id)
       .pipe()
-      }
+    }
+    
+    buscarDetalhesPorEmail(email: string): Observable<PessoaFisica>{
+      return this.http.get<PessoaFisica>(API + '/pessoafisica/email?value=' + email);
+    }
 
 }

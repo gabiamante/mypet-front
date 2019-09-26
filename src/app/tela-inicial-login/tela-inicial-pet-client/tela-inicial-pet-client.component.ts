@@ -14,10 +14,10 @@ export class TelaInicialPetClientComponent implements OnInit {
 
   ngOnInit() {
       this.items = [{
-          label: 'PetProvider',
+          label: 'PetClient',
           items: [
-              {label: 'Meu Perfil', icon: 'pi pi-fw pi-user'},
-              {label: 'Minha agenda', icon: 'pi pi-fw pi-calendar'}
+              {label: 'Meu Perfil', icon: 'pi pi-fw pi-user', url: 'login/tela-inicial-pet-client/meu-perfil'},
+              {label: 'Minha agenda', icon: 'pi pi-fw pi-calendar', url: 'fullcalendar/provider'}
           ]
       }
     ];
