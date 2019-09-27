@@ -55,6 +55,7 @@ const routes: Routes = [
     { path: 'login/tela-inicial-pet-client/meu-perfil', component: PerfilPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
 
     { path: 'login/tela-inicial-pet-provider', component: TelaInicialPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
+    //colocar rota guardada para criacao de agenda, atualmente não está indo, tentar entender o porque.
     { path: 'agenda/criacao-petprovider', component: CriacaoAgendaPetproviderComponent},
     { path: 'agendamento-pet-service/agendamento-pet-service/:id', component: ListaOpcoesHorariosServiceDisponiveisComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
 

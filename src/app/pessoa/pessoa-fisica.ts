@@ -5,6 +5,8 @@ export class PessoaFisica {
   public dataNascimento: string;
   public telefone1: string;
   public telefone2: string;
+  public telefoneFixo: string;
+  public telefoneCelular: string;
   public logradouro: string;
   public numero: number;
   public tipoPerfil: number;
@@ -31,6 +33,8 @@ export class PessoaFisica {
      this.dataNascimento = '' ;
      this.telefone1 = '' ;
      this.telefone2 = '' ;
+     this.telefoneFixo = '';
+     this.telefoneCelular = '';
      this.logradouro = '' ;
      this.numero = 0 ;
      this.tipoPerfil = 0 ;

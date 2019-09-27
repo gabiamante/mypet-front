@@ -32,11 +32,12 @@ export class AlteraPetClientComponent implements OnInit {
 
   public alterar(){
     console.log(this.pessoaFisica);
-    this.petClientService.atualizaPessoaFisica(this.pessoaFisica.id).subscribe(
+    this.petClientService.atualizaPessoaFisica(this.pessoaFisica).subscribe(
       response => {
         alert('PetClient alterado com sucesso!');
         window.location.href = '/administrador/menu-inicial-admin';
       }
     );
   }
+
 }
