@@ -43,7 +43,7 @@ export class AprovarPessoaComponent implements OnInit {
 
   constructor(private pessoaJuridicaService: PessoaService,
     private pessoaJuridica: PessoaJuridica = {id: null, razaoSocial: '', cpfOuCnpj: '',
-    telefone1: '', telefone2: '', logradouro: '', numero: 0, tipoPerfil: 0,
+    telefoneFixo: '', telefoneCelular: '', logradouro: '', numero: 0, tipoPerfil: 0,
     complemento: '', bairro: '', cidade: '', estado: '', cep: '', email: '',
     senha: '', fotoPerfil: '', petShop: false, farmacia: false, banho: false,
     tosa: false, loja: false,
@@ -125,7 +125,7 @@ cloneCar(c: PessoaJuridica): PessoaJuridica {
 
   let varPessoaJuridica = new function () {
     this[this.pessoaJuridica] = {
-      id: null, razaoSocial: '', cpfOuCnpj: '', telefone1: '', telefone2: '',
+      id: null, razaoSocial: '', cpfOuCnpj: '', telefoneFixo: '', telefoneCelular: '',
   logradouro: '', numero: 0, tipoPerfil: 0, complemento: '', bairro: '',
   cidade: '', estado: '', cep: '', email: '', senha: '', fotoPerfil: '',
   petShop: false, farmacia: false, banho: false, tosa: false, loja: false,
