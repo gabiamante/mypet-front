@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import { PessoaJuridica } from '../pessoa/pessoa-juridica';
-import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
-import {catchError, map, take} from 'rxjs/operators';
-import {throwError, Observable} from 'rxjs';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { PessoaFisica } from '../pessoa/pessoa-fisica';
 
 const API = 'http://localhost:8080';

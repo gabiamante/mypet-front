@@ -51,13 +51,11 @@ const routes: Routes = [
 
     { path: 'fullcalendar/provider', component: FullCalendarProviderScheduleComponent },
 
-    { path: 'login/tela-inicial-pet-provider', component: TelaInicialPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
-    
     { path: 'login/tela-inicial-pet-client', component: TelaInicialPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
     { path: 'login/tela-inicial-pet-client/meu-perfil', component: PerfilPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
 
-
-    { path: 'agendar/criacao-petprovider', component: CriacaoAgendaPetproviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
+    { path: 'login/tela-inicial-pet-provider', component: TelaInicialPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
+    { path: 'agenda/criacao-petprovider', component: CriacaoAgendaPetproviderComponent},
     { path: 'agendamento-pet-service/agendamento-pet-service/:id', component: ListaOpcoesHorariosServiceDisponiveisComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
 
     { path: '', pathMatch: 'full', redirectTo: '/home/home'},
