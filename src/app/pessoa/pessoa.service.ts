@@ -71,14 +71,21 @@ export class PessoaService {
 
         public atualizaPessoaJuridica(pessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
           httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
-          return this.http.put<PessoaJuridica>(API + '/pessoajuridica/' + pessoaJuridica.id, pessoaJuridica, httpOptions).pipe();
+          //console.log('Requisição ---> ' + API + '/pessoajuridica/' + pessoaJuridica.id);
+          //console.log('Pessoa para atualizar = ' + pessoaJuridica);
+          return this.http.put<PessoaJuridica>(API + '/pessoajuridica/' + pessoaJuridica.id
+          , pessoaJuridica, httpOptions).pipe(
+            //catchError(this.handleError('403'))
+          );
         }
         
-        atualizaPessoaFisica(pessoaFisica: PessoaFisica): Observable<PessoaFisica> {
+        atualizaPessoaFisica(id: number): Observable<PessoaFisica> {
           httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
-          return this.http.put<PessoaFisica>(API + '/pessoafisica/' + pessoaFisica.id, pessoaFisica, httpOptions).pipe();
+          return this.http.put<PessoaFisica>(API + '$/pessoafisica/${id}', id);
         }
     
+
+
         private handleError(error: HttpErrorResponse) {
           if (error.error instanceof ErrorEvent) {
             // A client-side or network error occurred. Handle it accordingly.

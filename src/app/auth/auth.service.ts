@@ -32,7 +32,7 @@ export class AuthService {
     let user: LocalUser = {
       token: tok,
       email: this.jwtHelper.decodeToken(tok).sub
-      
+
   };
   this.storage.setLocalUser(user);
 }
@@ -45,7 +45,8 @@ public logout(){
     this.tokenService.getResponseHeaders(credentials)
     .subscribe((res: HttpResponse<any>) => {
       this.sucessFulLogin(res.headers.get('authorization'));
-      
+
+
       const token = localStorage.getItem("localUser")
       var obj = JSON.parse(token)
 
@@ -55,16 +56,16 @@ public logout(){
     if(this.pessoa.perfil == "SERVICO"){
         this.router.navigate(['login/tela-inicial-pet-provider']);
       }
-    else 
+    else
       if(this.pessoa.perfil == "CLIENTE"){
         this.router.navigate(['login/tela-inicial-pet-client']);
       }
-      else 
+      else
         if(this.pessoa.perfil == "ADMIN"){
           this.router.navigate(['administrador/menu-inicial-admin']);
         }
-      
-      })  
+
+      })
     });
   }
 

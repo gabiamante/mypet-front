@@ -2,8 +2,8 @@ export class PessoaJuridica {
   public id: number;
   public razaoSocial: string;
   public cpfOuCnpj: string;
-  public telefoneFixo: string;
-  public telefoneCelular: string;
+  public telefone1: string;
+  public telefone2: string;
   public logradouro: string;
   public numero: number;
   public tipoPerfil: number;
@@ -48,8 +48,8 @@ export class PessoaJuridica {
      this.id = 0;
      this.razaoSocial = '' ;
      this.cpfOuCnpj = '' ;
-     this.telefoneFixo = '' ;
-     this.telefoneCelular = '' ;
+     this.telefone1 = '' ;
+     this.telefone2 = '' ;
      this.logradouro = '' ;
      this.numero = 0 ;
      this.tipoPerfil = 0;

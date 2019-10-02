@@ -1,3 +1,4 @@
+import { ListaServiceContratadosProviderComponent } from './lista-service-contratados-provider/lista-service-contratados-provider.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, Router } from '@angular/router';
 
@@ -26,7 +27,6 @@ import { CriacaoAgendaPetproviderComponent } from './petservice/criacao-agenda-p
 import { TempoAtendimentoAgendaPetproviderComponent } from './petservice/tempo-atendimento-agenda-petprovider/tempo-atendimento-agenda-petprovider.component';
 import { ListaOpcoesHorariosServiceDisponiveisComponent } from './lista-opcoes-horarios-service-disponiveis/lista-opcoes-horarios-service-disponiveis.component';
 import { PerfilPetClientComponent } from './tela-inicial-login/tela-inicial-pet-client/perfil-pet-client/perfil-pet-client.component';
-import { PerfilPetProviderComponent } from './tela-inicial-login/tela-inicial-pet-provider/perfil-pet-provider/perfil-pet-provider.component';
 
 
 const routes: Routes = [
@@ -52,13 +52,14 @@ const routes: Routes = [
 
     { path: 'fullcalendar/provider', component: FullCalendarProviderScheduleComponent },
 
+    { path: 'login/tela-inicial-pet-provider', component: TelaInicialPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
+
     { path: 'login/tela-inicial-pet-client', component: TelaInicialPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
     { path: 'login/tela-inicial-pet-client/meu-perfil', component: PerfilPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
 
-    { path: 'login/tela-inicial-pet-provider', component: TelaInicialPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
-    { path: 'login/tela-inicial-pet-provider/meu-perfil', component: PerfilPetProviderComponent},
-    //colocar rota guardada para criacao de agenda, atualmente não está indo, tentar entender o porque.
-    { path: 'agenda/criacao-petprovider', component: CriacaoAgendaPetproviderComponent},
+    // { path: 'agendar/criacao-petprovider', component: CriacaoAgendaPetproviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
+    { path: 'agendar/criacao-petprovider', component: CriacaoAgendaPetproviderComponent},
+    { path: 'contratados/petprovider', component: ListaServiceContratadosProviderComponent},
     { path: 'agendamento-pet-service/agendamento-pet-service/:id', component: ListaOpcoesHorariosServiceDisponiveisComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
 
     { path: '', pathMatch: 'full', redirectTo: '/home/home'},

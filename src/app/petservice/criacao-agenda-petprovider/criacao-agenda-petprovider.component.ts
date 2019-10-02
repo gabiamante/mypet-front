@@ -23,11 +23,8 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
   qtdDiasSemanaSelecionados = 0;
   qtdDiasSemanaSelecionadosCopy = 0;
   timeValue: string;
-
-
-  date5: Date;
+  br: any;
   invalidDates: Array<Date>;
-
 
   constructor(private criacaoAgendaService: CriacaoAgendaPetproviderService) {
     this.lstServicosSelecionados =
@@ -41,7 +38,21 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     let today = new Date();
     let invalidDate = new Date();
     invalidDate.setDate(today.getDate() - 1);
-    this.invalidDates = [today,invalidDate];
+    this.invalidDates = [today, invalidDate];
+    // alert(today);
+    this.br = {
+      firstDayOfWeek: 1,
+      dayNames: [ 'domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado' ],
+      dayNamesShort: [ 'dom', 'seg', 'ter', 'quar', 'quin', 'sex', 'sáb' ],
+      dayNamesMin: [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+      monthNames: [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
+      'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
+      monthNamesShort: [ 'jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'sep', 'out',
+      'nov', 'dez' ],
+      today: 'Hoje',
+      clear: 'Limpar'
+  };
+
   }
 
 
@@ -95,8 +106,10 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
       this.varCriacaoAgendaProviderToAttachCopy = Object.assign({}, varCriacaoAgendaProviderToAttach);
       this.adicionaSiglaDias(this.varCriacaoAgendaProviderToAttachCopy);
       this.lstCriacaoAgendaProvider.push(this.varCriacaoAgendaProviderToAttachCopy);
+      // alert('this.varCriacaoAgendaProviderToAttachCopy: ' + this.varCriacaoAgendaProviderToAttachCopy.dataCalendario);
       this.qtdDiasSemanaSelecionadosCopy = this.qtdDiasSemanaSelecionados;
       this.reiniciaDias(varCriacaoAgendaProviderToAttach);
+      // alert(JSON.stringify(this.br));
     }
   }
 
@@ -171,11 +184,12 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     varCriacaoAgendaProviderToAttach.tempoFim.getMinutes();
   }
 
-  correcaoDia(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {    
-    
+  correcaoDia(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
+
     varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao = varCriacaoAgendaProviderToAttach.dataCalendario.getDate()
     + '/' + (varCriacaoAgendaProviderToAttach.dataCalendario.getMonth()+1) + '/'
     + varCriacaoAgendaProviderToAttach.dataCalendario.getFullYear();
+    // alert(JSON.stringify(varCriacaoAgendaProviderToAttach.dataCalendario));
     // alert('varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao: ' + varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao);
   }
 
@@ -194,6 +208,10 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
 
   adicionaServico(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider, varServicosSelecionados: ServicosSelecionados) {
     varCriacaoAgendaProviderToAttach.servicoEscolhido = varServicosSelecionados.name;
+  }
+
+  getDataCalendario (varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
+    return varCriacaoAgendaProviderToAttach.dataCalendario;
   }
 
 }

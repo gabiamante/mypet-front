@@ -9,7 +9,7 @@
 
       <div class="form-group col-md-2">
           <label for="cnpj">CNPJ:</label>
-          <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.cpfOuCnpj" required="required" pInputText placeholder="CNPJ">
+          <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.cnpj" required="required" pInputText placeholder="CNPJ">
 
       </div>
       <div class="form-group col-md-2">
@@ -20,11 +20,11 @@
   <div class="form-row align-items-center">
       <div class="form-group col-md-2">
           <label for="telefone1">Telefone Fixo:</label>
-          <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.telefoneFixo" pInputText placeholder=" Telefone Fixo">
+          <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.telefone1" pInputText placeholder=" Telefone Fixo">
       </div>
       <div class="form-group col-md-2">
           <label for="telefone2">Celular:</label>
-          <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.telefoneCelular" required="required" pInputText placeholder=" Telefone Celular">
+          <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.telefone2" required="required" pInputText placeholder=" Telefone Celular">
       </div>
   </div>
 
@@ -64,6 +64,20 @@
           <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.cep" r equired="required" pInputText placeholder=" CEP">
       </div>
   </div>
+ 
+  <div class="form-check form-check-inline">
+    <div class="container center_div">
+      <div class="form-row align-items-center">
+        <div class="form-group col-auto">
+                  <div id="petShopFile">
+                      <label for="descricaoPetShop">Descrição:</label>
+                          <textarea type="text" class="form-control" [(ngModel)]="pessoaJuridica.descricaoPetShop"
+                          required="required" pInputTextarea></textarea>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
 
   <!--Fim da escolha dos serviços prestados-->
 

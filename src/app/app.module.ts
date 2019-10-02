@@ -1,3 +1,4 @@
+import { ListaServiceContratadosProviderModule } from './lista-service-contratados-provider/lista-service-contratados-provider.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -49,7 +50,8 @@ import { ListaOpcoesHorariosServiceDisponiveisModule } from './lista-opcoes-hora
     TelaInicialLoginModule,
     CriacaoAgendaPetproviderModule,
     TempoAtendimentoAgendaPetproviderModule,
-    ListaOpcoesHorariosServiceDisponiveisModule
+    ListaOpcoesHorariosServiceDisponiveisModule,
+    ListaServiceContratadosProviderModule
   ],
   providers: [AuthInterceptorProvider, ErrorInterceptorProvider,AuthService,
     StorageService, RoleGuardService

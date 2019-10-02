@@ -8,14 +8,13 @@ import { TabViewModule } from 'primeng/tabview';
 import { PanelModule, ButtonModule, DataTableModule } from 'primeng/primeng';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
-import { PerfilPetProviderComponent } from './tela-inicial-pet-provider/perfil-pet-provider/perfil-pet-provider.component';
 
 
 @NgModule({
   declarations: [
     TelaInicialPetProviderComponent, 
     TelaInicialPetClientComponent, 
-    PerfilPetClientComponent, PerfilPetProviderComponent
+    PerfilPetClientComponent
   ],
   imports: [
     CommonModule,

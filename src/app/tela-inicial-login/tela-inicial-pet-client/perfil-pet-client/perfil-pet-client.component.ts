@@ -35,19 +35,13 @@ export class PerfilPetClientComponent implements OnInit {
   }
 
   public alterar(){
-    this.petClientService.atualizaPessoaFisica(this.pessoaFisica).subscribe(
+    console.log(this.pessoaFisica);
+    this.petClientService.atualizaPessoaFisica(this.pessoaFisica.id).subscribe(
       response => {
         alert('PetClient alterado com sucesso!');
         window.location.href = '/login/tela-inicial-pet-client';
       }
     );
   }
-  public softDelete(pessoaFisica: PessoaFisica){
-    pessoaFisica.active = false;
-    this.petClientService.softDeletePessoaFisica(pessoaFisica)
-    .subscribe(response => {
-      alert('PetClient inativado com sucesso!')
-      window.location.href = '/home/home';
-    });
-  }
+
 }

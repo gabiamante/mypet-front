@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import { PessoaJuridica } from '../pessoa/pessoa-juridica';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
+import {catchError, map, take} from 'rxjs/operators';
+import {throwError, Observable} from 'rxjs';
 import { PessoaFisica } from '../pessoa/pessoa-fisica';
 
 const API = 'http://localhost:8080';
@@ -44,11 +45,6 @@ export class PesquisarService {
     
     buscarDetalhesPorEmail(email: string): Observable<PessoaFisica>{
       return this.http.get<PessoaFisica>(API + '/pessoafisica/email?value=' + email);
-    }
-
-    
-    buscarDetalhesPorEmailPetProvider(email: string): Observable<PessoaJuridica>{
-      return this.http.get<PessoaJuridica>(API + '/pessoajuridica/email?value=' + email);
     }
 
 }

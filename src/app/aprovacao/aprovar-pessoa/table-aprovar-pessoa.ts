@@ -19,8 +19,8 @@ export class TableCrudAprovarPessssoa implements OnInit {
     constructor(private pessoaJuridicaService: PessoaService) {
      this.pessoaJuridica.razaoSocial = '' ;
      this.pessoaJuridica.cpfOuCnpj = '' ;
-     this.pessoaJuridica.telefoneFixo = '' ;
-     this.pessoaJuridica.telefoneCelular = '' ;
+     this.pessoaJuridica.telefone1 = '' ;
+     this.pessoaJuridica.telefone2 = '' ;
      this.pessoaJuridica.logradouro = '' ;
      this.pessoaJuridica.numero = 0 ;
      this.pessoaJuridica. tipoPerfil = 0;
@@ -57,8 +57,8 @@ export class TableCrudAprovarPessssoa implements OnInit {
       this.cols = [
           { field: 'razaoSocial', header: 'Razao Social' },
           { field: 'cpfOuCnpj', header: 'CNPJ' },
-          { field: 'telefoneFixo', header: 'Telefone Fixo' },
-          { field: 'telefoneCelular', header: 'Telefone Celular' } 
+          { field: 'telefone1', header: 'Telefone1' },
+          { field: 'telefone2', header: 'Telefone2' }
       ];
   }
 
@@ -102,4 +102,6 @@ export class TableCrudAprovarPessssoa implements OnInit {
       }
       return pessoaJuridica;
   }
+
+
 }
