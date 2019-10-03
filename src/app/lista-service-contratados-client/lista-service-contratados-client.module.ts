@@ -1,3 +1,6 @@
+
+
+
 import { MenuModule } from 'primeng/menu';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
@@ -5,11 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { ToggleButtonModule, DataTableModule, PanelModule, TabViewModule } from 'primeng/primeng';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListaServiceContratadosProviderComponent } from './lista-service-contratados-provider.component';
-
+import { ListaServiceContratadosClientComponent } from './lista-service-contratados-client.component';
 @NgModule({
   declarations: [
-    ListaServiceContratadosProviderComponent
+    ListaServiceContratadosClientComponent
   ],
   imports: [
     CommonModule,
@@ -24,10 +26,8 @@ import { ListaServiceContratadosProviderComponent } from './lista-service-contra
     ButtonModule,
     ToggleButtonModule
   ],
-
   exports: [
-    ListaServiceContratadosProviderComponent
+    ListaServiceContratadosClientComponent
   ],
-
 })
-export class ListaServiceContratadosProviderModule { }
+export class ListaServiceContratadosClientModule {}

@@ -40,8 +40,6 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
     });
 
 
-
-
   }
 
   listContratadosProvider()  {

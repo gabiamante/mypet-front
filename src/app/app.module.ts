@@ -1,3 +1,4 @@
+
 import { ListaServiceContratadosProviderModule } from './lista-service-contratados-provider/lista-service-contratados-provider.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -26,6 +27,8 @@ import { TelaInicialLoginModule } from './tela-inicial-login/tela-inicial-login.
 import { CriacaoAgendaPetproviderModule } from './petservice/criacao-agenda-petprovider/criacao-agenda-petprovider.module';
 import { TempoAtendimentoAgendaPetproviderModule } from './petservice/tempo-atendimento-agenda-petprovider/tempo-atendimento-agenda-petprovider.module';
 import { ListaOpcoesHorariosServiceDisponiveisModule } from './lista-opcoes-horarios-service-disponiveis/lista-opcoes-horarios-service-disponiveis.module';
+import { ListaServiceContratadosClientModule } from './lista-service-contratados-client/lista-service-contratados-client.module';
+
 
 
 @NgModule({
@@ -34,7 +37,7 @@ import { ListaOpcoesHorariosServiceDisponiveisModule } from './lista-opcoes-hora
     CookieListComponent,
     LoginComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
 
   ],
   imports: [
@@ -51,7 +54,8 @@ import { ListaOpcoesHorariosServiceDisponiveisModule } from './lista-opcoes-hora
     CriacaoAgendaPetproviderModule,
     TempoAtendimentoAgendaPetproviderModule,
     ListaOpcoesHorariosServiceDisponiveisModule,
-    ListaServiceContratadosProviderModule
+    ListaServiceContratadosProviderModule,
+    ListaServiceContratadosClientModule
   ],
   providers: [AuthInterceptorProvider, ErrorInterceptorProvider,AuthService,
     StorageService, RoleGuardService

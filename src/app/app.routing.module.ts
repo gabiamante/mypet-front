@@ -27,6 +27,7 @@ import { CriacaoAgendaPetproviderComponent } from './petservice/criacao-agenda-p
 import { TempoAtendimentoAgendaPetproviderComponent } from './petservice/tempo-atendimento-agenda-petprovider/tempo-atendimento-agenda-petprovider.component';
 import { ListaOpcoesHorariosServiceDisponiveisComponent } from './lista-opcoes-horarios-service-disponiveis/lista-opcoes-horarios-service-disponiveis.component';
 import { PerfilPetClientComponent } from './tela-inicial-login/tela-inicial-pet-client/perfil-pet-client/perfil-pet-client.component';
+import { ListaServiceContratadosClientComponent } from './lista-service-contratados-client/lista-service-contratados-client.component';
 
 
 const routes: Routes = [
@@ -60,6 +61,7 @@ const routes: Routes = [
     // { path: 'agendar/criacao-petprovider', component: CriacaoAgendaPetproviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
     { path: 'agendar/criacao-petprovider', component: CriacaoAgendaPetproviderComponent},
     { path: 'contratados/petprovider', component: ListaServiceContratadosProviderComponent},
+    { path: 'contratados/petclient', component: ListaServiceContratadosClientComponent},
     { path: 'agendamento-pet-service/agendamento-pet-service/:id', component: ListaOpcoesHorariosServiceDisponiveisComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
 
     { path: '', pathMatch: 'full', redirectTo: '/home/home'},
