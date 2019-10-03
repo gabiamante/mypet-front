@@ -15,17 +15,17 @@ export class PerfilPetClientComponent implements OnInit {
   public pessoaFisica: PessoaFisica = new PessoaFisica();
 
   constructor(private pesquisarService: PesquisarService,
-              private petClientService: PessoaService, 
+              private petClientService: PessoaService,
               private router: Router) {
                 this.router = router;
           }
 
   ngOnInit() {
-    
+
     const token = localStorage.getItem("localUser")
     var obj = JSON.parse(token)
 
-    this.pesquisarService.buscarDetalhesPorEmail(obj.email).subscribe((retorno) => { 
+    this.pesquisarService.buscarDetalhesPorEmail(obj.email).subscribe((retorno) => {
       this.pessoaFisica = retorno;
     });
   }

@@ -17,7 +17,7 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
   varServiceContratados: ServiceContratados;
   jwtHelper: JwtHelper = new JwtHelper();
   varPetProvider: PessoaJuridica = new PessoaJuridica();
-  id;
+ id;
 
   // const objLogin;
   constructor(private serviceServiceContratados: ListaServiceContratadosProviderService,
@@ -28,11 +28,20 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
 
     const token = localStorage.getItem('localUser');
     const objLogin = JSON.parse(token);
-    this.getPessoaPorEmail(objLogin.email);
+   // this.getPessoaPorEmail(objLogin.email);
     //alert(JSON.stringify(this.getPessoaPorEmail(objLogin.email)));
     // console.log('objLogin.email: ' + objLogin.email);
     //alert(JSON.stringify(this.varPetProvider.email));
-    this.listContratadosProviderFiltro(this.varPetProvider);
+
+    this.serviceServiceContratados.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
+      this.varPetProvider = retorno;
+     this.id = alert(JSON.stringify(this.varPetProvider));
+     this.listContratadosProviderFiltro(this.varPetProvider);
+    });
+
+
+
+
   }
 
   listContratadosProvider()  {
@@ -42,17 +51,18 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
 
   listContratadosProviderFiltro(varPetProvider: PessoaJuridica)  {
     // console.log('component varPetProvider: ' + JSON.stringify(varPetProvider));
-    this.serviceServiceContratados.listContratadosProviderFiltro(varPetProvider.id + '')
+    this.serviceServiceContratados.listContratadosProviderFiltro(this.varPetProvider.id + "")
     .subscribe(res => this.lstServiceContratados = res);
   }
 
-
+  /**
   getPessoaPorEmail(email: string) {
    console.log('component varPetProvider: ' + JSON.stringify(email));
     this.serviceServiceContratados.buscarEmailLoginConjunto(email).subscribe(
       res => this.varPetProvider = res);
     console.log(this.varPetProvider);
   }
+  */
 
 
 }
