@@ -1,0 +1,95 @@
+<p-table [columns]="cols" [value]="listaPessoaJuridica" selectionMode="single"
+[(selection)]="pessoaJuridicaSelecionada"
+[paginator]="true" [rows]="15"  > <!--Abrir detalhe da celula (onRowSelect)="onRowSelect($event)"
+                                    dentro da p-table -->
+    <ng-template pTemplate="caption">
+        Clique em uma pessoas jurídicas para aprovação
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns; index as i" [pSortableColumn]="col.field">
+                {{col.header}}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns" let-i ="rowIndex">
+        <tr [pSelectableRow]="rowData"  expandableRows="true" (click) = "changeData(rowData)"
+            id="linhaSelecionada">
+
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}} <!--AQUI É MONTADA DINAMICAMENTE A TABELA-->
+
+            </td>
+
+        </tr>
+
+    </ng-template>
+
+    <ng-template pTemplate="summary" let-rowData>
+        <div style="text-align:left">
+           <!--
+
+           <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Aprovação"></button>
+           -->
+           <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save" ></button>
+        </div>
+    </ng-template>
+</p-table>
+
+<p-dialog header="PessoaJuridica Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '300px'}">
+    <div class="ui-g ui-fluid" *ngIf="pessoaJuridica ">
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="razaoSocial">Razão Social</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="razaoSocial" [(ngModel)]="pessoaJuridica.razaoSocial" disabled />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="year">CNPJ</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="cnpj" [(ngModel)]="pessoaJuridica.cnpj" disabled />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="brand">Telefone1</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="telefone1" [(ngModel)]="pessoaJuridica.telefone1" disabled />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="color">Telefone2</label>
+            </div>
+            <div class="ui-g-8" >
+                <input pInputText id="telefone2" [(ngModel)]="pessoaJuridica.telefone2" disabled />
+            </div>
+        </div>
+
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="color">Aprovar</label>
+            </div>
+            <div class="ui-g-8" >
+
+                <p-checkbox [(ngModel)]="pessoaJuridica.apartamento" binary="true" ></p-checkbox>
+            </div>
+        </div>
+
+
+    </div>
+
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+          <!--  <button type="button" pButton icon="fa fa-close" (click)="delete()" label="Delete"></button>-->
+            <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save" ></button>
+           <!-- <button type="button" pButton icon="fa fa-check" (click)="aprovar()" label="Aprovar" ></button>-->
+        </div>
+    </p-footer>
+</p-dialog>

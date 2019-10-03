@@ -1,0 +1,29 @@
+  <div class="card">
+      <h5 class="card-header">{{pessoa?.razaoSocial}}</h5>
+      <div class="card-body">
+          <label class="card-text">CNPJ: {{pessoa?.cpfOuCnpj}} </label><br/>
+          <label class="card-text">E-mail: {{pessoa?.email}} </label><br/>
+          <label class="card-text">Endereço: {{pessoa?.logradouro}} </label><br/>
+          <label class="card-text">Número: {{pessoa?.numero}} </label><br/>
+          <label class="card-text">Complemento: {{pessoa?.complemento}} </label><br/>
+          <label class="card-text">Bairro: {{pessoa?.bairro}}</label><br/>
+          <label class="card-text">Cidade: {{pessoa?.cidade}} </label><br/>
+          <label class="card-text">Estado: {{pessoa?.estado}} </label><br/>
+          <label class="card-text">Bairro: {{pessoa?.bairro}} </label><br/>
+          <label class="card-text">Descrição: {{pessoa?.descricaoPetShop}}</label><br/>
+          <label class="card-text">---------------------||---------------------</label><br/>
+          <label class="card-text">PetServices oferecidos</label><br/>
+          <label class="card-text">Banho: {{pessoa?.banho}}</label><br/>
+          <label class="card-text">Tosa: {{pessoa?.tosa}}</label><br/>
+          <label class="card-text">Loja: {{pessoa?.loja}}</label><br/>
+          <label class="card-text">Farmácia: {{pessoa?.farmacia}}</label><br/>
+          <label class="card-text">Vacinação: {{pessoa?.vacinacao}}</label><br/>
+          <label class="card-text">Consulta: {{pessoa?.consulta}}</label><br/>
+          <label class="card-text">Exames: {{pessoa?.exames}}</label><br/>
+          <label class="card-text">PetWalk: false</label><br/>          
+
+        <button pButton type="button" label="Agendar" (click)="agendar(pessoa)" style="margin-right: .25em"></button>
+        <button pButton type="button" label="Voltar" (click)="voltar()" class="ui-button-secondary"></button>
+      
+      </div>
+  </div>

@@ -32,52 +32,25 @@ export class MenuInicialAdminComponent implements OnInit {
         }];
     }
 
-    //PET CLIENT
-    public cadastrarPetClient(){
-      this.router.navigate(['petclients', 'cadastrar']);
+    
+
+    //APROVAÇÃO
+    public aprovarFornecedor(){
+      this.router.navigate(['aprovacao', 'pessoa']);
       }
-    public buscarPetClient(){
-      this.router.navigate(['petclients', 'buscar']);
-    }
+    //DELETAR
     public deletarPetClient(){
-      this.router.navigate(['petclients', 'deletar']);
-    }
-    public atualizarPetClient(){
-      this.router.navigate(['petclients', 'atualizar']);
-    }
-
-    //PET HOME
-    public cadastrarPetHome(){
-      this.router.navigate(['pethome', 'cadastrar']);
-    }
-
-    public buscarPetHome(){
-      this.router.navigate(['pethome', 'buscar']);
-    }
-
-    public deletarPetHome(){
-      this.router.navigate(['pethome', 'deletar']);
-    }
-
-    public atualizarPetHome(){
-      this.router.navigate(['pethome', 'atualizar']);
-    }
-
-    //PET SHOP
-    public atualizarPetShop(){
-      this.router.navigate(['petshop', 'atualizar']);
-    }
-
-    public cadastrarPetShop(){
-      this.router.navigate(['petshop', 'cadastrar']);
-    }
-
-    public buscarPetShop(){
-      this.router.navigate(['petshop', 'buscar']);
-    }
-
-    public deletarPetShop(){
-      this.router.navigate(['petshop', 'deletar']);
-    }
+      this.router.navigate(['administrador', 'deletar-cliente']);
+      }
+    public deletarPetProvider(){
+      this.router.navigate(['administrador', 'deletar-fornecedor']);
+      }
+    //BUSCAR
+    public buscarPetProvider(){
+      this.router.navigate(['administrador', 'buscar-fornecedor']);
+      }
+      public buscarPetClient(){
+        this.router.navigate(['administrador', 'buscar-cliente']);
+        }
 
 }

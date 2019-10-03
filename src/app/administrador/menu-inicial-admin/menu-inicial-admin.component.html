@@ -1,82 +1,23 @@
-<br/>
-<p-menu [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'" #menu [popup]="true" [model]="items"></p-menu>
-<button type="button" pButton icon="fa fa-fw fa-list" label="Menu" (click)="menu.toggle($event)"></button>
 
 <br/>
 <br/>
 <div class="p-grid">
     <div class="p-col">
-        <p-panel header="PetClient">
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="cadastrarPetClient()" label="Criar PetClient"></button>
+        <p-panel header="Administração">
+            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="aprovarFornecedor()" label="Aprovar PetProviders"></button>
+            <br/>
+            <br/>
+            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="deletarPetClient()" label="Desabilitar PetClient"></button>
+            <br/>
+            <br/>
+            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="deletarPetProvider()" label="Desabilitar PetProvider"></button>
             <br/>
             <br/>
             <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="buscarPetClient()" label="Buscar PetClient"></button>
             <br/>
             <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="deletarPetClient()" label="Deletar PetClient"></button>
+            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="buscarPetProvider()" label="Buscar PetProvider"></button>
             <br/>
-            <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="atualizarPetClient()" label="Atualizar PetClient"></button>
-            <br/>
-        </p-panel>
-    </div>
-    <div class="p-col">
-        <p-panel header="PetVet">
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="cadastrarPetShop()" label="Criar PetVet"></button>
-            <br/>
-            <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="buscarPetShop()" label="Buscar PetVet"></button>
-            <br/>
-            <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="deletarPetShop()" label="Deletar PetVet"></button>
-            <br/>
-            <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="atualizarPetShop()" label="Atualizar PetVet"></button>
-            <br/>
-        </p-panel>
-    </div>
-    <div class="p-col">
-        <p-panel header="PetShop">
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="cadastrarPetClient()" label="Criar PetShop"></button>
-            <br/>
-            <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="buscarPetClient()" label="Buscar PetShop"></button>
-            <br/>
-            <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="deletarPetClient()" label="Deletar PetShop"></button>
-            <br/>
-            <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="atualizarPetClient()" label="Atualizar PetShop"></button>
-            <br/>
-        </p-panel>
-    </div>
-    <div class="p-col">
-        <p-panel header="PetHome">
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="cadastrarPetHome()" label="Criar PetHome"></button>
-            <br/>
-            <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="buscarPetHome()" label="Buscar PetHome"></button>
-            <br/>
-            <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="deletarPetHome()" label="Deletar PetHome"></button>
-            <br/>
-            <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="atualizarPetHome()" label="Atualizar PetHome"></button>
-            <br/>
-        </p-panel>
-    </div>
-    <div class="p-col">
-        <p-panel header="PetWalker">
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="cadastro()" label="Criar PetWalker"></button>
-            <br/>
-            <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="buscar()" label="Buscar PetWalker"></button>
-            <br/>
-            <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="buscar()" label="Deletar PetWalker"></button>
-            <br/>
-            <br/>
-            <button pButton type="button" class="ui-button-raised ui-button-rounded" (click)="atualizar()" label="Atualizar PetWalker"></button>
             <br/>
         </p-panel>
     </div>

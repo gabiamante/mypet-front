@@ -1,0 +1,97 @@
+import { Injectable } from '@angular/core';
+import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { PessoaFisica } from './pessoa-fisica';
+import { PessoaJuridica } from './pessoa-juridica';
+import { Observable, throwError } from 'rxjs';
+
+
+const API = 'http://localhost:8080';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PessoaService {
+
+  constructor(private http: HttpClient) {}
+
+        listPessoaFisica() {
+                return this.http
+                .get<PessoaFisica[]>(API + '/pessoafisica');
+        }
+
+        listPessoaJuridica() {
+          return this.http
+          .get<PessoaJuridica[]>(API + '/pessoajuridica');
+        }
+
+        buscarEmailLoginConjunto(email: string){  
+          return this.http.get(API + '/loginConjunto/email?value=' + email);
+        }
+
+
+        //mesmo a id sendo number, fazemos ela em string para poder concatenar depois
+        public deletePessoaFisica(id: string) {
+                return this.http.delete(API + '/pessoafisica/' + id);
+                }
+
+        //DELETE NÃO LOGICO
+        softDeletePessoaFisica(varPessoaFisica: PessoaFisica): Observable<PessoaFisica> {
+          const url = `${API}/pessoafisica/${varPessoaFisica.id}`;
+          varPessoaFisica.active = false;
+          return this.http.put<PessoaFisica>(url, varPessoaFisica);
+        }
+
+                //DELETE NÃO LOGICO
+        softDeletePessoaJuridica(varPessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
+          const url = `${API}/pessoajuridica/${varPessoaJuridica.id}`;
+          console.log('url: ' + url);
+          varPessoaJuridica.active = false;
+          return this.http.put<PessoaJuridica>(url, varPessoaJuridica);
+                }
+
+        public deletePessoaJuridica(id: string) {
+                return this.http.delete(API + '/pessoajuridica/' + id);
+                  }
+
+        public salvarPessoaFisica(pessoaFisica: PessoaFisica): Observable<PessoaFisica> {
+                pessoaFisica.tipoPerfil = 1;
+                //alert(JSON.stringify(pessoaFisica));
+                return this.http.post<PessoaFisica>(API + '/pessoafisica', pessoaFisica);
+        }
+
+        public salvarPessoaJuridica(pessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
+          pessoaJuridica.tipoPerfil = 2;
+          //alert(JSON.stringify(pessoaJuridica));
+          return this.http.post<PessoaJuridica>(API + '/pessoajuridica', pessoaJuridica);
+        }
+
+        public atualizaPessoaJuridica(pessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
+          httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
+          return this.http.put<PessoaJuridica>(API + '/pessoajuridica/' + pessoaJuridica.id, pessoaJuridica, httpOptions).pipe();
+        }
+        
+        atualizaPessoaFisica(pessoaFisica: PessoaFisica): Observable<PessoaFisica> {
+          httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
+          return this.http.put<PessoaFisica>(API + '/pessoafisica/' + pessoaFisica.id, pessoaFisica, httpOptions).pipe();
+        }
+    
+        private handleError(error: HttpErrorResponse) {
+          if (error.error instanceof ErrorEvent) {
+            // A client-side or network error occurred. Handle it accordingly.
+            console.error('An error occurred:', error.error.message);
+          } else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            console.error(
+              `Backend returned code ${error.status}, ` +
+              `body was: ${error.error}`);
+          }
+          // return an observable with a user-facing error message
+          return throwError(
+            'Something bad happened; please try again later.');
+        };
+}
