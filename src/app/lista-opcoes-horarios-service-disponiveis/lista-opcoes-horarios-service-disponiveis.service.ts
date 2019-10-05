@@ -23,9 +23,8 @@ export class ListaOpcoesHorariosServiceDisponiveisService {
     .get<CriacaoAgendaProvider[]>(API + '/agendaprovider');
   }
 
-  listAgendaProviderFiltro(): Observable<CriacaoAgendaProvider[]>  {
-    return this.http
-    .get<CriacaoAgendaProvider[]>(API + '/agendaprovider');
+  listAgendaProviderFiltrar(idProvider: string): Observable<CriacaoAgendaProvider[]>  {
+    return this.http.get<CriacaoAgendaProvider[]>(API + '/agendaprovider/idPetProvider?value=' + idProvider);
   }
 
 

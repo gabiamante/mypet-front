@@ -70,5 +70,17 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
     }
   }
 
+  gravarStatusCancelado() {
+    for (const element of this.lstServiceContratados) {
+      if (element.cancelado) {
+        this.serviceServiceContratados.gravarStatusFinalizado(element).subscribe(
+          response => {
+            alert('O serviço selecionado foi cancelado.');
+            location.reload();
+            });
+        }
+      }
+  }
+
 
 }

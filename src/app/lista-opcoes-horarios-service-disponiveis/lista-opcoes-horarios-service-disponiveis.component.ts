@@ -6,6 +6,7 @@ import { CriacaoAgendaProvider } from './../petservice/criacao-agenda-petprovide
 import { Component, OnInit, Input } from '@angular/core';
 import { ListaOpcoesHorariosServiceDisponiveisService } from './lista-opcoes-horarios-service-disponiveis.service';
 import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-lista-opcoes-horarios-service-disponiveis',
@@ -17,6 +18,7 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
   varCriacaoAgendaProvider: CriacaoAgendaProvider;
   @Input() lstCriacaoAgendaProvider: CriacaoAgendaProvider[] = [];
   varServiceContratados: ServiceContratados;
+  idProvider: string;
 
 
   constructor(private serviceCriacaoAgendaProvider: ListaOpcoesHorariosServiceDisponiveisService
@@ -26,15 +28,15 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
     }
 
   ngOnInit() {
-    const varAux = this.activatedRoute.snapshot.params.id;
-    // alert(varAux);
-    this.listAgendaProvider();
+    this.idProvider = this.activatedRoute.snapshot.params.id;
+    this.listAgendaProviderFiltrar(this.idProvider);
   }
 
-  listAgendaProvider()  {
-    this.serviceCriacaoAgendaProvider.listAgendaProvider()
-    .subscribe(res => this.lstCriacaoAgendaProvider = res);
-  }
+  listAgendaProviderFiltrar(idProvider: string)  {
+    this.serviceCriacaoAgendaProvider.listAgendaProviderFiltrar(idProvider).subscribe(
+      res => this.lstCriacaoAgendaProvider = res);
+
+    };
 
   salvaAgendaProviderContratado(lstCriacaoAgendaProvider: CriacaoAgendaProvider[]) {
     const lstContratadoAgendaProvider: ServiceContratados[] = [];

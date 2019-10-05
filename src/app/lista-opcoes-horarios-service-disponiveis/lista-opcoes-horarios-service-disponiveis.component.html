@@ -1,4 +1,3 @@
-
 <h3 class="first">Horários disponíveis deste provider</h3>
 <p-table [value]="lstCriacaoAgendaProvider">
     <ng-template pTemplate="header">
@@ -8,7 +7,7 @@
             <th>Dia da semana</th>
             <th>Dia</th>
             <th>Serviço</th>
-            <th>Clique para contrar este horário</th>
+            <th>Clique para contratar este horário</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-varCriacaoAgendaProvider>
@@ -25,4 +24,3 @@
           </ng-template>
         </p-table>
         <button (click)="salvaAgendaProviderContratado(lstCriacaoAgendaProvider)" label="Listas">Agendar</button>
-

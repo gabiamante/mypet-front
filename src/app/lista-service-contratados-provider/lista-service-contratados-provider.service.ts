@@ -23,23 +23,21 @@ export class ListaServiceContratadosProviderService {
     .get<ServiceContratados[]>(API + '/contratadoprovider');
   }
 
-  // http://localhost:8080/contratadoprovider/idPetProvider?value=8
-
   listContratadosProviderFiltro(id: string): Observable<ServiceContratados[]>  {
     const url = API + '/contratadoprovider/idPetProvider?value=' + id;
-    // console.log('url: ' + url);
     return this.http
     .get<ServiceContratados[]>(url);
   }
 
   buscarEmailLoginConjunto(email: string): Observable<any> {
-    // console.log('email: ' + email);
-    // console.log('url: ' + API + '/loginConjunto/email?value=' + email);
     return this.http.get(API + '/loginConjunto/email?value=' + email);
   }
 
-  gravarStatusFinalizado(servicoFinalizado: ServiceContratados){
+  gravarStatusFinalizado(servicoFinalizado: ServiceContratados) {
     return this.http.put(API + '/contratadoprovider/' + servicoFinalizado.id, servicoFinalizado);
+  }
+  gravarStatusCancelado(servicoCancelado: ServiceContratados) {
+    return this.http.put(API + '/contratadoprovider/' + servicoCancelado.id, servicoCancelado);
   }
 
 }

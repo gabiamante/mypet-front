@@ -16,11 +16,11 @@ export class TelaInicialPetProviderComponent implements OnInit {
         this.items = [{
             label: 'PetProvider',
             items: [
-                {label: 'Meu Perfil', icon: 'pi pi-fw pi-user', url: 'home/home'},
-                {label: 'Minha Agenda', icon: 'pi pi-fw pi-calendar-plus', url: 'agendar/criacao-petprovider'},
-                {label: 'Meu Anúncio', icon: 'pi pi-fw pi-globe'},
-                {label: 'Publicar Agenda', icon: 'pi pi-fw pi-calendar-plus'},
-                {label: 'Publicar Anúncio', icon: 'pi pi-fw pi-globe'}
+              {label: 'Meu Perfil', icon: 'pi pi-fw pi-user', url: 'home/home'},
+              {label: 'Publicar Agenda', icon: 'pi pi-fw pi-calendar-plus', url: 'agendar/criacao-petprovider'},
+              {label: 'Minha Agenda', icon: 'pi pi-fw pi-calendar-plus', url: 'contratados/petprovider'},
+              {label: 'Meu Anúncio', icon: 'pi pi-fw pi-globe'},
+              {label: 'Publicar Anúncio', icon: 'pi pi-fw pi-globe'}
             ]
         }
       ];
