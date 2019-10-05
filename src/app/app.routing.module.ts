@@ -1,3 +1,4 @@
+import { HistoricoPetproviderComponent } from './historico-petprovider/historico-petprovider.component';
 import { ListaServiceContratadosProviderComponent } from './lista-service-contratados-provider/lista-service-contratados-provider.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, Router } from '@angular/router';
@@ -28,6 +29,7 @@ import { TempoAtendimentoAgendaPetproviderComponent } from './petservice/tempo-a
 import { ListaOpcoesHorariosServiceDisponiveisComponent } from './lista-opcoes-horarios-service-disponiveis/lista-opcoes-horarios-service-disponiveis.component';
 import { PerfilPetClientComponent } from './tela-inicial-login/tela-inicial-pet-client/perfil-pet-client/perfil-pet-client.component';
 import { ListaServiceContratadosClientComponent } from './lista-service-contratados-client/lista-service-contratados-client.component';
+import { HistoricoPetclientComponent } from './historico-petclient/historico-petclient.component';
 
 
 const routes: Routes = [
@@ -62,6 +64,10 @@ const routes: Routes = [
     { path: 'agendar/criacao-petprovider', component: CriacaoAgendaPetproviderComponent},
     { path: 'contratados/petprovider', component: ListaServiceContratadosProviderComponent},
     { path: 'contratados/petclient', component: ListaServiceContratadosClientComponent},
+
+    { path: 'historico/petclient', component: HistoricoPetclientComponent},
+    { path: 'historico/petprovider', component: HistoricoPetproviderComponent},
+
     { path: 'agendamento-pet-service/agendamento-pet-service/:id', component: ListaOpcoesHorariosServiceDisponiveisComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
 
     { path: '', pathMatch: 'full', redirectTo: '/home/home'},

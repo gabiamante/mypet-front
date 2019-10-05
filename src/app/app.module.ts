@@ -1,3 +1,5 @@
+import { HistoricoPetproviderModule } from './historico-petprovider/historico-petprovider.module';
+import { HistoricoPetclientModule } from './historico-petclient/historico-petclient.module';
 
 import { ListaServiceContratadosProviderModule } from './lista-service-contratados-provider/lista-service-contratados-provider.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -55,7 +57,9 @@ import { ListaServiceContratadosClientModule } from './lista-service-contratados
     TempoAtendimentoAgendaPetproviderModule,
     ListaOpcoesHorariosServiceDisponiveisModule,
     ListaServiceContratadosProviderModule,
-    ListaServiceContratadosClientModule
+    ListaServiceContratadosClientModule,
+    HistoricoPetclientModule,
+    HistoricoPetproviderModule
   ],
   providers: [AuthInterceptorProvider, ErrorInterceptorProvider,AuthService,
     StorageService, RoleGuardService

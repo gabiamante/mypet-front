@@ -1,0 +1,27 @@
+<h3 class="first">Histórico de atendimento</h3>
+<p-table [value]="lstServiceContratados">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Tempo início</th>
+            <th>Tempo fim</th>
+            <th>Dia da semana</th>
+            <th>Dia</th>
+            <th>Serviço</th>
+            <th>Contratante</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-varServiceContratados>
+        <tr>
+            <td>{{varServiceContratados.tempoInicio}}</td>
+            <td>{{varServiceContratados.tempoFim}}</td>
+            <td>{{varServiceContratados.siglaDia}}</td>
+            <td>{{varServiceContratados.dataCalendarioCorrecao}}</td>
+            <td>{{varServiceContratados.tipoService}}</td>
+            <td>{{varServiceContratados.nomeCliente}}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+
+        <!--
+        <button (click)="gravarStatusFinalizado()" label="Finalizar">Finalizar</button>
+        -->

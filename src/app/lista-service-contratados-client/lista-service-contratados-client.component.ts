@@ -24,8 +24,7 @@ export class ListaServiceContratadosClientComponent implements OnInit {
  id;
 
   // const objLogin;
-  constructor(private serviceServiceContratados: ListaServiceContratadosClientService,
-    private servicePetProvider: PessoaService) {
+  constructor(private serviceServiceContratados: ListaServiceContratadosClientService) {
      }
 
   ngOnInit() {
@@ -61,7 +60,7 @@ export class ListaServiceContratadosClientComponent implements OnInit {
         // console.log(JSON.stringify(element));
         this.serviceServiceContratados.gravarStatusCanecelado(element).subscribe(
           response => {
-            alert('ok');
+            location.reload();
           }
         );
       }

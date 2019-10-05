@@ -20,18 +20,13 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
  id;
 
   // const objLogin;
-  constructor(private serviceServiceContratados: ListaServiceContratadosProviderService,
-    private servicePetProvider: PessoaService) {
+  constructor(private serviceServiceContratados: ListaServiceContratadosProviderService) {
      }
 
   ngOnInit() {
 
     const token = localStorage.getItem('localUser');
     const objLogin = JSON.parse(token);
-   // this.getPessoaPorEmail(objLogin.email);
-  // alert(JSON.stringify(this.getPessoaPorEmail(objLogin.email)));
-  // console.log('objLogin.email: ' + objLogin.email);
-  // alert(JSON.stringify(this.varPetProvider.email));
 
     this.serviceServiceContratados.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
       this.varPetProvider = retorno;
@@ -68,7 +63,7 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
     if (element.status) {
       this.serviceServiceContratados.gravarStatusFinalizado(element).subscribe(
         response => {
-          alert('O serviço selecionado foi finalizado.');
+          // alert('O serviço selecionado foi finalizado.');
           location.reload();
           });
       }
