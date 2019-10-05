@@ -33,10 +33,13 @@ export class ListaServiceContratadosProviderService {
   }
 
   buscarEmailLoginConjunto(email: string): Observable<any> {
-    console.log('email: ' + email);
-    console.log('url: ' + API + '/loginConjunto/email?value=' + email);
+    // console.log('email: ' + email);
+    // console.log('url: ' + API + '/loginConjunto/email?value=' + email);
     return this.http.get(API + '/loginConjunto/email?value=' + email);
   }
 
+  gravarStatusFinalizado(servicoFinalizado: ServiceContratados){
+    return this.http.put(API + '/contratadoprovider/' + servicoFinalizado.id, servicoFinalizado);
+  }
 
 }

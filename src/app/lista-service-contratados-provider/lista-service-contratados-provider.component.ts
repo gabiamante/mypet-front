@@ -29,13 +29,13 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
     const token = localStorage.getItem('localUser');
     const objLogin = JSON.parse(token);
    // this.getPessoaPorEmail(objLogin.email);
-    //alert(JSON.stringify(this.getPessoaPorEmail(objLogin.email)));
-    // console.log('objLogin.email: ' + objLogin.email);
-    //alert(JSON.stringify(this.varPetProvider.email));
+  // alert(JSON.stringify(this.getPessoaPorEmail(objLogin.email)));
+  // console.log('objLogin.email: ' + objLogin.email);
+  // alert(JSON.stringify(this.varPetProvider.email));
 
     this.serviceServiceContratados.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
       this.varPetProvider = retorno;
-     this.id = alert(JSON.stringify(this.varPetProvider));
+     // this.id = alert(JSON.stringify(this.varPetProvider));
      this.listContratadosProviderFiltro(this.varPetProvider);
     });
 
@@ -51,6 +51,7 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
     // console.log('component varPetProvider: ' + JSON.stringify(varPetProvider));
     this.serviceServiceContratados.listContratadosProviderFiltro(this.varPetProvider.id + "")
     .subscribe(res => this.lstServiceContratados = res);
+    console.log('this.lstServiceContratados: ' + this.lstServiceContratados);
   }
 
   /**
@@ -61,6 +62,18 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
     console.log(this.varPetProvider);
   }
   */
+
+ gravarStatusFinalizado() {
+  for (const element of this.lstServiceContratados) {
+    if (element.status) {
+      this.serviceServiceContratados.gravarStatusFinalizado(element).subscribe(
+        response => {
+          alert('O serviço selecionado foi finalizado.');
+          location.reload();
+          });
+      }
+    }
+  }
 
 
 }

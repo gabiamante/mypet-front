@@ -11,6 +11,7 @@ export class ServiceContratados  {
   idPetProvider = '';
   dataCalendarioCorrecao = '';
   status = false;
+  cancelado = false;
 
   constructor() {
     this.id = 0;
@@ -25,5 +26,6 @@ export class ServiceContratados  {
     this.idPetProvider = '';
     this.dataCalendarioCorrecao = '';
     this.status = false;
+    this.cancelado = false;
   }
 }

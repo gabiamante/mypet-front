@@ -38,5 +38,15 @@ export class ListaServiceContratadosClientService {
     return this.http.get(API + '/loginConjunto/email?value=' + email);
   }
 
+  // gravarStatusCanecelado(varServiceContratados: ServiceContratados)  {
+  //   return this.http.put();
+  // }
 
+
+  gravarStatusCanecelado(varServiceContratados: ServiceContratados): Observable<ServiceContratados> {
+    const url = `${API}/contratadoprovider/${varServiceContratados.id}`;
+    console.log('varServiceContratados url: ' + url);
+    varServiceContratados.cancelado = true;
+    return this.http.put<ServiceContratados>(url, varServiceContratados);
+          }
 }

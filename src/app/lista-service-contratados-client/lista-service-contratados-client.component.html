@@ -10,7 +10,7 @@
             <th>Dia</th>
             <th>Serviço</th>
             <th>Contratante</th>
-            <th>Clique para finalizar o serviço</th>
+            <th>Clique para Cancelar o serviço</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-varServiceContratados>
@@ -21,13 +21,12 @@
             <td>{{varServiceContratados.dataCalendarioCorrecao}}</td>
             <td>{{varServiceContratados.tipoService}}</td>
             <td>{{varServiceContratados.nomeProvider}}</td>
-            <td><p-toggleButton [(ngModel)]="varServiceContratados.status"
-              onLabel="Finalizado" offLabel="Andamento" onIcon="pi; pi-check" offIcon="pi pi-times"
+            <td><p-toggleButton [(ngModel)]="varServiceContratados.cancelado"
+              onLabel="Cancelado" offLabel="X" onIcon="pi; pi-check" offIcon="pi pi-times"
               [style]="{'width':'150px'}"></p-toggleButton></td>
             </tr>
           </ng-template>
         </p-table>
-        <!--
-        <button (click)="salvaAgendaProviderContratado(lstCriacaoAgendaProvider)" label="Listas">Agendar</button>
-        -->
+
+        <button (click)="gravarStatusCanecelado(lstServiceContratados)" label="Cancelar">Cancelar</button>
 

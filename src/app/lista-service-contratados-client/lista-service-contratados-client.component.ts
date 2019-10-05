@@ -6,6 +6,7 @@ import {ListaServiceContratadosClientService } from './lista-service-contratados
 import { ServiceContratados } from '../lista-service-contratados/lista-service-contratados';
 import { Input, Component, OnInit } from '@angular/core';
 import { PessoaFisica } from '../pessoa/pessoa-fisica';
+import { Alert } from 'selenium-webdriver';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class ListaServiceContratadosClientComponent implements OnInit {
   varServiceContratados: ServiceContratados;
   jwtHelper: JwtHelper = new JwtHelper();
   varPetClient: PessoaFisica = new PessoaFisica();
+  serviceListaServiceContratadosClientService: ListaServiceContratadosClientService;
  id;
 
   // const objLogin;
@@ -34,7 +36,7 @@ export class ListaServiceContratadosClientComponent implements OnInit {
 
     this.serviceServiceContratados.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
       this.varPetClient = retorno;
-     this.id = alert(JSON.stringify(this.varPetClient));
+     this.id = JSON.stringify(this.varPetClient);
      this.listContratadosProviderFiltro(this.varPetClient);
     });
 
@@ -48,8 +50,22 @@ export class ListaServiceContratadosClientComponent implements OnInit {
 
   listContratadosProviderFiltro(varPetProvider: PessoaFisica)  {
     // console.log('component varPetProvider: ' + JSON.stringify(varPetProvider));
-    this.serviceServiceContratados.listContratadosClientFiltro(this.varPetClient.id + "")
+    this.serviceServiceContratados.listContratadosClientFiltro(this.varPetClient.id + '')
     .subscribe(res => this.lstServiceContratados = res);
+  }
+
+  gravarStatusCanecelado(lstServiceContratados: ServiceContratados[])  {
+
+    for (const element of lstServiceContratados)  {
+      if (element.cancelado)  {
+        // console.log(JSON.stringify(element));
+        this.serviceServiceContratados.gravarStatusCanecelado(element).subscribe(
+          response => {
+            alert('ok');
+          }
+        );
+      }
+    }
   }
 
 

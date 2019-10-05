@@ -57,7 +57,8 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
         this.serviceCriacaoAgendaProvider.salvarEmServicosContratados(varContratadoAgendaProvider)
         .subscribe((res) => {
           this.varServiceContratados = res;
-          alert('salvo sucesso');
+          alert('O serviço foi contratado com sucesso!');
+            window.location.href = 'contratados/petclient';
           });
 
 
