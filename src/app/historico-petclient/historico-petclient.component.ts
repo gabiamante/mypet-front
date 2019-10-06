@@ -1,3 +1,4 @@
+import { HistoricoPetclientService } from './historico-petclient.service';
 import { PessoaFisica } from './../pessoa/pessoa-fisica';
 import { ListaServiceContratadosClientService } from './../lista-service-contratados-client/lista-service-contratados-client.service';
 import { ServiceContratados } from './../lista-service-contratados/lista-service-contratados';
@@ -14,7 +15,7 @@ export class HistoricoPetclientComponent implements OnInit {
   serviceListaServiceContratadosClientService: ListaServiceContratadosClientService;
   varPetClient: PessoaFisica = new PessoaFisica();
 
-  constructor(private serviceServiceContratados: ListaServiceContratadosClientService) { }
+  constructor(private serviceServiceContratados: HistoricoPetclientService) { }
 
   ngOnInit() {
 

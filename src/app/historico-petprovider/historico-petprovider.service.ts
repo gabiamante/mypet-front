@@ -26,4 +26,8 @@ export class HistoricoPetproviderService {
     buscarEmailLoginConjunto(email: string): Observable<any> {
       return this.http.get(API + '/loginConjunto/email?value=' + email);
     }
+
+    gravarStatusFinalizado(servicoFinalizado: ServiceContratados) {
+      return this.http.put(API + '/contratadoprovider/' + servicoFinalizado.id, servicoFinalizado);
+    }
 }

@@ -22,6 +22,7 @@ export class CriacaoAgendaProvider {
   idPetProvider = '';
   dataCalendario = new Date();
   dataCalendarioCorrecao = '';
+  escolhido = false;
 
   constructor() {
     this.time = this.today.getHours() + ':' + this.today.getMinutes();
@@ -46,5 +47,6 @@ export class CriacaoAgendaProvider {
     this.idPetProvider = '';
     this.dataCalendario = null;
     this.dataCalendarioCorrecao = '';
+    this.escolhido = false;
   }
 }

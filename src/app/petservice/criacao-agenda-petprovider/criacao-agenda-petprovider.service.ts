@@ -19,12 +19,19 @@ export class CriacaoAgendaPetproviderService {
   constructor(private http: HttpClient) { }
 
   salvarCriacaoAgendaProvider(lstCriacaoAgendaProviderToAttach: CriacaoAgendaProvider[]): Observable<any> {
-    alert(JSON.stringify(lstCriacaoAgendaProviderToAttach));
+    // alert(JSON.stringify(lstCriacaoAgendaProviderToAttach));
     return this.http.post(API + '/agendaProvider/', lstCriacaoAgendaProviderToAttach);
   }
 
   salvarCriacaoAgendaProviderTeste(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider): Observable<any> {
-    alert(JSON.stringify(varCriacaoAgendaProviderToAttach));
+    // alert(JSON.stringify(varCriacaoAgendaProviderToAttach));
     return this.http.post(API + '/agendaprovider/', varCriacaoAgendaProviderToAttach);
   }
+
+
+  // atualizaEscolhido(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
+  //   const url = `${API}/agendaprovider/${varCriacaoAgendaProviderToAttach.id}`;
+  //   varCriacaoAgendaProviderToAttach.escolhido = true;
+  //   return this.http.put(url, varCriacaoAgendaProviderToAttach);
+  // }
 }

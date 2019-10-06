@@ -62,14 +62,12 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
           alert('O serviço foi contratado com sucesso!');
             window.location.href = 'contratados/petclient';
           });
-
-
+          element.escolhido = true;
+          this.serviceCriacaoAgendaProvider.atualizaEscolhido(element).subscribe(res => { });
           // this.serviceCriacaoAgendaProvider.deleteCriacaoAgendaProvider(varContratadoAgendaProvider.idPetProvider)
           // .subscribe(res => this.listAgendaProvider());
       }
     }
-
-
   }
 
 
