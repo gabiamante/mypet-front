@@ -33,6 +33,11 @@ export class ListaOpcoesHorariosServiceDisponiveisService {
     return this.http.post<ServiceContratados>(API + '/contratadoprovider/', varContratadosAgendaProvider);
   }
 
+   // PARA SALVAR UMA LISTA INTEIRA DE UMA VEZ
+  // salvarListaEmServicosContratados(lstContratadosAgendaProvider: ServiceContratados[]): Observable<ServiceContratados> {
+    //   return this.http.post<ServiceContratados>(API + '/contratadoprovider/', lstContratadosAgendaProvider);
+    // }
+
   //DELETE NÃO LOGICO
   softDeleteCriacaoAgendaProvider(varContratadosAgendaProvider: CriacaoAgendaProvider): Observable<CriacaoAgendaProvider> {
     const url = `${API}/agendaprovider/${varContratadosAgendaProvider.id}`;
@@ -48,7 +53,7 @@ export class ListaOpcoesHorariosServiceDisponiveisService {
   atualizaEscolhido(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
     const url = `${API}/agendaprovider/${varCriacaoAgendaProviderToAttach.id}`;
     varCriacaoAgendaProviderToAttach.escolhido = true;
-    alert(JSON.stringify(varCriacaoAgendaProviderToAttach));
+    //alert(JSON.stringify(varCriacaoAgendaProviderToAttach));
       return this.http.put(url, varCriacaoAgendaProviderToAttach);
       }
 

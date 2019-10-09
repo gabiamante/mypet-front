@@ -17,7 +17,8 @@ export class TelaInicialPetClientComponent implements OnInit {
           label: 'PetClient',
           items: [
               {label: 'Meu Perfil', icon: 'pi pi-fw pi-user', url: 'login/tela-inicial-pet-client/meu-perfil'},
-              {label: 'Minha agenda', icon: 'pi pi-fw pi-calendar', url: 'fullcalendar/provider'}
+              {label: 'Minha agenda', icon: 'pi pi-fw pi-calendar', url: 'contratados/petclient'},
+              {label: 'Histórico', icon: 'pi pi-fw pi-calendar', url: 'historico/petclient'}
           ]
       }
     ];

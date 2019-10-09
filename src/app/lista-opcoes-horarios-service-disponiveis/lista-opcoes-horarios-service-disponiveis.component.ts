@@ -56,18 +56,28 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
         varContratadoAgendaProvider.idPetProvider = element.idPetProvider;
         varContratadoAgendaProvider.dataCalendarioCorrecao = element.dataCalendarioCorrecao;
 
+        // PARA SALVAR UMA LISTA INTEIRA DE UMA VEZ
+        // lstContratadoAgendaProvider.push(varContratadoAgendaProvider);
+
+
+
         this.serviceCriacaoAgendaProvider.salvarEmServicosContratados(varContratadoAgendaProvider)
         .subscribe((res) => {
           this.varServiceContratados = res;
           alert('O serviço foi contratado com sucesso!');
             window.location.href = 'contratados/petclient';
           });
+
+
           element.escolhido = true;
           this.serviceCriacaoAgendaProvider.atualizaEscolhido(element).subscribe(res => { });
-          // this.serviceCriacaoAgendaProvider.deleteCriacaoAgendaProvider(varContratadoAgendaProvider.idPetProvider)
-          // .subscribe(res => this.listAgendaProvider());
       }
     }
+    // PARA SALVAR UMA LISTA INTEIRA DE UMA VEZ
+    // this.serviceCriacaoAgendaProvider.salvarListaEmServicosContratados(lstContratadoAgendaProvider).
+    // subscribe((res) => {
+    //   this.varServiceContratados = res
+    // });
   }
 
 
