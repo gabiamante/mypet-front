@@ -18,9 +18,9 @@ export class TableCrudAprovarPessssoa implements OnInit {
 
     constructor(private pessoaJuridicaService: PessoaService) {
      this.pessoaJuridica.razaoSocial = '' ;
-     this.pessoaJuridica.cpfOuCnpj = '' ;
-     this.pessoaJuridica.telefone1 = '' ;
-     this.pessoaJuridica.telefone2 = '' ;
+     this.pessoaJuridica.cpf = '' ;
+     this.pessoaJuridica.telefoneFixo = '' ;
+     this.pessoaJuridica.telefoneCelular = '' ;
      this.pessoaJuridica.logradouro = '' ;
      this.pessoaJuridica.numero = 0 ;
      this.pessoaJuridica. tipoPerfil = 0;
@@ -32,23 +32,22 @@ export class TableCrudAprovarPessssoa implements OnInit {
      this.pessoaJuridica.email = '' ;
      this.pessoaJuridica.senha = '' ;
      this.pessoaJuridica.fotoPerfil = '' ;
-     this.pessoaJuridica.petShop = false;
-     this.pessoaJuridica.farmacia = false;
-     this.pessoaJuridica.banho = false;
-     this.pessoaJuridica.tosa = false;
-     this.pessoaJuridica.loja = false;
-     this.pessoaJuridica.descricaoPetShop = '';
-     this.pessoaJuridica.petVet = false;
-     this.pessoaJuridica.vacinacao = false;
-     this.pessoaJuridica.consulta = false;
-     this.pessoaJuridica.exames = false;
-     this.pessoaJuridica.descricaoPetVet = '';
-     this.pessoaJuridica.petHome = false;
-     this.pessoaJuridica.apartamento = false;
-     this.pessoaJuridica.casa = false;
-     this.pessoaJuridica.fumante = false;
-     this.pessoaJuridica.telado = false;
-     this.pessoaJuridica.descricaoPetHome = '';
+     this.pessoaJuridica.banhoETosa = '';
+     this.pessoaJuridica.consulta = '';
+     this.pessoaJuridica.tosaExotica = '';
+     this.pessoaJuridica.vacinacao = '';
+     this.pessoaJuridica.cirurgiaGeral = '';
+     this.pessoaJuridica.hidratacao = '';
+     this.pessoaJuridica.penteadosArtisticos = '';
+     this.pessoaJuridica.acupuntura = '';
+     this.pessoaJuridica.spa = '';
+     this.pessoaJuridica.hotel = '';
+     this.pessoaJuridica.creche = '';
+     this.pessoaJuridica.taxi = '';
+     this.pessoaJuridica.ensaioFotografico = '';
+     this.pessoaJuridica.adestramento = '';
+     this.pessoaJuridica.massagem = '';
+     this.pessoaJuridica.petwalk = '';
     }
 
     ngOnInit() {
@@ -56,9 +55,9 @@ export class TableCrudAprovarPessssoa implements OnInit {
 
       this.cols = [
           { field: 'razaoSocial', header: 'Razao Social' },
-          { field: 'cpfOuCnpj', header: 'CNPJ' },
-          { field: 'telefone1', header: 'Telefone1' },
-          { field: 'telefone2', header: 'Telefone2' }
+          { field: 'cpf', header: 'CNPJ' },
+          { field: 'telefoneFixo', header: 'Telefone Fixo' },
+          { field: 'telefoneCelular', header: 'Telefone Celular' } 
       ];
   }
 
@@ -102,6 +101,4 @@ export class TableCrudAprovarPessssoa implements OnInit {
       }
       return pessoaJuridica;
   }
-
-
 }

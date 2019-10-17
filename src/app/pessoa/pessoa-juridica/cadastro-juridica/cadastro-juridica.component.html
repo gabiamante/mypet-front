@@ -8,8 +8,8 @@
         </div>
 
         <div class="form-group col-md-2">
-            <label for="cnpj">CNPJ:</label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.cnpj" required="required" pInputText placeholder="CNPJ">
+            <label for="CPF OU CNPJ">CPF OU CNPJ:</label>
+            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.cpf" required="required" pInputText placeholder="CPF OU CNPJ">
 
         </div>
         <div class="form-group col-md-2">
@@ -25,11 +25,11 @@
     <div class="form-row align-items-center">
         <div class="form-group col-md-2">
             <label for="telefone1">Telefone Fixo:</label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.telefone1" pInputText placeholder=" Telefone Fixo">
+            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.telefoneFixo" pInputText placeholder=" Telefone Fixo">
         </div>
         <div class="form-group col-md-2">
             <label for="telefone2">Celular:</label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.telefone2" required="required" pInputText placeholder=" Telefone Celular">
+            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.telefoneCelular" required="required" pInputText placeholder=" Telefone Celular">
         </div>
     </div>
 
@@ -101,40 +101,72 @@
 			<div class="container center_div">
 				<div class="form-row align-items-center">
 					<div class="form-group col-auto">
-						<p id="opcoesPetShop">Selecione seus PetServices: </p>
+						<p id="opcoesPetShop">Selecione os serviços que deseja prestar: </p>
 
-						<label for="farmacia"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.farmacia" binary="true"></p-checkbox>
-                        Farmácia
+						<label for="banhoETosa"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.banhoETosa" binary="true"></p-checkbox>
+                        Banho e Tosa
                         <br/>
-                        <label for="loja"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.loja" binary="true"></p-checkbox>
-                        Loja		
+                        <label for="consulta"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.consulta" binary="true"></p-checkbox>
+                        Consulta		
                         <br/>
-						<label for="banho"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.banho" binary="true"></p-checkbox>
-                        Banho
-                        <br/>
-						<label for="tosa"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.tosa" binary="true"></p-checkbox>
-                        Tosa
+						<label for="tosaExotica"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.tosaExotica" binary="true"></p-checkbox>
+                        Tosa Exótica
                         <br/>
 						<label for="vacinacao"></label>
 						<p-checkbox [(ngModel)]="pessoaJuridica.vacinacao" binary="true"></p-checkbox>
                         Vacinação
                         <br/>
-						<label for="consulta"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.consulta" binary="true"></p-checkbox>
-                        Consulta
+						<label for="cirurgiaGeral"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.cirurgiaGeral" binary="true"></p-checkbox>
+                        Cirurgia Geral
                         <br/>
-						<label for="exames"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.exames" binary="true"></p-checkbox>
-                        Exames		
+						<label for="hidratacao"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.hidratacao" binary="true"></p-checkbox>
+                        Hidratação
+                        <br/>
+						<label for="penteadosArtisticos"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.penteadosArtisticos" binary="true"></p-checkbox>
+                        Penteados Artísticos		
+                        <br/>
+                        <label for="acupuntura"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.acupuntura" binary="true"></p-checkbox>
+                        Acupuntura		
+                        <br/>
+                        <label for="spa"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.spa" binary="true"></p-checkbox>
+                        SPA	
+                        <br/>
+                        <label for="hotel"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.hotel" binary="true"></p-checkbox>
+                        Hotel		
+                        <br/>
+                        <label for="creche"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.creche" binary="true"></p-checkbox>
+                        Creche		
+                        <br/>
+                        <label for="taxi"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.taxi" binary="true"></p-checkbox>
+                        Táxi		
+                        <br/>
+                        <label for="ensaioFotografico"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.ensaioFotografico" binary="true"></p-checkbox>
+                        Ensaio Fotográfico		
+                        <br/>
+                        <label for="adestramento"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.adestramento" binary="true"></p-checkbox>
+                        Adestramento		
                         <br/>	
+                        <label for="massagem"></label>
+						<p-checkbox [(ngModel)]="pessoaJuridica.massagem" binary="true"></p-checkbox>
+                        Massagem		
+                        <br/>
                         <label for="petWalk"></label>
 						<p-checkbox [(ngModel)]="pessoaJuridica.petWalk" binary="true"></p-checkbox>
-                        PetWalk		
-                        <br/>				
+                        Pet Walk		
+                        <br/>					
 				</div>
 			</div>
 		</div>

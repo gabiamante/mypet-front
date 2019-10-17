@@ -18,38 +18,26 @@ export class AprovarPessoaComponent implements OnInit {
 
 
   displayDialog: boolean;
-
   statusPessoaJuridica: boolean;
-
  // @Input() pessoaJuridica: PessoaJuridica;
-
   pessoaJuridicaSelecionada: PessoaJuridica;
-
   novaPessoaJuridica: boolean;
-
   listaPessoaJuridica: PessoaJuridica[];
-
   datasource: PessoaJuridica[];
-
   cols: any[];
-
   aprovacaoChecked: boolean;
-
   expandedRowIndex: number;
-
   conteudoLinha: string;
 
-
-
   constructor(private pessoaJuridicaService: PessoaService,
-    private pessoaJuridica: PessoaJuridica = {id: null, razaoSocial: '', cpfOuCnpj: '',
-    telefone1: '', telefone2: '', logradouro: '', numero: 0, tipoPerfil: 0,
+    private pessoaJuridica: PessoaJuridica = {id: null, razaoSocial: '', cpf: '',
+    telefoneFixo: '', telefoneCelular: '', logradouro: '', numero: 0, tipoPerfil: 0,
     complemento: '', bairro: '', cidade: '', estado: '', cep: '', email: '',
-    senha: '', fotoPerfil: '', petShop: false, farmacia: false, banho: false,
-    tosa: false, loja: false,
-    descricaoPetShop: '', petVet: false, vacinacao: false, consulta: false,
-    exames: false, descricaoPetVet: '', petHome: false, apartamento: false,
-    casa: false, fumante: false, telado: false, descricaoPetHome: '', situacaoAprovacao: '',
+    senha: '', fotoPerfil: '', banhoETosa: '', consulta: '', tosaExotica: '',
+    vacinacao: '', cirurgiaGeral: '',
+    hidratacao: '', penteadosArtisticos: '', acupuntura: '', spa: '',
+    hotel: '', creche: '', taxi: '',
+    ensaioFotografico: '', adestramento: '', massagem: '', petwalk: '', situacaoAprovacao: '',
     checkStatus: false, active: true}){
 
   }
@@ -60,9 +48,9 @@ export class AprovarPessoaComponent implements OnInit {
 
     this.cols = [
         { field: 'razaoSocial', header: 'Razão Social' },
-        { field: 'cpfOuCnpj', header: 'CNPJ' },
-        { field: 'telefone1', header: 'Telefone' },
-        { field: 'telefone2', header: 'Celular' },
+        { field: 'cpf', header: 'CNPJ' },
+        { field: 'telefoneFixo', header: 'Telefone' },
+        { field: 'telefoneCelular', header: 'Celular' },
         { field: 'situacaoAprovacao', header: 'Situação' }
     ];
 
@@ -125,14 +113,15 @@ cloneCar(c: PessoaJuridica): PessoaJuridica {
 
   let varPessoaJuridica = new function () {
     this[this.pessoaJuridica] = {
-      id: null, razaoSocial: '', cpfOuCnpj: '', telefone1: '', telefone2: '',
-  logradouro: '', numero: 0, tipoPerfil: 0, complemento: '', bairro: '',
-  cidade: '', estado: '', cep: '', email: '', senha: '', fotoPerfil: '',
-  petShop: false, farmacia: false, banho: false, tosa: false, loja: false,
-  descricaoPetShop: '', petVet: false, vacinacao: false, consulta: false,
-  exames: false, descricaoPetVet: '', petHome: false, apartamento: false,
-  casa: false, fumante: false, telado: false, descricaoPetHome: '', situacaoAprovacao: '',
-  checkStatus: false, active: true};
+      id: null, razaoSocial: '', cpf: '', telefoneFixo: '', telefoneCelular: '',
+      logradouro: '', numero: 0, tipoPerfil: 0, complemento: '', bairro: '',
+      cidade: '', estado: '', cep: '', email: '', senha: '', fotoPerfil: '',
+      banhoETosa: '', consulta: '', tosaExotica: '',
+      vacinacao: '', cirurgiaGeral: '',
+      hidratacao: '', penteadosArtisticos: '', acupuntura: '', spa: '',
+      hotel: '', creche: '', taxi: '',
+      ensaioFotografico: '', adestramento: '', massagem: '', petwalk: '', descricaoPetHome: '', 
+      situacaoAprovacao: '', checkStatus: false, active: true};
   };
 // tslint:disable-next-line: forin
     for (const prop in c) {
@@ -170,6 +159,5 @@ changeData(rowData) {
 
 }
 
-
-
 }
+

@@ -8,7 +8,6 @@ import { MenuInicialAdminComponent } from './administrador/menu-inicial-admin/me
 import { HomeComponent } from './home/home/home.component';
 import { CadastroFisicaComponent } from './pessoa/pessoa-fisica/cadastro-fisica/cadastro-fisica.component';
 import { CadastroJuridicaComponent } from './pessoa/pessoa-juridica/cadastro-juridica/cadastro-juridica.component';
-import { FornecedoresComponent } from './home/fornecedores/fornecedores.component';
 import { QuemSomosComponent } from './home/quem-somos/quem-somos.component';
 import { DetalhesComponent } from './home/home/detalhes/detalhes.component';
 import { AprovarPessoaComponent } from './aprovacao/aprovar-pessoa/aprovar-pessoa.component';
@@ -30,15 +29,20 @@ import { ListaOpcoesHorariosServiceDisponiveisComponent } from './lista-opcoes-h
 import { PerfilPetClientComponent } from './tela-inicial-login/tela-inicial-pet-client/perfil-pet-client/perfil-pet-client.component';
 import { ListaServiceContratadosClientComponent } from './lista-service-contratados-client/lista-service-contratados-client.component';
 import { HistoricoPetclientComponent } from './historico-petclient/historico-petclient.component';
+import { BuscarFornecedoresComponent } from './home/buscar-fornecedores/buscar-fornecedores.component';
+import { PesquisarComponent } from './home/home/pesquisar/pesquisar.component';
+import { ResultadoFornecedoresComponent } from './home/resultado-fornecedores/resultado-fornecedores.component';
 
 
 const routes: Routes = [
     { path: 'home/home', component: HomeComponent},
-    { path: 'home/fornecedores', component: FornecedoresComponent},
     { path: 'home/quem-somos', component: QuemSomosComponent},
     { path: 'home/detalhes/:id', component: DetalhesComponent},
+    { path: 'resultado', component: ResultadoFornecedoresComponent },
 
     { path: 'login', component: LoginComponent},
+    
+    { path: 'teste', component: BuscarFornecedoresComponent },
 
     { path: 'aprovacao/pessoa', component: AprovarPessoaComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
 
@@ -55,7 +59,7 @@ const routes: Routes = [
 
     { path: 'fullcalendar/provider', component: FullCalendarProviderScheduleComponent },
 
-    { path: 'login/tela-inicial-pet-provider', component: TelaInicialPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
+    { path: 'login/tela-inicial-pet-provider', component: TelaInicialPetProviderComponent},
 
     { path: 'login/tela-inicial-pet-client', component: TelaInicialPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
     { path: 'login/tela-inicial-pet-client/meu-perfil', component: PerfilPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},

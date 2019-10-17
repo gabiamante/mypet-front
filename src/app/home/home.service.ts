@@ -47,4 +47,14 @@ export class PesquisarService {
       return this.http.get<PessoaFisica>(API + '/pessoafisica/email?value=' + email);
     }
 
+    buscarPetProvidersPorFiltro(pessoa: PessoaJuridica): Observable<PessoaJuridica[]>{
+
+    return this.http.get<PessoaJuridica[]>(API + '/pessoajuridica/filtro?bairro=' + pessoa.bairro + '&cidade=' + pessoa.cidade + '&estado=' + pessoa.estado + 
+    '&acupuntura=' + pessoa.acupuntura + '&adestramento=' + pessoa.adestramento + '&banhoETosa=' + pessoa.banhoETosa + '&cirurgiaGeral=' + 
+    pessoa.cirurgiaGeral + '&consulta=' + pessoa.consulta + '&creche=' + pessoa.creche + '&ensaioFotografico=' + pessoa.ensaioFotografico + 
+    '&hidratacao=' +  pessoa.hidratacao + '&hotel=' + pessoa.hotel + '&massagem=' + pessoa.massagem + 
+    '&penteadosArtisticos=' + pessoa.penteadosArtisticos + '&petwalk=' + pessoa.petwalk + '&spa=' + pessoa.spa + '&taxi=' + pessoa.taxi + '&tosaExotica=' + 
+    pessoa.tosaExotica + '&vacinacao=' + pessoa.vacinacao); 
+    }
+
 }

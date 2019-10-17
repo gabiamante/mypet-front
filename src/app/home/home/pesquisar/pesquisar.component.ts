@@ -23,16 +23,12 @@ export class PesquisarComponent implements OnInit {
 
 constructor(private pesquisarService: PesquisarService,
   private activatedRoute: ActivatedRoute,
-  private router: Router) {
+  private router: Router,
+  private route: ActivatedRoute) {
     this.router = router;
   }
 
   ngOnInit() {
-
-    const id = this.activatedRoute.snapshot.params.id;
-    this.pesquisarService.buscar().subscribe(pessoas => this.pessoas = pessoas);
-    console.log('Init component pesquisar = ' + this.pesquisarService.buscar().subscribe(pessoas => this.pessoas = pessoas));
-
 
     $(function () {
       $('#detalheCheck').click(function () {
@@ -47,12 +43,10 @@ constructor(private pesquisarService: PesquisarService,
   }
 
   public pesquisar() {
-    this.pesquisarService.buscar()
-    .subscribe(pessoas => this.pessoas = pessoas);
+    this.pesquisarService.buscar().subscribe(pessoas => this.pessoas = pessoas);
   }
 
   public pesquisarDetalhes(forn: PessoaJuridica) {
-    console.log(forn);
     this.router.navigate(['home', 'detalhes', forn.id]);
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PesquisarService } from '../home.service';
@@ -10,19 +10,10 @@ import { PesquisarService } from '../home.service';
 })
 export class HomeComponent implements OnInit {
 
-  filter: string = '';
-  pessoas: PessoaJuridica[] = [];
-
-
-  constructor(private pesquisarService: PesquisarService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router) {
-      this.router = router;
+  constructor() {
+      
   }
 
-  ngOnInit() {
-    //this.pessoas = this.activatedRoute.snapshot.data['pessoas'];
-    this.pesquisarService.buscar().subscribe(pessoas => this.pessoas = pessoas);
-  }
+  ngOnInit() { }
 
 }

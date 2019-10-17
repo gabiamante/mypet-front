@@ -32,7 +32,12 @@ export class PessoaService {
           return this.http.get(API + '/loginConjunto/email?value=' + email);
         }
 
-
+        buscarEmailPetProvider(email: string){  
+          //console.log(email)
+          console.log('url: ' + API + '/pessoajuridica/email?value=' + email);
+          return this.http.get<PessoaJuridica>(API + '/pessoajuridica/email?value=' + email);
+        }
+        
         //mesmo a id sendo number, fazemos ela em string para poder concatenar depois
         public deletePessoaFisica(id: string) {
                 return this.http.delete(API + '/pessoafisica/' + id);

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
-import { FornecedoresComponent } from './fornecedores/fornecedores.component';
 import { QuemSomosComponent } from './quem-somos/quem-somos.component';
 import { HttpClientModule } from '@angular/common/http';
 import {TableModule} from 'primeng/table';
@@ -13,16 +12,19 @@ import {CardModule} from 'primeng/card';
 import {CheckboxModule} from 'primeng/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule }  from '@angular/forms';
-
+import { BuscarFornecedoresComponent } from './buscar-fornecedores/buscar-fornecedores.component';
+import {DropdownModule} from 'primeng/dropdown';
+import { ResultadoFornecedoresComponent } from './resultado-fornecedores/resultado-fornecedores.component';
 
 @NgModule({
   declarations: [
-    FornecedoresComponent,
     QuemSomosComponent,
     FiltroPelaCidade,
     HomeComponent,
     PesquisarComponent,
-    DetalhesComponent
+    DetalhesComponent,
+    BuscarFornecedoresComponent,
+    ResultadoFornecedoresComponent
 
   ],
   imports: [
@@ -33,10 +35,10 @@ import { FormsModule }  from '@angular/forms';
     CardModule,
     CheckboxModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    DropdownModule
   ],
   exports: [
-    FornecedoresComponent,
     QuemSomosComponent,
     FiltroPelaCidade,
     HomeComponent,

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CriacaoAgendaProvider } from './criacao-agenda-petprovider';
 import Swal from 'sweetalert2';
 import { CriacaoAgendaPetproviderService } from './criacao-agenda-petprovider.service';
+import { PessoaService } from 'src/app/pessoa/pessoa.service';
+import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 
 @Component({
   selector: 'app-criacao-agenda-petprovider',
@@ -25,12 +27,30 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
   timeValue: string;
   br: any;
   invalidDates: Array<Date>;
+  fornecedor: PessoaJuridica = new PessoaJuridica();
 
-  constructor(private criacaoAgendaService: CriacaoAgendaPetproviderService) {
+  constructor(private criacaoAgendaService: CriacaoAgendaPetproviderService,
+    buscarService: PessoaService,
+    public buscaEmail: PessoaService) {
     this.lstServicosSelecionados =
     [
-      {label: 'Banho/Tosa', name: 'Banho/Tosa'},
-      {label: 'Walking/Andar', name: 'Walking/Andar'}
+      {label: 'Escolha o serviço desejado', name: null},
+      {label: 'banhoETosa', name: 'Banho/Tosa'},
+      {label: 'consulta', name: 'Consulta'},
+      {label: 'tosaExotica', name: 'Tosa Exótica'},
+      {label: 'vacinacao', name: 'Vacinação'},
+      {label: 'cirurgiaGeral', name: 'Cirurgia Geral'},
+      {label: 'hidratacao', name: 'Hidratação'},
+      {label: 'penteadosArtisticos', name: 'Penteados Artísticos'},
+      {label: 'acupuntura', name: 'Acupuntura'},
+      {label: 'spa', name: 'SPA'},
+      {label: 'hotel', name: 'Hotel'},
+      {label: 'creche', name: 'Creche'},
+      {label: 'taxi', name: 'Táxi'},
+      {label: 'ensaioFotografico', name: 'Ensaio Fotográfico'},
+      {label: 'adestramento', name: 'Adestramento'},
+      {label: 'massagem', name: 'Massagem'},
+      {label: 'petwalk', name: 'Pet Walk'}
     ];
    }
 
@@ -53,9 +73,19 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
       clear: 'Limpar'
   };
 
+  const token = localStorage.getItem("localUser")
+  var obj = JSON.parse(token)
+  console.log(obj.email)
+  this.buscaEmail.buscarEmailPetProvider(obj.email).subscribe((user) => {
+  this.fornecedor = user
+  console.log('fornecedor' + this.fornecedor.email)
+  this.gerarLista();
+  })
+}
+
+  gerarLista(){
+    //implementar dropdown personalizado
   }
-
-
   count() {
       this.clicks++;
   }

@@ -1,55 +1,55 @@
 export class PessoaJuridica {
-  public id: number;
+  
+  //Infos do estabelecimento  
   public razaoSocial: string;
-  public cpfOuCnpj: string;
-  public telefone1: string;
-  public telefone2: string;
+  public cpf: string;
+  public telefoneFixo: string;
+  public telefoneCelular: string;
   public logradouro: string;
   public numero: number;
-  public tipoPerfil: number;
   public complemento: string;
   public bairro: string;
   public cidade: string;
   public estado: string;
   public cep: string;
+
+  //Dados de acesso
   public email: string;
   public senha: string;
   public fotoPerfil: string;
+
+  //Infos do cadastro
+  public id: number;
   public situacaoAprovacao: string;
   public checkStatus: boolean;
-
-
-  public petShop:  boolean;
-  public farmacia: boolean;
-  public banho: boolean;
-  public tosa: boolean;
-  public loja: boolean;
-  public descricaoPetShop: string;
-
-  public petVet: boolean;
-  public vacinacao: boolean;
-  public consulta: boolean;
-  public exames: boolean;
-  public descricaoPetVet: string;
-
-  public petHome: boolean;
-  public apartamento: boolean;
-  public casa: boolean;
-  public fumante: boolean;
-  public telado: boolean;
-  public descricaoPetHome: string;
-
   public active: boolean;
+  public tipoPerfil: number;
 
-
+  //Servicos
+  public banhoETosa:  string;
+  public consulta: string;
+  public tosaExotica: string;
+  public vacinacao: string;
+  public cirurgiaGeral: string;
+  public hidratacao: string;
+  public penteadosArtisticos: string;
+  public acupuntura: string;
+  public spa: string;
+  public hotel: string;
+  public creche: string;
+  public taxi: string;
+  public ensaioFotografico: string;
+  public adestramento: string;
+  public massagem: string;
+  public petwalk: string;
 
 
   constructor() {
      this.id = 0;
      this.razaoSocial = '' ;
-     this.cpfOuCnpj = '' ;
-     this.telefone1 = '' ;
-     this.telefone2 = '' ;
+     this.cpf = '' ;
+     this.telefoneFixo = '' ;
+     this.telefoneCelular = '' ;
      this.logradouro = '' ;
      this.numero = 0 ;
      this.tipoPerfil = 0;
@@ -63,24 +63,22 @@ export class PessoaJuridica {
      this.fotoPerfil = '' ;
      this.situacaoAprovacao = '';
      this.checkStatus = false;
-     this.petShop = false;
-     this.farmacia = false;
-     this.banho = false;
-     this.tosa = false;
-     this.loja = false;
-     this.descricaoPetShop = '';
-     this.petVet = false;
-    this.vacinacao = false;
-    this.consulta = false;
-    this.exames = false;
-    this.descricaoPetVet = '';
-    this.petHome = false;
-    this.apartamento = false;
-    this.casa = false;
-    this.fumante = false;
-    this.telado = false;
-    this.descricaoPetHome = '';
+     this.banhoETosa = '';
+     this.consulta = '';
+     this.tosaExotica = '';
+     this.vacinacao = '';
+     this.cirurgiaGeral = '';
+     this.hidratacao = '';
+     this.penteadosArtisticos = '';
+     this.acupuntura = '';
+     this.spa = '';
+     this.hotel = '';
+     this.creche = '';
+     this.taxi = '';
+     this.ensaioFotografico = '';
+     this.adestramento = '';
+     this.massagem = '';
+     this.petwalk = '';
     this.active = true;
   }
-
 }
