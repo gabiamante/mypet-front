@@ -30,10 +30,8 @@ import { CriacaoAgendaPetproviderModule } from './petservice/criacao-agenda-petp
 import { TempoAtendimentoAgendaPetproviderModule } from './petservice/tempo-atendimento-agenda-petprovider/tempo-atendimento-agenda-petprovider.module';
 import { ListaOpcoesHorariosServiceDisponiveisModule } from './lista-opcoes-horarios-service-disponiveis/lista-opcoes-horarios-service-disponiveis.module';
 import { ListaServiceContratadosClientModule } from './lista-service-contratados-client/lista-service-contratados-client.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-import {MatIconModule} from '@angular/material/icon';
+
+
 
 @NgModule({
   declarations: [
@@ -61,11 +59,7 @@ import {MatIconModule} from '@angular/material/icon';
     ListaServiceContratadosProviderModule,
     ListaServiceContratadosClientModule,
     HistoricoPetclientModule,
-    HistoricoPetproviderModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatIconModule
+    HistoricoPetproviderModule
   ],
   providers: [AuthInterceptorProvider, ErrorInterceptorProvider,AuthService,
     StorageService, RoleGuardService

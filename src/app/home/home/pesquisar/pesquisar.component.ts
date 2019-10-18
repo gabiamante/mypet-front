@@ -22,9 +22,7 @@ export class PesquisarComponent implements OnInit {
   private detalheCheck: boolean = false;
 
 constructor(private pesquisarService: PesquisarService,
-  private activatedRoute: ActivatedRoute,
-  private router: Router,
-  private route: ActivatedRoute) {
+  private router: Router) {
     this.router = router;
   }
 

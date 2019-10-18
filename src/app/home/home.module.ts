@@ -12,9 +12,9 @@ import {CardModule} from 'primeng/card';
 import {CheckboxModule} from 'primeng/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule }  from '@angular/forms';
-import { BuscarFornecedoresComponent } from './buscar-fornecedores/buscar-fornecedores.component';
+import { BuscarFornecedoresComponent } from './home/buscar-fornecedores/buscar-fornecedores.component';
 import {DropdownModule} from 'primeng/dropdown';
-import { ResultadoFornecedoresComponent } from './resultado-fornecedores/resultado-fornecedores.component';
+
 
 @NgModule({
   declarations: [
@@ -23,8 +23,7 @@ import { ResultadoFornecedoresComponent } from './resultado-fornecedores/resulta
     HomeComponent,
     PesquisarComponent,
     DetalhesComponent,
-    BuscarFornecedoresComponent,
-    ResultadoFornecedoresComponent
+    BuscarFornecedoresComponent
 
   ],
   imports: [

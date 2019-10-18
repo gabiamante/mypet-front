@@ -4,30 +4,8 @@
         <a class="p-2 text-dark" href="/home/quem-somos">Quem Somos</a>
         <!--a class="p-2 text-dark" href="/home/fornecedores">Nossos Fornecedores</a-->
     </nav>
-    <ng-container *ngIf="!(authenticated$ | async)"> 
         <a class="btn btn-outline-primary" data-toggle="modal" data-target="#modalCadastro">Cadastre-se</a>
         <a class="btn btn-outline-primary" href="/login">Login</a>
-    </ng-container>
-    <ng-container *ngIf="(authenticated$ | async) && (user$ | async)">
-        <a class="btn btn-outline-primary" (click)="logout()">Logout</a>
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-            <mat-icon>account-circle</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-              <mat-icon>dialpad</mat-icon>
-              <span>Redial</span>
-            </button>
-            <button mat-menu-item disabled>
-              <mat-icon>voicemail</mat-icon>
-              <span>Check voice mail</span>
-            </button>
-            <button mat-menu-item>
-              <mat-icon>notifications_off</mat-icon>
-              <span>Disable alerts</span>
-            </button>
-          </mat-menu>
-    </ng-container>
 </div>
 
 <!-- Modal Cadastro -->

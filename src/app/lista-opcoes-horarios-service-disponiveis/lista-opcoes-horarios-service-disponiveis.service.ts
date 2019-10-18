@@ -53,7 +53,6 @@ export class ListaOpcoesHorariosServiceDisponiveisService {
   atualizaEscolhido(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
     const url = `${API}/agendaprovider/${varCriacaoAgendaProviderToAttach.id}`;
     varCriacaoAgendaProviderToAttach.escolhido = true;
-    //alert(JSON.stringify(varCriacaoAgendaProviderToAttach));
       return this.http.put(url, varCriacaoAgendaProviderToAttach);
       }
 

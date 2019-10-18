@@ -1,6 +1,6 @@
 
 <div class="container">
-  <div class="floatLeft">
+  <div class="floatLeft"> <!--INICIO DA DIV PARA O LADO ESQUERDA-->
 
 <p-card header="Escolha qual será o atendimento que irá prestar, o tempo que leverá e quais os dias" [style]="{width: '450px', height: '800px'}">
 
@@ -58,9 +58,9 @@
       </div>
 
 </p-card>
-</div>
+</div> <!--FIM DA DIV PARA O LADO ESQUERDA-->
 
-<div class="floatRight">
+<div class="floatRight"> <!--INICIO DA DIV PARA O LADO DIREITO-->
 <p-table [value]="lstCriacaoAgendaProvider" >
     <ng-template pTemplate="header">
         <tr>
@@ -83,12 +83,35 @@
 </p-table>
 
 
-      <div class="mt-2 mb-2">
+      <div class="mt-10 mb-3">
         <button pButton type="button" (click)="salvarAgendaProviderTeste(varCriacaoAgendaProviderToAttachCopy)"
         label="Salvar agendamento" class="ui-button-rounded"></button>
       </div>
 
-    </div>
+
+      <h5>Horários já disponíveis e ainda não contratados</h5>
+      <p-table [value]="lstCriacaoAgendaProviderAgendadoNaoContratados" >
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Dia da semana</th>
+                <th>Dia</th>
+                <th>Inicio</th>
+                <th>Fim</th>
+                <th>Serviço escolhido</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-varCriacaoAgendaProvider>
+            <tr>
+                <td>{{varCriacaoAgendaProvider.siglaDia}}</td>
+                <td>{{varCriacaoAgendaProvider.dataCalendarioCorrecao}}</td>
+                <td>{{varCriacaoAgendaProvider.tempoInicioCorrecao}}</td>
+                <td>{{varCriacaoAgendaProvider.tempoFimCorrecao}}</td>
+                <td>{{varCriacaoAgendaProvider.servicoEscolhido}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    </div> <!--FIM DA DIV PARA O LADO DIREITO-->
 
 </div>
 

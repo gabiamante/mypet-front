@@ -5,6 +5,7 @@ import { PessoaService } from 'src/app/pessoa/pessoa.service';
 import { ListaServiceContratadosProviderService } from './lista-service-contratados-provider.service';
 import { ServiceContratados } from './../lista-service-contratados/lista-service-contratados';
 import { Component, OnInit, Input } from '@angular/core';
+import { CriacaoAgendaProvider } from '../petservice/criacao-agenda-petprovider/criacao-agenda-petprovider';
 
 @Component({
   selector: 'app-lista-service-contratados-provider',
@@ -17,7 +18,7 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
   varServiceContratados: ServiceContratados;
   jwtHelper: JwtHelper = new JwtHelper();
   varPetProvider: PessoaJuridica = new PessoaJuridica();
- id;
+  @Input() lstCriacaoAgendaProviderAgendadoNaoContratados: CriacaoAgendaProvider[] = [];
 
   // const objLogin;
   constructor(private serviceServiceContratados: ListaServiceContratadosProviderService) {
@@ -32,6 +33,7 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
       this.varPetProvider = retorno;
      // this.id = alert(JSON.stringify(this.varPetProvider));
      this.listContratadosProviderFiltro(this.varPetProvider);
+     this.listAgendaProviderFiltrarNaoContratados(this.varPetProvider);
     });
 
 
@@ -49,14 +51,10 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
     console.log('this.lstServiceContratados: ' + this.lstServiceContratados);
   }
 
-  /**
-  getPessoaPorEmail(email: string) {
-   console.log('component varPetProvider: ' + JSON.stringify(email));
-    this.serviceServiceContratados.buscarEmailLoginConjunto(email).subscribe(
-      res => this.varPetProvider = res);
-    console.log(this.varPetProvider);
+  listAgendaProviderFiltrarNaoContratados(varPetProvider: PessoaJuridica) {
+    this.serviceServiceContratados.listAgendaProviderFiltrarNaoContratados(varPetProvider.id + '').
+    subscribe(res => this.lstCriacaoAgendaProviderAgendadoNaoContratados = res);
   }
-  */
 
  gravarStatusFinalizado() {
   for (const element of this.lstServiceContratados) {

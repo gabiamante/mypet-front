@@ -1,3 +1,4 @@
+import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { CriacaoAgendaProvider } from './criacao-agenda-petprovider';
@@ -19,19 +20,49 @@ export class CriacaoAgendaPetproviderService {
   constructor(private http: HttpClient) { }
 
   salvarCriacaoAgendaProvider(lstCriacaoAgendaProviderToAttach: CriacaoAgendaProvider[]): Observable<any> {
-    // alert(JSON.stringify(lstCriacaoAgendaProviderToAttach));
     return this.http.post(API + '/agendaProvider/', lstCriacaoAgendaProviderToAttach);
   }
 
   salvarCriacaoAgendaProviderTeste(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider): Observable<any> {
-    // alert(JSON.stringify(varCriacaoAgendaProviderToAttach));
     return this.http.post(API + '/agendaprovider/', varCriacaoAgendaProviderToAttach);
   }
 
 
-  // atualizaEscolhido(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
-  //   const url = `${API}/agendaprovider/${varCriacaoAgendaProviderToAttach.id}`;
-  //   varCriacaoAgendaProviderToAttach.escolhido = true;
-  //   return this.http.put(url, varCriacaoAgendaProviderToAttach);
-  // }
+  listAgendaProviderFiltrarNaoContratados(idProvider: string): Observable<CriacaoAgendaProvider[]>  {
+    return this.http.get<CriacaoAgendaProvider[]>(API + '/agendaprovider/idPetProvider?value=' + idProvider);
+  }
+
+  verificaAgendaProvider(varPetProvider: PessoaJuridica,
+    varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider): Observable<CriacaoAgendaProvider>  {
+    console.log('teste url: ' + API + '/agendaprovider/selecionadosProvider?idPetProvider=' + varPetProvider.id
+    + '&segundaCheck=' + varCriacaoAgendaProviderToAttach.segundaCheck + '&tercaCheck=' + varCriacaoAgendaProviderToAttach.tercaCheck
+    + '&quartaCheck='  + varCriacaoAgendaProviderToAttach.quartaCheck + '&quintaCheck=' + varCriacaoAgendaProviderToAttach.quintaCheck
+    + '&sextaCheck=' + varCriacaoAgendaProviderToAttach.sextaCheck + '&sabadoCheck=' + varCriacaoAgendaProviderToAttach.sabadoCheck
+    + '&domingoCheck=' + varCriacaoAgendaProviderToAttach.domingoCheck
+    + '&dataCalendarioCorrecao=' + varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao
+    + '&servicoEscolhido=' + varCriacaoAgendaProviderToAttach.servicoEscolhido
+    + '&tempoInicioCorrecao=' + varCriacaoAgendaProviderToAttach.tempoInicioCorrecao
+    + '&tempoFimCorrecao=' + varCriacaoAgendaProviderToAttach.tempoFimCorrecao
+    + '&siglaDia=' + varCriacaoAgendaProviderToAttach.siglaDia
+    + '&tempoInicioIntervalo=' + varCriacaoAgendaProviderToAttach.tempoInicioIntervalo);
+    alert('segura');
+
+    return this.http.get<CriacaoAgendaProvider>(API + '/agendaprovider/selecionadosProvider?idPetProvider=' + varPetProvider.id
+    + '&segundaCheck=' + varCriacaoAgendaProviderToAttach.segundaCheck + '&tercaCheck=' + varCriacaoAgendaProviderToAttach.tercaCheck
+    + '&quartaCheck='  + varCriacaoAgendaProviderToAttach.quartaCheck + '&quintaCheck=' + varCriacaoAgendaProviderToAttach.quintaCheck
+    + '&sextaCheck=' + varCriacaoAgendaProviderToAttach.sextaCheck + '&sabadoCheck=' + varCriacaoAgendaProviderToAttach.sabadoCheck
+    + '&domingoCheck=' + varCriacaoAgendaProviderToAttach.domingoCheck
+    + '&dataCalendarioCorrecao=' + varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao
+    + '&servicoEscolhido=' + varCriacaoAgendaProviderToAttach.servicoEscolhido
+    + '&tempoInicioCorrecao=' + varCriacaoAgendaProviderToAttach.tempoInicioCorrecao
+    + '&tempoFimCorrecao=' + varCriacaoAgendaProviderToAttach.tempoFimCorrecao
+    + '&siglaDia=' + varCriacaoAgendaProviderToAttach.siglaDia
+    + '&tempoInicioIntervalo=' + varCriacaoAgendaProviderToAttach.tempoInicioIntervalo);
+  }
+
+  buscarEmailLoginConjunto(email: string): Observable<any> {
+    return this.http.get(API + '/loginConjunto/email?value=' + email);
+  }
+
+
 }

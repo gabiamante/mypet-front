@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
 import { CriacaoAgendaProvider } from './criacao-agenda-petprovider';
 import Swal from 'sweetalert2';
 import { CriacaoAgendaPetproviderService } from './criacao-agenda-petprovider.service';
-import { PessoaService } from 'src/app/pessoa/pessoa.service';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 
 @Component({
@@ -19,6 +19,8 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
   clicks = 0;
   varCriacaoAgendaProvider: CriacaoAgendaProvider = new CriacaoAgendaProvider();
   lstCriacaoAgendaProvider: CriacaoAgendaProvider[] = [];
+  @Input() lstCriacaoAgendaProviderAgendadoNaoContratados: CriacaoAgendaProvider[] = [];
+  varPetProvider: PessoaJuridica = new PessoaJuridica();
   diasSemana = [];
   varCriacaoAgendaProviderToAttachCopy;
   checkOpSegunda = false;
@@ -27,30 +29,13 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
   timeValue: string;
   br: any;
   invalidDates: Array<Date>;
-  fornecedor: PessoaJuridica = new PessoaJuridica();
+  verificacaoDataEscolhida: any;
 
-  constructor(private criacaoAgendaService: CriacaoAgendaPetproviderService,
-    buscarService: PessoaService,
-    public buscaEmail: PessoaService) {
+  constructor(private criacaoAgendaService: CriacaoAgendaPetproviderService) {
     this.lstServicosSelecionados =
     [
-      {label: 'Escolha o serviço desejado', name: null},
-      {label: 'banhoETosa', name: 'Banho/Tosa'},
-      {label: 'consulta', name: 'Consulta'},
-      {label: 'tosaExotica', name: 'Tosa Exótica'},
-      {label: 'vacinacao', name: 'Vacinação'},
-      {label: 'cirurgiaGeral', name: 'Cirurgia Geral'},
-      {label: 'hidratacao', name: 'Hidratação'},
-      {label: 'penteadosArtisticos', name: 'Penteados Artísticos'},
-      {label: 'acupuntura', name: 'Acupuntura'},
-      {label: 'spa', name: 'SPA'},
-      {label: 'hotel', name: 'Hotel'},
-      {label: 'creche', name: 'Creche'},
-      {label: 'taxi', name: 'Táxi'},
-      {label: 'ensaioFotografico', name: 'Ensaio Fotográfico'},
-      {label: 'adestramento', name: 'Adestramento'},
-      {label: 'massagem', name: 'Massagem'},
-      {label: 'petwalk', name: 'Pet Walk'}
+      {label: 'Banho/Tosa', name: 'Banho/Tosa'},
+      {label: 'Walking/Andar', name: 'Walking/Andar'}
     ];
    }
 
@@ -73,19 +58,17 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
       clear: 'Limpar'
   };
 
-  const token = localStorage.getItem("localUser")
-  var obj = JSON.parse(token)
-  console.log(obj.email)
-  this.buscaEmail.buscarEmailPetProvider(obj.email).subscribe((user) => {
-  this.fornecedor = user
-  console.log('fornecedor' + this.fornecedor.email)
-  this.gerarLista();
-  })
-}
+    const token = localStorage.getItem('localUser');
+    const objLogin = JSON.parse(token);
 
-  gerarLista(){
-    //implementar dropdown personalizado
+    this.criacaoAgendaService.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
+    this.varPetProvider = retorno;
+    this.listAgendaProviderFiltrarNaoContratados(this.varPetProvider);
+    });
+
   }
+
+
   count() {
       this.clicks++;
   }
@@ -136,10 +119,8 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
       this.varCriacaoAgendaProviderToAttachCopy = Object.assign({}, varCriacaoAgendaProviderToAttach);
       this.adicionaSiglaDias(this.varCriacaoAgendaProviderToAttachCopy);
       this.lstCriacaoAgendaProvider.push(this.varCriacaoAgendaProviderToAttachCopy);
-      // alert('this.varCriacaoAgendaProviderToAttachCopy: ' + this.varCriacaoAgendaProviderToAttachCopy.dataCalendario);
       this.qtdDiasSemanaSelecionadosCopy = this.qtdDiasSemanaSelecionados;
       this.reiniciaDias(varCriacaoAgendaProviderToAttach);
-      // alert(JSON.stringify(this.br));
     }
   }
 
@@ -219,21 +200,67 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao = varCriacaoAgendaProviderToAttach.dataCalendario.getDate()
     + '/' + (varCriacaoAgendaProviderToAttach.dataCalendario.getMonth()+1) + '/'
     + varCriacaoAgendaProviderToAttach.dataCalendario.getFullYear();
-    // alert(JSON.stringify(varCriacaoAgendaProviderToAttach.dataCalendario));
-    // alert('varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao: ' + varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao);
   }
 
 
 
   salvarAgendaProviderTeste(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
     varCriacaoAgendaProviderToAttach = this.varCriacaoAgendaProviderToAttachCopy;
-    this.criacaoAgendaService.salvarCriacaoAgendaProviderTeste(varCriacaoAgendaProviderToAttach).subscribe(
-      response => {
-        alert('Salvo com sucesso!');
-        this.lstCriacaoAgendaProvider = [];
-        //window.location.href = '/home/home';
-      }
-    );
+
+    //  COMEÇO DO INTERVALO
+    varCriacaoAgendaProviderToAttach.tempoInicioIntervalo =
+    parseInt((varCriacaoAgendaProviderToAttach.tempoInicio.getTime() / (1000 * 60)).toFixed(1), 10);
+
+    varCriacaoAgendaProviderToAttach.tempoFimIntervalo =
+    parseInt((varCriacaoAgendaProviderToAttach.tempoFim.getTime() / (1000 * 60)).toFixed(1), 10);
+    // alert('date1: ' + varCriacaoAgendaProviderToAttach.tempoInicioIntervalo);
+    // alert('date2: ' + varCriacaoAgendaProviderToAttach.tempoFimIntervalo);
+    //  FIM DO INTERVALO
+
+    const token = localStorage.getItem('localUser');
+    const objLogin = JSON.parse(token);
+
+    this.criacaoAgendaService.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
+    this.varPetProvider = retorno;
+
+    this.criacaoAgendaService.verificaAgendaProvider(this.varPetProvider, varCriacaoAgendaProviderToAttach).
+    subscribe((res) => {
+      var retornoAux: CriacaoAgendaProvider = new CriacaoAgendaProvider();
+      retornoAux = res;
+      // alert(JSON.stringify(retornoAux));
+      if  ((retornoAux + '').length === 0)  {
+        // alert('não encontrou, pode inserir');
+        this.criacaoAgendaService.salvarCriacaoAgendaProviderTeste(varCriacaoAgendaProviderToAttach).subscribe(
+          response => {
+            this.lstCriacaoAgendaProvider = [];
+          }
+          );
+          Swal.fire({
+            position: 'center',
+            type: 'success',
+            title: 'Horário cadastrado !',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        } else{
+          Swal.fire({
+            position: 'center',
+            type: 'error',
+            title: 'Oops...',
+            text: 'Já existe um horáio cadastrado',
+            footer: 'Você não pode cadastrar um mesmo serviço no mesmo horário e no mesmo dia !',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+    });
+
+  });
+  setTimeout(function() {
+    // alert('segura');
+    location.reload();
+  }, 3000);
+    // location.reload();
   }
 
   adicionaServico(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider, varServicosSelecionados: ServicosSelecionados) {
@@ -242,6 +269,22 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
 
   getDataCalendario (varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
     return varCriacaoAgendaProviderToAttach.dataCalendario;
+  }
+
+  listAgendaProviderFiltrarNaoContratados(varPetProvider: PessoaJuridica) {
+    this.criacaoAgendaService.listAgendaProviderFiltrarNaoContratados(varPetProvider.id + '').
+    subscribe(res => this.lstCriacaoAgendaProviderAgendadoNaoContratados = res);
+  }
+
+  verificaAgendaProvider(varPetProvider: PessoaJuridica, varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider):
+  CriacaoAgendaProvider {
+    varCriacaoAgendaProviderToAttach = this.varCriacaoAgendaProviderToAttachCopy;
+    var auxCriacaoAgenda: CriacaoAgendaProvider = new CriacaoAgendaProvider();
+    this.criacaoAgendaService.verificaAgendaProvider(varPetProvider, varCriacaoAgendaProviderToAttach).
+    subscribe((res) => {
+      auxCriacaoAgenda = res;
+    });
+    return auxCriacaoAgenda;
   }
 
 }

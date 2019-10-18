@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PesquisarService } from '../home.service';
@@ -11,9 +11,9 @@ import { PesquisarService } from '../home.service';
 export class HomeComponent implements OnInit {
 
   constructor() {
-      
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
 }

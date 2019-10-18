@@ -1,3 +1,4 @@
+import { CriacaoAgendaProvider } from './../petservice/criacao-agenda-petprovider/criacao-agenda-petprovider';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { Observable } from 'rxjs';
 import { ServiceContratados } from './../lista-service-contratados/lista-service-contratados';
@@ -27,6 +28,9 @@ export class ListaServiceContratadosProviderService {
     const url = API + '/contratadoprovider/idPetProvider?value=' + id;
     return this.http
     .get<ServiceContratados[]>(url);
+  }
+  listAgendaProviderFiltrarNaoContratados(idProvider: string): Observable<CriacaoAgendaProvider[]>  {
+    return this.http.get<CriacaoAgendaProvider[]>(API + '/agendaprovider/idPetProvider?value=' + idProvider);
   }
 
   buscarEmailLoginConjunto(email: string): Observable<any> {

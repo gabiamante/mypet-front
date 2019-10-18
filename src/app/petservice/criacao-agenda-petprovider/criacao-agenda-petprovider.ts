@@ -23,6 +23,8 @@ export class CriacaoAgendaProvider {
   dataCalendario = new Date();
   dataCalendarioCorrecao = '';
   escolhido = false;
+  tempoInicioIntervalo = 0;
+  tempoFimIntervalo = 0;
 
   constructor() {
     this.time = this.today.getHours() + ':' + this.today.getMinutes();
@@ -48,5 +50,7 @@ export class CriacaoAgendaProvider {
     this.dataCalendario = null;
     this.dataCalendarioCorrecao = '';
     this.escolhido = false;
+    this.tempoInicioIntervalo = 0;
+    this.tempoFimIntervalo = 0;
   }
 }
