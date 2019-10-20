@@ -5,7 +5,7 @@
 <p-card header="Escolha qual será o atendimento que irá prestar, o tempo que leverá e quais os dias" [style]="{width: '450px', height: '800px'}">
 
       <div class="mt-3 mb-3">
-        <p-dropdown [options]="lstServicosSelecionados" [(ngModel)]="varServicosSelecionados" placeholder="Selecione um serviço" optionLabel="name" [showClear]="true"></p-dropdown>
+        <p-dropdown [options]="lstServicosSelecionados" [(ngModel)]="varServicosSelecionados" optionLabel="name" [showClear]="true"></p-dropdown>
       </div>
       <div class="mt-3 mb-3">
         <p-calendar [(ngModel)]="varCriacaoAgendaProvider.dataCalendario" [locale]="br" dateFormat="dd/mm/yy" [disabledDates]="invalidDates" [disabledDays]="[0,6]"></p-calendar>

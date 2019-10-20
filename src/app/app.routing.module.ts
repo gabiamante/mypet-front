@@ -53,7 +53,7 @@ const routes: Routes = [
 
     { path: 'fullcalendar/provider', component: FullCalendarProviderScheduleComponent },
 
-    { path: 'login/tela-inicial-pet-provider', component: TelaInicialPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
+    { path: 'login/tela-inicial-pet-provider', component: TelaInicialPetProviderComponent},
 
     { path: 'login/tela-inicial-pet-client', component: TelaInicialPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
     { path: 'login/tela-inicial-pet-client/meu-perfil', component: PerfilPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},

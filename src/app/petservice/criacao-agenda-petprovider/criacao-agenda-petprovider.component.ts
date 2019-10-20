@@ -32,11 +32,20 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
   verificacaoDataEscolhida: any;
 
   constructor(private criacaoAgendaService: CriacaoAgendaPetproviderService) {
+    
+
+    const token = localStorage.getItem('localUser');
+    const objLogin = JSON.parse(token);
+
+    this.criacaoAgendaService.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
+    this.varPetProvider = retorno;
+
     this.lstServicosSelecionados =
     [
-      {label: 'Banho/Tosa', name: 'Banho/Tosa'},
-      {label: 'Walking/Andar', name: 'Walking/Andar'}
+      {label: 'Selecionar', name: 'Selecione o serviço desejado'}
     ];
+    this.dropdownPersonalizado();
+    });
    }
 
   ngOnInit() {
@@ -65,12 +74,62 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     this.varPetProvider = retorno;
     this.listAgendaProviderFiltrarNaoContratados(this.varPetProvider);
     });
-
   }
-
 
   count() {
       this.clicks++;
+  }
+
+  dropdownPersonalizado(){
+    if(this.varPetProvider.acupuntura == 'acupuntura')  {
+      this.lstServicosSelecionados.push({ label: 'acupuntura', name: 'Acupuntura'})
+    }
+    if(this.varPetProvider.adestramento == 'adestramento')  {
+      this.lstServicosSelecionados.push({ label: 'adestramento', name: 'Adestramento'})
+    }
+    if(this.varPetProvider.banhoETosa == 'banhoETosa')  {
+      this.lstServicosSelecionados.push({label: 'banhoETosa', name: 'Banho/Tosa'})
+    }
+    if(this.varPetProvider.cirurgiaGeral == 'cirurgiaGeral')  {
+      this.lstServicosSelecionados.push({ label: 'cirurgiaGeral', name: 'Cirurgia Geral'})
+    }
+    if(this.varPetProvider.consulta == 'consulta')  {
+      this.lstServicosSelecionados.push({ label: 'consulta', name: 'Consulta'})
+    }
+    if(this.varPetProvider.creche == 'creche')  {
+      this.lstServicosSelecionados.push({ label: 'creche', name: 'Creche'})
+    }
+    if(this.varPetProvider.ensaioFotografico == 'ensaioFotografico')  {
+      this.lstServicosSelecionados.push({ label: 'ensaioFotografico', name: 'Ensaio Fotográfico'})
+    }
+    if(this.varPetProvider.hidratacao == 'hidratacao')  {
+      this.lstServicosSelecionados.push({ label: 'hidratacao', name: 'Hidratação'})
+    }
+    if(this.varPetProvider.hotel == 'hotel')  {
+      this.lstServicosSelecionados.push({ label: 'hotel', name: 'Hotel'})
+    }
+    if(this.varPetProvider.massagem == 'massagem')  {
+      this.lstServicosSelecionados.push({ label: 'massagem', name: 'Massagem'})
+    }
+    if(this.varPetProvider.penteadosArtisticos == 'penteadosArtisticos')  {
+      this.lstServicosSelecionados.push({ label: 'penteadosArtisticos', name: 'Penteados Artísticos'})
+    }
+    if(this.varPetProvider.petwalk == 'petwalk')  {
+      this.lstServicosSelecionados.push({ label: 'petwalk', name: 'Pet Walk'})
+    }
+    if(this.varPetProvider.spa == 'spa')  {
+      this.lstServicosSelecionados.push({ label: 'spa', name: 'SPA'})
+    }
+    if(this.varPetProvider.taxi == 'taxi')  {
+      this.lstServicosSelecionados.push({ label: 'taxi', name: 'Táxi'})
+    }
+    if(this.varPetProvider.tosaExotica == 'tosaExotica')  {
+      this.lstServicosSelecionados.push({ label: 'tosaExotica', name: 'Tosa Exótica'})
+    }
+    if(this.varPetProvider.vacinacao == 'vacinacao')  {
+      this.lstServicosSelecionados.push({ label: 'vacinacao', name: 'Vacinação'})
+    }
+    //console.log(this.lstServicosSelecionados)
   }
 
   addToList(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
