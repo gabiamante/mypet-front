@@ -1,6 +1,6 @@
 export class PessoaJuridica {
-  
-  //Infos do estabelecimento  
+
+  //Infos do estabelecimento
   public razaoSocial: string;
   public cpf: string;
   public telefoneFixo: string;

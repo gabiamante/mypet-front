@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { PesquisarService } from '../../home.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buscar-fornecedores',
@@ -15,7 +16,9 @@ export class BuscarFornecedoresComponent implements OnInit {
   forns: PessoaJuridica[] = [];
 
   constructor(
-    private homeService: PesquisarService) {
+    private homeService: PesquisarService,
+    private router: Router) {
+      this.router = router;
 
     this.servicos = [
       {name: 'Selecione o serviço desejado', label: 'Selecionar'},
@@ -40,7 +43,9 @@ export class BuscarFornecedoresComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+  public pesquisarDetalhes(forn: PessoaJuridica) {
+    this.router.navigate(['home', 'detalhes', forn.id]);
+  }
 
   pesquisarFornecedor(){
     if(this.servicoSelecionado.label == "banhoETosa")  {

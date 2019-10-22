@@ -2,13 +2,13 @@
   <p-dropdown [options]="servicos" [(ngModel)]="servicoSelecionado" optionLabel="name" [showClear]="true"></p-dropdown>
 </div>
 <div class="mt-3 mb-3">
-  <input type="text" [(ngModel)]="forn.bairro" />
+  <input type="text" [(ngModel)]="forn.bairro" placeholder="Bairro"/>
 </div>
 <div class="mt-3 mb-3">
-  <input type="text" [(ngModel)]="forn.cidade" />
+  <input type="text" [(ngModel)]="forn.cidade" placeholder="Cidade"/>
 </div>
 <div class="mt-3 mb-3">
-  <input type="text" [(ngModel)]="forn.estado" />
+  <input type="text" [(ngModel)]="forn.estado" placeholder="Estado"/>
 </div>
 <div>
   <button type="button" (click)="pesquisarFornecedor()" label="Pesquisar" class="btn btn-outline-light"
@@ -28,9 +28,9 @@
                       <label class="card-text">Cidade: {{forn.cidade}}</label><br/>
                       <label class="card-text">Bairro: {{forn.bairro}} </label><br/>
                       <label class="card-text">ID: {{forn.id}}</label><br/>
-                          <button type="button" label="Detalhes" class="btn btn-outline-light"
+                          <button type="button" (click)="pesquisarDetalhes(forn)" label="Detalhes" class="btn btn-outline-light"
                            style="background-color: #f7b733">Detalhes</button>
-                      
+
               </div>
               </div>
           </div>

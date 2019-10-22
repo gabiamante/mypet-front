@@ -32,7 +32,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
   verificacaoDataEscolhida: any;
 
   constructor(private criacaoAgendaService: CriacaoAgendaPetproviderService) {
-    
+
 
     const token = localStorage.getItem('localUser');
     const objLogin = JSON.parse(token);
@@ -52,7 +52,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     let today = new Date();
     let invalidDate = new Date();
     invalidDate.setDate(today.getDate() - 1);
-    this.invalidDates = [today, invalidDate];
+    //this.invalidDates = [today, invalidDate];
     // alert(today);
     this.br = {
       firstDayOfWeek: 1,

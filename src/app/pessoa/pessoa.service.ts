@@ -28,16 +28,16 @@ export class PessoaService {
           .get<PessoaJuridica[]>(API + '/pessoajuridica');
         }
 
-        buscarEmailLoginConjunto(email: string){  
+        buscarEmailLoginConjunto(email: string){
           return this.http.get(API + '/loginConjunto/email?value=' + email);
         }
 
-        buscarEmailPetProvider(email: string){  
+        buscarEmailPetProvider(email: string){
           //console.log(email)
           console.log('url: ' + API + '/pessoajuridica/email?value=' + email);
           return this.http.get<PessoaJuridica>(API + '/pessoajuridica/email?value=' + email);
         }
-        
+
         //mesmo a id sendo number, fazemos ela em string para poder concatenar depois
         public deletePessoaFisica(id: string) {
                 return this.http.delete(API + '/pessoafisica/' + id);
@@ -70,7 +70,8 @@ export class PessoaService {
 
         public salvarPessoaJuridica(pessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
           pessoaJuridica.tipoPerfil = 2;
-          //alert(JSON.stringify(pessoaJuridica));
+          // console.log(JSON.stringify(pessoaJuridica));
+          // alert('segura');
           return this.http.post<PessoaJuridica>(API + '/pessoajuridica', pessoaJuridica);
         }
 
@@ -83,12 +84,12 @@ export class PessoaService {
             //catchError(this.handleError('403'))
           );
         }
-        
+
         atualizaPessoaFisica(id: number): Observable<PessoaFisica> {
           httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
           return this.http.put<PessoaFisica>(API + '$/pessoafisica/${id}', id);
         }
-    
+
 
 
         private handleError(error: HttpErrorResponse) {

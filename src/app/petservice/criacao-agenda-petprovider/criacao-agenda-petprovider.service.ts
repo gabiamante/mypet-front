@@ -34,18 +34,18 @@ export class CriacaoAgendaPetproviderService {
 
   verificaAgendaProvider(varPetProvider: PessoaJuridica,
     varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider): Observable<CriacaoAgendaProvider>  {
-    console.log('teste url: ' + API + '/agendaprovider/selecionadosProvider?idPetProvider=' + varPetProvider.id
-    + '&segundaCheck=' + varCriacaoAgendaProviderToAttach.segundaCheck + '&tercaCheck=' + varCriacaoAgendaProviderToAttach.tercaCheck
-    + '&quartaCheck='  + varCriacaoAgendaProviderToAttach.quartaCheck + '&quintaCheck=' + varCriacaoAgendaProviderToAttach.quintaCheck
-    + '&sextaCheck=' + varCriacaoAgendaProviderToAttach.sextaCheck + '&sabadoCheck=' + varCriacaoAgendaProviderToAttach.sabadoCheck
-    + '&domingoCheck=' + varCriacaoAgendaProviderToAttach.domingoCheck
-    + '&dataCalendarioCorrecao=' + varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao
-    + '&servicoEscolhido=' + varCriacaoAgendaProviderToAttach.servicoEscolhido
-    + '&tempoInicioCorrecao=' + varCriacaoAgendaProviderToAttach.tempoInicioCorrecao
-    + '&tempoFimCorrecao=' + varCriacaoAgendaProviderToAttach.tempoFimCorrecao
-    + '&siglaDia=' + varCriacaoAgendaProviderToAttach.siglaDia
-    + '&tempoInicioIntervalo=' + varCriacaoAgendaProviderToAttach.tempoInicioIntervalo);
-    alert('segura');
+    // console.log('teste url: ' + API + '/agendaprovider/selecionadosProvider?idPetProvider=' + varPetProvider.id
+    // + '&segundaCheck=' + varCriacaoAgendaProviderToAttach.segundaCheck + '&tercaCheck=' + varCriacaoAgendaProviderToAttach.tercaCheck
+    // + '&quartaCheck='  + varCriacaoAgendaProviderToAttach.quartaCheck + '&quintaCheck=' + varCriacaoAgendaProviderToAttach.quintaCheck
+    // + '&sextaCheck=' + varCriacaoAgendaProviderToAttach.sextaCheck + '&sabadoCheck=' + varCriacaoAgendaProviderToAttach.sabadoCheck
+    // + '&domingoCheck=' + varCriacaoAgendaProviderToAttach.domingoCheck
+    // + '&dataCalendarioCorrecao=' + varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao
+    // + '&servicoEscolhido=' + varCriacaoAgendaProviderToAttach.servicoEscolhido
+    // + '&tempoInicioCorrecao=' + varCriacaoAgendaProviderToAttach.tempoInicioCorrecao
+    // + '&tempoFimCorrecao=' + varCriacaoAgendaProviderToAttach.tempoFimCorrecao
+    // + '&siglaDia=' + varCriacaoAgendaProviderToAttach.siglaDia
+    // + '&tempoInicioIntervalo=' + varCriacaoAgendaProviderToAttach.tempoInicioIntervalo);
+    // alert('segura');
 
     return this.http.get<CriacaoAgendaProvider>(API + '/agendaprovider/selecionadosProvider?idPetProvider=' + varPetProvider.id
     + '&segundaCheck=' + varCriacaoAgendaProviderToAttach.segundaCheck + '&tercaCheck=' + varCriacaoAgendaProviderToAttach.tercaCheck
