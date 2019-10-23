@@ -12,6 +12,10 @@ export class ServiceContratados  {
   dataCalendarioCorrecao = '';
   status = false;
   cancelado = false;
+  notificaCancelamento = false;
+  motivoCancelamento = '';
+  mostraStatus = '';
+
 
   constructor() {
     this.id = 0;
@@ -27,5 +31,8 @@ export class ServiceContratados  {
     this.dataCalendarioCorrecao = '';
     this.status = false;
     this.cancelado = false;
+    this.notificaCancelamento = false;
+    this.motivoCancelamento =  '';
+    this.mostraStatus = '';
   }
 }

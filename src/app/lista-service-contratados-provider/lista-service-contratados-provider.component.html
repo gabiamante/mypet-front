@@ -11,7 +11,9 @@
             <th>Serviço</th>
             <th>Contratante</th>
             <th>Clique para finalizar o serviço</th>
+            <th>Escreva motivo do cancelamento</th>
             <th>Clique para cancelar o serviço</th>
+           
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-varServiceContratados>
@@ -22,6 +24,11 @@
             <td>{{varServiceContratados.dataCalendarioCorrecao}}</td>
             <td>{{varServiceContratados.tipoService}}</td>
             <td>{{varServiceContratados.nomeCliente}}</td>
+
+            <td><textarea [(ngModel)]="varServiceContratados.motivoCancelamento"
+                offLabel="X" onIcon="pi; pi-check" offIcon="pi pi-times"
+               [style]="{'width':'150px'}"></textarea></td>
+
             <td><p-toggleButton [(ngModel)]="varServiceContratados.status"
               onLabel="Finalizado" offLabel="Andamento" onIcon="pi; pi-check" offIcon="pi pi-times"
               [style]="{'width':'150px'}"></p-toggleButton></td>

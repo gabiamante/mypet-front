@@ -9,6 +9,7 @@
             <th>Dia</th>
             <th>Serviço</th>
             <th>Contratante</th>
+            <th>Motivo do cancelamento</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-varServiceContratados>
@@ -19,6 +20,7 @@
             <td>{{varServiceContratados.dataCalendarioCorrecao}}</td>
             <td>{{varServiceContratados.tipoService}}</td>
             <td>{{varServiceContratados.nomeProvider}}</td>
+            <td>{{varServiceContratados.motivoCancelamento}}</td>
             </tr>
           </ng-template>
         </p-table>
