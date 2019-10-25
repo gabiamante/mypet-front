@@ -14,8 +14,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule }  from '@angular/forms';
 import { BuscarFornecedoresComponent } from './home/buscar-fornecedores/buscar-fornecedores.component';
 import {DropdownModule} from 'primeng/dropdown';
-
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule, MatButtonModule} from '@angular/material';
+import { CardsComponent } from './cards/cards.component';
 @NgModule({
   declarations: [
     QuemSomosComponent,
@@ -23,7 +25,8 @@ import {DropdownModule} from 'primeng/dropdown';
     HomeComponent,
     PesquisarComponent,
     DetalhesComponent,
-    BuscarFornecedoresComponent
+    BuscarFornecedoresComponent,
+    CardsComponent
 
   ],
   imports: [
@@ -35,7 +38,11 @@ import {DropdownModule} from 'primeng/dropdown';
     CheckboxModule,
     BrowserAnimationsModule,
     FormsModule,
-    DropdownModule
+    DropdownModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatButtonModule
   ],
   exports: [
     QuemSomosComponent,

@@ -30,6 +30,13 @@ import { CriacaoAgendaPetproviderModule } from './petservice/criacao-agenda-petp
 import { TempoAtendimentoAgendaPetproviderModule } from './petservice/tempo-atendimento-agenda-petprovider/tempo-atendimento-agenda-petprovider.module';
 import { ListaOpcoesHorariosServiceDisponiveisModule } from './lista-opcoes-horarios-service-disponiveis/lista-opcoes-horarios-service-disponiveis.module';
 import { ListaServiceContratadosClientModule } from './lista-service-contratados-client/lista-service-contratados-client.module';
+import {MatInputModule} from '@angular/material'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -59,7 +66,16 @@ import { ListaServiceContratadosClientModule } from './lista-service-contratados
     ListaServiceContratadosProviderModule,
     ListaServiceContratadosClientModule,
     HistoricoPetclientModule,
-    HistoricoPetproviderModule
+    HistoricoPetproviderModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    AppRoutingModule,
+    HomeModule,
+    MatInputModule
   ],
   providers: [AuthInterceptorProvider, ErrorInterceptorProvider,AuthService,
     StorageService, RoleGuardService

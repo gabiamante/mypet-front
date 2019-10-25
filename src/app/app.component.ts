@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthGuardService } from './auth/auth-guard.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,12 @@ import { AuthGuardService } from './auth/auth-guard.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private router: Router){
+
+  }
+
+  login(){
+    this.router.navigate(['/login'])
+  }
 }

@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
 export class BuscarFornecedoresComponent implements OnInit {
 
   servicos: ServicosSelecionados[] = [];
-  servicoSelecionado: ServicosSelecionados;
   public forn: PessoaJuridica = new PessoaJuridica();
   forns: PessoaJuridica[] = [];
+  selected: string;
 
   constructor(
     private homeService: PesquisarService,
@@ -48,97 +48,100 @@ export class BuscarFornecedoresComponent implements OnInit {
   }
 
   pesquisarFornecedor(){
-    if(this.servicoSelecionado.label == "banhoETosa")  {
+
+    console.log(this.selected)
+
+    if(this.selected == "banhoETosa")  {
       this.forn.banhoETosa = "banhoETosa"
     }else{
       this.forn.banhoETosa = null
     }
 
-    if(this.servicoSelecionado.label == "consulta")  {
+    if(this.selected == "consulta")  {
       this.forn.consulta = "consulta"
     }else{
       this.forn.consulta = null
     }
 
-    if(this.servicoSelecionado.label == "tosaExotica")  {
+    if(this.selected == "tosaExotica")  {
       this.forn.tosaExotica = "tosaExotica"
     }else{
       this.forn.tosaExotica = null
     }
 
-    if(this.servicoSelecionado.label == "vacinacao")  {
+    if(this.selected == "vacinacao")  {
       this.forn.vacinacao = "vacinacao"
     }else{
       this.forn.vacinacao = null
     }
 
-    if(this.servicoSelecionado.label == "cirurgiaGeral")  {
+    if(this.selected == "cirurgiaGeral")  {
       this.forn.cirurgiaGeral = "cirurgiaGeral"
     }else{
       this.forn.cirurgiaGeral = null
     }
 
-    if(this.servicoSelecionado.label == "hidratacao")  {
+    if(this.selected == "hidratacao")  {
       this.forn.hidratacao = "hidratacao"
     }else{
       this.forn.hidratacao = null
     }
 
-    if(this.servicoSelecionado.label == "penteadosArtisticos")  {
+    if(this.selected == "penteadosArtisticos")  {
       this.forn.penteadosArtisticos = "penteadosArtisticos"
     }else{
       this.forn.penteadosArtisticos = null
     }
 
-    if(this.servicoSelecionado.label == "acupuntura")  {
+    if(this.selected == "acupuntura")  {
       this.forn.acupuntura = "acupuntura"
     }else{
       this.forn.acupuntura = null
     }
 
-    if(this.servicoSelecionado.label == "spa")  {
+    if(this.selected == "spa")  {
       this.forn.spa = "spa"
     }else{
       this.forn.spa = null
     }
 
-    if(this.servicoSelecionado.label == "hotel")  {
+    if(this.selected == "hotel")  {
       this.forn.hotel = "hotel"
     }else{
       this.forn.hotel = null
     }
 
-    if(this.servicoSelecionado.label == "creche")  {
+    if(this.selected == "creche")  {
       this.forn.creche = "creche"
     }else{
       this.forn.creche = null
     }
 
-    if(this.servicoSelecionado.label == "taxi")  {
+    if(this.selected == "taxi")  {
       this.forn.taxi = "taxi"
     }else{
       this.forn.taxi = null
     }
 
-    if(this.servicoSelecionado.label == "ensaioFotografico")  {
+    if(this.selected == "ensaioFotografico")  {
       this.forn.ensaioFotografico = "ensaioFotografico"
     }else{
       this.forn.ensaioFotografico = null
     }
 
-    if(this.servicoSelecionado.label == "adestramento")  {
+    if(this.selected == "adestramento")  {
       this.forn.adestramento = "adestramento"
     }else{
       this.forn.adestramento = null
     }
 
-    if(this.servicoSelecionado.label == "massagem")  {
+    if(this.selected == "massagem")  {
       this.forn.massagem = "massagem"
     }else{
       this.forn.massagem = null
     }
 
-    if(this.servicoSelecionado.label == "petwalk")  {
+    if(this.selected == "petwalk")  {
       this.forn.petwalk = "petwalk"
     }else{
       this.forn.petwalk = null
