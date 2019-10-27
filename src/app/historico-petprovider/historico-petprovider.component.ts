@@ -27,7 +27,9 @@ export class HistoricoPetproviderComponent implements OnInit {
       this.varPetProvider = retorno;
      this.listContratadosProviderFiltro(this.varPetProvider);
     });
-    // this. calcularMedia(this.lstServiceContratados);
+    setTimeout(function() {
+      this.calcularMedia(this.lstServiceContratados);
+     }, 3000);
 
   }
 

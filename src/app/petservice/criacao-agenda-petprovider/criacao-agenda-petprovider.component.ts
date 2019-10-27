@@ -152,18 +152,20 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
         text: 'O tempo de início não pode ser menor que o fim',
         footer: ''
       });
-    } else if (varCriacaoAgendaProviderToAttach.segundaCheck === false && varCriacaoAgendaProviderToAttach.tercaCheck === false &&
-      varCriacaoAgendaProviderToAttach.quartaCheck === false && varCriacaoAgendaProviderToAttach.quintaCheck === false &&
-      varCriacaoAgendaProviderToAttach.sextaCheck === false && varCriacaoAgendaProviderToAttach.sabadoCheck === false &&
-      varCriacaoAgendaProviderToAttach.domingoCheck === false) {
-      Swal.fire({
-        type: 'error',
-        title: 'Nenhum dia de semana foi incluído',
-        text: 'Escolha pelos um dia da semana',
-        footer: ''
-      });
+    }
+    // else if (varCriacaoAgendaProviderToAttach.segundaCheck === false && varCriacaoAgendaProviderToAttach.tercaCheck === false &&
+    //   varCriacaoAgendaProviderToAttach.quartaCheck === false && varCriacaoAgendaProviderToAttach.quintaCheck === false &&
+    //   varCriacaoAgendaProviderToAttach.sextaCheck === false && varCriacaoAgendaProviderToAttach.sabadoCheck === false &&
+    //   varCriacaoAgendaProviderToAttach.domingoCheck === false) {
+    //   Swal.fire({
+    //     type: 'error',
+    //     title: 'Nenhum dia de semana foi incluído',
+    //     text: 'Escolha pelos um dia da semana',
+    //     footer: ''
+    //   });
 
-    } else if (this.varCriacaoAgendaProvider.tempoInicio === null ||
+    // }
+    else if (this.varCriacaoAgendaProvider.tempoInicio === null ||
     this.varCriacaoAgendaProvider.tempoFim === null ) {
       Swal.fire({
         type: 'error',
@@ -176,7 +178,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
       this.correcaoDia(varCriacaoAgendaProviderToAttach);
       this.adicionaServico(varCriacaoAgendaProviderToAttach, this.varServicosSelecionados);
       this.varCriacaoAgendaProviderToAttachCopy = Object.assign({}, varCriacaoAgendaProviderToAttach);
-      this.adicionaSiglaDias(this.varCriacaoAgendaProviderToAttachCopy);
+      // this.adicionaSiglaDias(this.varCriacaoAgendaProviderToAttachCopy);
       this.lstCriacaoAgendaProvider.push(this.varCriacaoAgendaProviderToAttachCopy);
       this.qtdDiasSemanaSelecionadosCopy = this.qtdDiasSemanaSelecionados;
       this.reiniciaDias(varCriacaoAgendaProviderToAttach);
@@ -255,7 +257,8 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
   }
 
   correcaoDia(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
-
+    const testeAux = (varCriacaoAgendaProviderToAttach.dataCalendario.toDateString());
+    alert(testeAux);
     varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao = varCriacaoAgendaProviderToAttach.dataCalendario.getDate()
     + '/' + (varCriacaoAgendaProviderToAttach.dataCalendario.getMonth()+1) + '/'
     + varCriacaoAgendaProviderToAttach.dataCalendario.getFullYear();
@@ -316,10 +319,8 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
 
   });
   setTimeout(function() {
-    // alert('segura');
     location.reload();
   }, 3000);
-    // location.reload();
   }
 
   adicionaServico(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider, varServicosSelecionados: ServicosSelecionados) {

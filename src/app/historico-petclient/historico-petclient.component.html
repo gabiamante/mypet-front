@@ -23,9 +23,18 @@
             <td>{{varServiceContratados.nomeProvider}}</td>
             <td>{{varServiceContratados.motivoCancelamento}}</td>
             <p-rating *ngIf="varServiceContratados.cancelado === false" [(ngModel)]="varServiceContratados.avaliacao" (onRate)="handleRate($event)" (onCancel)="handleCancel($event)">
-            </p-rating> <span *ngIf="msg" style="margin-left:10px">{{msg}}</span>
+            </p-rating> <!-- <span *ngIf="msg" style="margin-left:10px">{{msg}}</span> -->
             </tr>
           </ng-template>
         </p-table>
 
         <button (click)="salvarAvaliacao(lstServiceContratados)" label="Gravar">Gravar</button>
+
+
+        <!--
+            teste para melhorar motivo cancelamento
+
+
+                      <td *ngIf="varServiceContratados.cancelado === true" >{{varServiceContratados.motivoCancelamento}}</td>
+            <td *ngIf="varServiceContratados.cancelado === false">{{varServiceContratados.motivoCancelamento}} {{motivoDeCancelamentoQuandoFinalizado}}</td>
+        -->

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpErrorResponse, HttpEvent, HttpRequest } from '@angular/common/http';
 import { PessoaFisica } from './pessoa-fisica';
 import { PessoaJuridica } from './pessoa-juridica';
 import { Observable, throwError } from 'rxjs';
@@ -106,5 +106,26 @@ export class PessoaService {
           // return an observable with a user-facing error message
           return throwError(
             'Something bad happened; please try again later.');
-        };
+        }
+
+// upload foto cliente -*******************************************************************-
+         pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+          const formdata: FormData = new FormData();
+          formdata.append('file', file);
+          const req = new HttpRequest('POST', 'http://localhost:8080/pessoafisica/picture', formdata, {
+            reportProgress: true,
+            responseType: 'text'
+          });
+          return this.http.request(req);
+        }
+// upload foto servico -*******************************************************************-
+        pushFileToStorageService(file: File): Observable<HttpEvent<{}>> {
+          const formdata: FormData = new FormData();
+          formdata.append('file', file);
+          const req = new HttpRequest('POST', 'http://localhost:8080/pessoajuridica/picture', formdata, {
+            reportProgress: true,
+            responseType: 'text'
+          });
+          return this.http.request(req);
+        }
 }

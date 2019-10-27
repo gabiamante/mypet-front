@@ -30,9 +30,7 @@ export class HistoricoPetclientService {
   }
 
   salvarAvaliacaoServico(varServiceContratados: ServiceContratados)  {
-    const url = API + '$/contratadoprovider/${varServiceContratados.id}';
-
-    return this.http.put(url, varServiceContratados);
+    return this.http.put(API + '/contratadoprovider/' + varServiceContratados.id, varServiceContratados);
   }
 
 }

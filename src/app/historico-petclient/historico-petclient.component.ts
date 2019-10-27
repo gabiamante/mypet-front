@@ -16,6 +16,7 @@ export class HistoricoPetclientComponent implements OnInit {
   varPetClient: PessoaFisica = new PessoaFisica();
   msg: string;
   avaliacao: number = 5;
+  motivoDeCancelamentoQuandoFinalizado = '';
 
   constructor(private serviceServiceContratados: HistoricoPetclientService) { }
 
@@ -41,7 +42,7 @@ export class HistoricoPetclientComponent implements OnInit {
     for (const element of lstServiceContratados) {
       this.serviceServiceContratados.salvarAvaliacaoServico(element)
       .subscribe(res => {
-        location.reload
+        location.reload();
       });
     }
   }
@@ -52,6 +53,10 @@ export class HistoricoPetclientComponent implements OnInit {
 
 handleCancel(event) {
     this.msg = 'Nota cancelada';
+}
+
+handleMotivoCancelamento(event) {
+  this.motivoDeCancelamentoQuandoFinalizado = 'Este serviço não foi cancelado';
 }
 
 }
