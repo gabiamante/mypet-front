@@ -14,6 +14,8 @@ export class HistoricoPetclientComponent implements OnInit {
   @Input() lstServiceContratados: ServiceContratados[] = [];
   serviceListaServiceContratadosClientService: ListaServiceContratadosClientService;
   varPetClient: PessoaFisica = new PessoaFisica();
+  msg: string;
+  avaliacao: number = 5;
 
   constructor(private serviceServiceContratados: HistoricoPetclientService) { }
 
@@ -33,5 +35,23 @@ export class HistoricoPetclientComponent implements OnInit {
     this.serviceServiceContratados.listContratadosClientFiltro(this.varPetClient.id + '')
     .subscribe(res => this.lstServiceContratados = res);
   }
+
+  salvarAvaliacao(lstServiceContratados: ServiceContratados[])  {
+
+    for (const element of lstServiceContratados) {
+      this.serviceServiceContratados.salvarAvaliacaoServico(element)
+      .subscribe(res => {
+        location.reload
+      });
+    }
+  }
+
+  handleRate(event) {
+    this.msg = 'Nota do serviço ' + event.value;
+}
+
+handleCancel(event) {
+    this.msg = 'Nota cancelada';
+}
 
 }

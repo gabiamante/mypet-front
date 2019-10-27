@@ -14,6 +14,7 @@ export class HistoricoPetproviderComponent implements OnInit {
   @Input() lstServiceContratados: ServiceContratados[] = [];
   varServiceContratados: ServiceContratados;
   varPetProvider: PessoaJuridica = new PessoaJuridica();
+  mediaAvaliacao = 0;
 
   constructor(private serviceServiceContratados: HistoricoPetproviderService) { }
 
@@ -26,6 +27,7 @@ export class HistoricoPetproviderComponent implements OnInit {
       this.varPetProvider = retorno;
      this.listContratadosProviderFiltro(this.varPetProvider);
     });
+    // this. calcularMedia(this.lstServiceContratados);
 
   }
 
@@ -46,6 +48,22 @@ export class HistoricoPetproviderComponent implements OnInit {
             location.reload();
             });
         }
+      }
+    }
+
+    calcularMedia(lstServiceContratados: ServiceContratados[]) {
+      let soma = 0;
+      for (const element of lstServiceContratados) {
+        if  (element.cancelado === false)  {
+          soma = soma + element.avaliacao;
+        }
+      }
+      if  (this.mediaAvaliacao === undefined || isNaN(this.mediaAvaliacao)
+      || this.mediaAvaliacao === null)  {
+        this.mediaAvaliacao = 0;
+      }
+      if  (soma !== 0 && lstServiceContratados.length !== 0)  {
+        this.mediaAvaliacao = soma / lstServiceContratados.length;
       }
     }
 

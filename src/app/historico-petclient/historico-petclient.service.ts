@@ -29,6 +29,12 @@ export class HistoricoPetclientService {
     return this.http.get(API + '/loginConjunto/email?value=' + email);
   }
 
+  salvarAvaliacaoServico(varServiceContratados: ServiceContratados)  {
+    const url = API + '$/contratadoprovider/${varServiceContratados.id}';
+
+    return this.http.put(url, varServiceContratados);
+  }
+
 }
 
 

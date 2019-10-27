@@ -6,6 +6,8 @@ import { MenuModule } from 'primeng/menu';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
+import {RatingModule} from 'primeng/rating';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { TableModule } from 'primeng/table';
     TableModule,
     FormsModule,
     ButtonModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    RatingModule
   ],
   exports: [
     HistoricoPetclientComponent

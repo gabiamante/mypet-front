@@ -15,6 +15,7 @@ export class ServiceContratados  {
   notificaCancelamento = false;
   motivoCancelamento = '';
   mostraStatus = '';
+  avaliacao = 0;
 
 
   constructor() {
@@ -34,5 +35,6 @@ export class ServiceContratados  {
     this.notificaCancelamento = false;
     this.motivoCancelamento =  '';
     this.mostraStatus = '';
+    this.avaliacao = 0;
   }
 }
