@@ -15,27 +15,38 @@
           <a class="nav-link" href="#">Eventos</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button mat-flat-button color="primary" data-toggle="modal" data-target="#modalCadastro" type="button">Cadastre-se</button>
-        <button mat-flat-button color="primary" type="button" (click)="login()">Login</button>
-      </form>
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <mat-icon>calendar_today</mat-icon>
-          <span>Minha agenda</span>
+
+      <ng-container *ngIf="!(authenticated$ | async)">
+        <form class="form-inline my-2 my-lg-0">
+          <button mat-flat-button color="primary" data-toggle="modal" data-target="#modalCadastro" type="button">Cadastre-se</button>
+          <button mat-flat-button color="primary" type="button" (click)="login()">Login</button>
+        </form>
+      </ng-container>
+
+      <ng-container *ngIf="(authenticated$ | async) && (user$ | async)">
+        {{ (user$ | async)?.email }}
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>account_circle</mat-icon>
         </button>
-        <button mat-menu-item>
-          <mat-icon>history</mat-icon>
-          <span>Histórico</span>
-        </button>
-        <button mat-menu-item>
-          <mat-icon>person</mat-icon>
-          <span>Meu Perfil</span>
-        </button>
-      </mat-menu>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>calendar_today</mat-icon>
+            <span>Minha agenda</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>history</mat-icon>
+            <span>Histórico</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>person</mat-icon>
+            <span>Meu Perfil</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>person</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+    </ng-container>
     </div>
   </nav>
 
@@ -50,8 +61,8 @@
               </button>
                 </div>
                 <div class="modal-body">
-                    <a class="btn btn-primary" href="/pessoa/fisica/cadastrar">PetClient</a>
-                    <a class="btn btn-primary" href="/pessoa/juridica/cadastrar">PetProvider</a>
+                    <button mat-flat-button color="primary" type="button" (click)="cadastroCliente()">Cliente</button>
+                    <button mat-flat-button color="primary" type="button" (click)="cadastroFornecedor()">Fornecedor</button>
                 </div>
             </div>
         </div>

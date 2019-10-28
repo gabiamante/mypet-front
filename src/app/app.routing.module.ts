@@ -29,12 +29,15 @@ import { ListaOpcoesHorariosServiceDisponiveisComponent } from './lista-opcoes-h
 import { PerfilPetClientComponent } from './tela-inicial-login/tela-inicial-pet-client/perfil-pet-client/perfil-pet-client.component';
 import { ListaServiceContratadosClientComponent } from './lista-service-contratados-client/lista-service-contratados-client.component';
 import { HistoricoPetclientComponent } from './historico-petclient/historico-petclient.component';
+import { ResultadoComponent } from './home/home/resultado/resultado.component';
 
 
 const routes: Routes = [
     { path: 'home/home', component: HomeComponent},
     { path: 'home/quem-somos', component: QuemSomosComponent},
     { path: 'home/detalhes/:id', component: DetalhesComponent},
+
+    { path: 'home/resultado', component: ResultadoComponent},
 
     { path: 'login', component: LoginComponent},
 

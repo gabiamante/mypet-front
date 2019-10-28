@@ -149,6 +149,7 @@ export class BuscarFornecedoresComponent implements OnInit {
 
   this.homeService.buscarPetProvidersPorFiltro(this.forn).subscribe(pessoas => {
     this.forns = pessoas
+    this.router.navigate(['home', 'resultado'])
   });
   }
 }

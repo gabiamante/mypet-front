@@ -5,7 +5,7 @@ import { QuemSomosComponent } from './quem-somos/quem-somos.component';
 import { HttpClientModule } from '@angular/common/http';
 import {TableModule} from 'primeng/table';
 import { HomeComponent } from './home/home.component';
-import { PesquisarComponent } from './home/pesquisar/pesquisar.component';
+import { ResultadoComponent } from './home/resultado/resultado.component';
 import { DetalhesComponent } from './home/detalhes/detalhes.component';
 import { FiltroPelaCidade } from './home/filtro-pela-cidade.pipe';
 import {CardModule} from 'primeng/card';
@@ -23,7 +23,7 @@ import { CardsComponent } from './cards/cards.component';
     QuemSomosComponent,
     FiltroPelaCidade,
     HomeComponent,
-    PesquisarComponent,
+    ResultadoComponent,
     DetalhesComponent,
     BuscarFornecedoresComponent,
     CardsComponent
@@ -48,7 +48,7 @@ import { CardsComponent } from './cards/cards.component';
     QuemSomosComponent,
     FiltroPelaCidade,
     HomeComponent,
-    PesquisarComponent,
+    ResultadoComponent,
     DetalhesComponent
   ]
 })
