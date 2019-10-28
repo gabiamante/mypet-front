@@ -257,10 +257,25 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
   }
 
   correcaoDia(varCriacaoAgendaProviderToAttach: CriacaoAgendaProvider) {
-    const testeAux = (varCriacaoAgendaProviderToAttach.dataCalendario.toDateString());
-    alert(testeAux);
+    let diaDaSemana = (varCriacaoAgendaProviderToAttach.dataCalendario.toDateString());
+    console.log(diaDaSemana.slice(0, 4));
+    diaDaSemana = diaDaSemana.slice(0, 4).trim();
+    if  (diaDaSemana === 'Mon')  {
+      varCriacaoAgendaProviderToAttach.siglaDia = 'Seg';
+    } else if (diaDaSemana === 'Tue')  {
+      varCriacaoAgendaProviderToAttach.siglaDia = 'Ter';
+    } else if (diaDaSemana === 'Wed') {
+      varCriacaoAgendaProviderToAttach.siglaDia = 'Quar';
+    } else if (diaDaSemana === 'Thu')  {
+      varCriacaoAgendaProviderToAttach.siglaDia = 'Quin';
+    } else  {
+      // é sexta-feira, obs: não estamos considerando finais de semana.
+      // caso queira, precisa ativar esses dias no calendário e adicionar a condição
+      varCriacaoAgendaProviderToAttach.siglaDia = 'Sex';
+    }
+
     varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao = varCriacaoAgendaProviderToAttach.dataCalendario.getDate()
-    + '/' + (varCriacaoAgendaProviderToAttach.dataCalendario.getMonth()+1) + '/'
+    + '/' + (varCriacaoAgendaProviderToAttach.dataCalendario.getMonth() + 1) + '/'
     + varCriacaoAgendaProviderToAttach.dataCalendario.getFullYear();
   }
 
