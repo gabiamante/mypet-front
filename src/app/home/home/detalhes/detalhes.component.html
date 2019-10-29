@@ -1,7 +1,7 @@
   <div class="card">
       <h5 class="card-header">{{pessoa?.razaoSocial}}</h5>
       <div class="card-body">
-          <label class="card-text">CNPJ: {{pessoa?.cpfOuCnpj}} </label><br/>
+          <label class="card-text">CNPJ: {{pessoa?.cpf}} </label><br/>
           <label class="card-text">E-mail: {{pessoa?.email}} </label><br/>
           <label class="card-text">Endereço: {{pessoa?.logradouro}} </label><br/>
           <label class="card-text">Número: {{pessoa?.numero}} </label><br/>
@@ -22,6 +22,9 @@
           <label class="card-text">Exames: {{pessoa?.exames}}</label><br/>
           <label class="card-text">PetWalk: false</label><br/>          
 
+
+        <button mat-flat-button color="primary" type="button" label="Agendar" (click)="agendar(pessoa)">Agendar</button>
+        <button mat-flat-button color="primary" type="button" label="Voltar" (click)="voltar()">Voltar</button>
         <button pButton type="button" label="Agendar" (click)="agendar(pessoa)" style="margin-right: .25em"></button>
         <button pButton type="button" label="Voltar" (click)="voltar()" class="ui-button-secondary"></button>
       

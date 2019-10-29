@@ -62,35 +62,30 @@ export class PessoaService {
                 return this.http.delete(API + '/pessoajuridica/' + id);
                   }
 
-        public salvarPessoaFisica(pessoaFisica: PessoaFisica): Observable<PessoaFisica> {
-                pessoaFisica.tipoPerfil = 1;
-                //alert(JSON.stringify(pessoaFisica));
-                return this.http.post<PessoaFisica>(API + '/pessoafisica', pessoaFisica);
-        }
+            public salvarPessoaFisica(pessoaFisica: PessoaFisica): Observable<PessoaFisica> {
+              pessoaFisica.tipoPerfil = 1;
+              //alert(JSON.stringify(pessoaFisica));
+              return this.http.post<PessoaFisica>(API + '/pessoafisica', pessoaFisica);
+            }
 
         public salvarPessoaJuridica(pessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
           pessoaJuridica.tipoPerfil = 2;
-          // console.log(JSON.stringify(pessoaJuridica));
-          // alert('segura');
           return this.http.post<PessoaJuridica>(API + '/pessoajuridica', pessoaJuridica);
         }
 
         public atualizaPessoaJuridica(pessoaJuridica: PessoaJuridica): Observable<PessoaJuridica> {
           httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
-          //console.log('Requisição ---> ' + API + '/pessoajuridica/' + pessoaJuridica.id);
-          //console.log('Pessoa para atualizar = ' + pessoaJuridica);
           return this.http.put<PessoaJuridica>(API + '/pessoajuridica/' + pessoaJuridica.id
-          , pessoaJuridica, httpOptions).pipe(
-            //catchError(this.handleError('403'))
-          );
+          , pessoaJuridica, httpOptions)
+            .pipe();
         }
 
-        atualizaPessoaFisica(id: number): Observable<PessoaFisica> {
+        public atualizaPessoaFisica(pessoaFisica: PessoaFisica): Observable<PessoaFisica> {
           httpOptions.headers =  httpOptions.headers.set('Authorization', 'my-new-auth-token');
-          return this.http.put<PessoaFisica>(API + '$/pessoafisica/${id}', id);
+          return this.http.put<PessoaFisica>(API + '/pessoafisica/' + pessoaFisica.id
+          , pessoaFisica, httpOptions)
+            .pipe();
         }
-
-
 
         private handleError(error: HttpErrorResponse) {
           if (error.error instanceof ErrorEvent) {

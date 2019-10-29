@@ -1,6 +1,6 @@
 export interface TabelaPetProvider{
     razaoSocial;
-    cnpj;
+    cpf;
     email;
     delete;
 }

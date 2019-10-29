@@ -47,6 +47,10 @@ export class PesquisarService {
       return this.http.get<PessoaFisica>(API + '/pessoafisica/email?value=' + email);
     }
 
+    buscarDetalhesPorEmailPetProvider(email: string): Observable<PessoaJuridica>{
+      return this.http.get<PessoaJuridica>(API + '/pessoajuridica/email?value=' + email);
+    }
+
     buscarPetProvidersPorFiltro(pessoa: PessoaJuridica): Observable<PessoaJuridica[]>{
 
     return this.http.get<PessoaJuridica[]>(API + '/pessoajuridica/filtro?bairro=' + pessoa.bairro + '&cidade=' + pessoa.cidade + '&estado=' + pessoa.estado + 

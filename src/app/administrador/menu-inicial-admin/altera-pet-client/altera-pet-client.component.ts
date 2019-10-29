@@ -20,7 +20,6 @@ export class AlteraPetClientComponent implements OnInit {
 
   ngOnInit() {
     const pessoa = this.activatedRoute.snapshot.params.id;
-    console.log("pessoa física: " + pessoa);
     this.pesquisarService.buscarDetalhesPetClient(pessoa).subscribe((retorno) => { 
       this.pessoaFisica = retorno;
     });
@@ -31,8 +30,7 @@ export class AlteraPetClientComponent implements OnInit {
   }
 
   public alterar(){
-    console.log(this.pessoaFisica);
-    this.petClientService.atualizaPessoaFisica(this.pessoaFisica.id).subscribe(
+    this.petClientService.atualizaPessoaFisica(this.pessoaFisica).subscribe(
       response => {
         alert('PetClient alterado com sucesso!');
         window.location.href = '/administrador/menu-inicial-admin';

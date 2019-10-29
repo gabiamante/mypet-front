@@ -17,12 +17,6 @@
                   <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
 
 
-
-
-
-
-
-
           <div class="form-group col-md-3">
               <label for="nomeCompleto">Nome Completo:</label>
               <input type="text" class="form-control" [(ngModel)]="pessoaFisica.nomeCompleto" pInputText required>
@@ -44,12 +38,12 @@
           </div>
 
           <div class="form-group col-md-2">
-              <label for="telefone1">Telefone Fixo:</label>
+              <label for="telefoneFixo">Telefone Fixo:</label>
               <input type="text" class="form-control" [(ngModel)]="pessoaFisica.telefoneFixo" pInputText>
           </div>
 
           <div class="form-group col-md-2">
-              <label for="telefone2">Celular:</label>
+              <label for="telefoneCelular">Celular:</label>
               <input type="text" class="form-control" [(ngModel)]="pessoaFisica.telefoneCelular" required="required" pInputText>
           </div>
       </div>
