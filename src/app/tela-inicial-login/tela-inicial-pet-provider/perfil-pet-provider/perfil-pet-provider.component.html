@@ -2,10 +2,30 @@
 <div class="container">
   <h2 align="center"> Alterar PetProvider</h2>
   <div class="form-row align-items-center" >
-      <div class="form-group col-md-3">
+      
+     
+    <div *ngIf="currentFileUpload" class="progress">
+        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+          aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+          {{progress.percentage}}%</div>
+      </div>
+
+      <label class="btn btn-default">
+        <input type="file" (change)="selectFile($event)">
+      </label>
+
+      <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+
+
+    
+    
+    <div class="form-group col-md-3">
           <label for="razaoSocial">Razão Social: </label>
           <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.razaoSocial" pInputText placeholder="Ex: Clínica pet feliz" required>
       </div>
+
+
+
 
       <div class="form-group col-md-2">
           <label for="cpf">CNPJ:</label>

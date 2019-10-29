@@ -3,6 +3,7 @@ import { PesquisarService } from 'src/app/home/home.service';
 import { PessoaService } from 'src/app/pessoa/pessoa.service';
 import { ActivatedRoute } from '@angular/router';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-perfil-pet-provider',
@@ -13,6 +14,10 @@ export class PerfilPetProviderComponent implements OnInit {
 
   pessoa: PessoaJuridica;
   public pessoaJuridica: PessoaJuridica = new PessoaJuridica();
+
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  progress: { percentage: number } = { percentage: 0 };
 
   constructor(
     private pesquisarService: PesquisarService,
@@ -26,6 +31,25 @@ export class PerfilPetProviderComponent implements OnInit {
     this.pesquisarService.buscarDetalhesPorEmailPetProvider(obj.email).subscribe((retorno) => {
       this.pessoaJuridica = retorno;
     });
+  }
+
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload() {
+    this.progress.percentage = 0;
+
+    this.currentFileUpload = this.selectedFiles.item(0);
+    this.petProviderService.pushFileToStorageService(this.currentFileUpload).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.progress.percentage = Math.round(100 * event.loaded / event.total);
+      } else if (event instanceof HttpResponse) {
+        console.log('Arquivo salvo com sucesso!');
+      }
+    });
+
+    this.selectedFiles = undefined;
   }
 
   public alterar(){
