@@ -5,7 +5,7 @@ import { QuemSomosComponent } from './quem-somos/quem-somos.component';
 import { HttpClientModule } from '@angular/common/http';
 import {TableModule} from 'primeng/table';
 import { HomeComponent } from './home/home.component';
-import { ResultadoComponent } from './home/resultado/resultado.component';
+import { ResultadoComponent } from './home/buscar-fornecedores/resultado/resultado.component';
 import { DetalhesComponent } from './home/detalhes/detalhes.component';
 import { FiltroPelaCidade } from './home/filtro-pela-cidade.pipe';
 import {CardModule} from 'primeng/card';

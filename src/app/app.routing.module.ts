@@ -29,7 +29,7 @@ import { ListaOpcoesHorariosServiceDisponiveisComponent } from './lista-opcoes-h
 import { PerfilPetClientComponent } from './tela-inicial-login/tela-inicial-pet-client/perfil-pet-client/perfil-pet-client.component';
 import { ListaServiceContratadosClientComponent } from './lista-service-contratados-client/lista-service-contratados-client.component';
 import { HistoricoPetclientComponent } from './historico-petclient/historico-petclient.component';
-import { ResultadoComponent } from './home/home/resultado/resultado.component';
+import { ResultadoComponent } from './home/home/buscar-fornecedores/resultado/resultado.component';
 import { PerfilPetProviderComponent } from './tela-inicial-login/tela-inicial-pet-provider/perfil-pet-provider/perfil-pet-provider.component';
 
 
@@ -38,7 +38,7 @@ const routes: Routes = [
     { path: 'home/quem-somos', component: QuemSomosComponent},
     { path: 'home/detalhes/:id', component: DetalhesComponent},
 
-    { path: 'home/resultado/:forns', component: ResultadoComponent},
+    { path: 'home/resultado', component: ResultadoComponent},
 
     { path: 'login', component: LoginComponent},
 
