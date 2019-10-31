@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PesquisarService } from 'src/app/home/home.service';
 import { PessoaService } from 'src/app/pessoa/pessoa.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-perfil-pet-client',
@@ -21,7 +22,8 @@ export class PerfilPetClientComponent implements OnInit {
 
   constructor(private pesquisarService: PesquisarService,
               private petClientService: PessoaService,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthService) {
                 this.router = router;
           }
 
@@ -64,6 +66,16 @@ export class PerfilPetClientComponent implements OnInit {
       response => {
         alert('PetClient alterado com sucesso!');
         window.location.href = '/login/tela-inicial-pet-client';
+      }
+    );
+  }
+
+  public inativar(){
+    this.petClientService.softDeletePessoaFisica(this.pessoaFisica).subscribe(
+      response => {
+        alert('PetClient inativado com sucesso!');
+        this.authService.logout();
+        window.location.href = '/home/home';
       }
     );
   }

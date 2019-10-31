@@ -83,14 +83,15 @@
           </div>
       </div>
       <div class="button-cadastro">
-          <div>
-              <button type="button" (click)="alterar()" label="Alterar" class="btn btn-outline-light" style="background-color: #f7b733">Efetuar alterações
-                      </button>
-          </div>
-          <div>
-              <button type="button" (click)="cancelar()" label="Cancelar" class="btn btn-outline-light" style="background-color: #f7b733">Cancelar
-                      </button>
-          </div>
+        <div>
+            <button mat-flat-button color="primary" type="button" (click)="alterar()">Efetuar Alterações</button>
+        </div>
+        <div>
+            <button mat-flat-button color="primary" type="button" (click)="inativar()">Inativar Conta</button>
+        </div>
+        <div>
+            <button mat-flat-button color="primary" type="button" (click)="cancelar()">Voltar</button>
+        </div>
       </div>
   </div>
 </div>

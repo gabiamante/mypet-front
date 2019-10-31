@@ -11,6 +11,7 @@ import{JwtHelper} from 'angular2-jwt';
 import { PessoaService } from '../pessoa/pessoa.service';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 const API_URL = 'http://localhost:8080';
 
@@ -57,7 +58,6 @@ public logout(){
   localStorage.removeItem('localUser');
   this.subjUser$.next(null);
   this.subjLoggedIn$.next(false);
-  this.router.navigate(['home/home']);
 }
 
   public login(credentials: Credentials): void {
@@ -72,18 +72,47 @@ public logout(){
     this.buscaEmail.buscarEmailLoginConjunto(obj.email).subscribe((perfil) => {
       this.pessoa = perfil
 
-    if(this.pessoa.perfil == "SERVICO"){
-        this.router.navigate(['login/tela-inicial-pet-provider']);
-      }
-    else
-      if(this.pessoa.perfil == "CLIENTE"){
-        this.router.navigate(['login/tela-inicial-pet-client']);
-      }
-      else
-        if(this.pessoa.perfil == "ADMIN"){
-          this.router.navigate(['administrador/menu-inicial-admin']);
+      if(this.pessoa.active == 1){
+        if(this.pessoa.perfil == "SERVICO"){
+          this.router.navigate(['login/tela-inicial-pet-provider']);
         }
-
+      else
+        if(this.pessoa.perfil == "CLIENTE"){
+          this.router.navigate(['login/tela-inicial-pet-client']);
+        }
+        else
+          if(this.pessoa.perfil == "ADMIN"){
+            this.router.navigate(['administrador/menu-inicial-admin']);
+          }
+      }
+      else{
+        Swal.fire({
+          title: 'Usuário desativado',
+          text: "Deseja reativar seu usuário?",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sim',
+          cancelButtonText: 'Não'
+        }).then((result) => {
+          if (result.value) {
+            Swal.fire(
+              'Conta reativada!',
+              'Você será direcionado para efetuar o login',
+              'success'
+            )
+            window.location.href = '/login';
+          }
+          else{
+            Swal.fire(
+              'Conta não foi reativada!',
+              'Redirecionando para Home...'
+            )
+            window.location.href = '/home/home';
+          }
+        })
+      }
       })
     });
   }
@@ -115,31 +144,51 @@ public logout(){
 
   checkTokenValidation(): Observable<boolean>{
 
+    const email = localStorage.getItem("localUser")
+    const obj = JSON.parse(email)
+
+    if(email == null){
+        this.logout();
+        console.log("logout")
+        return of(false);
+    }else{
+      return this.http.get<LocalUser>(API_URL + '/loginConjunto/email?value=' + obj.email)
+      .pipe(
+        tap((u: LocalUser) =>{
+          if(u){
+            this.subjUser$.next(u);
+            this.subjLoggedIn$.next(true);
+          }
+        }),
+        map((u: LocalUser) => (u)?true:false),
+        catchError((err) => {
+          this.logout();
+          return of(false);
+        })
+      );
+    }
+  }
+
+  checkProfile(){
     const token = localStorage.getItem("localUser")
     var obj = JSON.parse(token)
 
-    if(token){
-      this.subjUser$.next(obj);
-      this.subjLoggedIn$.next(true);
-    }else{
-      this.logout();
-      return of(false);
-    }
-/* 
-    return this.http.get<LocalUser>(API_URL + '/loginConjunto/' + obj.email)
-    .pipe(
-      tap((u: LocalUser) =>{
-        if(u){
-          this.subjUser$.next(u);
-          this.subjLoggedIn$.next(true);
+    this.buscaEmail.buscarEmailLoginConjunto(obj.email).subscribe((perfil) => {
+      this.pessoa = perfil
+
+    if(this.pessoa.perfil == "SERVICO"){
+        this.router.navigate(['login', 'tela-inicial-pet-provider']);
+      }
+      else
+        if(this.pessoa.perfil == "CLIENTE"){
+          this.router.navigate(['login', 'tela-inicial-pet-client']);
         }
-      }),
-      map((u: LocalUser) => (u)?true:false),
-      catchError((err) => {
-        this.logout();
-        return of(false);
-      })
-    ); */
+      else
+        if(this.pessoa.perfil == "ADMIN"){
+          this.router.navigate(['administrador', '']);
+        }
+    })
+      this.router.navigate(['home', 'home']);
   }
 
   public getUser(): Observable<LocalUser>{

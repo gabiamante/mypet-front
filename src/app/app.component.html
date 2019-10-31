@@ -25,28 +25,12 @@
 
       <ng-container *ngIf="(authenticated$ | async) && (user$ | async)">
         {{ (user$ | async)?.email }}
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          <mat-icon>account_circle</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>
-            <mat-icon>calendar_today</mat-icon>
-            <span>Minha agenda</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>history</mat-icon>
-            <span>Histórico</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>person</mat-icon>
-            <span>Meu Perfil</span>
-          </button>
-          <button mat-menu-item (click)="logout()">
-            <mat-icon>person</mat-icon>
-            <span>Logout</span>
-          </button>
-        </mat-menu>
+      <form class="form-inline my-2 my-lg-0">
+        <button mat-flat-button color="primary" type="button" (click)="checkProfile()">Área Logada</button>
+        <button mat-flat-button color="primary" type="button" (click)="logout()">Logout</button>
+      </form>
     </ng-container>
+      
     </div>
   </nav>
 

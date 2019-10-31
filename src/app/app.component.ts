@@ -22,9 +22,17 @@ export class AppComponent {
       this.router = router;
   }
 
+  ngOnInit(){
+    this.authenticated$ = this.authService.isAuthenticated();
+  }
+
   login(){
     this.router.navigate(['/login'])
   }
+
+  checkProfile(){
+    const perfil = this.authService.checkProfile();
+  } 
 
   cadastroCliente(){
     this.router.navigate(['pessoa', 'fisica', 'cadastrar']);
@@ -36,5 +44,6 @@ export class AppComponent {
 
   logout(){
     this.authService.logout();
+    window.location.href = '/home/home';
   }
 }
