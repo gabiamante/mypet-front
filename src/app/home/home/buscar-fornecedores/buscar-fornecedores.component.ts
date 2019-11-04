@@ -49,8 +49,6 @@ export class BuscarFornecedoresComponent implements OnInit {
 
   pesquisarFornecedor(){
 
-    console.log(this.selected)
-
     if(this.selected == "banhoETosa")  {
       this.forn.banhoETosa = "banhoETosa"
     }else{
@@ -147,9 +145,7 @@ export class BuscarFornecedoresComponent implements OnInit {
       this.forn.petwalk = null
     }
 
-  this.homeService.buscarPetProvidersPorFiltro(this.forn).subscribe(pessoas => {
-    this.forns = pessoas
-    //this.router.navigate(['home', 'resultado'])
-  });
+  this.homeService.getForns(this.forn);
+
   }
 }

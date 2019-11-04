@@ -5,6 +5,7 @@ import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import {catchError, map, take} from 'rxjs/operators';
 import {throwError, Observable} from 'rxjs';
 import { PessoaFisica } from '../pessoa/pessoa-fisica';
+import { Router } from '@angular/router';
 
 const API = 'http://localhost:8080';
 
@@ -17,9 +18,13 @@ const httpOptions = {
 })
 export class PesquisarService {
 
+  fornecedores: Observable<PessoaJuridica[]>;
+  forns: PessoaJuridica[] = [];
   private num: number;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private router: Router) {
+    this.router = router; }
 
   buscar() {
       return this.http.get<PessoaJuridica[]>(API + '/pessoajuridica');
@@ -53,12 +58,22 @@ export class PesquisarService {
 
     buscarPetProvidersPorFiltro(pessoa: PessoaJuridica): Observable<PessoaJuridica[]>{
 
-    return this.http.get<PessoaJuridica[]>(API + '/pessoajuridica/filtro?bairro=' + pessoa.bairro + '&cidade=' + pessoa.cidade + '&estado=' + pessoa.estado + 
+    this.fornecedores = this.http.get<PessoaJuridica[]>(API + '/pessoajuridica/filtro?bairro=' + pessoa.bairro + '&cidade=' + pessoa.cidade + '&estado=' + pessoa.estado + 
     '&acupuntura=' + pessoa.acupuntura + '&adestramento=' + pessoa.adestramento + '&banhoETosa=' + pessoa.banhoETosa + '&cirurgiaGeral=' + 
     pessoa.cirurgiaGeral + '&consulta=' + pessoa.consulta + '&creche=' + pessoa.creche + '&ensaioFotografico=' + pessoa.ensaioFotografico + 
     '&hidratacao=' +  pessoa.hidratacao + '&hotel=' + pessoa.hotel + '&massagem=' + pessoa.massagem + 
     '&penteadosArtisticos=' + pessoa.penteadosArtisticos + '&petwalk=' + pessoa.petwalk + '&spa=' + pessoa.spa + '&taxi=' + pessoa.taxi + '&tosaExotica=' + 
     pessoa.tosaExotica + '&vacinacao=' + pessoa.vacinacao); 
+
+    return this.fornecedores;
+
+    }
+
+    getForns(pessoa: PessoaJuridica){
+      this.buscarPetProvidersPorFiltro(pessoa).subscribe(f => {
+        this.forns = f
+        this.router.navigate(['home', 'resultado'])
+      });
     }
 
 }

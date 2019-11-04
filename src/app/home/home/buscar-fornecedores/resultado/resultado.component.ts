@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, SimpleChanges, SimpleChange } from '@angular/core';
-import { PesquisarService } from '../../../home.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
-import { ActivatedRoute, Router, Route } from '@angular/router';
+import { BuscarFornecedoresComponent } from '../buscar-fornecedores.component';
+import { PesquisarService } from 'src/app/home/home.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-resultado-fornecedor',
@@ -10,10 +11,13 @@ import { ActivatedRoute, Router, Route } from '@angular/router';
 })
 export class ResultadoComponent implements OnInit {
 
-constructor(){
-  }
+  @Input() forns: PessoaJuridica[];
+
+  constructor(private service: PesquisarService){
+    }
 
   ngOnInit() {
+    this.forns = this.service.forns;
   }
 }
 
