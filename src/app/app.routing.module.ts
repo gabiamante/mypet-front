@@ -71,7 +71,7 @@ const routes: Routes = [
     { path: 'historico/petclient', component: HistoricoPetclientComponent},
     { path: 'historico/petprovider', component: HistoricoPetproviderComponent},
 
-    { path: 'agendamento-pet-service/agendamento-pet-service/:id', component: ListaOpcoesHorariosServiceDisponiveisComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
+    { path: 'agendamento-pet-service/agendamento-pet-service/:id', component: ListaOpcoesHorariosServiceDisponiveisComponent},
 
     { path: '', pathMatch: 'full', redirectTo: '/home/home'},
     { path: '**', component: NotFoundComponent }
