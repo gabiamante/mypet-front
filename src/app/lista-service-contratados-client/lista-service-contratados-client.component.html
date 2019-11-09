@@ -1,7 +1,14 @@
 
 
 <h3 class="first">Serviços contratados</h3>
-<p-table [value]="lstServiceContratados">
+<p-table #tt [value]="lstServiceContratados" [paginator] = "true" [rows] = "7" [globalFilterFields]="['tempoInicio','tempoFim','siglaDia','nomeProvider','dataCalendarioCorrecao','tipoService']">
+ <ng-template pTemplate="caption">
+        <div style="text-align: center" class="ng-star-inserted">        
+        <i class="fas fa-search-plus"></i>
+            <input type="text" pInputText size="50" placeholder="Global Filter" (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+        </div>
+    </ng-template>
+
     <ng-template pTemplate="header">
         <tr>
             <th>Tempo início</th>

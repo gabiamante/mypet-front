@@ -3,6 +3,7 @@ import { PessoaJuridica } from '../../pessoa-juridica';
 import { PessoaService } from '../../pessoa.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro-juridica',
@@ -12,7 +13,7 @@ import Swal from 'sweetalert2';
 export class CadastroJuridicaComponent implements OnInit {
 
   public pessoaJuridica: PessoaJuridica = new PessoaJuridica();
-
+  
   constructor(private pessoaJuridicaService: PessoaService,
               private router: Router) {
 
@@ -138,4 +139,8 @@ export class CadastroJuridicaComponent implements OnInit {
   public voltar() {
     this.router.navigate(['administrador', 'menu-inicial-admin']);
   }
+
+  
+  
+  
 }

@@ -1,208 +1,230 @@
 <!doctype html>
 <html>
+
 <head>
-       
+
 </head>
+
 <body>
 
-<div class="container">
-        
-    <h2 align="center"> Cadastrar PetProvider</h2>
-      
-    <div class="form-row align-items-center" >
-      
-        <div class="form-group col-md-3">
-            <label for="razaoSocial">Razão Social: </label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.razaoSocial"  pInputText placeholder="Ex: Clínica pet feliz" required minlength="5">
-        </div>
+    <div class="container">
 
-        <div class="form-group col-md-2">
-            <label for="CPF OU CNPJ">CPF OU CNPJ:</label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.cpf"   required class="form-control pInputText placeholder" CPF OU CNPJ>
+        <h2 align="center"> Cadastrar PetProvider</h2>
+        <form name="form" method="POST" id="form_contato" class="form">
+            <div class="form-row align-items-center">
 
-        </div>
-        <div class="form-group col-md-2">
-            <label for="email">E-mail:</label>
-            <input type="email" class="form-control" [(ngModel)]="pessoaJuridica.email"  pInputText placeholder=" E-mail"  required class="form-control">
-        </div>
 
-        <div class="form-group col-md-2">
-            <label for="senha">Senha:</label>
-            <input type="password" class="form-control" [(ngModel)]="pessoaJuridica.senha"  required="required" pInputText placeholder=" Senha">
-        </div>
-    </div>
-    <div class="form-row align-items-center">
-        <div class="form-group col-md-2">
-            <label for="telefoneFixo">Telefone Fixo:</label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.telefoneFixo"  pInputText placeholder=" Telefone Fixo">
-        </div>
-        <div class="form-group col-md-2">
-            <label for="telefoneCelular">Celular:</label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.telefoneCelular" required="required" pInputText placeholder=" Telefone Celular">
-        </div>
-    </div>
+                <div class="form-group col-md-3">
+                    <label for="razaoSocial">Razão Social: </label>
+                    <input type="text" class="form-control" name="razaoSocial" id="razaoSocial" [(ngModel)]="pessoaJuridica.razaoSocial" pInputText placeholder="Ex: Clínica pet feliz" required minlength="5">
 
-    <div class="form-row align-items-center">
-        <div class="form-group col-md-4">
-            <label for="logradouro">Endereço:</label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.logradouro"  required="required" pInputText placeholder=" Endereço">
-        </div>
+                </div>
 
-        <div class="form-group col-md-1">
-            <label for="numero">Nº:</label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.numero"  required="required" pInputText placeholder=" Número">
-        </div>
+                <div class="form-group col-md-2">
+                    <label for="CPF OU CNPJ">CPF OU CNPJ:</label>
+                    <input type="text" class="form-control" name="cpf" [(ngModel)]="pessoaJuridica.cpf" required class="form-control pInputText placeholder" CPF OU CNPJ>
 
-        <div class="form-group col-md-2">
-            <label for="complemento">Complemento:</label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.complemento"  required="required" pInputText placeholder=" Complemento">
-        </div>
-        <div class="form-group col-md-2">
-            <label for="bairro">Bairro:</label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.bairro"  required="required" pInputText placeholder=" Bairro">
-        </div>
-    </div>
-    <div class="form-row align-items-center">
-        <div class="form-group col-md-3">
-            <label for="cidade">Cidade: </label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.cidade"  required="required" pInputText placeholder="Cidade">
-        </div>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="email">E-mail:</label>
+                    <input type="email" class="form-control" name="email" [(ngModel)]="pessoaJuridica.email" pInputText placeholder=" E-mail" required class="form-control">
+                </div>
 
-        <div class="form-group col-md-3">
-            <label for="estado">Estado:</label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.estado"  required="required" pInputText placeholder="Estado">
-        </div>
+                <div class="form-group col-md-2">
+                    <label for="senha">Senha:</label>
+                    <input type="password" class="form-control" name="senha" [(ngModel)]="pessoaJuridica.senha" required="required" pInputText placeholder=" Senha">
+                </div>
 
-        <div class="form-group col-md-2">
-            <label for="cep">CEP:</label>
-            <input type="text" class="form-control" [(ngModel)]="pessoaJuridica.cep"   required="required" pInputText placeholder=" CEP">
-        </div>
-    </div>
-    <div class="form-group col-auto">
-            <p>Foto perfil</p>
-            <br/>
-            <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUpload($event)"></p-fileUpload>
-            <br/>
-            <br/>
-    </div>
-    <div class="form-check form-check-inline">
-			<div class="container center_div">
-				<div class="form-row align-items-center">
-					<div class="form-group col-auto">
-                    <div id="petShopFile">
-                            <p>Coloque fotos do serviço</p>
-                        <br/>
-                        <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"
-                        maxFileSize="1000000" (onUpload)="onBasicUpload($event)"
-                        id="petShopFile"></p-fileUpload>
-                        <br/>
-                        <br/>
-                        <label for="descricaoPetShop">Descrição:</label>
-                            <textarea type="text" class="form-control" [(ngModel)]="pessoaJuridica.descricaoPetShop"
-                            required="required" pInputTextarea></textarea>
+            </div>
+            <div class="form-row align-items-center">
+                <div class="form-group col-md-2">
+                    <label for="telefoneFixo">Telefone Fixo:</label>
+                    <input type="text" class="form-control" name="telefoneFixo" [(ngModel)]="pessoaJuridica.telefoneFixo" pInputText placeholder=" Telefone Fixo">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="telefoneCelular">Celular:</label>
+                    <input type="text" class="form-control" name="telefoneCelular" [(ngModel)]="pessoaJuridica.telefoneCelular" required="required" pInputText placeholder=" Telefone Celular">
+                </div>
+            </div>
+
+            <div class="form-row align-items-center">
+                <div class="form-group col-md-4">
+                    <label for="logradouro">Endereço:</label>
+                    <input type="text" class="form-control" name="logradouro" [(ngModel)]="pessoaJuridica.logradouro" required="required" pInputText placeholder=" Endereço">
+                </div>
+
+                <div class="form-group col-md-1">
+                    <label for="numero">Nº:</label>
+                    <input type="text" class="form-control" name="numero" [(ngModel)]="pessoaJuridica.numero" required="required" pInputText placeholder=" Número">
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label for="complemento">Complemento:</label>
+                    <input type="text" class="form-control" name="complemento" [(ngModel)]="pessoaJuridica.complemento" required="required" pInputText placeholder=" Complemento">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" class="form-control" name="bairro" [(ngModel)]="pessoaJuridica.bairro" required="required" pInputText placeholder=" Bairro">
+                </div>
+            </div>
+            <div class="form-row align-items-center">
+                <div class="form-group col-md-3">
+                    <label for="cidade">Cidade: </label>
+                    <input type="text" class="form-control" name="cidade" [(ngModel)]="pessoaJuridica.cidade" required="required" pInputText placeholder="Cidade">
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="estado">Estado:</label>
+                    <input type="text" class="form-control" name="estado" [(ngModel)]="pessoaJuridica.estado" required="required" pInputText placeholder="Estado">
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label for="cep">CEP:</label>
+                    <input type="text" class="form-control" name="cep" [(ngModel)]="pessoaJuridica.cep" required="required" pInputText placeholder=" CEP">
+                </div>
+            </div>
+            <div class="form-group col-auto">
+                <p>Foto perfil</p>
+                <br/>
+                <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUpload($event)"></p-fileUpload>
+                <br/>
+                <br/>
+            </div>
+            <div class="form-check form-check-inline">
+                <div class="container center_div">
+                    <div class="form-row align-items-center">
+                        <div class="form-group col-auto">
+                            <div id="petShopFile">
+                                <p>Coloque fotos do serviço</p>
+                                <br/>
+                                <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUpload($event)" id="petShopFile"></p-fileUpload>
+                                <br/>
+                                <br/>
+                                <label for="descricaoPetShop">Descrição:</label>
+                                <textarea type="text" class="form-control" name="descricaoPetShop" [(ngModel)]="pessoaJuridica.descricaoPetShop" required="required" pInputTextarea></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    <!--Escolha dos serviços prestados-->
-		<div class="form-check form-check-inline">
-			<div class="container center_div">
-				<div class="form-row align-items-center">
-					<div class="form-group col-auto">
-						<p id="opcoesPetShop">Selecione os serviços que deseja prestar: </p>
+            <!--Escolha dos serviços prestados-->
+            <div class="form-check form-check-inline">
+                <div class="container center_div">
+                    <div class="form-row align-items-center">
+                        <div class="form-group col-auto">
+                            <p id="opcoesPetShop">Selecione os serviços que deseja prestar: </p>
 
-						<label for="banhoETosa"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.banhoETosa" binary="true"></p-checkbox>
-                        Banho e Tosa
-                        <br/>
-                        <label for="consulta"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.consulta" binary="true"></p-checkbox>
-                        Consulta
-                        <br/>
-						<label for="tosaExotica"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.tosaExotica" binary="true"></p-checkbox>
-                        Tosa Exótica
-                        <br/>
-						<label for="vacinacao"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.vacinacao" binary="true"></p-checkbox>
-                        Vacinação
-                        <br/>
-						<label for="cirurgiaGeral"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.cirurgiaGeral" binary="true"></p-checkbox>
-                        Cirurgia Geral
-                        <br/>
-						<label for="hidratacao"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.hidratacao" binary="true"></p-checkbox>
-                        Hidratação
-                        <br/>
-						<label for="penteadosArtisticos"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.penteadosArtisticos" binary="true"></p-checkbox>
-                        Penteados Artísticos
-                        <br/>
-                        <label for="acupuntura"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.acupuntura" binary="true"></p-checkbox>
-                        Acupuntura
-                        <br/>
-                        <label for="spa"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.spa" binary="true"></p-checkbox>
-                        SPA
-                        <br/>
-                        <label for="hotel"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.hotel" binary="true"></p-checkbox>
-                        Hotel
-                        <br/>
-                        <label for="creche"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.creche" binary="true"></p-checkbox>
-                        Creche
-                        <br/>
-                        <label for="taxi"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.taxi" binary="true"></p-checkbox>
-                        Táxi
-                        <br/>
-                        <label for="ensaioFotografico"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.ensaioFotografico" binary="true"></p-checkbox>
-                        Ensaio Fotográfico
-                        <br/>
-                        <label for="adestramento"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.adestramento" binary="true"></p-checkbox>
-                        Adestramento
-                        <br/>
-                        <label for="massagem"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.massagem" binary="true"></p-checkbox>
-                        Massagem
-                        <br/>
-                        <label for="petwalk"></label>
-						<p-checkbox [(ngModel)]="pessoaJuridica.petwalk" binary="true"></p-checkbox>
-                        Pet Walk
-                        <br/>
+                            <label for="banhoETosa"></label>
+                            <p-checkbox name="banhoETosa" [(ngModel)]="pessoaJuridica.banhoETosa" binary="true"></p-checkbox>
+                            Banho e Tosa
+                            <br/>
+                            <label for="consulta"></label>
+                            <p-checkbox name="consulta" [(ngModel)]="pessoaJuridica.consulta" binary="true"></p-checkbox>
+                            Consulta
+                            <br/>
+                            <label for="tosaExotica"></label>
+                            <p-checkbox name="tosaExotica" [(ngModel)]="pessoaJuridica.tosaExotica" binary="true"></p-checkbox>
+                            Tosa Exótica
+                            <br/>
+                            <label for="vacinacao"></label>
+                            <p-checkbox name="vacinacao" [(ngModel)]="pessoaJuridica.vacinacao" binary="true"></p-checkbox>
+                            Vacinação
+                            <br/>
+                            <label for="cirurgiaGeral"></label>
+                            <p-checkbox name="cirurgiaGeral" [(ngModel)]="pessoaJuridica.cirurgiaGeral" binary="true"></p-checkbox>
+                            Cirurgia Geral
+                            <br/>
+                            <label for="hidratacao"></label>
+                            <p-checkbox name="hidratacao" [(ngModel)]="pessoaJuridica.hidratacao" binary="true"></p-checkbox>
+                            Hidratação
+                            <br/>
+                            <label for="penteadosArtisticos"></label>
+                            <p-checkbox name="penteadosArtisticos" [(ngModel)]="pessoaJuridica.penteadosArtisticos" binary="true"></p-checkbox>
+                            Penteados Artísticos
+                            <br/>
+                            <label for="acupuntura"></label>
+                            <p-checkbox name="acupuntura" [(ngModel)]="pessoaJuridica.acupuntura" binary="true"></p-checkbox>
+                            Acupuntura
+                            <br/>
+                            <label for="spa"></label>
+                            <p-checkbox name="spa" [(ngModel)]="pessoaJuridica.spa" binary="true"></p-checkbox>
+                            SPA
+                            <br/>
+                            <label for="hotel"></label>
+                            <p-checkbox name="hotel" [(ngModel)]="pessoaJuridica.hotel" binary="true"></p-checkbox>
+                            Hotel
+                            <br/>
+                            <label for="creche"></label>
+                            <p-checkbox name="creche" [(ngModel)]="pessoaJuridica.creche" binary="true"></p-checkbox>
+                            Creche
+                            <br/>
+                            <label for="taxi"></label>
+                            <p-checkbox name="taxi" [(ngModel)]="pessoaJuridica.taxi" binary="true"></p-checkbox>
+                            Táxi
+                            <br/>
+                            <label for="ensaioFotografico"></label>
+                            <p-checkbox name="ensaioFotografico" [(ngModel)]="pessoaJuridica.ensaioFotografico" binary="true"></p-checkbox>
+                            Ensaio Fotográfico
+                            <br/>
+                            <label for="adestramento"></label>
+                            <p-checkbox name="adestramento" [(ngModel)]="pessoaJuridica.adestramento" binary="true"></p-checkbox>
+                            Adestramento
+                            <br/>
+                            <label for="massagem"></label>
+                            <p-checkbox name="massagem" [(ngModel)]="pessoaJuridica.massagem" binary="true"></p-checkbox>
+                            Massagem
+                            <br/>
+                            <label for="petwalk"></label>
+                            <p-checkbox name="petwalk" [(ngModel)]="pessoaJuridica.petwalk" binary="true"></p-checkbox>
+                            Pet Walk
+                            <br/>
+                        </div>
+
+                    </div>
+
                 </div>
-            
             </div>
-            
-		</div>
-	</div>
 
-    <!--Fim da escolha dos serviços prestados-->
+            <!--Fim da escolha dos serviços prestados-->
 
-    <div class="button-cadastro">
-        <button type="button" (click)="salvar()" label="Cadastrar" class="btn btn-outline-light" style="background-color: #f7b733">Cadastrar
+            <div class="button-cadastro">
+                <button type="button" (click)="salvar()" label="Cadastrar" class="btn btn-outline-light" style="background-color: #f7b733">Cadastrar
                             </button>
-        <button type="button" (click)="voltar()" label="Voltar" class="btn btn-outline-light" style="background-color: #f7b733">Voltar
+                <button type="button" (click)="voltar()" label="Voltar" class="btn btn-outline-light" style="background-color: #f7b733">Voltar
                             </button>
+            </div>
+        </form>
     </div>
 
-</div>
 
+    <script src="jquery-2.1.4.min.js"></script>
+    <script src="jquery.validate.min.js"></script>
+    <script>
+        $(function() {
+            $("#form_contato").validate({
+                rule: {
+                    email: {
+                        required: true
+                    },
+                    razaoSocial: {
+                        required: true,
+                        minlength: 5
+                    },
+                    cpf: {
+                        required: true
 
-<script src="jquery-2.1.4.min.js"></script>
-       <script src="jquery.validate.min.js"></script>
-       <script>
-             $(function(){
-                    $("#form_contato").validate();
-             });
-     </script>
+                    }
+                },
+                messages: {
+                    razaoSocial: {
+                        required: "Por favor, informe seu nome",
+                        minlength: "O nome deve ter pelo menos 5 caracteres"
+                    }
+                }
 
-
+            });
+        });
+    </script>
 </body>
+
 </html>

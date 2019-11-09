@@ -91,7 +91,15 @@
 
 
       <h5>Horários já disponíveis e ainda não contratados</h5>
-      <p-table [value]="lstCriacaoAgendaProviderAgendadoNaoContratados" >
+    <p-table #tt [value]="lstCriacaoAgendaProviderAgendadoNaoContratados" [paginator] = "true" [rows] = "5" [globalFilterFields]="['tempoInicio','tempoFim','siglaDia','nomeProvider','dataCalendarioCorrecao','tipoService','motivoCancelamento']">
+ <ng-template pTemplate="caption">
+        <div style="text-align: center" class="ng-star-inserted">        
+        <i class="fas fa-search-plus"></i>
+            <input type="text" pInputText size="50" placeholder="Global Filter" (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+        </div>
+    </ng-template>
+
+
         <ng-template pTemplate="header">
             <tr>
                 <th>Dia</th>
