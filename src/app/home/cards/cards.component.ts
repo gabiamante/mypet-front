@@ -26,5 +26,9 @@ export class CardsComponent implements OnInit {
   pesquisarEvento(){
     this.router.navigate(['home', 'home']);
   }
+  
+  login(){
+    this.router.navigate(['/login'])
+  }
 
 }

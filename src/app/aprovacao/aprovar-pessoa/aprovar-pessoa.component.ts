@@ -38,7 +38,7 @@ export class AprovarPessoaComponent implements OnInit {
     hidratacao: '', penteadosArtisticos: '', acupuntura: '', spa: '',
     hotel: '', creche: '', taxi: '',
     ensaioFotografico: '', adestramento: '', massagem: '', petwalk: '', situacaoAprovacao: '',
-    checkStatus: false, active: true}){
+    checkStatus: false, active: true, mediaAvaliacao: 0.0}){
 
   }
 

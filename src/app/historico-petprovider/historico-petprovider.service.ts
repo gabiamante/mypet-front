@@ -1,3 +1,4 @@
+import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { ServiceContratados } from './../lista-service-contratados/lista-service-contratados';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -29,5 +30,13 @@ export class HistoricoPetproviderService {
 
     gravarStatusFinalizado(servicoFinalizado: ServiceContratados) {
       return this.http.put(API + '/contratadoprovider/' + servicoFinalizado.id, servicoFinalizado);
+    }
+
+    gravarMediaAvaliacao(varPetProvider: PessoaJuridica, mediaAvaliacao: number)  {
+      // console.log('mediaAvaliacao: ' + mediaAvaliacao);
+      // console.log('url: ' + API + '/pessoajuridica/' + varPetProvider.id);
+      // alert('segura');
+      varPetProvider.mediaAvaliacao = mediaAvaliacao;
+      return this.http.put(API + '/pessoajuridica/' + varPetProvider.id, varPetProvider);
     }
 }

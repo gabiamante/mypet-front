@@ -12,6 +12,7 @@ import { PesquisarService } from '../../home.service';
 export class DetalhesComponent implements OnInit {
 
   pessoa: PessoaJuridica;
+  @Input() media: number = 0;
 
   constructor(private pesquisarService: PesquisarService,
               private activatedRoute: ActivatedRoute,
@@ -21,10 +22,13 @@ export class DetalhesComponent implements OnInit {
 
   ngOnInit() {
     const pessoa = this.activatedRoute.snapshot.params.id;
-    this.pesquisarService.buscarDetalhes(pessoa).subscribe(retorno => this.pessoa = retorno);
+    this.pesquisarService.buscarDetalhes(pessoa).subscribe(retorno => {
+      this.pessoa = retorno
+    });
   }
 
   agendar(forn: PessoaJuridica){
+    console.log(forn);
     this.router.navigate(['agendamento-pet-service', 'agendamento-pet-service', forn.id]);
   }
   voltar(){

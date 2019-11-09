@@ -1,6 +1,7 @@
 export class PessoaJuridica {
 
   //Infos do estabelecimento
+  public mediaAvaliacao: number;
   public razaoSocial: string;
   public cpf: string;
   public telefoneFixo: string;
@@ -45,40 +46,42 @@ export class PessoaJuridica {
 
 
   constructor() {
-     this.id = 0;
-     this.razaoSocial = '' ;
-     this.cpf = '' ;
-     this.telefoneFixo = '' ;
-     this.telefoneCelular = '' ;
-     this.logradouro = '' ;
-     this.numero = 0 ;
-     this.tipoPerfil = 0;
-     this.complemento = '' ;
-     this.bairro = '' ;
-     this.cidade = '' ;
-     this.estado = '' ;
-     this.cep = '' ;
-     this.email = '' ;
-     this.senha = '' ;
-     this.fotoPerfil = '' ;
-     this.situacaoAprovacao = '';
-     this.checkStatus = false;
-     this.banhoETosa = '';
-     this.consulta = '';
-     this.tosaExotica = '';
-     this.vacinacao = '';
-     this.cirurgiaGeral = '';
-     this.hidratacao = '';
-     this.penteadosArtisticos = '';
-     this.acupuntura = '';
-     this.spa = '';
-     this.hotel = '';
-     this.creche = '';
-     this.taxi = '';
-     this.ensaioFotografico = '';
-     this.adestramento = '';
-     this.massagem = '';
-     this.petwalk = '';
+
+    this.mediaAvaliacao = 0;
+    this.id = 0;
+    this.razaoSocial = '' ;
+    this.cpf = '' ;
+    this.telefoneFixo = '' ;
+    this.telefoneCelular = '' ;
+    this.logradouro = '' ;
+    this.numero = 0 ;
+    this.tipoPerfil = 0;
+    this.complemento = '' ;
+    this.bairro = '' ;
+    this.cidade = '' ;
+    this.estado = '' ;
+    this.cep = '' ;
+    this.email = '' ;
+    this.senha = '' ;
+    this.fotoPerfil = '' ;
+    this.situacaoAprovacao = '';
+    this.checkStatus = false;
+    this.banhoETosa = '';
+    this.consulta = '';
+    this.tosaExotica = '';
+    this.vacinacao = '';
+    this.cirurgiaGeral = '';
+    this.hidratacao = '';
+    this.penteadosArtisticos = '';
+    this.acupuntura = '';
+    this.spa = '';
+    this.hotel = '';
+    this.creche = '';
+    this.taxi = '';
+    this.ensaioFotografico = '';
+    this.adestramento = '';
+    this.massagem = '';
+    this.petwalk = '';
     this.active = true;
   }
 }

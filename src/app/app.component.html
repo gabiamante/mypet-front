@@ -11,9 +11,9 @@
         <li class="nav-item active">
           <a class="nav-link" href="/home/quem-somos">Quem Somos<span class="sr-only">(página atual)</span></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="#">Eventos</a>
-        </li>
+        </li> -->
       </ul>
 
       <ng-container *ngIf="!(authenticated$ | async)">
@@ -24,7 +24,7 @@
       </ng-container>
 
       <ng-container *ngIf="(authenticated$ | async) && (user$ | async)">
-        Seja bem vindo, {{ (user$ | async)?.razaoSocial }}!
+        Seja bem vindo, {{ (user$ | async)?.email }}!
       <form class="form-inline my-2 my-lg-0">
         <button mat-flat-button color="primary" type="button" (click)="checkProfile()">Área Logada</button>
         <button mat-flat-button color="primary" type="button" (click)="logout()">Logout</button>
@@ -54,4 +54,4 @@
 <div class="container-fluid">
 <router-outlet></router-outlet>
 </div>
-<footer>aaaaaaaa</footer>
+<footer></footer>
