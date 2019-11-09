@@ -91,7 +91,7 @@
 
 
       <h5>Horários já disponíveis e ainda não contratados</h5>
-    <p-table #tt [value]="lstCriacaoAgendaProviderAgendadoNaoContratados" [paginator] = "true" [rows] = "5" [globalFilterFields]="['tempoInicio','tempoFim','siglaDia','nomeProvider','dataCalendarioCorrecao','tipoService','motivoCancelamento']">
+    <p-table #tt [value]="lstCriacaoAgendaProviderAgendadoNaoContratados" [paginator] = "true" [rows] = "5" [globalFilterFields]="['dataCalendarioCorrecao','siglaDia','tempoInicioCorrecao','tempoFimCorrecao','dataCalendarioCorrecao','servicoEscolhido']">
  <ng-template pTemplate="caption">
         <div style="text-align: center" class="ng-star-inserted">        
         <i class="fas fa-search-plus"></i>

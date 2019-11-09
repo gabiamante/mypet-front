@@ -1,8 +1,5 @@
 <h3 class="first">Horários disponíveis deste provider</h3>
-
-  
-
-  <p-table #tt [value]="lstCriacaoAgendaProvider" [paginator] = "true" [rows] = "7" [globalFilterFields]="['tempoInicio','tempoFim','siglaDia','nomeProvider','dataCalendarioCorrecao','tipoService','motivoCancelamento']">
+  <p-table #tt [value]="lstCriacaoAgendaProvider" [paginator] = "true" [rows] = "7" [globalFilterFields]="['tempoInicioCorrecao','tempoFimCorrecao','siglaDia','dataCalendarioCorrecao','servicoEscolhido']">
  <ng-template pTemplate="caption">
         <div style="text-align: center" class="ng-star-inserted">        
         <i class="fas fa-search-plus"></i>
