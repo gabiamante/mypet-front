@@ -8,35 +8,8 @@
         <p-dropdown [options]="lstServicosSelecionados" [(ngModel)]="varServicosSelecionados" optionLabel="name" [showClear]="true"></p-dropdown>
       </div>
       <div class="mt-3 mb-3">
-        <p-calendar [(ngModel)]="varCriacaoAgendaProvider.dataCalendario" [locale]="br" dateFormat="dd/mm/yy" [disabledDates]="invalidDates" [disabledDays]="[0,6]"></p-calendar>
+        <p-calendar [(ngModel)]="varCriacaoAgendaProvider.dataCalendario" [minDate]="minimumDate" [locale]="br" dateFormat="dd/mm/yy" [disabledDates]="invalidDates" [disabledDays]="[0,6]"></p-calendar>
       </div>
-      <!--
-      <div class="mt-3 mb-3">
-        <p-toggleButton [(ngModel)]="varCriacaoAgendaProvider.segundaCheck" onLabel="Seg" offLabel="Seg" onIcon="pi; pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"  ></p-toggleButton>
-      </div>
-      <div class="mt-3 mb-3">
-        <p-toggleButton [(ngModel)]="varCriacaoAgendaProvider.tercaCheck" onLabel="Ter" offLabel="Ter" onIcon="pi; pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}" ></p-toggleButton>
-      </div>
-      <div class="mt-3 mb-3">
-        <p-toggleButton [(ngModel)]="varCriacaoAgendaProvider.quartaCheck" onLabel="Quar" offLabel="Quar" onIcon="pi; pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton>
-      </div>
-      <div class="mt-3 mb-3">
-        <p-toggleButton [(ngModel)]="varCriacaoAgendaProvider.quintaCheck" onLabel="Quin" offLabel="Quin" onIcon="pi; pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton>
-      </div>
-      <div class="mt-3 mb-3">
-        <p-toggleButton [(ngModel)]="varCriacaoAgendaProvider.sextaCheck" onLabel="Sex" offLabel="Sex" onIcon="pi; pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton>
-      </div>
-      <div class="mt-3 mb-3">
-        <p-toggleButton [(ngModel)]="varCriacaoAgendaProvider.sabadoCheck" onLabel="Sáb" offLabel="Sáb" onIcon="pi; pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton>
-      </div>
-      <div class="mt-3 mb-3">
-        <p-toggleButton [(ngModel)]="varCriacaoAgendaProvider.domingoCheck" onLabel="Dom" offLabel="Dom" onIcon="pi; pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton>
-      </div>
-      -->
-
-    <!--
-      <div class="line"></div>
-    -->
 
       <div class="mt-2 mb-2">
         <i class="pi pi-clock mt-2 mb-2" style="font-size: 1,75em">das</i>
@@ -93,7 +66,7 @@
       <h5>Horários já disponíveis e ainda não contratados</h5>
     <p-table #tt [value]="lstCriacaoAgendaProviderAgendadoNaoContratados" [paginator] = "true" [rows] = "5" [globalFilterFields]="['dataCalendarioCorrecao','siglaDia','tempoInicioCorrecao','tempoFimCorrecao','dataCalendarioCorrecao','servicoEscolhido']">
  <ng-template pTemplate="caption">
-        <div style="text-align: center" class="ng-star-inserted">        
+        <div style="text-align: center" class="ng-star-inserted">
         <i class="fas fa-search-plus"></i>
             <input type="text" pInputText size="50" placeholder="Global Filter" (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
         </div>

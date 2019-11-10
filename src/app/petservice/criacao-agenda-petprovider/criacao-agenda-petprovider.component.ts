@@ -30,6 +30,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
   br: any;
   invalidDates: Array<Date>;
   verificacaoDataEscolhida: any;
+  minimumDate = new Date();
 
   constructor(private criacaoAgendaService: CriacaoAgendaPetproviderService) {
 
@@ -72,6 +73,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     this.varPetProvider = retorno;
     this.listAgendaProviderFiltrarNaoContratados(this.varPetProvider);
     });
+
   }
 
   count() {
@@ -181,6 +183,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
       this.lstCriacaoAgendaProvider.push(this.varCriacaoAgendaProviderToAttachCopy);
       this.qtdDiasSemanaSelecionadosCopy = this.qtdDiasSemanaSelecionados;
       this.reiniciaDias(varCriacaoAgendaProviderToAttach);
+      // alert('segura');
     }
   }
 
@@ -276,6 +279,14 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao = varCriacaoAgendaProviderToAttach.dataCalendario.getDate()
     + '/' + (varCriacaoAgendaProviderToAttach.dataCalendario.getMonth() + 1) + '/'
     + varCriacaoAgendaProviderToAttach.dataCalendario.getFullYear();
+
+    const auxDataOrdenacao = varCriacaoAgendaProviderToAttach.dataCalendario.getFullYear()
+    + '-' + (varCriacaoAgendaProviderToAttach.dataCalendario.getMonth() + 1) + '-'
+    + varCriacaoAgendaProviderToAttach.dataCalendario.getDate() + 'T00:00:00';
+    // alert(auxDataOrdenacao);
+    varCriacaoAgendaProviderToAttach.dataParaOrdenacao = new Date(auxDataOrdenacao);
+
+    // alert(varCriacaoAgendaProviderToAttach.dataParaOrdenacao);
   }
 
 

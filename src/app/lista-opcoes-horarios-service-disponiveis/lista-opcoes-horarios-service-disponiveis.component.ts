@@ -57,6 +57,7 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
         varContratadoAgendaProvider.dataCalendarioCorrecao = element.dataCalendarioCorrecao;
         varContratadoAgendaProvider.tempoInicioReplicacao = element.tempoInicio;
         varContratadoAgendaProvider.tempoFimReplicacao = element.tempoFim;
+        varContratadoAgendaProvider.dataParaOrdenacao = element.dataParaOrdenacao;
 
         // PARA SALVAR UMA LISTA INTEIRA DE UMA VEZ
         // lstContratadoAgendaProvider.push(varContratadoAgendaProvider);

@@ -27,11 +27,12 @@ export class HistoricoPetproviderComponent implements OnInit {
     this.serviceServiceContratados.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
       this.varPetProvider = retorno;
      this.listContratadosProviderFiltro(this.varPetProvider);
+     setTimeout(() => {
+      this.calcularMedia(this.lstServiceContratados);
+     }, 200);
     });
 
-    // setTimeout(function() {
-    //   this.calcularMedia(this.lstServiceContratados);
-    //  }, 3000);
+
 
   }
 
@@ -68,6 +69,7 @@ export class HistoricoPetproviderComponent implements OnInit {
       }
       if  (soma !== 0 && lstServiceContratados.length !== 0)  {
         this.mediaAvaliacao = soma / lstServiceContratados.length;
+        this.mediaAvaliacao = parseInt(this.mediaAvaliacao.toFixed(), 10);
       }
 
       this.serviceServiceContratados.gravarMediaAvaliacao(this.varPetProvider,

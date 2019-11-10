@@ -20,6 +20,7 @@ export class ServiceContratados  {
   tempoFimReplicacao = new Date();
   comentarioAvaliacao = '';
   observacaoAtendimento = '';
+  dataParaOrdenacao = new Date();
 
 
   constructor() {
@@ -44,5 +45,6 @@ export class ServiceContratados  {
     this.tempoFimReplicacao = new Date();
     this.comentarioAvaliacao = '';
     this.observacaoAtendimento = '';
+    this.dataParaOrdenacao = new Date();
   }
 }
