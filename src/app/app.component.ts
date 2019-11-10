@@ -32,14 +32,14 @@ export class AppComponent {
 
   checkProfile(){
     const perfil = this.authService.checkProfile();
-  } 
+  }
 
   cadastroCliente(){
-    this.router.navigate(['pessoa', 'fisica', 'cadastrar']);
+    window.location.href = '/pessoa/fisica/cadastrar';
   }
 
   cadastroFornecedor(){
-    this.router.navigate(['pessoa', 'juridica', 'cadastrar']);
+    window.location.href = '/pessoa/juridica/cadastrar';
   }
 
   logout(){

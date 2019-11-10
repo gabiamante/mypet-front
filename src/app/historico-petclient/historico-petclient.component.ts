@@ -4,6 +4,9 @@ import { ListaServiceContratadosClientService } from './../lista-service-contrat
 import { ServiceContratados } from './../lista-service-contratados/lista-service-contratados';
 import { Component, OnInit, Input } from '@angular/core';
 
+
+declare var $: any;
+
 @Component({
   selector: 'app-historico-petclient',
   templateUrl: './historico-petclient.component.html',
@@ -17,6 +20,7 @@ export class HistoricoPetclientComponent implements OnInit {
   msg: string;
   avaliacao: number = 5;
   motivoDeCancelamentoQuandoFinalizado = '';
+  @Input() servicoContratadoAvaliado: ServiceContratados = new ServiceContratados;
 
   constructor(private serviceServiceContratados: HistoricoPetclientService) { }
 
@@ -29,7 +33,9 @@ export class HistoricoPetclientComponent implements OnInit {
       this.varPetClient = retorno;
      this.listContratadosProviderFiltro(this.varPetClient);
     });
+
   }
+
 
   listContratadosProviderFiltro(varPetProvider: PessoaFisica)  {
     // console.log('component varPetProvider: ' + JSON.stringify(varPetProvider));
@@ -37,6 +43,7 @@ export class HistoricoPetclientComponent implements OnInit {
     .subscribe(res => this.lstServiceContratados = res);
   }
 
+  
   salvarAvaliacao(lstServiceContratados: ServiceContratados[])  {
 
     for (const element of lstServiceContratados) {
@@ -59,4 +66,18 @@ handleMotivoCancelamento(event) {
   this.motivoDeCancelamentoQuandoFinalizado = 'Este serviço não foi cancelado';
 }
 
+setModalValue(varServiceContratado: ServiceContratados) {
+  this.servicoContratadoAvaliado = varServiceContratado;
 }
+
+salvarAvaliacaoIndividual(servicoContratadoAvaliadoIndividual: ServiceContratados)  {
+  this.serviceServiceContratados.salvarAvaliacaoServico(servicoContratadoAvaliadoIndividual)
+  .subscribe(res => {
+    location.reload();
+  });
+}
+
+
+
+}
+

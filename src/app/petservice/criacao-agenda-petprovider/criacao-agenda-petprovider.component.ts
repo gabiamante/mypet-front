@@ -52,8 +52,6 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     let today = new Date();
     let invalidDate = new Date();
     invalidDate.setDate(today.getDate() - 1);
-    //this.invalidDates = [today, invalidDate];
-    // alert(today);
     this.br = {
       firstDayOfWeek: 1,
       dayNames: [ 'domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado' ],
@@ -174,6 +172,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
         footer: ''
       });
     } else {
+
       this.correcaoTempo(varCriacaoAgendaProviderToAttach);
       this.correcaoDia(varCriacaoAgendaProviderToAttach);
       this.adicionaServico(varCriacaoAgendaProviderToAttach, this.varServicosSelecionados);
@@ -288,11 +287,9 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     varCriacaoAgendaProviderToAttach.tempoInicioIntervalo =
     parseInt((varCriacaoAgendaProviderToAttach.tempoInicio.getTime() / (1000 * 60)).toFixed(1), 10);
 
+    //  FIM DO INTERVALO
     varCriacaoAgendaProviderToAttach.tempoFimIntervalo =
     parseInt((varCriacaoAgendaProviderToAttach.tempoFim.getTime() / (1000 * 60)).toFixed(1), 10);
-    // alert('date1: ' + varCriacaoAgendaProviderToAttach.tempoInicioIntervalo);
-    // alert('date2: ' + varCriacaoAgendaProviderToAttach.tempoFimIntervalo);
-    //  FIM DO INTERVALO
 
     const token = localStorage.getItem('localUser');
     const objLogin = JSON.parse(token);
@@ -304,9 +301,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     subscribe((res) => {
       var retornoAux: CriacaoAgendaProvider = new CriacaoAgendaProvider();
       retornoAux = res;
-      // alert(JSON.stringify(retornoAux));
       if  ((retornoAux + '').length === 0)  {
-        // alert('não encontrou, pode inserir');
         this.criacaoAgendaService.salvarCriacaoAgendaProviderTeste(varCriacaoAgendaProviderToAttach).subscribe(
           response => {
             this.lstCriacaoAgendaProvider = [];
@@ -360,6 +355,12 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
       auxCriacaoAgenda = res;
     });
     return auxCriacaoAgenda;
+  }
+
+  addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
   }
 
 }

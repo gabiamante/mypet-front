@@ -12,6 +12,14 @@ import { CadastroJuridicaComponent } from './pessoa-juridica/cadastro-juridica/c
 import { CadastroFisicaComponent } from './pessoa-fisica/cadastro-fisica/cadastro-fisica.component';
 import { CheckboxModule } from 'primeng/primeng';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule, MatNativeDateModule} from '@angular/material';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   imports: [
@@ -26,7 +34,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RadioButtonModule,
     CheckboxModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatSelectModule,
+    MatInputModule,
+    MatButtonModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatGridListModule
   ],
   declarations: [
     CadastroJuridicaComponent,

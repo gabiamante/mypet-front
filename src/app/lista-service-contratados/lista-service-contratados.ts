@@ -16,6 +16,10 @@ export class ServiceContratados  {
   motivoCancelamento = '';
   mostraStatus = '';
   avaliacao = 0;
+  tempoInicioReplicacao = new Date();
+  tempoFimReplicacao = new Date();
+  comentarioAvaliacao = '';
+  observacaoAtendimento = '';
 
 
   constructor() {
@@ -36,5 +40,9 @@ export class ServiceContratados  {
     this.motivoCancelamento =  '';
     this.mostraStatus = '';
     this.avaliacao = 0;
+    this.tempoInicioReplicacao = new Date();
+    this.tempoFimReplicacao = new Date();
+    this.comentarioAvaliacao = '';
+    this.observacaoAtendimento = '';
   }
 }

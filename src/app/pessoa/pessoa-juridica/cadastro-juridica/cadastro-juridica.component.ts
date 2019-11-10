@@ -13,7 +13,7 @@ import { FormGroup } from '@angular/forms';
 export class CadastroJuridicaComponent implements OnInit {
 
   public pessoaJuridica: PessoaJuridica = new PessoaJuridica();
-  
+
   constructor(private pessoaJuridicaService: PessoaService,
               private router: Router) {
 
@@ -127,10 +127,10 @@ export class CadastroJuridicaComponent implements OnInit {
         Swal.fire({
           position: 'center',
           type: 'success',
-          title: 'Parabéns, seu cadastro foi concluído! Agora iremos analisar seus dados e em breve te damos um retorno. Fique de olho no seu e-mail!',
+          title: 'Parabéns, seu cadastro foi concluído!',
           showConfirmButton: false,
           timer: 100000
-        })
+        });
         window.location.href = 'home/home';
       }
     );
@@ -140,7 +140,7 @@ export class CadastroJuridicaComponent implements OnInit {
     this.router.navigate(['administrador', 'menu-inicial-admin']);
   }
 
-  
-  
-  
+
+
+
 }

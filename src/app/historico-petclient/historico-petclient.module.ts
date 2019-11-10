@@ -7,7 +7,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import {RatingModule} from 'primeng/rating';
-
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import {RatingModule} from 'primeng/rating';
     FormsModule,
     ButtonModule,
     ToggleButtonModule,
-    RatingModule
+    RatingModule,
+    MatButtonModule
   ],
   exports: [
     HistoricoPetclientComponent

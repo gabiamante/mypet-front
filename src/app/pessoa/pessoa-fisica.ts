@@ -32,7 +32,7 @@ export class PessoaFisica {
      this.telefoneFixo = '' ;
      this.telefoneCelular = '' ;
      this.logradouro = '' ;
-     this.numero = 0 ;
+     this.numero = null ;
      this.tipoPerfil = 0 ;
      this.complemento = '' ;
      this.bairro = '' ;
