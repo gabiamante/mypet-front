@@ -1,7 +1,7 @@
 export class PessoaJuridica {
 
   //Infos do estabelecimento
-  public mediaAvaliacao: number;
+  public mediaAvalicao: number;
   public razaoSocial: string;
   public cpf: string;
   public telefoneFixo: string;
@@ -27,6 +27,7 @@ export class PessoaJuridica {
   public tipoPerfil: number;
 
   //Servicos
+  public descricaoPetProvider: string
   public banhoETosa:  string;
   public consulta: string;
   public tosaExotica: string;
@@ -47,14 +48,14 @@ export class PessoaJuridica {
 
   constructor() {
 
-    this.mediaAvaliacao = 0;
+    this.mediaAvalicao = 0;
     this.id = 0;
     this.razaoSocial = '' ;
     this.cpf = '' ;
     this.telefoneFixo = '' ;
     this.telefoneCelular = '' ;
     this.logradouro = '' ;
-    this.numero = 0 ;
+    //this.numero = 0 ;
     this.tipoPerfil = 0;
     this.complemento = '' ;
     this.bairro = '' ;
@@ -66,6 +67,7 @@ export class PessoaJuridica {
     this.fotoPerfil = '' ;
     this.situacaoAprovacao = '';
     this.checkStatus = false;
+    this.descricaoPetProvider = "";
     this.banhoETosa = '';
     this.consulta = '';
     this.tosaExotica = '';

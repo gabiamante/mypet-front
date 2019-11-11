@@ -3,14 +3,15 @@ import { PessoaJuridica } from '../../pessoa-juridica';
 import { PessoaService } from '../../pessoa.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material';
 
 @Component({
   selector: 'app-cadastro-juridica',
   templateUrl: './cadastro-juridica.component.html',
   styleUrls: ['./cadastro-juridica.component.css']
 })
-export class CadastroJuridicaComponent implements OnInit {
+export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
 
   public pessoaJuridica: PessoaJuridica = new PessoaJuridica();
 
@@ -23,6 +24,16 @@ export class CadastroJuridicaComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
 
   public salvar() {
 

@@ -24,6 +24,8 @@ export class DetalhesComponent implements OnInit {
     const pessoa = this.activatedRoute.snapshot.params.id;
     this.pesquisarService.buscarDetalhes(pessoa).subscribe(retorno => {
       this.pessoa = retorno
+      console.log(JSON.stringify(this.pessoa))
+     
     });
   }
 

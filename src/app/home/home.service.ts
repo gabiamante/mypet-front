@@ -63,7 +63,7 @@ export class PesquisarService {
     pessoa.cirurgiaGeral + '&consulta=' + pessoa.consulta + '&creche=' + pessoa.creche + '&ensaioFotografico=' + pessoa.ensaioFotografico + 
     '&hidratacao=' +  pessoa.hidratacao + '&hotel=' + pessoa.hotel + '&massagem=' + pessoa.massagem + 
     '&penteadosArtisticos=' + pessoa.penteadosArtisticos + '&petwalk=' + pessoa.petwalk + '&spa=' + pessoa.spa + '&taxi=' + pessoa.taxi + '&tosaExotica=' + 
-    pessoa.tosaExotica + '&vacinacao=' + pessoa.vacinacao); 
+    pessoa.tosaExotica + '&vacinacao=' + pessoa.vacinacao + '&razaoSocial=' + pessoa.razaoSocial); 
 
     return this.fornecedores;
 

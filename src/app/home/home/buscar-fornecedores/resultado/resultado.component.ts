@@ -24,7 +24,6 @@ export class ResultadoComponent implements OnInit {
   }
 
   pesquisarDetalhes(forn: PessoaJuridica){
-    console.log(forn);
     this.router.navigate(['home', 'detalhes', forn.id]);
   }
 }

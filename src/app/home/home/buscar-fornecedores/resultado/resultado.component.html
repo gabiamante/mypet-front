@@ -1,19 +1,25 @@
-<div class="row mb-3">
-    <div class="col justify-content-center" *ngFor="let forn of forns">
-        <div class="card">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                <img src="{{forn.fotoPerfil}}" class="card-img">
-                </div>
-                <div class="col-md-8">
-                <div class="card-body">
-                        <label class="card-text">PetProvider: {{forn.razaoSocial}}</label><br/>
-                        <label class="card-text">Cidade: {{forn.cidade}}</label><br/>
-                        <label class="card-text">Bairro: {{forn.bairro}} </label><br/>
-                        <button mat-flat-button color="primary" type="button" (click)="pesquisarDetalhes(forn)">+ Detalhes</button>
-                </div>
+<div class="card-design">
+    <div class="col-md-8">
+        <div class="col justify-content-center" *ngFor="let forn of forns">
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{{forn.fotoPerfil}}" class="card-img">
+                    </div>
+                    <div class="col-md-8">
+                    <div class="card-body">
+                            <label class="card-text-nota">Nota: {{forn?.mediaAvalicao}}</label><br/>
+                            <label class="card-text-razao-social">PetProvider: {{forn.razaoSocial}}</label><br/>
+                            <label class="card-text">Estado: {{forn.estado}}</label><br/>
+                            <label class="card-text">Cidade: {{forn.cidade}}</label><br/>
+                            <label class="card-text">Bairro: {{forn.bairro}} </label><br/>
+                            <label class="card-text"> {{forn.descricaoPetProvider}} </label><br/>
+                            <label class="card-text">Serviços:</label><br/>
+                            <button mat-flat-button color="primary" type="button" (click)="pesquisarDetalhes(forn)">+ Detalhes</button>
+                    </div>
+                    </div>
                 </div>
             </div>
-            </div>
+        </div>
     </div>
-  </div>
+</div>

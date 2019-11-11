@@ -1,0 +1,18 @@
+.card-design{
+    display: flex;
+    justify-content: center;
+}
+
+.card{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.mat-flat-button{
+    display: flex;
+    justify-content: end;
+}
+
+.card-text-razao-social{
+    margin-left: 20px;
+}

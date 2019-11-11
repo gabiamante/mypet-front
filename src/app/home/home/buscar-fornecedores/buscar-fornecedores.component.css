@@ -4,5 +4,14 @@
 }
 
 .mat-form{
-    margin: 20px;
+    margin: 5px;
+}
+
+.mat-form-field{
+    margin: 5px;
+}
+
+.row-title{
+    display: flex;
+    justify-content: center;
 }

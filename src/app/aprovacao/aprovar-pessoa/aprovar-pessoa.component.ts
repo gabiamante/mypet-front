@@ -33,12 +33,12 @@ export class AprovarPessoaComponent implements OnInit {
     private pessoaJuridica: PessoaJuridica = {id: null, razaoSocial: '', cpf: '',
     telefoneFixo: '', telefoneCelular: '', logradouro: '', numero: 0, tipoPerfil: 0,
     complemento: '', bairro: '', cidade: '', estado: '', cep: '', email: '',
-    senha: '', fotoPerfil: '', banhoETosa: '', consulta: '', tosaExotica: '',
+    senha: '', fotoPerfil: '', descricaoPetProvider: '' , banhoETosa: '', consulta: '', tosaExotica: '',
     vacinacao: '', cirurgiaGeral: '',
     hidratacao: '', penteadosArtisticos: '', acupuntura: '', spa: '',
     hotel: '', creche: '', taxi: '',
     ensaioFotografico: '', adestramento: '', massagem: '', petwalk: '', situacaoAprovacao: '',
-    checkStatus: false, active: true, mediaAvaliacao: 0.0}){
+    checkStatus: false, active: true, mediaAvalicao: 0.0}){
 
   }
 
@@ -116,7 +116,7 @@ cloneCar(c: PessoaJuridica): PessoaJuridica {
       id: null, razaoSocial: '', cpf: '', telefoneFixo: '', telefoneCelular: '',
       logradouro: '', numero: 0, tipoPerfil: 0, complemento: '', bairro: '',
       cidade: '', estado: '', cep: '', email: '', senha: '', fotoPerfil: '',
-      banhoETosa: '', consulta: '', tosaExotica: '',
+      descricaoPetProvider: '' ,banhoETosa: '', consulta: '', tosaExotica: '',
       vacinacao: '', cirurgiaGeral: '',
       hidratacao: '', penteadosArtisticos: '', acupuntura: '', spa: '',
       hotel: '', creche: '', taxi: '',

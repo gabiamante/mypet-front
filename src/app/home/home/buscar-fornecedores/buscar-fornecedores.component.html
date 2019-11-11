@@ -1,29 +1,43 @@
 <hr class="featurette-divider m-5">
+
+  <div class="row-title">
+    <h5>Pesquise aqui os prestadores que procura!</h5>
+  </div>
+
 <div class="example-container p-5">
 
-    <mat-form-field>
-      <input matInput placeholder="Bairro" [(ngModel)]="forn.bairro" class="mat-form">
-    </mat-form-field>
-    
-    <mat-form-field>
-      <input matInput placeholder="Cidade" [(ngModel)]="forn.cidade" class="mat-form">
-    </mat-form-field>
-    
-    <mat-form-field>
-      <input matInput placeholder="Estado" [(ngModel)]="forn.estado" class="mat-form">
-    </mat-form-field>
+  <div class="row">
+      
 
-    <mat-form-field>
-      <mat-label>Serviço</mat-label>
-      <mat-select [(value)]= "selected" class="mat-form">
-        <mat-option *ngFor="let selected of servicos" [value]="selected.label" >
-          {{selected.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Prestador" [(ngModel)]="forn.razaoSocial" class="mat-form">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Bairro" [(ngModel)]="forn.bairro" class="mat-form">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Cidade" [(ngModel)]="forn.cidade" class="mat-form">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Estado" [(ngModel)]="forn.estado" class="mat-form">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Serviço</mat-label>
+        <mat-select [(value)]= "selected" class="mat-form">
+          <mat-option *ngFor="let selected of servicos" [value]="selected.label" >
+            {{selected.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    
     <div class="mat-form">
         <button mat-flat-button color="primary" (click)="pesquisarFornecedor()">Pesquisar</button>
     </div>
+  </div>
 </div>
 
     <hr class="featurette-divider m-5">

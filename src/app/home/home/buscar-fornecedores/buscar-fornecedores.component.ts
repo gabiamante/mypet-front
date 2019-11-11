@@ -21,7 +21,6 @@ export class BuscarFornecedoresComponent implements OnInit {
       this.router = router;
 
     this.servicos = [
-      {name: 'Selecione o serviço desejado', label: 'Selecionar'},
       {name: 'Banho/Tosa', label: 'banhoETosa'},
       {name: 'Consulta', label: 'consulta'},
       {name: 'Tosa Exótica', label: 'tosaExotica'},
@@ -42,9 +41,6 @@ export class BuscarFornecedoresComponent implements OnInit {
    }
 
   ngOnInit() {
-  }
-  public pesquisarDetalhes(forn: PessoaJuridica) {
-    this.router.navigate(['home', 'detalhes', forn.id]);
   }
 
   pesquisarFornecedor(){

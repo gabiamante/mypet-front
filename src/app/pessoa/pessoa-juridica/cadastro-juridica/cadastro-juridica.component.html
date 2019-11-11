@@ -1,221 +1,170 @@
-<!doctype html>
-<html>
-
-<head>
-
-</head>
-
-<body>
-
-    <div class="container">
-
-        <h2 align="center"> Cadastrar PetProvider</h2>
-        <form name="form" method="POST" id="form_contato" class="form">
-            <div class="form-row align-items-center">
-
-
-                <div class="form-group col-md-3">
-                    <label for="razaoSocial">Razão Social: </label>
-                    <input type="text" class="form-control" name="razaoSocial" id="razaoSocial" [(ngModel)]="pessoaJuridica.razaoSocial" pInputText placeholder="Ex: Clínica pet feliz" required minlength="5">
-
-                </div>
-
-                <div class="form-group col-md-2">
-                    <label for="CPF OU CNPJ">CPF OU CNPJ:</label>
-                    <input type="text" class="form-control" name="cpf" [(ngModel)]="pessoaJuridica.cpf" required class="form-control pInputText placeholder" CPF OU CNPJ>
-
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="email">E-mail:</label>
-                    <input type="email" class="form-control" name="email" [(ngModel)]="pessoaJuridica.email" pInputText placeholder=" E-mail" required class="form-control">
-                </div>
-
-                <div class="form-group col-md-2">
-                    <label for="senha">Senha:</label>
-                    <input type="password" class="form-control" name="senha" [(ngModel)]="pessoaJuridica.senha" required="required" pInputText placeholder=" Senha">
-                </div>
-
-            </div>
-            <div class="form-row align-items-center">
-                <div class="form-group col-md-2">
-                    <label for="telefoneFixo">Telefone Fixo:</label>
-                    <input type="text" class="form-control" name="telefoneFixo" [(ngModel)]="pessoaJuridica.telefoneFixo" pInputText placeholder=" Telefone Fixo">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="telefoneCelular">Celular:</label>
-                    <input type="text" class="form-control" name="telefoneCelular" [(ngModel)]="pessoaJuridica.telefoneCelular" required="required" pInputText placeholder=" Telefone Celular">
-                </div>
-            </div>
-
-            <div class="form-row align-items-center">
-                <div class="form-group col-md-4">
-                    <label for="logradouro">Endereço:</label>
-                    <input type="text" class="form-control" name="logradouro" [(ngModel)]="pessoaJuridica.logradouro" required="required" pInputText placeholder=" Endereço">
-                </div>
-
-                <div class="form-group col-md-1">
-                    <label for="numero">Nº:</label>
-                    <input type="text" class="form-control" name="numero" [(ngModel)]="pessoaJuridica.numero" required="required" pInputText placeholder=" Número">
-                </div>
-
-                <div class="form-group col-md-2">
-                    <label for="complemento">Complemento:</label>
-                    <input type="text" class="form-control" name="complemento" [(ngModel)]="pessoaJuridica.complemento" required="required" pInputText placeholder=" Complemento">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="bairro">Bairro:</label>
-                    <input type="text" class="form-control" name="bairro" [(ngModel)]="pessoaJuridica.bairro" required="required" pInputText placeholder=" Bairro">
-                </div>
-            </div>
-            <div class="form-row align-items-center">
-                <div class="form-group col-md-3">
-                    <label for="cidade">Cidade: </label>
-                    <input type="text" class="form-control" name="cidade" [(ngModel)]="pessoaJuridica.cidade" required="required" pInputText placeholder="Cidade">
-                </div>
-
-                <div class="form-group col-md-3">
-                    <label for="estado">Estado:</label>
-                    <input type="text" class="form-control" name="estado" [(ngModel)]="pessoaJuridica.estado" required="required" pInputText placeholder="Estado">
-                </div>
-
-                <div class="form-group col-md-2">
-                    <label for="cep">CEP:</label>
-                    <input type="text" class="form-control" name="cep" [(ngModel)]="pessoaJuridica.cep" required="required" pInputText placeholder=" CEP">
-                </div>
-            </div>
-
-            <div class="form-check form-check-inline">
-                <div class="container center_div">
-                    <div class="form-row align-items-center">
-                        <div class="form-group col-auto">
-                            <div id="petShopFile">
-
-                                <br/>
-                                <label for="descricaoPetShop">Descrição:</label>
-                                <textarea type="text" class="form-control" name="descricaoPetShop" [(ngModel)]="pessoaJuridica.descricaoPetShop" required="required" pInputTextarea></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Escolha dos serviços prestados-->
-            <div class="form-check form-check-inline">
-                <div class="container center_div">
-                    <div class="form-row align-items-center">
-                        <div class="form-group col-auto">
-                            <p id="opcoesPetShop">Selecione os serviços que deseja prestar: </p>
-
-                            <label for="banhoETosa"></label>
-                            <p-checkbox name="banhoETosa" [(ngModel)]="pessoaJuridica.banhoETosa" binary="true"></p-checkbox>
-                            Banho e Tosa
-                            <br/>
-                            <label for="consulta"></label>
-                            <p-checkbox name="consulta" [(ngModel)]="pessoaJuridica.consulta" binary="true"></p-checkbox>
-                            Consulta
-                            <br/>
-                            <label for="tosaExotica"></label>
-                            <p-checkbox name="tosaExotica" [(ngModel)]="pessoaJuridica.tosaExotica" binary="true"></p-checkbox>
-                            Tosa Exótica
-                            <br/>
-                            <label for="vacinacao"></label>
-                            <p-checkbox name="vacinacao" [(ngModel)]="pessoaJuridica.vacinacao" binary="true"></p-checkbox>
-                            Vacinação
-                            <br/>
-                            <label for="cirurgiaGeral"></label>
-                            <p-checkbox name="cirurgiaGeral" [(ngModel)]="pessoaJuridica.cirurgiaGeral" binary="true"></p-checkbox>
-                            Cirurgia Geral
-                            <br/>
-                            <label for="hidratacao"></label>
-                            <p-checkbox name="hidratacao" [(ngModel)]="pessoaJuridica.hidratacao" binary="true"></p-checkbox>
-                            Hidratação
-                            <br/>
-                            <label for="penteadosArtisticos"></label>
-                            <p-checkbox name="penteadosArtisticos" [(ngModel)]="pessoaJuridica.penteadosArtisticos" binary="true"></p-checkbox>
-                            Penteados Artísticos
-                            <br/>
-                            <label for="acupuntura"></label>
-                            <p-checkbox name="acupuntura" [(ngModel)]="pessoaJuridica.acupuntura" binary="true"></p-checkbox>
-                            Acupuntura
-                            <br/>
-                            <label for="spa"></label>
-                            <p-checkbox name="spa" [(ngModel)]="pessoaJuridica.spa" binary="true"></p-checkbox>
-                            SPA
-                            <br/>
-                            <label for="hotel"></label>
-                            <p-checkbox name="hotel" [(ngModel)]="pessoaJuridica.hotel" binary="true"></p-checkbox>
-                            Hotel
-                            <br/>
-                            <label for="creche"></label>
-                            <p-checkbox name="creche" [(ngModel)]="pessoaJuridica.creche" binary="true"></p-checkbox>
-                            Creche
-                            <br/>
-                            <label for="taxi"></label>
-                            <p-checkbox name="taxi" [(ngModel)]="pessoaJuridica.taxi" binary="true"></p-checkbox>
-                            Táxi
-                            <br/>
-                            <label for="ensaioFotografico"></label>
-                            <p-checkbox name="ensaioFotografico" [(ngModel)]="pessoaJuridica.ensaioFotografico" binary="true"></p-checkbox>
-                            Ensaio Fotográfico
-                            <br/>
-                            <label for="adestramento"></label>
-                            <p-checkbox name="adestramento" [(ngModel)]="pessoaJuridica.adestramento" binary="true"></p-checkbox>
-                            Adestramento
-                            <br/>
-                            <label for="massagem"></label>
-                            <p-checkbox name="massagem" [(ngModel)]="pessoaJuridica.massagem" binary="true"></p-checkbox>
-                            Massagem
-                            <br/>
-                            <label for="petwalk"></label>
-                            <p-checkbox name="petwalk" [(ngModel)]="pessoaJuridica.petwalk" binary="true"></p-checkbox>
-                            Pet Walk
-                            <br/>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-
-            <!--Fim da escolha dos serviços prestados-->
-
-            <div class="button-cadastro">
-                <button type="button" (click)="salvar()" label="Cadastrar" class="btn btn-outline-light" style="background-color: #f7b733">Cadastrar
-                            </button>
-                <button type="button" (click)="voltar()" label="Voltar" class="btn btn-outline-light" style="background-color: #f7b733">Voltar
-                            </button>
-            </div>
-        </form>
+<div class="container">
+   <h3 class="h3">Cadastre-se como Prestador de Serviço MyPet ainda hoje!</h3>
+  
+    <hr>
+  
+    <div class="row">
+        <div class="col-md-7 mb-3">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Razão Social" [(ngModel)]="pessoaJuridica.razaoSocial" name="razaoSocial" required>
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-3 mb-3">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="CPF ou CNPJ" [(ngModel)]="pessoaJuridica.cpf" name="cpf" required>
+            </mat-form-field>
+        </div>
+      </div>
+  
+     <div class="row">
+         <div class="col-md-6 mb-3">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="E-mail" [formControl]="emailFormControl"
+                  [errorStateMatcher]="matcher" required [(ngModel)]="pessoaJuridica.email" name="email">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              E-mail inválido
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              E-mail é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+  
+        <div class="col-md-3 mb-3">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Senha" [type]="hide ? 'password' : 'text'" required [(ngModel)]="pessoaJuridica.senha" name="senha">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+  
+  
+        <div class="col-md-3 mb-3">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Confirmar Senha" [type]="hide ? 'password' : 'text'" required name="senha2">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+      </div>
     </div>
 
+      <div class="row">
+          <div class="col-md-5 mb-3">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Endereço" required [(ngModel)]="pessoaJuridica.logradouro" name="logradouro">
+            </mat-form-field>
+          </div>
+        
+        <div class="col-md-1 mb-3">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Número" required [(ngModel)]="pessoaJuridica.numero" name="numero">
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-2 mb-3">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Complemento" [(ngModel)]="pessoaJuridica.complemento" name="complemento">
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-4 mb-3">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Bairro" required [(ngModel)]="pessoaJuridica.bairro" name="bairro">
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <div class="row">   
+        <div class="col-md-4 mb-3">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Cidade" required [(ngModel)]="pessoaJuridica.cidade" name="cidade">
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-4 mb-3"> 
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Estado" required [(ngModel)]="pessoaJuridica.estado" name="estado">
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-4 mb-3">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="CEP" required [(ngModel)]="pessoaJuridica.cep" name="cep">
+          </mat-form-field>
+        </div>
+      </div>
+  
+      
+      <div class="row">   
+        <div class="col-md-4 mb-3">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Telefone Fixo" [(ngModel)]="pessoaJuridica.telefoneFixo" name="telefoneFixo">
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-4 mb-3">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Telefone Celular" required [(ngModel)]="pessoaJuridica.telefoneCelular" name="telefoneCelular">
+          </mat-form-field>
+        </div>
+        <div class="example-container">
+            <div class="col-md-4 mb-3">
+                <mat-form-field>
+                    <textarea matInput placeholder="Descreva aqui mais sobre sua empresa, faça sua propaganda!" [(ngModel)]="pessoaJuridica.descricaoPetProvider"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+      </div>
+  
 
-    <script src="jquery-2.1.4.min.js"></script>
-    <script src="jquery.validate.min.js"></script>
-    <script>
-        $(function() {
-            $("#form_contato").validate({
-                rule: {
-                    email: {
-                        required: true
-                    },
-                    razaoSocial: {
-                        required: true,
-                        minlength: 5
-                    },
-                    cpf: {
-                        required: true
 
-                    }
-                },
-                messages: {
-                    razaoSocial: {
-                        required: "Por favor, informe seu nome",
-                        minlength: "O nome deve ter pelo menos 5 caracteres"
-                    }
-                }
+    <div class="row">
 
-            });
-        });
-    </script>
-</body>
+        <div class="col-md-8 mb-8">
+                <h5>Indique abaixo os serviços que deseja prestar</h5>
+            <hr>
+        </div>
 
-</html>
+        <div class="col-md-8 mb-8">
+            <mat-checkbox name="banhoETosa" [(ngModel)]="pessoaJuridica.banhoETosa">Banho / Tosa</mat-checkbox><br/>
+
+            <mat-checkbox name="consulta" [(ngModel)]="pessoaJuridica.consulta">Consulta</mat-checkbox><br/>
+
+            <mat-checkbox name="tosaExotica" [(ngModel)]="pessoaJuridica.tosaExotica">Tosa Exótica</mat-checkbox><br/>
+
+            <mat-checkbox name="vacinacao" [(ngModel)]="pessoaJuridica.vacinacao">Vacinação</mat-checkbox><br/>
+
+            <mat-checkbox name="cirurgiaGeral" [(ngModel)]="pessoaJuridica.cirurgiaGeral">Cirurgia Geral</mat-checkbox><br/>
+
+            <mat-checkbox name="hidratacao" [(ngModel)]="pessoaJuridica.hidratacao">Hidratação</mat-checkbox><br/>
+
+            <mat-checkbox name="penteadosArtisticos" [(ngModel)]="pessoaJuridica.penteadosArtisticos">Penteados Artísticos</mat-checkbox><br/>
+
+            <mat-checkbox name="acupuntura" [(ngModel)]="pessoaJuridica.acupuntura">Acupuntura</mat-checkbox><br/>
+
+            <mat-checkbox name="spa" [(ngModel)]="pessoaJuridica.spa">SPA</mat-checkbox><br/>
+
+            <mat-checkbox name="hotel" [(ngModel)]="pessoaJuridica.hotel">Hotel</mat-checkbox><br/>
+
+            <mat-checkbox name="creche" [(ngModel)]="pessoaJuridica.creche">Creche</mat-checkbox><br/>
+
+            <mat-checkbox name="taxi" [(ngModel)]="pessoaJuridica.taxi">Táxi</mat-checkbox><br/>
+
+            <mat-checkbox name="ensaioFotografico" [(ngModel)]="pessoaJuridica.ensaioFotografico">Ensaio Fotográfico</mat-checkbox><br/>
+
+            <mat-checkbox name="adestramento" [(ngModel)]="pessoaJuridica.adestramento">Adestramento</mat-checkbox><br/>
+
+            <mat-checkbox name="massagem" [(ngModel)]="pessoaJuridica.massagem">Massagem</mat-checkbox><br/>
+
+            <mat-checkbox name="petwalk" [(ngModel)]="pessoaJuridica.petwalk">Pet Walk</mat-checkbox><br/>
+
+    </div>
+</div> 
+
+      <button mat-flat-button color="primary" type="button" (click)="voltar()">Voltar</button>
+      <button mat-flat-button color="primary" type="button" (click)="salvar()">Cadastrar</button>
+</div>

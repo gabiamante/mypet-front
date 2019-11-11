@@ -20,6 +20,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule, MatNativeDateModule} from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatButtonModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCheckboxModule
   ],
   declarations: [
     CadastroJuridicaComponent,
