@@ -21,6 +21,9 @@ export class ServiceContratados  {
   comentarioAvaliacao = '';
   observacaoAtendimento = '';
   dataParaOrdenacao = new Date();
+  idAgendaProvider = 0;
+  nomePet = '';
+  idPet = 0;
 
 
   constructor() {
@@ -46,5 +49,8 @@ export class ServiceContratados  {
     this.comentarioAvaliacao = '';
     this.observacaoAtendimento = '';
     this.dataParaOrdenacao = new Date();
+    this.idAgendaProvider = 0;
+    this.nomePet = '';
+    this.idPet = 0;
   }
 }

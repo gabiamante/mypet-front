@@ -56,4 +56,15 @@ export class ListaOpcoesHorariosServiceDisponiveisService {
       return this.http.put(url, varCriacaoAgendaProviderToAttach);
       }
 
+  buscarEmailLoginConjunto(email: string): Observable<any> {
+        return this.http.get(API + '/loginConjunto/email?value=' + email);
+      }
+
+      // usar o id desta pessoa fisica para procurar todas os pets
+      // que estao asssociados a este cliente
+  buscaPet(idPetcliente: number): Observable<any>  {
+    console.log('idPetcliente: ' + idPetcliente);
+    return this.http.get(API + '/pets/idPetcliente?value=' + idPetcliente);
+  }
+
 }

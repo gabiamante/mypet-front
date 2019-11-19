@@ -80,6 +80,7 @@
                 <th>Inicio</th>
                 <th>Fim</th>
                 <th>Serviço escolhido</th>
+                <th>Replicar</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-varCriacaoAgendaProvider>
@@ -89,9 +90,12 @@
                 <td>{{varCriacaoAgendaProvider.tempoInicioCorrecao}}</td>
                 <td>{{varCriacaoAgendaProvider.tempoFimCorrecao}}</td>
                 <td>{{varCriacaoAgendaProvider.servicoEscolhido}}</td>
+                <td class="ui-g-12"><p-checkbox name="group1" value="Replicar" label=""
+                  [(ngModel)]="varCriacaoAgendaProvider.replicar" inputId="replicar"></p-checkbox></td>
             </tr>
         </ng-template>
     </p-table>
+    <button pButton type="button" (click)="addDays(lstCriacaoAgendaProviderAgendadoNaoContratados)">Replicar</button>
 
     </div> <!--FIM DA DIV PARA O LADO DIREITO-->
 

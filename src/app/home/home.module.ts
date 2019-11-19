@@ -11,13 +11,15 @@ import { FiltroPelaCidade } from './home/filtro-pela-cidade.pipe';
 import {CardModule} from 'primeng/card';
 import {CheckboxModule} from 'primeng/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule }  from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }  from '@angular/forms';
 import { BuscarFornecedoresComponent } from './home/buscar-fornecedores/buscar-fornecedores.component';
 import {DropdownModule} from 'primeng/dropdown';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule, MatButtonModule} from '@angular/material';
+import {MatInputModule, MatButtonModule, MatDialogModule} from '@angular/material';
 import { CardsComponent } from './cards/cards.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatStepperModule} from '@angular/material/stepper';
 @NgModule({
   declarations: [
     QuemSomosComponent,
@@ -38,11 +40,15 @@ import { CardsComponent } from './cards/cards.component';
     CheckboxModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     DropdownModule,
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatStepperModule,
+    MatDialogModule
   ],
   exports: [
     QuemSomosComponent,

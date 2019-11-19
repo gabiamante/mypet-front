@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ComponentFactoryResolver } from '@angular/core';
 import { CriacaoAgendaProvider } from './criacao-agenda-petprovider';
 import Swal from 'sweetalert2';
 import { CriacaoAgendaPetproviderService } from './criacao-agenda-petprovider.service';
@@ -183,7 +183,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
       this.lstCriacaoAgendaProvider.push(this.varCriacaoAgendaProviderToAttachCopy);
       this.qtdDiasSemanaSelecionadosCopy = this.qtdDiasSemanaSelecionados;
       this.reiniciaDias(varCriacaoAgendaProviderToAttach);
-      // alert('segura');
+      // alert(JSON.stringify(this.lstCriacaoAgendaProviderAgendadoNaoContratados));
     }
   }
 
@@ -276,17 +276,42 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
       varCriacaoAgendaProviderToAttach.siglaDia = 'Sex';
     }
 
-    varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao = varCriacaoAgendaProviderToAttach.dataCalendario.getDate()
+   varCriacaoAgendaProviderToAttach.dataCalendarioCorrecao = varCriacaoAgendaProviderToAttach.dataCalendario.getDate()
     + '/' + (varCriacaoAgendaProviderToAttach.dataCalendario.getMonth() + 1) + '/'
     + varCriacaoAgendaProviderToAttach.dataCalendario.getFullYear();
 
     const auxDataOrdenacao = varCriacaoAgendaProviderToAttach.dataCalendario.getFullYear()
     + '-' + (varCriacaoAgendaProviderToAttach.dataCalendario.getMonth() + 1) + '-'
-    + varCriacaoAgendaProviderToAttach.dataCalendario.getDate() + 'T00:00:00';
-    // alert(auxDataOrdenacao);
-    varCriacaoAgendaProviderToAttach.dataParaOrdenacao = new Date(auxDataOrdenacao);
+    + varCriacaoAgendaProviderToAttach.dataCalendario.getDate()+ 'T00:00:00.000-0300';
 
+
+
+
+     varCriacaoAgendaProviderToAttach.dataParaOrdenacao = new Date(varCriacaoAgendaProviderToAttach.dataCalendario);
+
+   // alert('ok: ' + varCriacaoAgendaProviderToAttach.dataParaOrdenacao.toDateString());
+   // alert('ok: ' + varCriacaoAgendaProviderToAttach.dataParaOrdenacao);
+    // setTimeout(function() {
+    // }, 300);
+    // alert(auxDataOrdenacao);
+    // varCriacaoAgendaProviderToAttach.dataParaOrdenacao = new Date(auxDataOrdenacao);
     // alert(varCriacaoAgendaProviderToAttach.dataParaOrdenacao);
+
+ //   alert(JSON.stringify('auxDataOrdenacao: ' + auxDataOrdenacao));
+    alert(JSON.stringify('dataParaOrdenacao: ' + JSON.stringify(varCriacaoAgendaProviderToAttach.dataParaOrdenacao)));
+
+
+
+
+
+    // var result = new Date(varCriacaoAgendaProviderToAttach.dataParaOrdenacao);
+    // alert(JSON.stringify('result: ' + result));
+    // var num = result.setDate(result.getDate() + 7);
+    // alert(JSON.stringify('num: ' + num));
+    // var novaData = new Date(num);
+    // alert(JSON.stringify('novaData: ' + novaData));
+
+    // varCriacaoAgendaProviderToAttach.dataParaOrdenacao = novaData;
   }
 
 
@@ -312,6 +337,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     subscribe((res) => {
       var retornoAux: CriacaoAgendaProvider = new CriacaoAgendaProvider();
       retornoAux = res;
+      // alert('retorno: ' + (retornoAux + '').length);
       if  ((retornoAux + '').length === 0)  {
         this.criacaoAgendaService.salvarCriacaoAgendaProviderTeste(varCriacaoAgendaProviderToAttach).subscribe(
           response => {
@@ -368,10 +394,82 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     return auxCriacaoAgenda;
   }
 
-  addDays(date, days) {
-    var result = new Date(date);
-    result.setDate(result.getDate() + days);
-    return result;
+  addDays(lstCriacaoAgendaProviderToAttach: CriacaoAgendaProvider[]) {
+    for (const element of lstCriacaoAgendaProviderToAttach) {
+
+      if  (element.replicar)  {
+
+        let varCriacaoAgendaProvidervReplicado: CriacaoAgendaProvider = new CriacaoAgendaProvider;
+          varCriacaoAgendaProvidervReplicado = Object.assign({}, element);
+
+
+            const result = new Date(varCriacaoAgendaProvidervReplicado.dataParaOrdenacao);
+            console.log('ANTES do método: ' + result);
+            const num = result.setDate(result.getDate() + 7);
+            console.log('ANTES do método: ' + num);
+            const novaData = new Date(num);
+
+
+           varCriacaoAgendaProvidervReplicado.dataParaOrdenacao = novaData;
+           varCriacaoAgendaProvidervReplicado.dataCalendario = novaData;
+
+
+            console.log(JSON.stringify("Teste antes " + varCriacaoAgendaProvidervReplicado.dataParaOrdenacao));
+            this.correcaoDia(varCriacaoAgendaProvidervReplicado);
+
+           console.log(JSON.stringify("Teste depois " + varCriacaoAgendaProvidervReplicado.dataParaOrdenacao));
+
+
+            const token = localStorage.getItem('localUser');
+            const objLogin = JSON.parse(token);
+
+            this.criacaoAgendaService.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
+            this.varPetProvider = retorno;
+
+            this.criacaoAgendaService.verificaAgendaProvider(this.varPetProvider, varCriacaoAgendaProvidervReplicado).
+            subscribe((res) => {
+              var retornoAux: CriacaoAgendaProvider = new CriacaoAgendaProvider();
+              retornoAux = res;
+              //alert('retorno: ' + (retornoAux + '').length);
+              if  ((retornoAux + '').length === 0)  {
+
+                setTimeout(function() {
+                }, 200);
+                this.criacaoAgendaService.salvarCriacaoAgendaProviderTeste(varCriacaoAgendaProvidervReplicado)
+                .subscribe(
+                  response => {
+
+                  }
+                );
+                  Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: 'Horário cadastrado !',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                } else{
+                  Swal.fire({
+                    position: 'center',
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'Já existe um horáio cadastrado',
+                    footer: 'Você não pode cadastrar um mesmo serviço no mesmo horário e no mesmo dia !',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                }
+            });
+
+          });
+          setTimeout(function() {
+            // alert('segura');
+            location.reload();
+          }, 3000);
+
+
+        }
+    }
   }
 
 }

@@ -8,6 +8,7 @@ import { ListaOpcoesHorariosServiceDisponiveisComponent } from './lista-opcoes-h
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TableModule } from 'primeng/table';
     FormsModule,
     ButtonModule,
     ToggleButtonModule,
+    MatListModule
   ],
   exports: [
     ListaOpcoesHorariosServiceDisponiveisComponent

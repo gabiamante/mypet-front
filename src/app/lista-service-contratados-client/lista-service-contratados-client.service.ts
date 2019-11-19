@@ -1,3 +1,4 @@
+import { CriacaoAgendaProvider } from './../petservice/criacao-agenda-petprovider/criacao-agenda-petprovider';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { Observable } from 'rxjs';
 import { ServiceContratados } from '../lista-service-contratados/lista-service-contratados';
@@ -38,10 +39,6 @@ export class ListaServiceContratadosClientService {
     return this.http.get(API + '/loginConjunto/email?value=' + email);
   }
 
-  // gravarStatusCanecelado(varServiceContratados: ServiceContratados)  {
-  //   return this.http.put();
-  // }
-
 
   gravarStatusCanecelado(varServiceContratados: ServiceContratados): Observable<ServiceContratados> {
     const url = `${API}/contratadoprovider/${varServiceContratados.id}`;
@@ -49,4 +46,21 @@ export class ListaServiceContratadosClientService {
     varServiceContratados.cancelado = true;
     return this.http.put<ServiceContratados>(url, varServiceContratados);
           }
+
+// usar a chave estrangeira para cancelar da tabela de agenda para poder disponibilizar o mesmo
+// horário caso fosse cancealdo
+
+
+  buscarAgendaServicoContratadoCancelado(varServiceContratados: ServiceContratados): Observable<any>  {
+    const url = API + '/agendaprovider/' + varServiceContratados.idAgendaProvider;
+    console.log(url);
+    return this.http.get<CriacaoAgendaProvider>(url);
+  }
+
+
+  gravarStatusCanceladoNaAgenda(varCriacaoAgendaProvider: CriacaoAgendaProvider) {
+    const url = `${API}/agendaprovider/${varCriacaoAgendaProvider.id}`;
+    varCriacaoAgendaProvider.cancelado = true;
+    return this.http.put<CriacaoAgendaProvider>(url, varCriacaoAgendaProvider);
+  }
 }

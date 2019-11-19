@@ -1,3 +1,4 @@
+import { CriacaoAgendaProvider } from './../petservice/criacao-agenda-petprovider/criacao-agenda-petprovider';
 import { Observable } from 'rxjs';
 import { PessoaJuridica } from '../pessoa/pessoa-juridica';
 import { JwtHelper } from 'angular2-jwt';
@@ -56,13 +57,28 @@ export class ListaServiceContratadosClientComponent implements OnInit {
   gravarStatusCanecelado(lstServiceContratados: ServiceContratados[])  {
 
     for (const element of lstServiceContratados)  {
+      let varAuxCriacaoAgendaProvider = new CriacaoAgendaProvider();
       if (element.cancelado)  {
         // console.log(JSON.stringify(element));
         this.serviceServiceContratados.gravarStatusCanecelado(element).subscribe(
           response => {
-            location.reload();
+            // location.reload();
+            // alert('alterou para cancelado na contratado');
           }
         );
+
+            this.serviceServiceContratados.buscarAgendaServicoContratadoCancelado(element).subscribe(
+              response => {
+                varAuxCriacaoAgendaProvider = response;
+                alert(JSON.stringify(varAuxCriacaoAgendaProvider));
+                this.serviceServiceContratados.gravarStatusCanceladoNaAgenda(varAuxCriacaoAgendaProvider).subscribe(
+                  response => {
+                    location.reload();
+                  }
+                );
+              }
+            );
+
       }
     }
   }

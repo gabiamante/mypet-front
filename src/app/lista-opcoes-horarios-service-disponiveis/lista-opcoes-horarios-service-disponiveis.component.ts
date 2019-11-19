@@ -1,3 +1,5 @@
+import { Pet } from './../pet/pet';
+import { PessoaFisica } from './../pessoa/pessoa-fisica';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ListaServiceContratadosService } from './../lista-service-contratados/lista-service-contratados.service';
 import { ServiceContratados } from './../lista-service-contratados/lista-service-contratados';
@@ -19,6 +21,10 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
   @Input() lstCriacaoAgendaProvider: CriacaoAgendaProvider[] = [];
   varServiceContratados: ServiceContratados;
   idProvider: string;
+  varPessoaFisica: PessoaFisica = new PessoaFisica;
+  idClientAux;
+  atributosPet: string[] = ['Nome'];
+  @Input() lstPet: Pet[] = [];
 
 
   constructor(private serviceCriacaoAgendaProvider: ListaOpcoesHorariosServiceDisponiveisService
@@ -30,6 +36,24 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
   ngOnInit() {
     this.idProvider = this.activatedRoute.snapshot.params.id;
     this.listAgendaProviderFiltrar(this.idProvider);
+
+
+    const token = localStorage.getItem('localUser');
+    const objLogin = JSON.parse(token);
+
+    this.serviceCriacaoAgendaProvider.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
+      this.varPessoaFisica = retorno;
+      this.idClientAux = this.varPessoaFisica.id;
+
+      let varPessoaFisicaAux: PessoaFisica = new PessoaFisica;
+      this.serviceCriacaoAgendaProvider.buscaPet(this.idClientAux).subscribe(
+        (response) => {
+          this.lstPet = response;
+          //alert(JSON.stringify(this.lstPet));
+        });
+    });
+
+
   }
 
   listAgendaProviderFiltrar(idProvider: string)  {
@@ -41,6 +65,8 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
   salvaAgendaProviderContratado(lstCriacaoAgendaProvider: CriacaoAgendaProvider[]) {
     const lstContratadoAgendaProvider: ServiceContratados[] = [];
     let count = 0;
+
+
 
     for (const element of lstCriacaoAgendaProvider)  {
       const varContratadoAgendaProvider: ServiceContratados = new ServiceContratados();
@@ -58,9 +84,16 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
         varContratadoAgendaProvider.tempoInicioReplicacao = element.tempoInicio;
         varContratadoAgendaProvider.tempoFimReplicacao = element.tempoFim;
         varContratadoAgendaProvider.dataParaOrdenacao = element.dataParaOrdenacao;
+        varContratadoAgendaProvider.idAgendaProvider = element.id;
+
+        this.associarPet(this.lstPet, varContratadoAgendaProvider);
 
         // PARA SALVAR UMA LISTA INTEIRA DE UMA VEZ
         // lstContratadoAgendaProvider.push(varContratadoAgendaProvider);
+
+          // no começo do component fazer uma query para usar o id de quem esta logado
+          // com o idPetCliente na tabela pet
+          // trazendo todas as opções de pet que tem com esse idPetCliente
 
 
 
@@ -81,6 +114,11 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
     // subscribe((res) => {
     //   this.varServiceContratados = res
     // });
+  }
+
+  associarPet(lstPet: Pet[], varContratadoAgendaProvider: ServiceContratados) {
+    varContratadoAgendaProvider.nomePet = lstPet.pop().nomePet;
+    //varContratadoAgendaProvider.idPet = lstPet.pop().id;
   }
 
 

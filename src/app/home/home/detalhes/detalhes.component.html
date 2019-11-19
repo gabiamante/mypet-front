@@ -1,31 +1,102 @@
-  <div class="card">
-      <h5 class="card-header">{{pessoa?.razaoSocial}}</h5>
-      <div class="card-body">
-          <label class="card-text">CNPJ: {{pessoa?.cpf}} </label><br/>
-          <label class="card-text">E-mail: {{pessoa?.email}} </label><br/>
-          <label class="card-text">Endereço: {{pessoa?.logradouro}} </label><br/>
-          <label class="card-text">Número: {{pessoa?.numero}} </label><br/>
-          <label class="card-text">Nota: {{pessoa?.mediaAvaliacao}} </label><br/>
-          <label class="card-text">Complemento: {{pessoa?.complemento}} </label><br/>
-          <label class="card-text">Bairro: {{pessoa?.bairro}}</label><br/>
-          <label class="card-text">Cidade: {{pessoa?.cidade}} </label><br/>
-          <label class="card-text">Estado: {{pessoa?.estado}} </label><br/>
-          <label class="card-text">Bairro: {{pessoa?.bairro}} </label><br/>
-          <label class="card-text">Descrição: {{pessoa?.descricaoPetShop}}</label><br/>
-          <label class="card-text">---------------------||---------------------</label><br/>
-          <label class="card-text">PetServices oferecidos</label><br/>
-          <label class="card-text">Banho: {{pessoa?.banho}}</label><br/>
-          <label class="card-text">Tosa: {{pessoa?.tosa}}</label><br/>
-          <label class="card-text">Loja: {{pessoa?.loja}}</label><br/>
-          <label class="card-text">Farmácia: {{pessoa?.farmacia}}</label><br/>
-          <label class="card-text">Vacinação: {{pessoa?.vacinacao}}</label><br/>
-          <label class="card-text">Consulta: {{pessoa?.consulta}}</label><br/>
-          <label class="card-text">Exames: {{pessoa?.exames}}</label><br/>
-          <label class="card-text">PetWalk: false</label><br/>          
+<div class="card">
+  <h5 class="card-header">{{pessoa?.razaoSocial}}</h5>
+  <div class="card-body">
+    <label class="card-text">CNPJ: {{pessoa?.cpf}} </label><br />
+    <label class="card-text">E-mail: {{pessoa?.email}} </label><br />
+    <label class="card-text">Endereço: {{pessoa?.logradouro}} </label><br />
+    <label class="card-text">Número: {{pessoa?.numero}} </label><br />
+    <label class="card-text">Nota: {{pessoa?.mediaAvaliacao}} </label><br />
+    <label class="card-text">Complemento: {{pessoa?.complemento}} </label><br />
+    <label class="card-text">Bairro: {{pessoa?.bairro}}</label><br />
+    <label class="card-text">Cidade: {{pessoa?.cidade}} </label><br />
+    <label class="card-text">Estado: {{pessoa?.estado}} </label><br />
+    <label class="card-text">Bairro: {{pessoa?.bairro}} </label><br />
+    <label class="card-text">Descrição: {{pessoa?.descricaoPetShop}}</label><br />
+    <label class="card-text">---------------------||---------------------</label><br />
+    <label class="card-text">PetServices oferecidos</label><br />
+    <label class="card-text">Banho: {{pessoa?.banho}}</label><br />
+    <label class="card-text">Tosa: {{pessoa?.tosa}}</label><br />
+    <label class="card-text">Loja: {{pessoa?.loja}}</label><br />
+    <label class="card-text">Farmácia: {{pessoa?.farmacia}}</label><br />
+    <label class="card-text">Vacinação: {{pessoa?.vacinacao}}</label><br />
+    <label class="card-text">Consulta: {{pessoa?.consulta}}</label><br />
+    <label class="card-text">Exames: {{pessoa?.exames}}</label><br />
+    <label class="card-text">PetWalk: false</label><br />
 
+    <button mat-flat-button color="primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+      type="button">Agendar</button>
+    <button mat-flat-button color="primary" type="button" label="Voltar" (click)="voltar()">Voltar</button>
 
-        <button mat-flat-button color="primary" type="button" label="Agendar" (click)="agendar(pessoa)">Agendar</button>
-        <button mat-flat-button color="primary" type="button" label="Voltar" (click)="voltar()">Voltar</button>
-      
-      </div>
   </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Preencha as informações a seguir para agendar um serviço!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- INÍCIO DO STEPPER-->
+
+        <mat-horizontal-stepper #stepper>
+          <mat-step completed="false">
+            <ng-template matStepLabel>Serviço: </ng-template>
+            <select class="form-control col-md-8" [(ngModel)]="varServicosSelecionados" id="exampleFormControlSelect1">
+              <option *ngFor="let servico of listaServicos">
+                {{servico.name}}
+              </option>
+            </select>
+          <br/>
+            <div class="modal-footer">
+                <button mat-button matStepperNext (click)="datasDisponiveisServico()">Próximo</button>
+              </div>
+          </mat-step>
+          <mat-step completed="false">
+            <ng-template matStepLabel>Data: </ng-template>
+            <select class="form-control col-md-8" [(ngModel)]="varDataSelecionada" id="exampleFormControlSelect2">
+                <option *ngFor="let data of listaDatas">
+                  {{data}}
+                </option>
+              </select>
+              <br/>
+            <div class="modal-footer">
+                <button mat-button matStepperPrevious (click)="limparServicoEData()">Voltar</button>
+                <button mat-button matStepperNext (click)="setTimeHorarios()">Próximo</button>
+              </div>
+          </mat-step>
+          <mat-step completed="false">
+              <ng-template matStepLabel>Horário: </ng-template>
+              <select class="form-control col-md-8" [(ngModel)]="horarioSelecionado" aria-placeholder="Selecione um horário">
+                  <option *ngFor="let horario of listaHorarios">
+                    {{horario}}
+                  </option>
+                </select>
+                <br/>
+              <div class="modal-footer">
+                  <button mat-button matStepperPrevious (click)="limparDataEHorario()">Voltar</button>
+                  <button mat-button matStepperNext (click)="pets()">Próximo</button>
+                </div>
+            </mat-step>
+          <mat-step completed="false">
+            <ng-template matStepLabel>Pet: </ng-template>
+            <select class="form-control col-md-8" [(ngModel)]="petSelecionado" id="exampleFormControlSelect4">
+                <option *ngFor="let pet of listaPets">
+                  {{pet.name}}
+                </option>
+              </select>
+              <br/>
+            <div class="modal-footer">
+                <button mat-button matStepperPrevious (click)="limparHorarioEPet()">Voltar</button>
+                <button mat-button matStepperNext (click)="salvar()">Agendar</button>
+              </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </div>
+    </div>
+  </div>
+</div>

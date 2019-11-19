@@ -26,6 +26,8 @@ export class CriacaoAgendaProvider {
   tempoInicioIntervalo = 0;
   tempoFimIntervalo = 0;
   dataParaOrdenacao = new Date();
+  cancelado = false;
+  replicar = false;
 
   constructor() {
     this.time = this.today.getHours() + ':' + this.today.getMinutes();
@@ -54,5 +56,7 @@ export class CriacaoAgendaProvider {
     this.tempoInicioIntervalo = 0;
     this.tempoFimIntervalo = 0;
     this.dataParaOrdenacao = new Date();
+    this.cancelado = false;
+    this.replicar = false;
   }
 }

@@ -12,6 +12,8 @@ import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown';
 import {TableModule} from 'primeng/table';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     CalendarModule,
     DropdownModule,
     TableModule,
-    RadioButtonModule
+    RadioButtonModule,
+    MatCheckboxModule,
+    MatButtonModule
   ],
   exports: [
     CriacaoAgendaPetproviderComponent

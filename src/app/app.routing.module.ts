@@ -1,3 +1,4 @@
+import { PetComponent } from './pet/pet.component';
 import { HistoricoPetproviderComponent } from './historico-petprovider/historico-petprovider.component';
 import { ListaServiceContratadosProviderComponent } from './lista-service-contratados-provider/lista-service-contratados-provider.component';
 import { NgModule } from '@angular/core';
@@ -72,6 +73,8 @@ const routes: Routes = [
     { path: 'historico/petprovider', component: HistoricoPetproviderComponent},
 
     { path: 'agendamento-pet-service/agendamento-pet-service/:id', component: ListaOpcoesHorariosServiceDisponiveisComponent},
+
+    { path: 'pets', component: PetComponent},
 
     { path: '', pathMatch: 'full', redirectTo: '/home/home'},
     { path: '**', component: NotFoundComponent }

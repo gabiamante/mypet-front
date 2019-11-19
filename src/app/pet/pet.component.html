@@ -1,0 +1,28 @@
+
+<div class="container">
+  <h3 class="h3">Cadastre-se seu Pet</h3>
+
+   <hr>
+
+   <div class="row">
+       <div class="col-md-7 mb-3">
+         <mat-form-field class="example-full-width">
+           <input matInput placeholder="Nome" [(ngModel)]="varPet.nomePet" name="nome" required>
+         </mat-form-field>
+       </div>
+
+       <div class="col-md-7 mb-3">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Raça" [(ngModel)]="varPet.racaPet" name="raca" required>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-7 mb-3">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Espécie" [(ngModel)]="varPet.especiePet" name="especie" required>
+        </mat-form-field>
+      </div>
+</div>
+
+<button mat-flat-button color="primary" type="button" (click)="salvarPet(varPet)">Cadastrar</button>
+</div>
