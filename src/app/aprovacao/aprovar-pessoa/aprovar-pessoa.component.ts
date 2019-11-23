@@ -37,7 +37,7 @@ export class AprovarPessoaComponent implements OnInit {
     vacinacao: '', cirurgiaGeral: '',
     hidratacao: '', penteadosArtisticos: '', acupuntura: '', spa: '',
     hotel: '', creche: '', taxi: '',
-    ensaioFotografico: '', adestramento: '', massagem: '', petwalk: '', situacaoAprovacao: '',
+    ensaioFotografico: '', adestramento: '', massagem: '', petwalk: '', exames: '', situacaoAprovacao: '',
     checkStatus: false, active: true, mediaAvalicao: 0.0}){
 
   }
@@ -120,7 +120,7 @@ cloneCar(c: PessoaJuridica): PessoaJuridica {
       vacinacao: '', cirurgiaGeral: '',
       hidratacao: '', penteadosArtisticos: '', acupuntura: '', spa: '',
       hotel: '', creche: '', taxi: '',
-      ensaioFotografico: '', adestramento: '', massagem: '', petwalk: '', descricaoPetHome: '', 
+      ensaioFotografico: '', adestramento: '', massagem: '', petwalk: '', exames: '',  descricaoPetHome: '', 
       situacaoAprovacao: '', checkStatus: false, active: true};
   };
 // tslint:disable-next-line: forin

@@ -24,15 +24,6 @@
       <mat-form-field>
         <input matInput placeholder="Estado" [(ngModel)]="forn.estado" class="mat-form">
       </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Serviço</mat-label>
-        <mat-select [(value)]= "selected" class="mat-form">
-          <mat-option *ngFor="let selected of servicos" [value]="selected.label" >
-            {{selected.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
     
     <div class="mat-form">
         <button mat-flat-button color="primary" (click)="pesquisarFornecedor()">Pesquisar</button>
@@ -44,26 +35,3 @@
   <app-cards></app-cards>
   
  <hr class="featurette-divider  m-5">
-
-<!--  <div class="row mb-4">
-  <div class="col justify-content-center" *ngFor="let forn of forns">
-      <div class="card">
-          <div class="row no-gutters">
-              <div class="col-md-4">
-              <img src={{forn.fotoPerfil}} class="card-img">
-              </div>
-              <div class="col-md-8">
-              <div class="card-body">
-                      <label class="card-text">PetProvider: {{forn.razaoSocial}}</label><br/>
-                      <label class="card-text">Cidade: {{forn.cidade}}</label><br/>
-                      <label class="card-text">Bairro: {{forn.bairro}} </label><br/>
-                      <label class="card-text">ID: {{forn.id}}</label><br/>
-                          <button type="button" (click)="pesquisarDetalhes(forn)" label="Detalhes" class="btn btn-outline-light"
-                           style="background-color: #f7b733">Detalhes</button>
-              </div>
-              </div>
-          </div>
-          </div>
-  </div>
-</div>
- -->

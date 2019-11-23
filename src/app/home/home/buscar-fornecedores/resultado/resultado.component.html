@@ -15,6 +15,57 @@
                             <label class="card-text">Bairro: {{forn.bairro}} </label><br/>
                             <label class="card-text"> {{forn.descricaoPetProvider}} </label><br/>
                             <label class="card-text">Serviços:</label><br/>
+                            <div *ngIf="forn.banhoETosa !== null">
+                                <label class="card-text" >Banho e Tosa</label><br/>
+                            </div>
+                            <div *ngIf="forn.consulta !== null">
+                                <label class="card-text" >Consulta</label><br/>
+                            </div>
+                            <div *ngIf="forn.tosaExotica !== null">
+                                <label class="card-text" >Tosa Exótica</label><br/>
+                            </div>
+                            <div *ngIf="forn.vacinacao !== null">
+                                <label class="card-text" >Vacinação</label><br/>
+                            </div>
+                            <div *ngIf="forn.cirurgiaGeral !== null">
+                                <label class="card-text" >Cirurgia Geral</label><br/>
+                            </div>
+                            <div *ngIf="forn.hidratacao !== null">
+                                <label class="card-text" >Hidratação</label><br/>
+                            </div>
+                            <div *ngIf="forn.penteadosArtisticos !== null">
+                                <label class="card-text" >Penteados Artísticos</label><br/>
+                            </div>
+                            <div *ngIf="forn.acupuntura !== null">
+                                <label class="card-text" >Acupuntura</label><br/>
+                            </div>
+                            <div *ngIf="forn.spa !== null">
+                                <label class="card-text" >SPA</label><br/>
+                            </div>
+                            <div *ngIf="forn.hotel !== null">
+                                <label class="card-text" >Hotel</label><br/>
+                            </div>
+                            <div *ngIf="forn.creche !== null">
+                                <label class="card-text" >Creche</label><br/>
+                            </div>
+                            <div *ngIf="forn.taxi !== null">
+                                <label class="card-text" >Táxi</label><br/>
+                            </div>
+                            <div *ngIf="forn.ensaioFotografico !== null">
+                                <label class="card-text" >Ensaio Fotográfico</label><br/>
+                            </div>
+                            <div *ngIf="forn.adestramento !== null">
+                                <label class="card-text" >Adestramento</label><br/>
+                            </div>
+                            <div *ngIf="forn.massagem !== null">
+                                <label class="card-text" >Massagem</label><br/>
+                            </div>
+                            <div *ngIf="forn.petwalk !== null">
+                                <label class="card-text" >Pet Walk</label><br/>
+                            </div>
+                            <div *ngIf="forn.exames !== null">
+                                <label class="card-text" >Exames</label><br/>
+                            </div>
                             <button mat-flat-button color="primary" type="button" (click)="pesquisarDetalhes(forn)">+ Detalhes</button>
                     </div>
                     </div>

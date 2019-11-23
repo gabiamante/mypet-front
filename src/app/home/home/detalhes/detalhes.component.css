@@ -18,7 +18,7 @@ body {
   
   /* Position the image container (needed to position the left and right arrows) */
   .container {
-    position: relative;
+    position: center;
   }
   
   /* Hide the images by default */
@@ -97,4 +97,16 @@ body {
   .active,
   .demo:hover {
     opacity: 1;
+  }
+
+  .card{
+    background-color: F5FFFA !important;
+  }
+
+  .card-body{
+    background-color: white !important;
+  }
+
+  .card{
+    margin:2em;
   }

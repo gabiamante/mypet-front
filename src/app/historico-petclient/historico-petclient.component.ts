@@ -31,51 +31,51 @@ export class HistoricoPetclientComponent implements OnInit {
 
     this.serviceServiceContratados.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
       this.varPetClient = retorno;
-     this.listContratadosProviderFiltro(this.varPetClient);
+      this.listContratadosProviderFiltro(this.varPetClient);
     });
 
   }
 
 
-  listContratadosProviderFiltro(varPetProvider: PessoaFisica)  {
+  listContratadosProviderFiltro(varPetProvider: PessoaFisica) {
     // console.log('component varPetProvider: ' + JSON.stringify(varPetProvider));
     this.serviceServiceContratados.listContratadosClientFiltro(this.varPetClient.id + '')
-    .subscribe(res => this.lstServiceContratados = res);
+      .subscribe(res => this.lstServiceContratados = res);
   }
 
-  
-  salvarAvaliacao(lstServiceContratados: ServiceContratados[])  {
+
+  salvarAvaliacao(lstServiceContratados: ServiceContratados[]) {
 
     for (const element of lstServiceContratados) {
       this.serviceServiceContratados.salvarAvaliacaoServico(element)
-      .subscribe(res => {
-        location.reload();
-      });
+        .subscribe(res => {
+          location.reload();
+        });
     }
   }
 
   handleRate(event) {
     this.msg = 'Nota do serviço ' + event.value;
-}
+  }
 
-handleCancel(event) {
+  handleCancel(event) {
     this.msg = 'Nota cancelada';
-}
+  }
 
-handleMotivoCancelamento(event) {
-  this.motivoDeCancelamentoQuandoFinalizado = 'Este serviço não foi cancelado';
-}
+  handleMotivoCancelamento(event) {
+    this.motivoDeCancelamentoQuandoFinalizado = 'Este serviço não foi cancelado';
+  }
 
-setModalValue(varServiceContratado: ServiceContratados) {
-  this.servicoContratadoAvaliado = varServiceContratado;
-}
+  setModalValue(varServiceContratado: ServiceContratados) {
+    this.servicoContratadoAvaliado = varServiceContratado;
+  }
 
-salvarAvaliacaoIndividual(servicoContratadoAvaliadoIndividual: ServiceContratados)  {
-  this.serviceServiceContratados.salvarAvaliacaoServico(servicoContratadoAvaliadoIndividual)
-  .subscribe(res => {
-    location.reload();
-  });
-}
+  salvarAvaliacaoIndividual(servicoContratadoAvaliadoIndividual: ServiceContratados) {
+    this.serviceServiceContratados.salvarAvaliacaoServico(servicoContratadoAvaliadoIndividual)
+      .subscribe(res => {
+        location.reload();
+      });
+  }
 
 
 

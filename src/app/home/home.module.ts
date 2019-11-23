@@ -20,6 +20,7 @@ import {MatInputModule, MatButtonModule, MatDialogModule} from '@angular/materia
 import { CardsComponent } from './cards/cards.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatStepperModule} from '@angular/material/stepper';
+import {RatingModule} from 'primeng/rating';
 @NgModule({
   declarations: [
     QuemSomosComponent,
@@ -48,7 +49,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatButtonModule,
     MatTableModule,
     MatStepperModule,
-    MatDialogModule
+    MatDialogModule,
+    RatingModule
   ],
   exports: [
     QuemSomosComponent,

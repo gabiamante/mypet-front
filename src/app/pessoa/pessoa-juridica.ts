@@ -44,6 +44,7 @@ export class PessoaJuridica {
   public adestramento: string;
   public massagem: string;
   public petwalk: string;
+  public exames: string
 
 
   constructor() {
@@ -84,6 +85,7 @@ export class PessoaJuridica {
     this.adestramento = '';
     this.massagem = '';
     this.petwalk = '';
+    this.exames = '';
     this.active = true;
   }
 }

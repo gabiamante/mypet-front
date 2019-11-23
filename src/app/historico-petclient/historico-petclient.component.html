@@ -48,7 +48,7 @@
             <div class="modal-body">
                 <p-rating [(ngModel)]="servicoContratadoAvaliado.avaliacao" (onRate)="handleRate($event)" (onCancel)="handleCancel($event)">
                 </p-rating> <!-- <span *ngIf="msg" style="margin-left:10px">{{msg}}</span> -->
-                <textarea></textarea>
+                <textarea [(ngModel)]="servicoContratadoAvaliado.comentarioAvaliacao"></textarea>
             </div>
             <div class="modal-footer">
                 <button mat-flat-button color="primary" type="button" (click)="salvarAvaliacaoIndividual(servicoContratadoAvaliado)">Salvar avaliação</button>

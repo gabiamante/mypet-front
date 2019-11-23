@@ -3,7 +3,7 @@ import { PessoaJuridica } from '../../pessoa-juridica';
 import { PessoaService } from '../../pessoa.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormGroupDirective, NgForm, Validators, FormBuilder, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
 
 @Component({
@@ -12,32 +12,97 @@ import { ErrorStateMatcher } from '@angular/material';
   styleUrls: ['./cadastro-juridica.component.css']
 })
 export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
-
-  public pessoaJuridica: PessoaJuridica = new PessoaJuridica();
-
-  constructor(private pessoaJuridicaService: PessoaService,
-              private router: Router) {
-
-    this.router = router;
-}
-
-  ngOnInit() {
-
-  }
-
+ 
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
+ 
 
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
+ formRegister = this.formBuilder.group({
+    'razaoSocial' :['',[Validators.required,Validators.minLength(6)]],
+    'cpf' :['',Validators.required],
+    'email' :['',[Validators.required,Validators.email]],
+    'logradouro' :['',Validators.required],
+    'numero' :[''],
+    'complemento' :[''],
+    'bairro' :['',Validators.required],
+    'cidade' :['',Validators.required],
+    'estado' :['',Validators.required],
+    'telefoneFixo' :[''],
+    'telefoneCelular':['',[Validators.required,Validators.minLength(9)]],
+    'cep' :['',[Validators.required,Validators.minLength(8)]],
+    'senha' :['',[Validators.required,Validators.minLength(6)]],
+    'senha2' :['',[Validators.required,Validators.minLength(6)]],
+  }, {validator: this.matchingSenha})
+
+
+
+  public pessoaJuridica: PessoaJuridica = new PessoaJuridica();
+  minPw = 8;
+ 
+
+
+  constructor(private pessoaJuridicaService: PessoaService,
+              private router: Router ,private formBuilder: FormBuilder) {
+
+               
+
+    this.router = router;
+}
+
+
+
+  ngOnInit() {
+   
+    console.log(this.formRegister.value)
+  }
+  
+  matchingSenha(group: FormGroup){
+    if(group){
+      const senha = group.controls['senha'].value;
+      const senha2 = group.controls['senha2'].value;
+
+      if(senha == senha2){
+        return null;
+      }
+    }
+    return{ matching:false};
+}
+//matchingSenha(){
+  
+  //const senha = this.formRegister.controls.senha.value;
+  //const senha2 = this.formRegister.controls.senha2.value;
+
+  //if(senha === senha2){
+    //console.log("bateu")
+  //}
+ // else
+  //console.log("bateu não")
+
+
+//}
+
+
 
   public salvar() {
+    
+    
+   this.pessoaJuridica.razaoSocial = this.formRegister.controls.razaoSocial.value;
+   this.pessoaJuridica.cpf = this.formRegister.controls.cpf.value;
+   this.pessoaJuridica.email = this.formRegister.controls.email.value;
+   this.pessoaJuridica.logradouro = this.formRegister.controls.logradouro.value;
+   this.pessoaJuridica.numero = this.formRegister.controls.numero.value;
+   this.pessoaJuridica.complemento = this.formRegister.controls.complemento.value;
+   this.pessoaJuridica.bairro = this.formRegister.controls.bairro.value;
+   this.pessoaJuridica.cidade = this.formRegister.controls.cidade.value;
+   this.pessoaJuridica.estado = this.formRegister.controls.estado.value;
+   this.pessoaJuridica.telefoneFixo = this.formRegister.controls.telefoneFixo.value;
+   this.pessoaJuridica.telefoneCelular = this.formRegister.controls.telefoneCelular.value;
+   this.pessoaJuridica.cep = this.formRegister.controls.cep.value;
+   this.pessoaJuridica.senha = this.formRegister.controls.senha.value;
 
-    if(this.pessoaJuridica.banhoETosa)  {
+     if(this.pessoaJuridica.banhoETosa)  {
       this.pessoaJuridica.banhoETosa = "banhoETosa"
     }else{
       this.pessoaJuridica.banhoETosa = null
@@ -138,13 +203,13 @@ export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
         Swal.fire({
           position: 'center',
           type: 'success',
-          title: 'Parabéns, seu cadastro foi concluído!',
+          title: 'Parabéns, Você pode logar agora com o e-mail!' + this.pessoaJuridica.email,
           showConfirmButton: false,
           timer: 100000
         });
         window.location.href = 'home/home';
       }
-    );
+    ); 
   }
 
   public voltar() {
