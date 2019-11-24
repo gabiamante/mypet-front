@@ -24,7 +24,7 @@
       </ng-container>
 
       <ng-container *ngIf="(authenticated$ | async) && (user$ | async)">
-        Seja bem vindo, {{ (user$ | async)?.email }}!
+        Seja bem vindo(a), {{ nome }}!
       <form class="form-inline my-2 my-lg-0">
         <button mat-flat-button color="primary" type="button" (click)="checkProfile()">Área Logada</button>
         <button mat-flat-button color="primary" type="button" (click)="logout()">Logout</button>
