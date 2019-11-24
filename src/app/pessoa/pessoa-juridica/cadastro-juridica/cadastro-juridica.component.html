@@ -131,7 +131,13 @@
         <div class="col-md-1 mb-3">
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Número" required    formControlName="numero">
-        
+            <mat-error *ngIf="formRegister.get('numero').hasError  && !formRegister.get('numero').hasError('required')">
+              Número inválido
+                </mat-error>
+
+                <mat-error *ngIf="formRegister.get('numero').hasError('required')">
+                  Número é <strong>obrigatório</strong>
+                  </mat-error>
           </mat-form-field>
         </div>
   
@@ -207,6 +213,13 @@
         <div class="col-md-4 mb-3">
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Telefone Fixo"   formControlName="telefoneFixo">
+            <mat-error *ngIf="formRegister.get('telefoneFixo').hasError  && !formRegister.get('telefoneFixo').hasError('required')">
+              Telefone Fixo contém 10 dígitos com DD
+                </mat-error>
+
+                <mat-error *ngIf="formRegister.get('telefoneFixo').hasError('required')">
+                  Telefone Fixo é <strong>obrigatório</strong>
+                  </mat-error>
           </mat-form-field>
         </div>
   
@@ -215,7 +228,7 @@
             <input matInput placeholder="Telefone Celular" required formControlName="telefoneCelular">
          
             <mat-error *ngIf="formRegister.get('telefoneCelular').hasError  && !formRegister.get('telefoneCelular').hasError('required')">
-                Telefone Celular contém 9 dígitos
+              Telefone Celular contém 11 dígitos com DD
                   </mat-error>
  
                   <mat-error *ngIf="formRegister.get('telefoneCelular').hasError('required')">

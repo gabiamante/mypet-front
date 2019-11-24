@@ -27,8 +27,8 @@ export class CadastroFisicaComponent implements OnInit, ErrorStateMatcher {
     'cidade': ['', Validators.required],
     'cep' :['',[Validators.required,Validators.minLength(8)]],
     'estado': ['', Validators.required],
-    'telefoneFixo': [''],
-    'telefoneCelular':['',[Validators.required,Validators.minLength(9)]]
+    'telefoneFixo': ['',[Validators.required,Validators.minLength(10)]],
+    'telefoneCelular':['',[Validators.required,Validators.minLength(11)]]
   
   }, {validator: this.matchingSenha})
 

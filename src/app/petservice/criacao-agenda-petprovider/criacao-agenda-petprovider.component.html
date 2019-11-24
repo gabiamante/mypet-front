@@ -7,12 +7,15 @@
       <div class="mt-3 mb-3">
         <p-dropdown [options]="lstServicosSelecionados" [(ngModel)]="varServicosSelecionados" optionLabel="name" [showClear]="true"></p-dropdown>
       </div>
+      
       <div class="mt-3 mb-3">
+        Escola a data do serviço
+      <br/>
         <p-calendar [(ngModel)]="varCriacaoAgendaProvider.dataCalendario" [minDate]="minimumDate" [locale]="br" dateFormat="dd/mm/yy" [disabledDates]="invalidDates" [disabledDays]="[0,6]"></p-calendar>
       </div>
 
       <div class="mt-2 mb-2">
-        <i class="pi pi-clock mt-2 mb-2" style="font-size: 1,75em">das</i>
+        <i class="pi pi-clock mt-2 mb-2" style="font-size: 1,75em">Começa às</i>
           <div>
             <p-calendar [(ngModel)]="varCriacaoAgendaProvider.tempoInicio" [timeOnly]="true" [style]="{'width':'150px'}"
             placeholder={{varCriacaoAgendaProvider.tempoInicio}} ></p-calendar>
@@ -20,7 +23,7 @@
       </div>
 
        <div class="mt-2 mb-2">
-        <i class="pi pi-clock mt-2 mb-2" style="font-size: 1,75em">às</i>
+        <i class="pi pi-clock mt-2 mb-2" style="font-size: 1,75em">Termina às</i>
           <div>
             <p-calendar [(ngModel)]="varCriacaoAgendaProvider.tempoFim" [timeOnly]="true" [style]="{'width':'150px'}"
              placeholder={{varCriacaoAgendaProvider.tempoFim}} ></p-calendar>
@@ -64,7 +67,7 @@
 
 
       <h5>Horários já disponíveis e ainda não contratados</h5>
-    <p-table #tt [value]="lstCriacaoAgendaProviderAgendadoNaoContratados" [paginator] = "true" [rows] = "5" [globalFilterFields]="['dataCalendarioCorrecao','siglaDia','tempoInicioCorrecao','tempoFimCorrecao','dataCalendarioCorrecao','servicoEscolhido']">
+    <p-table #tt  [responsive]="true"  [value]="lstCriacaoAgendaProviderAgendadoNaoContratados" [paginator] = "true" [rows] = "5" [globalFilterFields]="['dataCalendarioCorrecao','siglaDia','tempoInicioCorrecao','tempoFimCorrecao','dataCalendarioCorrecao','servicoEscolhido']">
  <ng-template pTemplate="caption">
         <div style="text-align: center" class="ng-star-inserted">
         <i class="fas fa-search-plus"></i>
@@ -73,18 +76,18 @@
     </ng-template>
 
 
-        <ng-template pTemplate="header">
+        <ng-template pTemplate="header"  >
             <tr>
                 <th>Dia</th>
                 <th>Dia da semana</th>
                 <th>Inicio</th>
                 <th>Fim</th>
                 <th>Serviço escolhido</th>
-                <th>Replicar</th>
+                <th>Replicar 7 dias</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-varCriacaoAgendaProvider>
-            <tr>
+        <ng-template pTemplate="body" let-varCriacaoAgendaProvider >
+            <tr class="table-nao-contratados">
                 <td>{{varCriacaoAgendaProvider.dataCalendarioCorrecao}}</td>
                 <td>{{varCriacaoAgendaProvider.siglaDia}}</td>
                 <td>{{varCriacaoAgendaProvider.tempoInicioCorrecao}}</td>
@@ -95,7 +98,7 @@
             </tr>
         </ng-template>
     </p-table>
-    <button pButton type="button" (click)="addDays(lstCriacaoAgendaProviderAgendadoNaoContratados)">Replicar</button>
+    <button pButton type="button" (click)="addDays(lstCriacaoAgendaProviderAgendadoNaoContratados)">Replicar dias</button>
 
     </div> <!--FIM DA DIV PARA O LADO DIREITO-->
 
