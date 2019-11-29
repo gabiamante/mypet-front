@@ -1,89 +1,65 @@
-
-
-<h3 class="first">Serviços contratados e em atendimento</h3>
-<p-table #tt [value]="lstServiceContratados" [paginator] = "true" [rows] = "7" [globalFilterFields]="['tempoInicio','tempoFim','siglaDia','nomeCliente','dataCalendarioCorrecao','tipoService']">
- <ng-template pTemplate="caption">
-        <div style="text-align: center
-        " class="ng-star-inserted">        
-          <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-            <input type="text" pInputText size="50" placeholder="Global Filter" (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+<h4 class="text-center pt-5">Minha Agenda</h4>
+<mat-tab-group (selectedTabChange)="tabChanged($event)" class="m-5">
+  <mat-tab *ngFor="let tab of datas">
+    <ng-template mat-tab-label>{{tab}}</ng-template>
+    <div class="row my-3 atendimento-row">
+      <div class="col-4 py-3" *ngFor="let card of listaPorTab">
+        <div class="card atendimento-card">
+          <div class="card-body">
+            <h5 class="card-title">{{card.tipoService}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Atendimento: das {{card.tempoInicio}} às {{card.tempoFim}}</h6>
+            <p class="card-text">Nome do Pet: {{card.nomePet}}</p>
+            <a href="#" class="card-link" data-toggle="modal" data-target="#modalCancelar">Cancelar Agendamento</a>
+            <a href="#" class="card-link" data-toggle="modal" data-target="#modalFinalizar" (click)="enviarIdAgendamento(card.id)">Finalizar Atendimento</a>
+          </div>
         </div>
-    </ng-template>
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Tempo início</th>
-            <th>Tempo fim</th>
-            <th>Dia da semana</th>
-            <th>Dia</th>
-            <th>Serviço</th>
-            <th>Contratante</th>
-            <th>Escreva motivo do cancelamento</th>
-            <th>Clique para finalizar o serviço</th>
-            <th>Clique para cancelar o serviço</th>
-           
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-varServiceContratados>
-
-    
-        <tr>
-            <td>{{varServiceContratados.tempoInicio}}</td>
-            <td>{{varServiceContratados.tempoFim}}</td>
-            <td>{{varServiceContratados.siglaDia}}</td>
-            <td>{{varServiceContratados.dataCalendarioCorrecao}}</td>
-            <td>{{varServiceContratados.tipoService}}</td>
-            <td>{{varServiceContratados.nomeCliente}}</td>
-
-            <td><textarea [(ngModel)]="varServiceContratados.motivoCancelamento"
-                offLabel="X" onIcon="pi; pi-check" offIcon="pi pi-times"
-               [style]="{'width':'150px'}"></textarea></td>
-
-            <td><p-toggleButton [(ngModel)]="varServiceContratados.status"
-              onLabel="Finalizado" offLabel="Andamento" onIcon="pi; pi-check" offIcon="pi pi-times"
-              [style]="{'width':'150px'}"></p-toggleButton></td>
-              <td><p-toggleButton [(ngModel)]="varServiceContratados.cancelado" onLabel="Cancelado" offLabel="Agendado"
-                    onIcon="pi; pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton>
-                </td>
-            </tr>
-          </ng-template>
-        </p-table>
-        <button (click)="gravarStatusFinalizado()" label="Finalizar">Finalizar</button>
-        <button (click)="gravarStatusCancelado()" label="Cancelar">Cancelar Agendamento</button>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
 
 
-<<<<<<< HEAD
- <!--    
-      <div class="floatRight">
-=======
+<!-- Modal FINALIZAR -->
+<div class="modal fade" id="modalFinalizar" tabindex="-1" role="dialog" aria-labelledby="modalFinalizar"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalhes do Atendimento: </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea cols="40" rows="5" offLabel="X" onIcon="pi; pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button mat-flat-button color="primary" type="button" data-dismiss="modal">Fechar</button>
+        <button mat-flat-button color="primary" type="button" (click)="gravarStatusFinalizado()">Finalizar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-     <!--  <div class="floatRight">
->>>>>>> a5faab4cb0f7c7727b19327d20d9d34b92440de2
-        <h5>Horários já disponíveis e ainda não contratados</h5>
-        <p-table [value]="listAgendaProviderFiltrarNaoContratados" >
-          <ng-template pTemplate="header">
-              <tr>
-                  <th>Dia da semana</th>
-                  <th>Dia</th>
-                  <th>Inicio</th>
-                  <th>Fim</th>
-                  <th>Serviço escolhido</th>
-              </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-varCriacaoAgendaProvider>
-              <tr>
-                  <td>{{varCriacaoAgendaProvider.siglaDia}}</td>
-                  <td>{{varCriacaoAgendaProvider.dataCalendarioCorrecao}}</td>
-                  <td>{{varCriacaoAgendaProvider.tempoInicioCorrecao}}</td>
-                  <td>{{varCriacaoAgendaProvider.tempoFimCorrecao}}</td>
-                  <td>{{varCriacaoAgendaProvider.servicoEscolhido}}</td>
-              </tr>
-          </ng-template>
-      </p-table>
-
-
-
-
-      </div> -->
-
---> 
-
+<!-- Modal CANCELAR -->
+<div class="modal fade" id="modalCancelar" tabindex="-1" role="dialog" aria-labelledby="modalCancelar"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Motivo do Cancelamento:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea cols="40" rows="5" offLabel="X" onIcon="pi; pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button mat-flat-button color="primary" type="button" data-dismiss="modal">Fechar</button>
+        <button mat-flat-button color="primary" type="button" (click)="gravarStatusCancelado()">Cancelar
+          Agendamento</button>
+      </div>
+    </div>
+  </div>
+</div>

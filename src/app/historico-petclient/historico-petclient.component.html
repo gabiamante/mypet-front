@@ -1,12 +1,13 @@
-
-<h3 class="first">Histórico cliente</h3>
-    <p-table #tt [value]="lstServiceContratados" [paginator] = "true" [rows] = "7" [globalFilterFields]="['tempoInicio','tempoFim','siglaDia','nomeProvider','dataCalendarioCorrecao','tipoService','motivoCancelamento']">
-        <ng-template pTemplate="caption">
-               <div style="text-align: center" class="ng-star-inserted">
-               <i class="fas fa-search-plus"></i>
-                   <input type="text" pInputText size="50" placeholder="Global Filter" (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
-               </div>
-           </ng-template>
+<!-- <h3 class="first">Histórico cliente</h3>
+<p-table #tt [value]="lstServiceContratados" [paginator]="true" [rows]="7"
+    [globalFilterFields]="['tempoInicio','tempoFim','siglaDia','nomeProvider','dataCalendarioCorrecao','tipoService','motivoCancelamento']">
+    <ng-template pTemplate="caption">
+        <div style="text-align: center" class="ng-star-inserted">
+            <i class="fas fa-search-plus"></i>
+            <input type="text" pInputText size="50" placeholder="Global Filter"
+                (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+        </div>
+    </ng-template>
     <ng-template pTemplate="header">
         <tr>
             <th>Tempo início</th>
@@ -27,40 +28,55 @@
             <td>{{varServiceContratados.dataCalendarioCorrecao}}</td>
             <td>{{varServiceContratados.tipoService}}</td>
             <td>{{varServiceContratados.nomeProvider}}</td>
-            <td><button mat-flat-button color="primary" *ngIf="varServiceContratados.cancelado === false" data-toggle="modal" data-target="#modalAvaliacao" (click)="setModalValue(varServiceContratados)" type="button">Avaliar</button><td>
+            <td><button mat-flat-button color="primary" *ngIf="varServiceContratados.cancelado === false"
+                    data-toggle="modal" data-target="#modalAvaliacao" (click)="setModalValue(varServiceContratados)"
+                    type="button">Avaliar</button>
+            <td>
             <td>{{varServiceContratados.motivoCancelamento}}</td>
-            </tr>
+        </tr>
     </ng-template>
-</p-table>
+</p-table> -->
 
-        <!-- <button (click)="salvarAvaliacao(lstServiceContratados)" label="Gravar">Gravar</button> -->
+<h4 class="text-center pt-5">Histórico de Atendimentos</h4>
+        <div class="row my-3 atendimento-row">
+            <div class="col-4 py-3" *ngFor="let contratado of lstServiceContratados">
+                <div class="card atendimento-card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{contratado.dataCalendarioCorrecao}}</h5>
+                        <h5 class="card-subtitle mb-2 text-muted">{{contratado.tipoService}}</h5>
+                        <h6 class="card-text">Atendimento: das {{contratado.tempoInicio}} às
+                            {{contratado.tempoFim}}</h6>
+                        <p class="card-text">Nome do Pet: {{contratado.nomePet}}</p>
+                        <p class="card-text">Nome do Prestador: {{contratado.nomeProvider}}</p>
+                        <a href="#" class="card-link"  *ngIf="contratado.cancelado === false && contratado.avaliacao === 0" data-toggle="modal" data-target="#modalAvaliacao"
+                        (click)="setModalValue(contratado)">Avaliar Atendimento</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modalAvaliacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-        <div class="modal-dialog" role="document">
+<!-- Modal AVALIAR -->
+<div class="modal fade" id="modalAvaliacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Nos ajude avaliando o {{servicoContratadoAvaliado.nomeProvider}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                <h5 class="modal-title" id="exampleModalLabel">Nos ajude avaliando o
+                    {{servicoContratadoAvaliado.nomeProvider}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
-                <p-rating [(ngModel)]="servicoContratadoAvaliado.avaliacao" (onRate)="handleRate($event)" (onCancel)="handleCancel($event)">
+                <p-rating [(ngModel)]="servicoContratadoAvaliado.avaliacao" (onRate)="handleRate($event)"
+                    (onCancel)="handleCancel($event)">
                 </p-rating> <!-- <span *ngIf="msg" style="margin-left:10px">{{msg}}</span> -->
                 <textarea [(ngModel)]="servicoContratadoAvaliado.comentarioAvaliacao"></textarea>
             </div>
             <div class="modal-footer">
-                <button mat-flat-button color="primary" type="button" (click)="salvarAvaliacaoIndividual(servicoContratadoAvaliado)">Salvar avaliação</button>
+                <button mat-flat-button color="primary" type="button"
+                    (click)="salvarAvaliacaoIndividual(servicoContratadoAvaliado)">Salvar avaliação</button>
             </div>
         </div>
-        </div>
     </div>
-
-        <!--
-            teste para melhorar motivo cancelamento
-
-
-                      <td *ngIf="varServiceContratados.cancelado === true" >{{varServiceContratados.motivoCancelamento}}</td>
-            <td *ngIf="varServiceContratados.cancelado === false">{{varServiceContratados.motivoCancelamento}} {{motivoDeCancelamentoQuandoFinalizado}}</td>
-        -->
+</div>

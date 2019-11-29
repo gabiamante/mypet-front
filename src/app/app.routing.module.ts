@@ -22,16 +22,14 @@ import { FullCalendarProviderScheduleComponent } from './full-calendar-provider-
 import { AlteraPetClientComponent } from './administrador/menu-inicial-admin/altera-pet-client/altera-pet-client.component';
 import { AlteraPetProviderComponent } from './administrador/menu-inicial-admin/altera-pet-provider/altera-pet-provider.component';
 import { RoleGuardService as RoleGuard } from './auth/role-guard.service';
-import { TelaInicialPetProviderComponent } from './tela-inicial-login/tela-inicial-pet-provider/tela-inicial-pet-provider.component';
-import { TelaInicialPetClientComponent } from './tela-inicial-login/tela-inicial-pet-client/tela-inicial-pet-client.component';
 import { CriacaoAgendaPetproviderComponent } from './petservice/criacao-agenda-petprovider/criacao-agenda-petprovider.component';
 import { TempoAtendimentoAgendaPetproviderComponent } from './petservice/tempo-atendimento-agenda-petprovider/tempo-atendimento-agenda-petprovider.component';
 import { ListaOpcoesHorariosServiceDisponiveisComponent } from './lista-opcoes-horarios-service-disponiveis/lista-opcoes-horarios-service-disponiveis.component';
-import { PerfilPetClientComponent } from './tela-inicial-login/tela-inicial-pet-client/perfil-pet-client/perfil-pet-client.component';
 import { ListaServiceContratadosClientComponent } from './lista-service-contratados-client/lista-service-contratados-client.component';
 import { HistoricoPetclientComponent } from './historico-petclient/historico-petclient.component';
 import { ResultadoComponent } from './home/home/buscar-fornecedores/resultado/resultado.component';
-import { PerfilPetProviderComponent } from './tela-inicial-login/tela-inicial-pet-provider/perfil-pet-provider/perfil-pet-provider.component';
+import { PerfilPetProviderComponent } from './perfil/perfil-pet-provider/perfil-pet-provider.component';
+import { PerfilPetClientComponent } from './perfil/perfil-pet-client/perfil-pet-client.component';
 
 
 const routes: Routes = [
@@ -58,11 +56,8 @@ const routes: Routes = [
 
     { path: 'fullcalendar/provider', component: FullCalendarProviderScheduleComponent },
 
-    { path: 'login/tela-inicial-pet-provider', component: TelaInicialPetProviderComponent},
-    { path: 'login/tela-inicial-pet-provider/meu-perfil', component: PerfilPetProviderComponent},
-
-    { path: 'login/tela-inicial-pet-client', component: TelaInicialPetClientComponent},
-    { path: 'login/tela-inicial-pet-client/meu-perfil', component: PerfilPetClientComponent},
+    { path: 'pet-provider/meu-perfil', component: PerfilPetProviderComponent},
+    { path: 'pet-client/meu-perfil', component: PerfilPetClientComponent},
 
     // { path: 'agendar/criacao-petprovider', component: CriacaoAgendaPetproviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
     { path: 'agendar/criacao-petprovider', component: CriacaoAgendaPetproviderComponent},

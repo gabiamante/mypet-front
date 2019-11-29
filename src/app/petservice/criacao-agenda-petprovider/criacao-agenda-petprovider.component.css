@@ -11,6 +11,29 @@
 
 .floatLeft { width: 50%; float: left; }
 .floatRight {width: 50%; float: right; }
-.container { overflow: hidden; }
+/* .container { overflow: hidden; } */
 
 .table-nao-contratados{font-size:13.5px }
+
+.example-container{
+    display: flex;
+    justify-content: center;
+}
+
+.form-fields{
+    margin: 10px;
+}
+
+.row-title{
+    display: flex;
+    justify-content: center;
+}
+
+.row-table{
+    margin: 70px;
+}
+
+.button-save{
+    display: flex;
+    justify-content: right;
+}

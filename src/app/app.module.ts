@@ -26,7 +26,6 @@ import { StorageService } from './auth/storage.service';
 import { AuthInterceptorProvider } from './auth/interceptors/auth-interceptor';
 import { FullCalendarProviderScheduleModule } from './full-calendar-provider-schedule/full-calendar-provider-schedule.module';
 import { RoleGuardService } from './auth/role-guard.service';
-import { TelaInicialLoginModule } from './tela-inicial-login/tela-inicial-login.module';
 import { CriacaoAgendaPetproviderModule } from './petservice/criacao-agenda-petprovider/criacao-agenda-petprovider.module';
 import { TempoAtendimentoAgendaPetproviderModule } from './petservice/tempo-atendimento-agenda-petprovider/tempo-atendimento-agenda-petprovider.module';
 import { ListaOpcoesHorariosServiceDisponiveisModule } from './lista-opcoes-horarios-service-disponiveis/lista-opcoes-horarios-service-disponiveis.module';
@@ -38,6 +37,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import { TelaInicialLoginModule } from './perfil/tela-inicial-login.module';
 
 
 
@@ -60,7 +60,6 @@ import {MatMenuModule} from '@angular/material/menu';
     FormsModule,
     AprovaoPessoaModule,
     FullCalendarProviderScheduleModule,
-    TelaInicialLoginModule,
     CriacaoAgendaPetproviderModule,
     TempoAtendimentoAgendaPetproviderModule,
     ListaOpcoesHorariosServiceDisponiveisModule,
@@ -77,7 +76,8 @@ import {MatMenuModule} from '@angular/material/menu';
     AppRoutingModule,
     HomeModule,
     MatInputModule,
-    PetModule
+    PetModule,
+    TelaInicialLoginModule
   ],
   providers: [AuthInterceptorProvider, ErrorInterceptorProvider,AuthService,
     StorageService, RoleGuardService

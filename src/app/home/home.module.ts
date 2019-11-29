@@ -21,6 +21,7 @@ import { CardsComponent } from './cards/cards.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatStepperModule} from '@angular/material/stepper';
 import {RatingModule} from 'primeng/rating';
+
 @NgModule({
   declarations: [
     QuemSomosComponent,
@@ -51,6 +52,7 @@ import {RatingModule} from 'primeng/rating';
     MatStepperModule,
     MatDialogModule,
     RatingModule
+
   ],
   exports: [
     QuemSomosComponent,

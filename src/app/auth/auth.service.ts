@@ -73,17 +73,7 @@ public logout(){
       this.pessoa = perfil
 
       if(this.pessoa.active == 1){
-        if(this.pessoa.perfil == "SERVICO"){
-          this.router.navigate(['login/tela-inicial-pet-provider']);
-        }
-      else
-        if(this.pessoa.perfil == "CLIENTE"){
-          this.router.navigate(['login/tela-inicial-pet-client']);
-        }
-        else
-          if(this.pessoa.perfil == "ADMIN"){
-            this.router.navigate(['administrador/menu-inicial-admin']);
-          }
+        window.location.href = '/home/home';
       }
       else{
         Swal.fire({

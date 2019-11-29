@@ -25,3 +25,15 @@
   font-weight: 400;
   content: "\f1ea";
 }
+
+.title-page{
+  position: center;
+}
+
+.atendimento-card {
+  width: 26em;
+}
+
+.atendimento-row {
+  max-width: 95%;
+}

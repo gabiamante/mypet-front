@@ -16,51 +16,91 @@ export class AppComponent {
   user$: Observable<LocalUser>;
   @Input() nome: string;
   pessoa: any;
+  @Input() perfil: string;
 
   constructor(
     private router: Router,
-    private authService: AuthService, 
-    public buscaEmail: PessoaService){
-      this.authenticated$ = this.authService.isAuthenticated();
-      this.user$ = this.authService.getUser();
+    private authService: AuthService,
+    public buscaEmail: PessoaService) {
+    this.authenticated$ = this.authService.isAuthenticated();
+    this.user$ = this.authService.getUser();
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.authenticated$ = this.authService.isAuthenticated();
-    
+
     const token = localStorage.getItem("localUser")
     var obj = JSON.parse(token)
 
-     this.buscaEmail.buscarEmailLoginConjunto(obj.email).subscribe((perfil) => {
-        this.pessoa = perfil
+    this.buscaEmail.buscarEmailLoginConjunto(obj.email).subscribe((perfil) => {
+      this.pessoa = perfil
 
-        if(this.pessoa.perfil == "CLIENTE"){
-          this.nome = this.pessoa.nomeCompleto;
-        }
-        if(this.pessoa.perfil == "SERVICO"){
-          this.nome = this.pessoa.razaoSocial;
-        }
+      if (this.pessoa.perfil == "CLIENTE") {
+        this.nome = this.pessoa.nomeCompleto;
+        this.perfil = "CLIENTE";
+      }
+      if (this.pessoa.perfil == "SERVICO") {
+        this.nome = this.pessoa.razaoSocial;
+        this.perfil = "SERVICO";
+      }
     });
   }
 
-  login(){
+  home() {
+    window.location.href = '/home/home';
+  }
+
+  login() {
     this.router.navigate(['/login'])
   }
 
-  checkProfile(){
+  checkProfile() {
     const perfil = this.authService.checkProfile();
   }
 
-  cadastroCliente(){
+  cadastroCliente() {
     window.location.href = '/pessoa/fisica/cadastrar';
   }
 
-  cadastroFornecedor(){
+  cadastroFornecedor() {
     window.location.href = '/pessoa/juridica/cadastrar';
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
     window.location.href = '/home/home';
   }
+
+  meuPerfilProvider() {
+    window.location.href = 'pet-provider/meu-perfil';
+  }
+
+  publicarAgendaProvider() {
+    window.location.href = 'agendar/criacao-petprovider';
+  }
+
+  minhaAgendaProvider() {
+    window.location.href = 'contratados/petprovider';
+  }
+
+  historicoPetProvider() {
+    window.location.href = 'historico/petprovider'
+  }
+
+  meuPerfilCliente() {
+    window.location.href = 'pet-client/meu-perfil';
+  }
+
+  minhaAgendaCliente() {
+    window.location.href = 'contratados/petclient';
+  }
+
+  historicoCliente() {
+    window.location.href = 'historico/petclient';
+  }
+
+  meusPets() {
+    window.location.href = 'pets';
+  }
+
 }

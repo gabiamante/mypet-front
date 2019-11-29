@@ -9,3 +9,7 @@
     font-size: x-large;
     font-style: italic;
 }
+
+.custom-size {
+    min-height: calc(100% - 183px);
+}

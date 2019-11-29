@@ -3,6 +3,7 @@ import { PessoaFisica } from './../pessoa/pessoa-fisica';
 import { ListaServiceContratadosClientService } from './../lista-service-contratados-client/lista-service-contratados-client.service';
 import { ServiceContratados } from './../lista-service-contratados/lista-service-contratados';
 import { Component, OnInit, Input } from '@angular/core';
+import Swal from 'sweetalert2';
 
 
 declare var $: any;
@@ -33,7 +34,6 @@ export class HistoricoPetclientComponent implements OnInit {
       this.varPetClient = retorno;
       this.listContratadosProviderFiltro(this.varPetClient);
     });
-
   }
 
 
@@ -73,6 +73,11 @@ export class HistoricoPetclientComponent implements OnInit {
   salvarAvaliacaoIndividual(servicoContratadoAvaliadoIndividual: ServiceContratados) {
     this.serviceServiceContratados.salvarAvaliacaoServico(servicoContratadoAvaliadoIndividual)
       .subscribe(res => {
+        Swal.fire(
+          'Avaliação feita',
+          'Obrigada pela sua avaliação!',
+          'success'
+        )
         location.reload();
       });
   }

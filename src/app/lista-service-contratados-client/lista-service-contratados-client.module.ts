@@ -9,6 +9,12 @@ import { ToggleButtonModule, DataTableModule, PanelModule, TabViewModule } from 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListaServiceContratadosClientComponent } from './lista-service-contratados-client.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+
 @NgModule({
   declarations: [
     ListaServiceContratadosClientComponent
@@ -24,7 +30,12 @@ import { ListaServiceContratadosClientComponent } from './lista-service-contrata
     TableModule,
     FormsModule,
     ButtonModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatTabsModule,
+    MatCardModule,
+    MatButtonModule
   ],
   exports: [
     ListaServiceContratadosClientComponent

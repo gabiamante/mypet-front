@@ -1,11 +1,11 @@
-import { Observable } from 'rxjs';
 import { PessoaJuridica } from './../pessoa/pessoa-juridica';
 import { JwtHelper } from 'angular2-jwt';
-import { PessoaService } from 'src/app/pessoa/pessoa.service';
 import { ListaServiceContratadosProviderService } from './lista-service-contratados-provider.service';
 import { ServiceContratados } from './../lista-service-contratados/lista-service-contratados';
 import { Component, OnInit, Input } from '@angular/core';
 import { CriacaoAgendaProvider } from '../petservice/criacao-agenda-petprovider/criacao-agenda-petprovider';
+import { MatTabChangeEvent } from '@angular/material';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lista-service-contratados-provider',
@@ -19,10 +19,14 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
   jwtHelper: JwtHelper = new JwtHelper();
   varPetProvider: PessoaJuridica = new PessoaJuridica();
   @Input() lstCriacaoAgendaProviderAgendadoNaoContratados: CriacaoAgendaProvider[] = [];
+  @Input() datas: string[] = [];
+  listaPorTab: ServiceContratados[] = [];
+  idAgendamento: string;
+
 
   // const objLogin;
   constructor(private serviceServiceContratados: ListaServiceContratadosProviderService) {
-     }
+  }
 
   ngOnInit() {
 
@@ -31,38 +35,61 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
 
     this.serviceServiceContratados.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
       this.varPetProvider = retorno;
-     // this.id = alert(JSON.stringify(this.varPetProvider));
-     this.listContratadosProviderFiltro(this.varPetProvider);
-     this.listAgendaProviderFiltrarNaoContratados(this.varPetProvider);
+      // this.id = alert(JSON.stringify(this.varPetProvider));
+      this.listContratadosProviderFiltro(this.varPetProvider);
+      this.listAgendaProviderFiltrarNaoContratados(this.varPetProvider);
     });
 
-
+    setTimeout(() => {
+      this.listaDatas();
+    }, 1000);
   }
 
-  listContratadosProvider()  {
+  listContratadosProvider() {
     this.serviceServiceContratados.listContratadosProvider()
-    .subscribe(res => this.lstServiceContratados = res);
+      .subscribe(res => this.lstServiceContratados = res);
   }
 
-  listContratadosProviderFiltro(varPetProvider: PessoaJuridica)  {
-    // console.log('component varPetProvider: ' + JSON.stringify(varPetProvider));
+  listaDatas() {
+
+    const dNow = new Date
+    var localdate = dNow.getDate() + '/' + (dNow.getMonth() + 1) + '/' + dNow.getFullYear()
+
+    for (let element of this.lstServiceContratados) {
+      if (element.dataCalendarioCorrecao >= localdate) {
+        if (!this.datas.includes(element.dataCalendarioCorrecao)) {
+          this.datas.push(element.dataCalendarioCorrecao);
+        }
+      }
+    }
+  }
+
+  listContratadosProviderFiltro(varPetProvider: PessoaJuridica) {
     this.serviceServiceContratados.listContratadosProviderFiltro(this.varPetProvider.id + "")
-    .subscribe(res => this.lstServiceContratados = res);
-    console.log('this.lstServiceContratados: ' + this.lstServiceContratados);
+      .subscribe(res => this.lstServiceContratados = res);
   }
 
   listAgendaProviderFiltrarNaoContratados(varPetProvider: PessoaJuridica) {
     this.serviceServiceContratados.listAgendaProviderFiltrarNaoContratados(varPetProvider.id + '').
-    subscribe(res => this.lstCriacaoAgendaProviderAgendadoNaoContratados = res);
+      subscribe(res => this.lstCriacaoAgendaProviderAgendadoNaoContratados = res);
   }
 
- gravarStatusFinalizado() {
-  for (const element of this.lstServiceContratados) {
-    if (element.status) {
-      this.serviceServiceContratados.gravarStatusFinalizado(element).subscribe(
-        response => {
-          // alert('O serviço selecionado foi finalizado.');
-          location.reload();
+  enviarIdAgendamento(id: string) {
+    this.idAgendamento = null;
+    this.idAgendamento = id;
+  }
+
+  gravarStatusFinalizado() {
+    for (const element of this.lstServiceContratados) {
+      if (element.id == Number(this.idAgendamento)) {
+        this.serviceServiceContratados.gravarStatusFinalizado(element).subscribe(
+          response => {
+            Swal.fire(
+              'Serviço Finalizado',
+              'Seu serviço foi finalizado com sucesso!',
+              'success'
+            )
+            location.reload();
           });
       }
     }
@@ -75,10 +102,23 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
           response => {
             alert('O serviço selecionado foi cancelado.');
             location.reload();
-            });
-        }
+          });
       }
+    }
   }
 
+  public tabChanged(tabChangeEvent: MatTabChangeEvent): void {
+
+    let data = this.datas[tabChangeEvent.index];
+
+    this.listaPorTab = [];
+
+    for (const element of this.lstServiceContratados) {
+      if (data == element.dataCalendarioCorrecao) {
+        this.listaPorTab.push(element);
+      }
+
+    }
+  }
 
 }

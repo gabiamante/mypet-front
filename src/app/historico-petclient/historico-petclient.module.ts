@@ -8,6 +8,10 @@ import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import {RatingModule} from 'primeng/rating';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import {MatButtonModule} from '@angular/material/button';
     ButtonModule,
     ToggleButtonModule,
     RatingModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatTabsModule,
+    MatCardModule
   ],
   exports: [
     HistoricoPetclientComponent

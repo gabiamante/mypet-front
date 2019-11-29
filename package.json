@@ -20,6 +20,7 @@
     "@angular/forms": "^7.2.14",
     "@angular/http": "^7.2.14",
     "@angular/material": "^7.3.7",
+    "@angular/material-moment-adapter": "^8.2.3",
     "@angular/platform-browser": "^7.2.14",
     "@angular/platform-browser-dynamic": "^7.2.14",
     "@angular/router": "^7.2.14",
@@ -53,7 +54,7 @@
     "rxjs-compat": "^6.5.1",
     "script-ext-html-webpack-plugin": "^1.8.8",
     "startbootstrap-small-business": "^4.2.1",
-    "sweetalert2": "^8.17.1",
+    "sweetalert2": "^8.19.0",
     "tslib": "^1.9.0",
     "zone.js": "^0.8.26"
   },

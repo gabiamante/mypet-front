@@ -3,11 +3,12 @@ import { Observable } from 'rxjs';
 import { PessoaJuridica } from '../pessoa/pessoa-juridica';
 import { JwtHelper } from 'angular2-jwt';
 import { PessoaService } from 'src/app/pessoa/pessoa.service';
-import {ListaServiceContratadosClientService } from './lista-service-contratados-client.service';
+import { ListaServiceContratadosClientService } from './lista-service-contratados-client.service';
 import { ServiceContratados } from '../lista-service-contratados/lista-service-contratados';
 import { Input, Component, OnInit } from '@angular/core';
 import { PessoaFisica } from '../pessoa/pessoa-fisica';
 import { Alert } from 'selenium-webdriver';
+import { MatTabChangeEvent } from '@angular/material';
 
 
 @Component({
@@ -22,11 +23,14 @@ export class ListaServiceContratadosClientComponent implements OnInit {
   jwtHelper: JwtHelper = new JwtHelper();
   varPetClient: PessoaFisica = new PessoaFisica();
   serviceListaServiceContratadosClientService: ListaServiceContratadosClientService;
- id;
+  @Input() datas: string[] = [];
+  listaPorTab: ServiceContratados[] = [];
+  idAgendamento: string;
+  id;
 
   // const objLogin;
   constructor(private serviceServiceContratados: ListaServiceContratadosClientService) {
-     }
+  }
 
   ngOnInit() {
 
@@ -36,29 +40,64 @@ export class ListaServiceContratadosClientComponent implements OnInit {
 
     this.serviceServiceContratados.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
       this.varPetClient = retorno;
-     this.id = JSON.stringify(this.varPetClient);
-     this.listContratadosProviderFiltro(this.varPetClient);
+      this.id = JSON.stringify(this.varPetClient);
+      this.listContratadosProviderFiltro(this.varPetClient);
     });
 
-
+    setTimeout(() => {
+      this.listaDatas();
+    }, 1000);
   }
 
-  listContratadosProvider()  {
+  listContratadosProvider() {
     this.serviceServiceContratados.listContratadosClient()
-    .subscribe(res => this.lstServiceContratados = res);
+      .subscribe(res => this.lstServiceContratados = res);
   }
 
-  listContratadosProviderFiltro(varPetProvider: PessoaFisica)  {
+  listaDatas() {
+
+    const dNow = new Date
+    var localdate = dNow.getDate() + '/' + (dNow.getMonth() + 1) + '/' + dNow.getFullYear()
+
+    for (let element of this.lstServiceContratados) {
+      if (element.dataCalendarioCorrecao >= localdate) {
+        if (!this.datas.includes(element.dataCalendarioCorrecao)) {
+          this.datas.push(element.dataCalendarioCorrecao);
+        }
+      }
+    }
+  }
+
+  enviarIdAgendamento(id: string) {
+    this.idAgendamento = null;
+    this.idAgendamento = id;
+  }
+
+  public tabChanged(tabChangeEvent: MatTabChangeEvent): void {
+
+    let data = this.datas[tabChangeEvent.index];
+
+    this.listaPorTab = [];
+
+    for (const element of this.lstServiceContratados) {
+      if (data == element.dataCalendarioCorrecao) {
+        this.listaPorTab.push(element);
+      }
+
+    }
+  }
+
+  listContratadosProviderFiltro(varPetProvider: PessoaFisica) {
     // console.log('component varPetProvider: ' + JSON.stringify(varPetProvider));
     this.serviceServiceContratados.listContratadosClientFiltro(this.varPetClient.id + '')
-    .subscribe(res => this.lstServiceContratados = res);
+      .subscribe(res => this.lstServiceContratados = res);
   }
 
-  gravarStatusCanecelado(lstServiceContratados: ServiceContratados[])  {
+  gravarStatusCanecelado(lstServiceContratados: ServiceContratados[]) {
 
-    for (const element of lstServiceContratados)  {
+    for (const element of lstServiceContratados) {
       let varAuxCriacaoAgendaProvider = new CriacaoAgendaProvider();
-      if (element.cancelado)  {
+      if (element.cancelado) {
         // console.log(JSON.stringify(element));
         this.serviceServiceContratados.gravarStatusCanecelado(element).subscribe(
           response => {
@@ -67,17 +106,17 @@ export class ListaServiceContratadosClientComponent implements OnInit {
           }
         );
 
-            this.serviceServiceContratados.buscarAgendaServicoContratadoCancelado(element).subscribe(
+        this.serviceServiceContratados.buscarAgendaServicoContratadoCancelado(element).subscribe(
+          response => {
+            varAuxCriacaoAgendaProvider = response;
+            alert(JSON.stringify(varAuxCriacaoAgendaProvider));
+            this.serviceServiceContratados.gravarStatusCanceladoNaAgenda(varAuxCriacaoAgendaProvider).subscribe(
               response => {
-                varAuxCriacaoAgendaProvider = response;
-                alert(JSON.stringify(varAuxCriacaoAgendaProvider));
-                this.serviceServiceContratados.gravarStatusCanceladoNaAgenda(varAuxCriacaoAgendaProvider).subscribe(
-                  response => {
-                    location.reload();
-                  }
-                );
+                location.reload();
               }
             );
+          }
+        );
 
       }
     }

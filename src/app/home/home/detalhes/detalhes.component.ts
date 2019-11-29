@@ -8,7 +8,6 @@ import { ServiceContratados } from 'src/app/lista-service-contratados/lista-serv
 import { PessoaFisica } from 'src/app/pessoa/pessoa-fisica';
 import { ListaOpcoesHorariosServiceDisponiveisService } from 'src/app/lista-opcoes-horarios-service-disponiveis/lista-opcoes-horarios-service-disponiveis.service';
 import { Pet } from 'src/app/pet/pet';
-import { HistoricoPetclientService } from 'src/app/historico-petclient/historico-petclient.service';
 import { HistoricoPetproviderService } from 'src/app/historico-petprovider/historico-petprovider.service';
 
 @Component({
