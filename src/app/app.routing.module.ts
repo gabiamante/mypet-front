@@ -41,18 +41,18 @@ const routes: Routes = [
 
     { path: 'login', component: LoginComponent},
 
-    { path: 'aprovacao/pessoa', component: AprovarPessoaComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
+    { path: 'aprovacao/pessoa', component: AprovarPessoaComponent},
 
     { path: 'pessoa/fisica/cadastrar', component: CadastroFisicaComponent},
     { path: 'pessoa/juridica/cadastrar', component: CadastroJuridicaComponent},
 
-    { path: 'administrador/menu-inicial-admin', component: MenuInicialAdminComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
-    { path: 'administrador/deletar-cliente', component: DeletaPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
-    { path: 'administrador/deletar-fornecedor', component: DeletaPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
-    { path: 'administrador/buscar-fornecedor', component: BuscarPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
-    { path: 'administrador/buscar-cliente', component: BuscarPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
+    { path: 'administrador/menu-inicial-admin', component: MenuInicialAdminComponent},
+    { path: 'administrador/deletar-cliente', component: DeletaPetClientComponent},
+    { path: 'administrador/deletar-fornecedor', component: DeletaPetProviderComponent},
+    { path: 'administrador/buscar-fornecedor', component: BuscarPetProviderComponent},
+    { path: 'administrador/buscar-cliente', component: BuscarPetClientComponent},
     { path: 'administrador/alterar-cliente/:id', component: AlteraPetClientComponent},
-    { path: 'administrador/alterar-fornecedor/:id', component: AlteraPetProviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'ADMIN'}},
+    { path: 'administrador/alterar-fornecedor/:id', component: AlteraPetProviderComponent},
 
     { path: 'fullcalendar/provider', component: FullCalendarProviderScheduleComponent },
 

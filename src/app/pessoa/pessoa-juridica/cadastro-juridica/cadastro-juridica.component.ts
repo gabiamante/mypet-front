@@ -88,7 +88,6 @@ export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
 
   public salvar() {
     
-    
    this.pessoaJuridica.razaoSocial = this.formRegister.controls.razaoSocial.value;
    this.pessoaJuridica.cpf = this.formRegister.controls.cpf.value;
    this.pessoaJuridica.email = this.formRegister.controls.email.value;

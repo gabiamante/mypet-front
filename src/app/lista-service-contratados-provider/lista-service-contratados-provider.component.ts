@@ -80,8 +80,10 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
   }
 
   gravarStatusFinalizado() {
+
     for (const element of this.lstServiceContratados) {
       if (element.id == Number(this.idAgendamento)) {
+        element.status = true;
         this.serviceServiceContratados.gravarStatusFinalizado(element).subscribe(
           response => {
             Swal.fire(

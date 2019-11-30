@@ -72,9 +72,9 @@ public logout(){
     this.buscaEmail.buscarEmailLoginConjunto(obj.email).subscribe((perfil) => {
       this.pessoa = perfil
 
+      console.log(this.pessoa.active)
       if(this.pessoa.active == 1){
-        window.location.href = '/home/home';
-      }
+        window.location.href = '/home/home';     }
       else{
         Swal.fire({
           title: 'Usuário desativado',
