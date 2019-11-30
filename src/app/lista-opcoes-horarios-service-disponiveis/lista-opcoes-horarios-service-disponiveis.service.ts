@@ -63,7 +63,6 @@ export class ListaOpcoesHorariosServiceDisponiveisService {
       // usar o id desta pessoa fisica para procurar todas os pets
       // que estao asssociados a este cliente
   buscaPet(idPetcliente: number): Observable<any>  {
-    console.log('idPetcliente: ' + idPetcliente);
     return this.http.get(API + '/pets/idPetcliente?value=' + idPetcliente);
   }
 

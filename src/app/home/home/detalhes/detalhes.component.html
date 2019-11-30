@@ -7,66 +7,40 @@
       <img class="img-fluid rounded mb-4 mb-lg-0" src="{{pessoa?.fotoPerfil}}" alt="">
     </div>
     <!-- /.col-lg-8 -->
-    <div class="col-lg-5">
+    <div class="col-lg-4">
       <h1 class="font-weight-light">{{pessoa?.razaoSocial}}</h1>
 
       <label>Média: </label>
       <p-rating [ngModel]="pessoa?.mediaAvalicao" readonly="true" stars="5" [cancel]="false"></p-rating><br />
+      <h1 class="font-weight-light">nota: {{pessoa?.mediaAvalicao}}</h1>
 
-      <h4 class="font-weight-light">Serviços prestados: </h4>
-      <div *ngIf="pessoa?.banhoETosa !== null">
-        <label class="card-text">Banho e Tosa</label><br />
+      <p class="font-weight-bold">Serviços:</p>
+
+      <span *ngIf="pessoa?.banhoETosa !== null" class="badge badge-success m-1">Banho e Tosa</span>
+      <span *ngIf="pessoa?.consulta !== null" class="badge badge-success m-1">Consulta</span>
+      <span *ngIf="pessoa?.tosaExotica !== null" class="badge badge-success m-1">Tosa Exótica</span>
+      <span *ngIf="pessoa?.vacinacao !== null" class="badge badge-success m-1">Vacinação</span>
+      <span *ngIf="pessoa?.cirurgiaGeral !== null" class="badge badge-success m-1">Cirurgia Geral</span>
+      <span *ngIf="pessoa?.hidratacao !== null" class="badge badge-success m-1">Hidratação</span>
+      <span *ngIf="pessoa?.penteadosArtisticos !== null" class="badge badge-success m-1">Penteados
+        Artísticos</span>
+      <span *ngIf="pessoa?.acupuntura !== null" class="badge badge-success m-1">Acupuntura</span>
+      <span *ngIf="pessoa?.spa !== null" class="badge badge-success m-1">SPA</span>
+      <span *ngIf="pessoa?.hotel !== null" class="badge badge-success m-1">Hotel</span>
+      <span *ngIf="pessoa?.creche !== null" class="badge badge-success m-1">Creche</span>
+      <span *ngIf="pessoa?.taxi !== null" class="badge badge-success m-1">Táxi</span>
+      <span *ngIf="pessoa?.ensaioFotografico !== null" class="badge badge-success m-1">Ensaio
+        Fotográfico</span>
+      <span *ngIf="pessoa?.adestramento !== null" class="badge badge-success m-1">Adrestramento</span>
+      <span *ngIf="pessoa?.massagem !== null" class="badge badge-success m-1">Massagem</span>
+      <span *ngIf="pessoa?.petwalk !== null" class="badge badge-success m-1">Pet Walk</span>
+      <span *ngIf="pessoa?.exames !== null" class="badge badge-success m-1">Exames</span>
+
+      <div class="row mt-5" style="float: right">
+        <a><button mat-flat-button color="primary" data-toggle="modal" data-target=".bd-example-modal-lg" type="button"
+            [disabled]="!islogged" title="É preciso estar logado para agendar serviços">Agendar</button></a>
       </div>
-      <div *ngIf="pessoa?.consulta !== null">   
-        <label class="card-text">Consulta</label><br />
-      </div>
-      <div *ngIf="pessoa?.tosaExotica !== null">
-        <label class="card-text">Tosa Exótica</label><br />
-      </div>
-      <div *ngIf="pessoa?.vacinacao !== null">
-        <label class="card-text">Vacinação</label><br />
-      </div>
-      <div *ngIf="pessoa?.cirurgiaGeral !== null">
-        <label class="card-text">Cirurgia Geral</label><br />
-      </div>
-      <div *ngIf="pessoa?.hidratacao !== null">
-        <label class="card-text">Hidratação</label><br />
-      </div>
-      <div *ngIf="pessoa?.penteadosArtisticos !== null">
-        <label class="card-text">Penteados Artísticos</label><br />
-      </div>
-      <div *ngIf="pessoa?.acupuntura !== null">
-        <label class="card-text">Acupuntura</label><br />
-      </div>
-      <div *ngIf="pessoa?.spa !== null">
-        <label class="card-text">SPA</label><br />
-      </div>
-      <div *ngIf="pessoa?.hotel !== null">
-        <label class="card-text">Hotel</label><br />
-      </div>
-      <div *ngIf="pessoa?.creche !== null">
-        <label class="card-text">Creche</label><br />
-      </div>
-      <div *ngIf="pessoa?.taxi !== null">
-        <label class="card-text">Táxi</label><br />
-      </div>
-      <div *ngIf="pessoa?.ensaioFotografico !== null">
-        <label class="card-text">Ensaio Fotográfico</label><br />
-      </div>
-      <div *ngIf="pessoa?.adestramento !== null">
-        <label class="card-text">Adestramento</label><br />
-      </div>
-      <div *ngIf="pessoa?.massagem !== null">
-        <label class="card-text">Massagem</label><br />
-      </div>
-      <div *ngIf="pessoa?.petwalk !== null">
-        <label class="card-text">Pet Walk</label><br />
-      </div>
-      <div *ngIf="pessoa?.exames !== null">
-        <label class="card-text">Exames</label><br />
-      </div>
-      <a><button mat-flat-button color="primary" data-toggle="modal" data-target=".bd-example-modal-lg"
-          type="button" [disabled]="!islogged" title="É preciso estar logado para agendar serviços">Agendar</button></a>
+
     </div>
     <!-- /.col-md-4 -->
   </div>
@@ -84,34 +58,35 @@
 
   <div class="container">
     <h3>Avaliações da {{pessoa?.razaoSocial}}</h3>
-  <!-- Content Row -->
-  <div class="row">
-    <div class="card-design col-md-12">
-      <div class="col-md-12">
-        <div class="col justify-content-center" *ngFor="let avaliacao of avaliacoes">
-          <div class="card">
-            <div class="row no-gutters">
-              <div class="col-md-4">
-                <img  class="card-img">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <label>Nota: </label>
-                  <p-rating [ngModel]="avaliacao.avaliacao" readonly="true" stars="5" [cancel]="false"></p-rating><br />
-                  <label class="card-text-nota">Cliente: {{avaliacao.nomeCliente}}</label><br />
-                  <label class="card-text-nota">Comentário: {{avaliacao.comentarioAvaliacao}}</label><br />
+    <!-- Content Row -->
+    <div class="row">
+      <div class="card-design col-md-12">
+        <div class="col-md-12">
+          <div class="col justify-content-center" *ngFor="let avaliacao of avaliacoes">
+            <div class="card">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img class="card-img">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <label>Nota: </label>
+                    <p-rating [ngModel]="avaliacao.avaliacao" readonly="true" stars="5" [cancel]="false"></p-rating>
+                    <br />
+                    <label class="card-text-nota">Cliente: {{avaliacao.nomeCliente}}</label><br />
+                    <label class="card-text-nota">Comentário: {{avaliacao.comentarioAvaliacao}}</label><br />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
+    <!-- /.row -->
 
   </div>
-  <!-- /.row -->
-
-</div>
 
 </div>
 <!-- /.container -->

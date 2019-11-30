@@ -1,74 +1,50 @@
-<div class="card-design">
-    <div class="col-md-8">
-        <div class="col justify-content-center" *ngFor="let forn of forns">
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="{{forn.fotoPerfil}}" class="card-img">
+<div class="card m-5 w-75 h-45" *ngFor="let forn of forns">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="{{forn.fotoPerfil}}" class="card-img" style="border-width: 2px;">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <p>
+                            <p-rating [ngModel]="forn?.mediaAvalicao" readonly="true" stars="5" [cancel]="false">
+                            </p-rating>
+                        </p>
+                        <p class="font-weight-bold">PetProvider: {{forn.razaoSocial}}</p>
+                        <p>Estado: {{forn.estado}}</p>
+                        <p>Cidade: {{forn.cidade}}</p>
+                        <p>Bairro: {{forn.bairro}} </p>
                     </div>
-                    <div class="col-md-8">
-                    <div class="card-body">
-                            <label class="card-text-nota">Nota: {{forn?.mediaAvalicao}}</label><br/>
-                            <label class="card-text-razao-social">PetProvider: {{forn.razaoSocial}}</label><br/>
-                            <label class="card-text">Estado: {{forn.estado}}</label><br/>
-                            <label class="card-text">Cidade: {{forn.cidade}}</label><br/>
-                            <label class="card-text">Bairro: {{forn.bairro}} </label><br/>
-                            <label class="card-text"> {{forn.descricaoPetProvider}} </label><br/>
-                            <label class="card-text">Serviços:</label><br/>
-                            <div *ngIf="forn.banhoETosa !== null">
-                                <label class="card-text" >Banho e Tosa</label><br/>
-                            </div>
-                            <div *ngIf="forn.consulta !== null">
-                                <label class="card-text" >Consulta</label><br/>
-                            </div>
-                            <div *ngIf="forn.tosaExotica !== null">
-                                <label class="card-text" >Tosa Exótica</label><br/>
-                            </div>
-                            <div *ngIf="forn.vacinacao !== null">
-                                <label class="card-text" >Vacinação</label><br/>
-                            </div>
-                            <div *ngIf="forn.cirurgiaGeral !== null">
-                                <label class="card-text" >Cirurgia Geral</label><br/>
-                            </div>
-                            <div *ngIf="forn.hidratacao !== null">
-                                <label class="card-text" >Hidratação</label><br/>
-                            </div>
-                            <div *ngIf="forn.penteadosArtisticos !== null">
-                                <label class="card-text" >Penteados Artísticos</label><br/>
-                            </div>
-                            <div *ngIf="forn.acupuntura !== null">
-                                <label class="card-text" >Acupuntura</label><br/>
-                            </div>
-                            <div *ngIf="forn.spa !== null">
-                                <label class="card-text" >SPA</label><br/>
-                            </div>
-                            <div *ngIf="forn.hotel !== null">
-                                <label class="card-text" >Hotel</label><br/>
-                            </div>
-                            <div *ngIf="forn.creche !== null">
-                                <label class="card-text" >Creche</label><br/>
-                            </div>
-                            <div *ngIf="forn.taxi !== null">
-                                <label class="card-text" >Táxi</label><br/>
-                            </div>
-                            <div *ngIf="forn.ensaioFotografico !== null">
-                                <label class="card-text" >Ensaio Fotográfico</label><br/>
-                            </div>
-                            <div *ngIf="forn.adestramento !== null">
-                                <label class="card-text" >Adestramento</label><br/>
-                            </div>
-                            <div *ngIf="forn.massagem !== null">
-                                <label class="card-text" >Massagem</label><br/>
-                            </div>
-                            <div *ngIf="forn.petwalk !== null">
-                                <label class="card-text" >Pet Walk</label><br/>
-                            </div>
-                            <div *ngIf="forn.exames !== null">
-                                <label class="card-text" >Exames</label><br/>
-                            </div>
-                            <button mat-flat-button color="primary" type="button" (click)="pesquisarDetalhes(forn)">+ Detalhes</button>
+                    <div class="col">
+
+                        <p class="font-weight-bold">Serviços:</p>
+
+                        <span *ngIf="forn.banhoETosa !== null" class="badge badge-success m-1">Banho e Tosa</span>
+                        <span *ngIf="forn.consulta !== null" class="badge badge-success m-1">Consulta</span>
+                        <span *ngIf="forn.tosaExotica !== null" class="badge badge-success m-1">Tosa Exótica</span>
+                        <span *ngIf="forn.vacinacao !== null" class="badge badge-success m-1">Vacinação</span>
+                        <span *ngIf="forn.cirurgiaGeral !== null" class="badge badge-success m-1">Cirurgia Geral</span>
+                        <span *ngIf="forn.hidratacao !== null" class="badge badge-success m-1">Hidratação</span>
+                        <span *ngIf="forn.penteadosArtisticos !== null" class="badge badge-success m-1">Penteados
+                            Artísticos</span>
+                        <span *ngIf="forn.acupuntura !== null" class="badge badge-success m-1">Acupuntura</span>
+                        <span *ngIf="forn.spa !== null" class="badge badge-success m-1">SPA</span>
+                        <span *ngIf="forn.hotel !== null" class="badge badge-success m-1">Hotel</span>
+                        <span *ngIf="forn.creche !== null" class="badge badge-success m-1">Creche</span>
+                        <span *ngIf="forn.taxi !== null" class="badge badge-success m-1">Táxi</span>
+                        <span *ngIf="forn.ensaioFotografico !== null" class="badge badge-success m-1">Ensaio
+                            Fotográfico</span>
+                        <span *ngIf="forn.adestramento !== null" class="badge badge-success m-1">Adrestramento</span>
+                        <span *ngIf="forn.massagem !== null" class="badge badge-success m-1">Massagem</span>
+                        <span *ngIf="forn.petwalk !== null" class="badge badge-success m-1">Pet Walk</span>
+                        <span *ngIf="forn.exames !== null" class="badge badge-success m-1">Exames</span>
+
                     </div>
-                    </div>
+                </div>
+                <div class="row m-3" style="float: right">
+                    <button mat-flat-button color="primary" type="button" (click)="pesquisarDetalhes(forn)">+
+                        Detalhes</button>
                 </div>
             </div>
         </div>

@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { CommonModule } from '@angular/common';
     MatNativeDateModule,
     MatDatepickerModule,
     MatGridListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule
   ],
   declarations: [
     PetComponent

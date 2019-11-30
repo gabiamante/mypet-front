@@ -34,6 +34,7 @@ export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
     'cep' :['',[Validators.required,Validators.minLength(8)]],
     'senha' :['',[Validators.required,Validators.minLength(6)]],
     'senha2' :['',[Validators.required,Validators.minLength(6)]],
+    'descricaoPetProvider': ['']
   }, {validator: this.matchingSenha})
 
 
@@ -101,6 +102,7 @@ export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
    this.pessoaJuridica.telefoneCelular = this.formRegister.controls.telefoneCelular.value;
    this.pessoaJuridica.cep = this.formRegister.controls.cep.value;
    this.pessoaJuridica.senha = this.formRegister.controls.senha.value;
+   this.pessoaJuridica.descricaoPetProvider = this.formRegister.controls.descricaoPetProvider.value;
 
      if(this.pessoaJuridica.banhoETosa)  {
       this.pessoaJuridica.banhoETosa = "banhoETosa"
@@ -203,7 +205,7 @@ export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
         Swal.fire({
           position: 'center',
           type: 'success',
-          title: 'Parabéns, Você pode logar agora com o e-mail!' + this.pessoaJuridica.email,
+          title: 'Parabéns, Você pode logar agora com o e-mail cadastrado: ' + this.pessoaJuridica.email,
           showConfirmButton: false,
           timer: 100000
         });

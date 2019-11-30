@@ -20,6 +20,10 @@ export class PetService {
     return this.http.post<Pet>(API + '/pets', varPet);
   }
 
+  public buscarPets(idCliente: number): Observable <Pet[]>{
+    return this.http.get<Pet[]>(API + '/pets/idPetcliente?value=' + idCliente);
+  }
+
   buscarEmailLoginConjunto(email: string): Observable<any> {
     return this.http.get(API + '/loginConjunto/email?value=' + email);
   }

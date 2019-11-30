@@ -43,7 +43,7 @@
         <button (click)="gravarStatusCanecelado(lstServiceContratados)" label="Cancelar">Cancelar</button> -->
 
 <h4 class="text-center pt-5">Minha Agenda</h4>
-<mat-tab-group (selectedTabChange)="tabChanged($event)" class="m-5" style="overflow: hidden">
+<mat-tab-group (selectedTabChange)="tabChanged($event)" class="m-5">
   <mat-tab *ngFor="let tab of datas">
     <ng-template mat-tab-label>{{tab}}</ng-template>
     <div class="row my-3 atendimento-row">
