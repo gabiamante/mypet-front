@@ -45,6 +45,7 @@
     "materialize-css": "^1.0.0-rc.2",
     "mobiscroll": "^3.0.0-beta6",
     "moment": "^2.24.0",
+    "ng2-toasty": "^4.0.3",
     "ngx-bootstrap": "^4.3.0",
     "primeflex": "^1.0.0-rc.1",
     "primeicons": "^1.0.0",

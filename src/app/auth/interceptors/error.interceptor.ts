@@ -3,11 +3,13 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { catchError } from 'rxjs/operators';
 import { StorageService } from '../storage.service';
+import Swal from 'sweetalert2';
 
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor{
-  constructor(public storage:StorageService){
+  constructor(public storage:StorageService,
+              ){
 
   }
 
@@ -24,8 +26,11 @@ export class ErrorInterceptor implements HttpInterceptor{
                         if(!errorObj.status){
                             errorObj = JSON.parse(errorObj.error);
                         }
+                        
+
+                     //   this.toasty.error(errorObj);
                        // alert("Passou");
-                        console.log("errorObj");
+                        console.log("Erro usuário");
                         console.log(errorObj);
 
                         switch(errorObj.status){
@@ -33,13 +38,54 @@ export class ErrorInterceptor implements HttpInterceptor{
                             this.handler403();
                             break;
                         }
+                        switch(errorObj.status){
+                          case 401:
 
+                          if(errorObj.message === "Email ou senha inválidos"){
+                            this.handler401();
+                            break;
+                          }
+
+                            
+                        }
+                       
+
+                        switch(errorObj.status){
+                          case 404:
+
+                          if(errorObj.errors[0].message === "Email já existente" ){
+                            this.handler404();
+                            
+                          }
+                           if(errorObj.errors[0].message === "cpf invalido"){
+                            this.handlerCpf();
+                          }
+                        }
                         return Observable.throw(errorObj);
                         })) as any;
 
             }
             handler403(){
               this.storage.setLocalUser(null);
+
+            }
+            handler401(){
+              Swal.fire(
+                'Email ou senha inválidos'
+              )
+
+            }
+
+            handler404(){
+              Swal.fire(
+                'Email Já cadastrado'
+              )
+
+            }
+            handlerCpf(){
+              Swal.fire(
+                'CPF ou CNPJ incorreto'
+              )
 
             }
 
