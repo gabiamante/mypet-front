@@ -48,8 +48,29 @@ export class ErrorInterceptor implements HttpInterceptor{
 
                             
                         }
-                       
 
+                        switch(errorObj.status){
+                          case 500:
+
+                          if(errorObj.path === "/pessoafisica"){
+                            this.handlerFonecedor();
+                            break;
+                          }
+
+                            
+                        }
+
+                        switch(errorObj.status){
+                          case 500:
+
+                          if(errorObj.path === "/pessoajuridica"){
+                            this.handlerCliente();
+                            break;
+                          }
+
+                            
+                        }
+                       
                         switch(errorObj.status){
                           case 404:
 
@@ -86,8 +107,24 @@ export class ErrorInterceptor implements HttpInterceptor{
               Swal.fire(
                 'CPF ou CNPJ incorreto'
               )
+              }
+              handlerFonecedor(){
+                Swal.fire(
+                  'Utilize outro',
+                  'Email já cadastrado em Fornecedor',
+                 
+                )
 
             }
+
+            handlerCliente(){
+              Swal.fire(
+                'Utilize outro',
+                'Email já cadastrado em CLIENTE',
+               
+              )
+
+          }
 
 }
 
