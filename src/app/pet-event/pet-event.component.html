@@ -6,28 +6,47 @@
   <div class="row">
     <div class="col">
 
-      <h5 class="h5">Cadastrar novo Pet</h5>
+      <h5 class="h5">Cadastrar novo Evento</h5>
       <div class="col-md-7 mb-3">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Nome" [(ngModel)]="varPet.nomePet" name="nome" required>
+          <input matInput placeholder="Nome do Evento" [(ngModel)]="varEvent.title" name="title" required>
         </mat-form-field>
       </div>
 
       <div class="col-md-7 mb-3">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Raça" [(ngModel)]="varPet.racaPet" name="raca" required>
+          <input matInput placeholder="Descrição" [(ngModel)]="varEvent.description" name="description" required>
         </mat-form-field>
       </div>
 
       <div class="col-md-7 mb-3">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Espécie" [(ngModel)]="varPet.especiePet" name="especie" required>
+          <input matInput placeholder="Local" [(ngModel)]="varEvent.local" name="local" required>
         </mat-form-field>
       </div>
-        <button mat-flat-button color="primary" type="button" (click)="salvarPet(varPet)">Cadastrar</button>
+
+      <div class="col-md-7 mb-3">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Data" [(ngModel)]="varEvent.data" name="data" required>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-7 mb-3">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Hora de Início" [(ngModel)]="varEvent.start" name="start" required>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-7 mb-3">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Hora de Fim" [(ngModel)]="varEvent.end" name="end" required>
+        </mat-form-field>
+      </div>
+
+        <button mat-flat-button color="primary" type="button" (click)="salvarPetEvent(varEvent)">Cadastrar</button>
     </div>
 
-    <div class="col">
+    <!-- <div class="col">
 
       <h5 class="h5">Meus Pets</h5>
       
@@ -50,24 +69,24 @@
 
         <ng-container matColumnDef="alterarPet">
           <mat-header-cell *matHeaderCellDef> Alterar Pet </mat-header-cell>
-          <mat-cell *matCellDef="let element"><button mat-flat-button color="primary" type="button" data-toggle="modal" (click)="setAlterar(element)"
+          <mat-cell *matCellDef="let element"><button mat-flat-button color="primary" type="button" data-toggle="modal"
               data-target="#modalAlterar">Alterar</button></mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="excluirPet">
-          <mat-header-cell *matHeaderCellDef> Inativar Pet </mat-header-cell>
-          <mat-cell *matCellDef="let element"><button mat-flat-button color="primary" type="button" (click)="excluirPet(element)">Inativar</button></mat-cell>
+          <mat-header-cell *matHeaderCellDef> Excluir Pet </mat-header-cell>
+          <mat-cell *matCellDef="let element"><button mat-flat-button color="primary" type="button" (click)="excluirPet(element.id)">Excluir</button></mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
-    </div>
+    </div> -->
 
   </div>
 
   <!-- Modal Alterar-->
-  <div class="modal fade" id="modalAlterar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!--   <div class="modal fade" id="modalAlterar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -81,24 +100,24 @@
           <div class="col">
             <div class="form-group">
               <label for="exampleFormControlInput1">Nome do Pet</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="petAlterar.nomePet">
+              <input type="text" class="form-control" id="exampleFormControlInput1">
             </div>
             <div class="form-group">
               <label for="exampleFormControlInput2">Raça do Pet</label>
-              <input type="text" class="form-control" id="exampleFormControlInput2" [(ngModel)]="petAlterar.racaPet">
+              <input type="text" class="form-control" id="exampleFormControlInput2">
             </div>
             <div class="form-group">
               <label for="exampleFormControlInput3">Espécie do Pet</label>
-              <input type="text" class="form-control" id="exampleFormControlInput3" [(ngModel)]="petAlterar.especiePet">
+              <input type="text" class="form-control" id="exampleFormControlInput3">
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <button mat-flat-button color="primary" type="button" data-dismiss="modal">Fechar</button>
-          <button mat-flat-button color="primary" type="button" (click)="alterarPet(element)">Alterar</button>
+          <button mat-flat-button color="primary" type="button">Alterar</button>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 </div>

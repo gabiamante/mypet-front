@@ -1,5 +1,5 @@
 <div class="row-title">
-  <div class="title-agenda m-5">
+  <div class="title-agenda mt-5 mb-2">
     <h5>Monte aqui a sua agenda!</h5>
   </div>
 </div>
@@ -8,27 +8,32 @@
   <div class="row">
 
     <div class="form-fields">
+      <label class="label m-1">Serviço</label><br/>
       <p-dropdown [options]="lstServicosSelecionados" [(ngModel)]="varServicosSelecionados" optionLabel="name"
         [showClear]="true"></p-dropdown>
     </div>
 
     <div class="form-fields">
+        <label class="label m-1">Data</label><br/>
       <p-calendar [(ngModel)]="varCriacaoAgendaProvider.dataCalendario" [minDate]="minimumDate" [locale]="br"
         dateFormat="dd/mm/yy" [disabledDates]="invalidDates" [disabledDays]="[0,6]" placeholder="Selecione a data"></p-calendar>
     </div>
 
     <div class="form-fields">
+        <label class="label m-1">Hora de início</label><br/>
       <p-calendar [(ngModel)]="varCriacaoAgendaProvider.tempoInicio" [timeOnly]="true"
         placeholder={{varCriacaoAgendaProvider.tempoInicio}}></p-calendar>
     </div>
 
     <div class="form-fields">
+        <label class="label m-1">Hora de fim</label><br/>
       <p-calendar [(ngModel)]="varCriacaoAgendaProvider.tempoFim" [timeOnly]="true"
         placeholder={{varCriacaoAgendaProvider.tempoFim}}></p-calendar>
     </div>
 
     <div class="form-fields">
-      <button mat-flat-button color="primary" type="button" data-toggle="modal" data-target=".bd-example-modal-lg"
+        <label class="label mt-3"></label><br/>
+      <button mat-flat-button color="primary" class="label m-2" type="button" data-toggle="modal" data-target=".bd-example-modal-lg"
         (click)="addToList(varCriacaoAgendaProvider)">
         Agendar
       </button>

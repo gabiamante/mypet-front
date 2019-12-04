@@ -24,6 +24,8 @@ export class ServiceContratados  {
   idAgendaProvider = 0;
   nomePet = '';
   idPet = 0;
+  racaPet = '';
+  especiePet = '';
 
 
   constructor() {
@@ -52,5 +54,7 @@ export class ServiceContratados  {
     this.idAgendaProvider = 0;
     this.nomePet = '';
     this.idPet = 0;
+    this.racaPet = '';
+    this.especiePet = '';
   }
 }

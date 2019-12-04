@@ -5,6 +5,7 @@ import { ListaServiceContratadosClientService } from './../lista-service-contrat
 import { ServiceContratados } from './../lista-service-contratados/lista-service-contratados';
 import { Component, OnInit, Input } from '@angular/core';
 import Swal from 'sweetalert2';
+import { MatTabChangeEvent } from '@angular/material';
 
 
 declare var $: any;
@@ -23,6 +24,8 @@ export class HistoricoPetclientComponent implements OnInit {
   avaliacao: number = 5;
   motivoDeCancelamentoQuandoFinalizado = '';
   @Input() servicoContratadoAvaliado: ServiceContratados = new ServiceContratados;
+  @Input() datas: string[] = [];
+  listaPorTab: ServiceContratados[] = [];
 
   constructor(private serviceServiceContratados: HistoricoPetclientService) { }
 
@@ -35,6 +38,10 @@ export class HistoricoPetclientComponent implements OnInit {
       this.varPetClient = retorno;
       this.listContratadosProviderFiltro(this.varPetClient);
     });
+
+    setTimeout(() => {
+      this.listaDatas();
+    }, 1000);
   }
 
 
@@ -71,12 +78,33 @@ export class HistoricoPetclientComponent implements OnInit {
     this.servicoContratadoAvaliado = varServiceContratado;
   }
 
+  listaDatas() {
+
+    for (let element of this.lstServiceContratados) {
+      if (!this.datas.includes(element.dataCalendarioCorrecao)) {
+        this.datas.push(element.dataCalendarioCorrecao);
+      }
+    }
+  }
+
+  public tabChanged(tabChangeEvent: MatTabChangeEvent): void {
+
+    let data = this.datas[tabChangeEvent.index];
+
+    this.listaPorTab = [];
+
+    for (const element of this.lstServiceContratados) {
+      if (data == element.dataCalendarioCorrecao) {
+        this.listaPorTab.push(element);
+      }
+
+    }
+  }
 
 
   salvarAvaliacaoIndividual(servicoContratadoAvaliadoIndividual: ServiceContratados) {
     this.serviceServiceContratados.salvarAvaliacaoServico(servicoContratadoAvaliadoIndividual)
       .subscribe(res => {
-        // alert('segura');
         this.calcularMedia(servicoContratadoAvaliadoIndividual);
       });
   }
@@ -99,12 +127,9 @@ export class HistoricoPetclientComponent implements OnInit {
         .subscribe(
           res => {
             lstServicoContratadoAvaliadoIndividualAux = res;
-            //console.log('res: ' + JSON.stringify(lstServicoContratadoAvaliadoIndividualAux));
             for (const element of lstServicoContratadoAvaliadoIndividualAux) {
                 lstMediaAvalicao.push(element);
-                //console.log('adiciona: ' + element);
                 soma = element.avaliacao + soma;
-                //console.log('soma dentro: ' + soma);
                 if  (element.avaliacao !== 0)  {
                   countNotZero++;
                 }
@@ -119,12 +144,7 @@ export class HistoricoPetclientComponent implements OnInit {
                     media = soma / countNotZero;
                   }
                   media = parseInt(media.toFixed(0));
-                  //console.log('soma: ' + soma);
-                  //console.log('countNotZero: ' + countNotZero);
                   varPessoaJuridica.mediaAvaliacao = media;
-                  //console.log('media: ' + media);
-                  //console.log(JSON.stringify(varPessoaJuridica));
-                  //alert('segura');
                   this.serviceServiceContratados.salvarMediaAvaliacao(varPessoaJuridica).
                   subscribe(
                     res => {
@@ -133,7 +153,6 @@ export class HistoricoPetclientComponent implements OnInit {
                         'Obrigada pela sua avaliação!',
                         'success'
                       )
-                      alert('segura');
                       location.reload();
                     }
                   )
@@ -145,7 +164,5 @@ export class HistoricoPetclientComponent implements OnInit {
 
       });
   }
-
-
 }
 

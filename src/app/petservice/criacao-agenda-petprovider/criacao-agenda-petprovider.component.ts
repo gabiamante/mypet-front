@@ -298,7 +298,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
             Swal.fire({
               position: 'center',
               type: 'success',
-              title: 'Horário cadastrado !',
+              title: 'Horário cadastrado!',
               showConfirmButton: false,
               timer: 1500
             });
@@ -307,8 +307,8 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
               position: 'center',
               type: 'error',
               title: 'Oops...',
-              text: 'Já existe um horáio cadastrado',
-              footer: 'Você não pode cadastrar um mesmo serviço no mesmo horário e no mesmo dia !',
+              text: 'Este horário já está cadastrado.',
+              footer: 'Não é possível cadastrar um serviço em um horário já cadastrado.',
               showConfirmButton: false,
               timer: 1500
             });

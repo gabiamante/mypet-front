@@ -1,45 +1,10 @@
-<!-- <h3 class="first">Histórico cliente</h3>
-<p-table #tt [value]="lstServiceContratados" [paginator]="true" [rows]="7"
-    [globalFilterFields]="['tempoInicio','tempoFim','siglaDia','nomeProvider','dataCalendarioCorrecao','tipoService','motivoCancelamento']">
-    <ng-template pTemplate="caption">
-        <div style="text-align: center" class="ng-star-inserted">
-            <i class="fas fa-search-plus"></i>
-            <input type="text" pInputText size="50" placeholder="Global Filter"
-                (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
-        </div>
-    </ng-template>
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Tempo início</th>
-            <th>Tempo fim</th>
-            <th>Dia da semana</th>
-            <th>Dia</th>
-            <th>Serviço</th>
-            <th>Contratante</th>
-            <th>Avaliar Serviço</th>
-            <th>Motivo do cancelamento</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-varServiceContratados>
-        <tr>
-            <td>{{varServiceContratados.tempoInicio}}</td>
-            <td>{{varServiceContratados.tempoFim}}</td>
-            <td>{{varServiceContratados.siglaDia}}</td>
-            <td>{{varServiceContratados.dataCalendarioCorrecao}}</td>
-            <td>{{varServiceContratados.tipoService}}</td>
-            <td>{{varServiceContratados.nomeProvider}}</td>
-            <td><button mat-flat-button color="primary" *ngIf="varServiceContratados.cancelado === false"
-                    data-toggle="modal" data-target="#modalAvaliacao" (click)="setModalValue(varServiceContratados)"
-                    type="button">Avaliar</button>
-            <td>
-            <td>{{varServiceContratados.motivoCancelamento}}</td>
-        </tr>
-    </ng-template>
-</p-table> -->
-
 <h4 class="text-center pt-5">Histórico de Atendimentos</h4>
+
+<mat-tab-group (selectedTabChange)="tabChanged($event)" class="m-5">
+    <mat-tab *ngFor="let tab of datas">
+        <ng-template mat-tab-label>{{tab}}</ng-template>
         <div class="row my-3 atendimento-row">
-            <div class="col-4 py-3" *ngFor="let contratado of lstServiceContratados">
+            <div class="col-4 py-3" *ngFor="let contratado of listaPorTab">
                 <div class="card atendimento-card">
                     <div class="card-body">
                         <h5 class="card-title">{{contratado.dataCalendarioCorrecao}}</h5>
@@ -48,12 +13,16 @@
                             {{contratado.tempoFim}}</h6>
                         <p class="card-text">Nome do Pet: {{contratado.nomePet}}</p>
                         <p class="card-text">Nome do Prestador: {{contratado.nomeProvider}}</p>
-                        <a href="#" class="card-link"  *ngIf="contratado.cancelado === false && contratado.avaliacao === 0" data-toggle="modal" data-target="#modalAvaliacao"
-                        (click)="setModalValue(contratado)">Avaliar Atendimento</a>
+                        <a href="#" class="card-link"
+                            *ngIf="contratado.cancelado === false && contratado.avaliacao === 0" data-toggle="modal"
+                            data-target="#modalAvaliacao" (click)="setModalValue(contratado)">Avaliar
+                            Atendimento</a>
                     </div>
                 </div>
             </div>
         </div>
+    </mat-tab>
+</mat-tab-group>
 
 <!-- Modal AVALIAR -->
 <div class="modal fade" id="modalAvaliacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

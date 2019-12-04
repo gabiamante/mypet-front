@@ -10,6 +10,7 @@ import { ListaOpcoesHorariosServiceDisponiveisService } from 'src/app/lista-opco
 import { Pet } from 'src/app/pet/pet';
 import { HistoricoPetproviderService } from 'src/app/historico-petprovider/historico-petprovider.service';
 import Swal from 'sweetalert2';
+import { HorarioServico } from './horario';
 
 @Component({
   selector: 'app-detalhes',
@@ -34,9 +35,8 @@ export class DetalhesComponent implements OnInit {
   varServicosSelecionados: ServicosSelecionados;
   listaDatas: string[] = [];
   varDataSelecionada: string;
-  listaHorarios: string[] = [];
-  listaHorariosFim: string[] = [];
-  horarioSelecionado: string;
+  listaHorarios: HorarioServico[] = [];
+  horarioSelecionado: HorarioServico;
   listaPetsBanco: Pet[] = [];
   listaPets: PetSelecionado[] = [];
   petSelecionado: PetSelecionado;
@@ -44,6 +44,7 @@ export class DetalhesComponent implements OnInit {
   avaliacoes: ServiceContratados[] = [];
   islogged = false;
   listaGeralDeServicos: ServicosSelecionados[] = [];
+  pet: Pet;
 
   constructor(private pesquisarService: PesquisarService,
     private activatedRoute: ActivatedRoute,
@@ -56,7 +57,7 @@ export class DetalhesComponent implements OnInit {
         { label: 'Selecionar', name: 'Selecione o serviço desejado' }
       ];
     this.listaDatas.push('Selecione uma data');
-    this.listaHorarios.push('Selecione um horário');
+    this.listaHorarios.push({ horarioInicio: 'Selecione um horário', horarioFim: '' });
     this.listaPets = [
       { label: 'Selecionar', name: 'Selecione o pet' }
     ]
@@ -230,12 +231,21 @@ export class DetalhesComponent implements OnInit {
   }
 
   datasDisponiveisServico() {
+    var data = new Date();
+    var dataHoje = new Date((data.getMonth() + 1) + '/' + data.getDate() + '/' + data.getFullYear());
+
     for (let element of this.lstCriacaoAgendaProvider) {
       if (element.servicoEscolhido == String(this.varServicosSelecionados)) {
-        this.listaDatas.push(element.dataCalendarioCorrecao);
+          var dataAgenda = new Date(element.dataParaOrdenacao);
+          console.log('data agenda: ' + dataAgenda)
+          console.log('datahoje: ' + dataHoje)
+          if (dataHoje < dataAgenda) {
+            this.listaDatas.push(element.dataCalendarioCorrecao);
+          }
       }
     }
   }
+
 
   limparServicoEData() {
     this.varServicosSelecionados = null;
@@ -246,11 +256,11 @@ export class DetalhesComponent implements OnInit {
   limparDataEHorario() {
     this.varDataSelecionada = '';
     this.listaHorarios = [];
-    this.horarioSelecionado = '';
+    this.horarioSelecionado = null;
   }
 
   limparHorarioEPet() {
-    this.horarioSelecionado = '';
+    this.horarioSelecionado = null;
     this.petSelecionado = null;
     this.listaPets = [];
   }
@@ -258,15 +268,14 @@ export class DetalhesComponent implements OnInit {
   setTimeHorarios() {
     setTimeout(() => {
       this.horariosDisponiveisServico();
-    }, 500);
+    }, 200);
   }
 
   horariosDisponiveisServico() {
     for (let element of this.lstCriacaoAgendaProvider) {
       if (element.servicoEscolhido == String(this.varServicosSelecionados)) {
         if (element.dataCalendarioCorrecao == String(this.varDataSelecionada)) {
-          this.listaHorarios.push(element.tempoInicioCorrecao)
-          this.listaHorariosFim.push(element.tempoFimCorrecao)
+          this.listaHorarios.push({ horarioInicio: 'Das ' + element.tempoInicioCorrecao, horarioFim: 'às ' + element.tempoFimCorrecao })
         }
       }
     }
@@ -279,7 +288,8 @@ export class DetalhesComponent implements OnInit {
     for (const element of this.lstCriacaoAgendaProvider) {
       if (element.servicoEscolhido == String(this.varServicosSelecionados)) {
         if (element.dataCalendarioCorrecao == this.varDataSelecionada) {
-          if (element.tempoInicioCorrecao == this.horarioSelecionado) {
+          var hora = 'Das ' + element.tempoInicioCorrecao + ' às ' + element.tempoFimCorrecao
+          if (hora == String(this.horarioSelecionado)) {
             varContratadoAgendaProvider.nomeCliente = element.nomeCliente;
             varContratadoAgendaProvider.nomeProvider = element.nomeProvider;
             varContratadoAgendaProvider.tempoInicio = element.tempoInicioCorrecao;
@@ -294,16 +304,23 @@ export class DetalhesComponent implements OnInit {
             varContratadoAgendaProvider.tempoFimReplicacao = element.tempoFim;
             varContratadoAgendaProvider.dataParaOrdenacao = element.dataParaOrdenacao;
 
-            varContratadoAgendaProvider.nomePet = String(this.petSelecionado);
+            this.pegarPetCompleto();
 
+            varContratadoAgendaProvider.nomePet = this.pet.nomePet;
+            varContratadoAgendaProvider.racaPet = this.pet.racaPet;
+            varContratadoAgendaProvider.especiePet = this.pet.especiePet;
+            varContratadoAgendaProvider.idPet = this.pet.id;
 
             this.serviceCriacaoAgendaProvider.salvarEmServicosContratados(varContratadoAgendaProvider)
               .subscribe((res) => {
                 this.varServiceContratados = res;
-                Swal.fire(
-                  'Agendado',
-                  'Seu agendamento foi feito com sucesso'
-                )
+                Swal.fire({
+                  position: 'center',
+                  type: 'success',
+                  title: 'Serviço agendado!',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
                 window.location.href = 'contratados/petclient';
               });
 
@@ -329,5 +346,16 @@ export class DetalhesComponent implements OnInit {
     for (let element of this.listaPetsBanco) {
       this.listaPets.push({ label: String(element.id), name: element.nomePet });
     }
+  }
+
+  pegarPetCompleto() {
+    var pet = String(this.petSelecionado);
+
+    for (const element of this.listaPetsBanco) {
+      if (pet == element.nomePet) {
+        this.pet = element;
+      }
+    }
+
   }
 }

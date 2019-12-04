@@ -136,7 +136,7 @@
             <select class="form-control col-md-8" [(ngModel)]="horarioSelecionado"
               aria-placeholder="Selecione um horário">
               <option *ngFor="let horario of listaHorarios">
-                {{horario}}
+                {{horario.horarioInicio}} {{horario.horarioFim}}
               </option>
               <p ></p>
             </select>

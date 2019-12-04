@@ -7,6 +7,11 @@ import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { HistoricoPetproviderComponent } from './historico-petprovider.component';
 import {RatingModule} from 'primeng/rating';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button'
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import {RatingModule} from 'primeng/rating';
     FormsModule,
     ButtonModule,
     ToggleButtonModule,
-    RatingModule
+    RatingModule,
+    MatIconModule,
+    MatListModule,
+    MatTabsModule,
+    MatCardModule,
+    MatButtonModule
   ],
   exports: [
     HistoricoPetproviderComponent

@@ -30,6 +30,8 @@ import { HistoricoPetclientComponent } from './historico-petclient/historico-pet
 import { ResultadoComponent } from './home/home/buscar-fornecedores/resultado/resultado.component';
 import { PerfilPetProviderComponent } from './perfil/perfil-pet-provider/perfil-pet-provider.component';
 import { PerfilPetClientComponent } from './perfil/perfil-pet-client/perfil-pet-client.component';
+import { PetEventComponent } from './pet-event/pet-event.component';
+import { PesquisarPetEventComponent } from './pet-event/pesquisar-pet-event/pesquisar-pet-event.component';
 
 
 const routes: Routes = [
@@ -70,6 +72,8 @@ const routes: Routes = [
     { path: 'agendamento-pet-service/agendamento-pet-service/:id', component: ListaOpcoesHorariosServiceDisponiveisComponent},
 
     { path: 'pets', component: PetComponent},
+    { path: 'petevent', component: PetEventComponent},
+    { path: 'buscar/petevent', component: PesquisarPetEventComponent},
 
     { path: '', pathMatch: 'full', redirectTo: '/home/home'},
     { path: '**', component: NotFoundComponent }

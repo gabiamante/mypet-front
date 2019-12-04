@@ -4,6 +4,7 @@ export class Pet  {
   public racaPet = '';
   public especiePet = '';
   public idPetcliente = 0;
+  public active = true;
 
   constructor() {
     this.id = 0;
@@ -11,5 +12,6 @@ export class Pet  {
     this.racaPet = '';
     this.especiePet = '';
     this.idPetcliente = 0;
+    this.active = true;
   }
 }

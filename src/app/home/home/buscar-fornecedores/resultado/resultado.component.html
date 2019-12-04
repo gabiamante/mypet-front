@@ -4,8 +4,12 @@
 
 <div class="example-container p-5">
 
-    <div class="row ">
-        <!-- IMPLEMENTAR PIPE COM TEXTBOX PARA PODER PESQUISAR QUALQUER DADO NA TELA - FOCADO PARA OS SERVIÇOS -->
+    <div class="row">
+        <div class="col-md-12">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Digite aqui sua pesquisa">
+            </mat-form-field>
+        </div>
     </div>
 </div>
 
@@ -38,9 +42,11 @@
 
                             <p class="font-weight-bold">Serviços:</p>
 
-                            <span *ngIf="forn.banhoETosa !== null" class="badge badge-success m-1">Banho e Tosa</span>
+                            <span *ngIf="forn.banhoETosa !== null" class="badge badge-success m-1">Banho e
+                                Tosa</span>
                             <span *ngIf="forn.consulta !== null" class="badge badge-success m-1">Consulta</span>
-                            <span *ngIf="forn.tosaExotica !== null" class="badge badge-success m-1">Tosa Exótica</span>
+                            <span *ngIf="forn.tosaExotica !== null" class="badge badge-success m-1">Tosa
+                                Exótica</span>
                             <span *ngIf="forn.vacinacao !== null" class="badge badge-success m-1">Vacinação</span>
                             <span *ngIf="forn.cirurgiaGeral !== null" class="badge badge-success m-1">Cirurgia
                                 Geral</span>

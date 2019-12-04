@@ -9,6 +9,7 @@ import { Input, Component, OnInit } from '@angular/core';
 import { PessoaFisica } from '../pessoa/pessoa-fisica';
 import { Alert } from 'selenium-webdriver';
 import { MatTabChangeEvent } from '@angular/material';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class ListaServiceContratadosClientComponent implements OnInit {
   listaPorTab: ServiceContratados[] = [];
   idAgendamento: string;
   id;
+  observacaoAtendimento: ServiceContratados = new ServiceContratados;
 
   // const objLogin;
   constructor(private serviceServiceContratados: ListaServiceContratadosClientService) {
@@ -56,16 +58,23 @@ export class ListaServiceContratadosClientComponent implements OnInit {
 
   listaDatas() {
 
+    var data = new Date();
+    var dataHoje = new Date((data.getMonth() + 1) + '/' + data.getDate() + '/' + data.getFullYear());
+
     for (let element of this.lstServiceContratados) {
-        if (!this.datas.includes(element.dataCalendarioCorrecao)) {
+      if (!this.datas.includes(element.dataCalendarioCorrecao)) {
+        var dataAgenda = new Date(element.dataParaOrdenacao);
+        if (dataHoje < dataAgenda) {
           this.datas.push(element.dataCalendarioCorrecao);
         }
+      }
     }
   }
 
-  enviarIdAgendamento(id: string) {
+  enviarIdAgendamento(servico: ServiceContratados) {
     this.idAgendamento = null;
-    this.idAgendamento = id;
+    this.idAgendamento = String(servico.id);
+    this.observacaoAtendimento = servico
   }
 
   public tabChanged(tabChangeEvent: MatTabChangeEvent): void {
@@ -88,34 +97,16 @@ export class ListaServiceContratadosClientComponent implements OnInit {
       .subscribe(res => this.lstServiceContratados = res);
   }
 
-  gravarStatusCanecelado(lstServiceContratados: ServiceContratados[]) {
+  gravarStatusCancelado(lstServiceContratados: ServiceContratados[]) {
 
-    for (const element of lstServiceContratados) {
-      let varAuxCriacaoAgendaProvider = new CriacaoAgendaProvider();
-      if (element.cancelado) {
-        // console.log(JSON.stringify(element));
-        this.serviceServiceContratados.gravarStatusCanecelado(element).subscribe(
-          response => {
-            // location.reload();
-            // alert('alterou para cancelado na contratado');
-          }
-        );
-
-        this.serviceServiceContratados.buscarAgendaServicoContratadoCancelado(element).subscribe(
-          response => {
-            varAuxCriacaoAgendaProvider = response;
-            alert(JSON.stringify(varAuxCriacaoAgendaProvider));
-            this.serviceServiceContratados.gravarStatusCanceladoNaAgenda(varAuxCriacaoAgendaProvider).subscribe(
-              response => {
-                location.reload();
-              }
-            );
-          }
-        );
-
+    this.observacaoAtendimento.cancelado = true;
+    this.serviceServiceContratados.gravarStatusCanecelado(this.observacaoAtendimento).subscribe(
+      response => {
+        Swal.fire(
+          'Seu serviço foi cancelado com sucesso!'
+        )
+        location.reload()
       }
-    }
+    );
   }
-
-
 }

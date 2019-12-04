@@ -24,6 +24,7 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
   @Input() datas: string[] = [];
   listaPorTab: ServiceContratados[] = [];
   idAgendamento: string;
+  observacaoAtendimento: ServiceContratados = new ServiceContratados;
 
 
   // const objLogin;
@@ -37,7 +38,6 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
 
     this.serviceServiceContratados.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
       this.varPetProvider = retorno;
-      // this.id = alert(JSON.stringify(this.varPetProvider));
       this.listContratadosProviderFiltro(this.varPetProvider);
       this.listAgendaProviderFiltrarNaoContratados(this.varPetProvider);
     });
@@ -47,23 +47,27 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
     }, 1000);
   }
 
-  listContratadosProvider() {
-    this.serviceServiceContratados.listContratadosProvider()
-      .subscribe(res => this.lstServiceContratados = res);
-  }
-
   listaDatas() {
 
+    var data = new Date();
+    var dataHoje = new Date((data.getMonth() + 1) + '/' + data.getDate() + '/' + data.getFullYear());
+
     for (let element of this.lstServiceContratados) {
-        if (!this.datas.includes(element.dataCalendarioCorrecao)) {
+      if (!this.datas.includes(element.dataCalendarioCorrecao)) {
+        var dataAgenda = new Date(element.dataParaOrdenacao);
+        if (dataHoje < dataAgenda) {
           this.datas.push(element.dataCalendarioCorrecao);
         }
+      }
     }
   }
 
   listContratadosProviderFiltro(varPetProvider: PessoaJuridica) {
     this.serviceServiceContratados.listContratadosProviderFiltro(this.varPetProvider.id + "")
-      .subscribe(res => this.lstServiceContratados = res);
+      .subscribe(res => {
+        this.lstServiceContratados = res
+        //alert(JSON.stringify(this.lstServiceContratados))
+      });
   }
 
   listAgendaProviderFiltrarNaoContratados(varPetProvider: PessoaJuridica) {
@@ -71,39 +75,35 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
       subscribe(res => this.lstCriacaoAgendaProviderAgendadoNaoContratados = res);
   }
 
-  enviarIdAgendamento(id: string) {
+  enviarIdAgendamento(servico: ServiceContratados) {
     this.idAgendamento = null;
-    this.idAgendamento = id;
+    this.idAgendamento = String(servico.id);
+    this.observacaoAtendimento = servico
+
   }
 
   gravarStatusFinalizado() {
-
-    for (const element of this.lstServiceContratados) {
-      if (element.id == Number(this.idAgendamento)) {
-        element.status = true;
-        this.serviceServiceContratados.gravarStatusFinalizado(element).subscribe(
-          response => {
-            Swal.fire(
-              'Serviço Finalizado',
-              'Seu serviço foi finalizado com sucesso!',
-              'success'
-            )
-            location.reload();
-          });
-      }
-    }
+    this.observacaoAtendimento.status = true;
+    this.serviceServiceContratados.gravarStatusFinalizado(this.observacaoAtendimento).subscribe(
+      response => {
+        Swal.fire(
+          'Serviço Finalizado',
+          'Seu serviço foi finalizado com sucesso!',
+          'success'
+        )
+        location.reload();
+      });
   }
 
   gravarStatusCancelado() {
-    for (const element of this.lstServiceContratados) {
-      if (element.cancelado) {
-        this.serviceServiceContratados.gravarStatusFinalizado(element).subscribe(
-          response => {
-            alert('O serviço selecionado foi cancelado.');
-            location.reload();
-          });
-      }
-    }
+    this.observacaoAtendimento.cancelado = true;
+    this.serviceServiceContratados.gravarStatusFinalizado(this.observacaoAtendimento).subscribe(
+      response => {
+        Swal.fire(
+          'Seu serviço foi cancelado com sucesso!'
+        )
+        location.reload();
+      });
   }
 
 
@@ -113,7 +113,6 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
 
     this.listaPorTab = [];
 
-
     for (const element of this.lstServiceContratados) {
       if (data == element.dataCalendarioCorrecao) {
         this.listaPorTab.push(element);
@@ -121,5 +120,4 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
 
     }
   }
-
 }

@@ -7,7 +7,6 @@ import {TableModule} from 'primeng/table';
 import { HomeComponent } from './home/home.component';
 import { ResultadoComponent } from './home/buscar-fornecedores/resultado/resultado.component';
 import { DetalhesComponent } from './home/detalhes/detalhes.component';
-import { FiltroPelaCidade } from './home/filtro-pela-cidade.pipe';
 import {CardModule} from 'primeng/card';
 import {CheckboxModule} from 'primeng/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,16 +21,17 @@ import {MatTableModule} from '@angular/material/table';
 import {MatStepperModule} from '@angular/material/stepper';
 import {RatingModule} from 'primeng/rating';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { SktFilterPipe } from './home/buscar-fornecedores/resultado/skt-filper.pipe';
 
 @NgModule({
   declarations: [
     QuemSomosComponent,
-    FiltroPelaCidade,
     HomeComponent,
     ResultadoComponent,
     DetalhesComponent,
     BuscarFornecedoresComponent,
-    CardsComponent
+    CardsComponent,
+    SktFilterPipe
 
   ],
   imports: [
@@ -58,7 +58,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
   ],
   exports: [
     QuemSomosComponent,
-    FiltroPelaCidade,
     HomeComponent,
     ResultadoComponent,
     DetalhesComponent

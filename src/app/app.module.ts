@@ -38,6 +38,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { TelaInicialLoginModule } from './perfil/tela-inicial-login.module';
+import { PetEventModule } from './pet-event/pet-event.module';
 
 
 
@@ -77,7 +78,8 @@ import { TelaInicialLoginModule } from './perfil/tela-inicial-login.module';
     HomeModule,
     MatInputModule,
     PetModule,
-    TelaInicialLoginModule
+    TelaInicialLoginModule,
+    PetEventModule
   ],
   providers: [AuthInterceptorProvider, ErrorInterceptorProvider,AuthService,
     StorageService, RoleGuardService

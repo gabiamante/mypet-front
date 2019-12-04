@@ -47,6 +47,7 @@
     "moment": "^2.24.0",
     "ng2-toasty": "^4.0.3",
     "ngx-bootstrap": "^4.3.0",
+    "ngx-filter-pipe": "^2.1.2",
     "primeflex": "^1.0.0-rc.1",
     "primeicons": "^1.0.0",
     "primeng": "^7.1.2",

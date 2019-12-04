@@ -15,6 +15,7 @@ export class ResultadoComponent implements OnInit {
   @Input() forns: PessoaJuridica[];
   servicos: ServicoEForn[] = [];
   public forn: PessoaJuridica = new PessoaJuridica();
+  public filter: string = '';
 
   constructor(private service: PesquisarService,
     private router: Router) {
