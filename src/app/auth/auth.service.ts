@@ -159,28 +159,6 @@ public logout(){
     }
   }
 
-  checkProfile(){
-    const token = localStorage.getItem("localUser")
-    var obj = JSON.parse(token)
-
-    this.buscaEmail.buscarEmailLoginConjunto(obj.email).subscribe((perfil) => {
-      this.pessoa = perfil
-
-    if(this.pessoa.perfil == "SERVICO"){
-        this.router.navigate(['login', 'tela-inicial-pet-provider']);
-      }
-      else
-        if(this.pessoa.perfil == "CLIENTE"){
-          this.router.navigate(['login', 'tela-inicial-pet-client']);
-        }
-      else
-        if(this.pessoa.perfil == "ADMIN"){
-          this.router.navigate(['administrador', '']);
-        }
-    })
-      this.router.navigate(['home', 'home']);
-  }
-
   public getUser(): Observable<LocalUser>{
     return this.subjUser$.asObservable();
   }

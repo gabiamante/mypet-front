@@ -21,6 +21,7 @@ import { CardsComponent } from './cards/cards.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatStepperModule} from '@angular/material/stepper';
 import {RatingModule} from 'primeng/rating';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {RatingModule} from 'primeng/rating';
     MatTableModule,
     MatStepperModule,
     MatDialogModule,
-    RatingModule
+    RatingModule,
+    MatCheckboxModule
 
   ],
   exports: [

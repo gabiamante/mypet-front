@@ -74,6 +74,27 @@
             <mat-icon>history</mat-icon>
             <span>Histórico</span>
           </button>
+          <!-- ADMIN -->
+          <button mat-menu-item *ngIf="perfil === 'ADMIN'" (click)="aprovarPrestador()">
+            <mat-icon>person</mat-icon>
+            <span>Aprovar Prestador</span>
+          </button>
+          <button mat-menu-item *ngIf="perfil === 'ADMIN'" (click)="desabilitarCliente()">
+            <mat-icon>person_add_disabled</mat-icon>
+            <span>Desabilitar Cliente</span>
+          </button>
+          <button mat-menu-item *ngIf="perfil === 'ADMIN'" (click)="desabilitarPrestador()">
+            <mat-icon>person_add_disabled</mat-icon>
+            <span>Desabilitar Prestador</span>
+          </button>
+          <button mat-menu-item *ngIf="perfil === 'ADMIN'" (click)="buscarCliente()">
+            <mat-icon>search</mat-icon>
+            <span>Alterar Cliente</span>
+          </button>
+          <button mat-menu-item *ngIf="perfil === 'ADMIN'" (click)="buscarPrestador()">
+            <mat-icon>search</mat-icon>
+            <span>Alterar Prestador</span>
+          </button>
           <!--LOGOUT-->
           <button mat-menu-item (click)="logout()">
             <mat-icon>logout</mat-icon>

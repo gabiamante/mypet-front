@@ -22,8 +22,6 @@ export class BuscarFornecedoresComponent implements OnInit {
   }
 
   pesquisarFornecedor(){
-
     this.homeService.getForns(this.forn);
-
   }
 }

@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { HistoricoPetproviderComponent } from './historico-petprovider.component';
+import {RatingModule} from 'primeng/rating';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HistoricoPetproviderComponent } from './historico-petprovider.component
     TableModule,
     FormsModule,
     ButtonModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    RatingModule
   ],
   exports: [
     HistoricoPetproviderComponent

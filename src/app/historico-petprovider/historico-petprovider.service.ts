@@ -36,7 +36,7 @@ export class HistoricoPetproviderService {
       // console.log('mediaAvaliacao: ' + mediaAvaliacao);
       // console.log('url: ' + API + '/pessoajuridica/' + varPetProvider.id);
       // alert('segura');
-      varPetProvider.mediaAvalicao = mediaAvaliacao;
+      varPetProvider.mediaAvaliacao = mediaAvaliacao;
       return this.http.put(API + '/pessoajuridica/' + varPetProvider.id, varPetProvider);
     }
 }

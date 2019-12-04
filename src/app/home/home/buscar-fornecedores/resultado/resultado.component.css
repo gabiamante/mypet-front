@@ -10,3 +10,12 @@
 .card-body {
     min-height: 20em;
 }
+
+.example-container{
+    display: flex;
+    justify-content: center;
+}
+
+.example-container-teste {
+    margin-left: 15%;
+}

@@ -6,6 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CriacaoAgendaProvider } from '../petservice/criacao-agenda-petprovider/criacao-agenda-petprovider';
 import { MatTabChangeEvent } from '@angular/material';
 import Swal from 'sweetalert2';
+import { PetService } from '../pet/pet.service';
+import { Pet } from '../pet/pet';
 
 @Component({
   selector: 'app-lista-service-contratados-provider',
@@ -52,15 +54,10 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
 
   listaDatas() {
 
-    const dNow = new Date
-    var localdate = dNow.getDate() + '/' + (dNow.getMonth() + 1) + '/' + dNow.getFullYear()
-
     for (let element of this.lstServiceContratados) {
-      if (element.dataCalendarioCorrecao >= localdate) {
         if (!this.datas.includes(element.dataCalendarioCorrecao)) {
           this.datas.push(element.dataCalendarioCorrecao);
         }
-      }
     }
   }
 
@@ -109,11 +106,13 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
     }
   }
 
+
   public tabChanged(tabChangeEvent: MatTabChangeEvent): void {
 
     let data = this.datas[tabChangeEvent.index];
 
     this.listaPorTab = [];
+
 
     for (const element of this.lstServiceContratados) {
       if (data == element.dataCalendarioCorrecao) {

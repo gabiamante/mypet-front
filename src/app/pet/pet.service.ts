@@ -27,4 +27,12 @@ export class PetService {
   buscarEmailLoginConjunto(email: string): Observable<any> {
     return this.http.get(API + '/loginConjunto/email?value=' + email);
   }
+
+  buscarTodosPets(): Observable <Pet[]>{
+    return this.http.get<Pet[]>(API + '/pets');
+  }
+
+  excluirPet(id: number){
+    return this.http.delete(API + '/pets/' + id);
+  }
 }

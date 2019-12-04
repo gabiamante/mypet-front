@@ -14,6 +14,7 @@ export class ResultadoComponent implements OnInit {
 
   @Input() forns: PessoaJuridica[];
   servicos: ServicoEForn[] = [];
+  public forn: PessoaJuridica = new PessoaJuridica();
 
   constructor(private service: PesquisarService,
     private router: Router) {
@@ -22,10 +23,6 @@ export class ResultadoComponent implements OnInit {
 
   ngOnInit() {
     this.forns = this.service.forns;
-    /* setTimeout(() => {
-      this.listarServicosPrestados();
-      alert(JSON.stringify(this.servicos))
-    }, 300); */
   }
 
   listarServicosPrestados() {
@@ -82,6 +79,10 @@ export class ResultadoComponent implements OnInit {
         this.servicos.push({ label: 'exames', name: 'Exames', idProvider: element.id  })
       }
     }
+  }
+
+  pesquisarForn(){
+    this.service.getForns(this.forn);
   }
 
   pesquisarDetalhes(forn: PessoaJuridica) {

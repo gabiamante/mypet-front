@@ -56,15 +56,10 @@ export class ListaServiceContratadosClientComponent implements OnInit {
 
   listaDatas() {
 
-    const dNow = new Date
-    var localdate = dNow.getDate() + '/' + (dNow.getMonth() + 1) + '/' + dNow.getFullYear()
-
     for (let element of this.lstServiceContratados) {
-      if (element.dataCalendarioCorrecao >= localdate) {
         if (!this.datas.includes(element.dataCalendarioCorrecao)) {
           this.datas.push(element.dataCalendarioCorrecao);
         }
-      }
     }
   }
 

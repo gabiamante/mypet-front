@@ -1,7 +1,7 @@
 export class PessoaJuridica {
 
   //Infos do estabelecimento
-  public mediaAvalicao: number;
+  public mediaAvaliacao: number;
   public razaoSocial: string;
   public cpf: string;
   public telefoneFixo: string;
@@ -49,7 +49,7 @@ export class PessoaJuridica {
 
   constructor() {
 
-    this.mediaAvalicao = 0;
+    this.mediaAvaliacao = 0;
     this.id = 0;
     this.razaoSocial = '' ;
     this.cpf = '' ;

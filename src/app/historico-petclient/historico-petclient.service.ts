@@ -1,3 +1,5 @@
+import { PessoaJuridica } from './../pessoa/pessoa-juridica';
+import { PessoaFisica } from './../pessoa/pessoa-fisica';
 import { ServiceContratados } from './../lista-service-contratados/lista-service-contratados';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -18,7 +20,7 @@ export class HistoricoPetclientService {
 
   listContratadosClientFiltro(id: string): Observable<ServiceContratados[]>  {
     const url = API + '/contratadoprovider/historicoCliente?value=' + id;
-    // console.log('url: ' + url);
+    console.log('listContratadosClientFiltro url: ' + url);
     return this.http
     .get<ServiceContratados[]>(url);
   }
@@ -33,6 +35,20 @@ export class HistoricoPetclientService {
     return this.http.put(API + '/contratadoprovider/' + varServiceContratados.id, varServiceContratados);
   }
 
+  salvarMediaAvaliacao(varPessoaJuridica: PessoaJuridica)  {
+    const url = API + '/pessoajuridica/' + varPessoaJuridica.id;
+    console.log('url para update: ' + url);
+    return this.http.put(url, varPessoaJuridica);
+  }
+
+  buscaContratadosCalcularMedia(varServiceContratados: ServiceContratados): Observable<ServiceContratados[]> {
+    const url = API + '/contratadoprovider/historicoProvider?value=' + varServiceContratados.idPetProvider;
+    return this.http.get<ServiceContratados[]>(url);
+  }
+
+  buscarPetProvider(id: number): Observable<PessoaJuridica> {
+    return this.http.get<PessoaJuridica>(API + '/pessoajuridica/' + id);
+  }
 }
 
 

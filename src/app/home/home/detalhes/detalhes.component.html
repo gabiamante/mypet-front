@@ -11,8 +11,7 @@
       <h1 class="font-weight-light">{{pessoa?.razaoSocial}}</h1>
 
       <label>Média: </label>
-      <p-rating [ngModel]="pessoa?.mediaAvalicao" readonly="true" stars="5" [cancel]="false"></p-rating><br />
-      <h1 class="font-weight-light">nota: {{pessoa?.mediaAvalicao}}</h1>
+      <p-rating [ngModel]="pessoa?.mediaAvaliacao" readonly="true" stars="5" [cancel]="false"></p-rating><br />
 
       <p class="font-weight-bold">Serviços:</p>
 
@@ -37,7 +36,8 @@
       <span *ngIf="pessoa?.exames !== null" class="badge badge-success m-1">Exames</span>
 
       <div class="row mt-5" style="float: right">
-        <a><button mat-flat-button color="primary" data-toggle="modal" data-target=".bd-example-modal-lg" type="button"
+        <a><button mat-flat-button color="primary" type="button" class="btn m-2" (click)="voltar()">Voltar</button></a>
+        <a><button mat-flat-button color="primary" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn m-2" type="button"
             [disabled]="!islogged" title="É preciso estar logado para agendar serviços">Agendar</button></a>
       </div>
 
@@ -138,6 +138,7 @@
               <option *ngFor="let horario of listaHorarios">
                 {{horario}}
               </option>
+              <p ></p>
             </select>
             <br />
             <div class="modal-footer">

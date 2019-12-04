@@ -43,6 +43,10 @@ export class AppComponent {
         this.nome = this.pessoa.razaoSocial;
         this.perfil = "SERVICO";
       }
+      if (this.pessoa.perfil == "ADMIN") {
+        this.nome = this.pessoa.razaoSocial;
+        this.perfil = "ADMIN";
+      }
     });
   }
 
@@ -52,10 +56,6 @@ export class AppComponent {
 
   login() {
     this.router.navigate(['/login'])
-  }
-
-  checkProfile() {
-    const perfil = this.authService.checkProfile();
   }
 
   cadastroCliente() {
@@ -103,4 +103,23 @@ export class AppComponent {
     window.location.href = 'pets';
   }
 
+  aprovarPrestador(){
+    window.location.href = 'aprovacao/pessoa';
+  }
+
+  desabilitarCliente(){
+    window.location.href = 'administrador/deletar-cliente';
+  }
+
+  desabilitarPrestador(){
+    window.location.href = 'administrador/deletar-fornecedor';
+  }
+
+  buscarCliente(){
+    window.location.href = 'administrador/buscar-cliente';
+  }
+
+  buscarPrestador(){
+    window.location.href = 'administrador/buscar-fornecedor';
+  }
 }

@@ -49,8 +49,16 @@ export class PetComponent implements OnInit {
       );
   }
 
-  excluirPet(){
-    
+  excluirPet(id: number){
+    this.varPetService.excluirPet(id).subscribe(res => {
+      Swal.fire(
+        'Pet excluído',
+        'Seu Pet foi excluído com sucesso!'
+      )
+      location.reload();
+    }
+
+    )
   }
 
 }

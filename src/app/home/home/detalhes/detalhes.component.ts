@@ -9,6 +9,7 @@ import { PessoaFisica } from 'src/app/pessoa/pessoa-fisica';
 import { ListaOpcoesHorariosServiceDisponiveisService } from 'src/app/lista-opcoes-horarios-service-disponiveis/lista-opcoes-horarios-service-disponiveis.service';
 import { Pet } from 'src/app/pet/pet';
 import { HistoricoPetproviderService } from 'src/app/historico-petprovider/historico-petprovider.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detalhes',
@@ -42,7 +43,7 @@ export class DetalhesComponent implements OnInit {
   auxAvaliacoes: ServiceContratados[] = [];
   avaliacoes: ServiceContratados[] = [];
   islogged = false;
-  listaGeralDeServicos: ServicosSelecionados[]= [];
+  listaGeralDeServicos: ServicosSelecionados[] = [];
 
   constructor(private pesquisarService: PesquisarService,
     private activatedRoute: ActivatedRoute,
@@ -57,7 +58,7 @@ export class DetalhesComponent implements OnInit {
     this.listaDatas.push('Selecione uma data');
     this.listaHorarios.push('Selecione um horário');
     this.listaPets = [
-      { label: 'Selecionar', name: 'Selecione o pet'}
+      { label: 'Selecionar', name: 'Selecione o pet' }
     ]
     setTimeout(() => {
       this.trazerListaDeServicos();
@@ -65,10 +66,11 @@ export class DetalhesComponent implements OnInit {
 
     setTimeout(() => {
       this.serviceServiceContratados.listContratadosProviderFiltro(this.idProvider)
-      .subscribe(
-        res => {
-          this.auxAvaliacoes = res
-          this.filtrarAvaliacoes()});
+        .subscribe(
+          res => {
+            this.auxAvaliacoes = res
+            this.filtrarAvaliacoes()
+          });
     }, 2000)
 
   }
@@ -77,7 +79,7 @@ export class DetalhesComponent implements OnInit {
     const pessoa = this.activatedRoute.snapshot.params.id;
     this.pesquisarService.buscarDetalhes(pessoa).subscribe(retorno => {
       this.pessoa = retorno
-    });    
+    });
 
     this.idProvider = this.activatedRoute.snapshot.params.id;
     this.listAgendaProviderFiltrar(this.idProvider);
@@ -95,72 +97,72 @@ export class DetalhesComponent implements OnInit {
         });
     });
 
-    if(this.idClientAux != 0){
+    if (this.idClientAux != 0) {
       this.islogged = true;
     }
   }
 
-  filtrarAvaliacoes(){
-    for(const element of this.auxAvaliacoes){
-      if(element.avaliacao != 0){
+  filtrarAvaliacoes() {
+    for (const element of this.auxAvaliacoes) {
+      if (element.avaliacao != 0) {
         this.avaliacoes.push(element);
       }
     }
   }
 
-  carregarServiços(){
-      if (this.pessoa.acupuntura == 'acupuntura') {
-        this.listaGeralDeServicos.push({ label: 'acupuntura', name: 'Acupuntura' })
-      }
-      if (this.pessoa.adestramento == 'adestramento') {
-        this.listaGeralDeServicos.push({ label: 'adestramento', name: 'Adestramento' })
-      }
-      if (this.pessoa.banhoETosa == 'banhoETosa') {
-        this.listaGeralDeServicos.push({ label: 'banhoETosa', name: 'Banho/Tosa' })
-      }
-      if (this.pessoa.cirurgiaGeral == 'cirurgiaGeral') {
-        this.listaGeralDeServicos.push({ label: 'cirurgiaGeral', name: 'Cirurgia Geral' })
-      }
-      if (this.pessoa.consulta == 'consulta') {
-        this.listaGeralDeServicos.push({ label: 'consulta', name: 'Consulta' })
-      }
-      if (this.pessoa.creche == 'creche') {
-        this.listaGeralDeServicos.push({ label: 'creche', name: 'Creche' })
-      }
-      if (this.pessoa.ensaioFotografico == 'ensaioFotografico') {
-        this.listaGeralDeServicos.push({ label: 'ensaioFotografico', name: 'Ensaio Fotográfico' })
-      }
-      if (this.pessoa.hidratacao == 'hidratacao') {
-        this.listaGeralDeServicos.push({ label: 'hidratacao', name: 'Hidratação' })
-      }
-      if (this.pessoa.hotel == 'hotel') {
-        this.listaGeralDeServicos.push({ label: 'hotel', name: 'Hotel' })
-      }
-      if (this.pessoa.massagem == 'massagem') {
-        this.listaGeralDeServicos.push({ label: 'massagem', name: 'Massagem' })
-      }
-      if (this.pessoa.penteadosArtisticos == 'penteadosArtisticos') {
-        this.listaGeralDeServicos.push({ label: 'penteadosArtisticos', name: 'Penteados Artísticos' })
-      }
-      if (this.pessoa.petwalk == 'petwalk') {
-        this.listaGeralDeServicos.push({ label: 'petwalk', name: 'Pet Walk' })
-      }
-      if (this.pessoa.spa == 'spa') {
-        this.listaGeralDeServicos.push({ label: 'spa', name: 'SPA' })
-      }
-      if (this.pessoa.taxi == 'taxi') {
-        this.listaGeralDeServicos.push({ label: 'taxi', name: 'Táxi' })
-      }
-      if (this.pessoa.tosaExotica == 'tosaExotica') {
-        this.listaGeralDeServicos.push({ label: 'tosaExotica', name: 'Tosa Exótica' })
-      }
-      if (this.pessoa.vacinacao == 'vacinacao') {
-        this.listaGeralDeServicos.push({ label: 'vacinacao', name: 'Vacinação' })
-      }
-      if (this.pessoa.exames == 'exames') {
-        this.listaGeralDeServicos.push({ label: 'exames', name: 'Exames' })
-      }
-}
+  carregarServiços() {
+    if (this.pessoa.acupuntura == 'acupuntura') {
+      this.listaGeralDeServicos.push({ label: 'acupuntura', name: 'Acupuntura' })
+    }
+    if (this.pessoa.adestramento == 'adestramento') {
+      this.listaGeralDeServicos.push({ label: 'adestramento', name: 'Adestramento' })
+    }
+    if (this.pessoa.banhoETosa == 'banhoETosa') {
+      this.listaGeralDeServicos.push({ label: 'banhoETosa', name: 'Banho/Tosa' })
+    }
+    if (this.pessoa.cirurgiaGeral == 'cirurgiaGeral') {
+      this.listaGeralDeServicos.push({ label: 'cirurgiaGeral', name: 'Cirurgia Geral' })
+    }
+    if (this.pessoa.consulta == 'consulta') {
+      this.listaGeralDeServicos.push({ label: 'consulta', name: 'Consulta' })
+    }
+    if (this.pessoa.creche == 'creche') {
+      this.listaGeralDeServicos.push({ label: 'creche', name: 'Creche' })
+    }
+    if (this.pessoa.ensaioFotografico == 'ensaioFotografico') {
+      this.listaGeralDeServicos.push({ label: 'ensaioFotografico', name: 'Ensaio Fotográfico' })
+    }
+    if (this.pessoa.hidratacao == 'hidratacao') {
+      this.listaGeralDeServicos.push({ label: 'hidratacao', name: 'Hidratação' })
+    }
+    if (this.pessoa.hotel == 'hotel') {
+      this.listaGeralDeServicos.push({ label: 'hotel', name: 'Hotel' })
+    }
+    if (this.pessoa.massagem == 'massagem') {
+      this.listaGeralDeServicos.push({ label: 'massagem', name: 'Massagem' })
+    }
+    if (this.pessoa.penteadosArtisticos == 'penteadosArtisticos') {
+      this.listaGeralDeServicos.push({ label: 'penteadosArtisticos', name: 'Penteados Artísticos' })
+    }
+    if (this.pessoa.petwalk == 'petwalk') {
+      this.listaGeralDeServicos.push({ label: 'petwalk', name: 'Pet Walk' })
+    }
+    if (this.pessoa.spa == 'spa') {
+      this.listaGeralDeServicos.push({ label: 'spa', name: 'SPA' })
+    }
+    if (this.pessoa.taxi == 'taxi') {
+      this.listaGeralDeServicos.push({ label: 'taxi', name: 'Táxi' })
+    }
+    if (this.pessoa.tosaExotica == 'tosaExotica') {
+      this.listaGeralDeServicos.push({ label: 'tosaExotica', name: 'Tosa Exótica' })
+    }
+    if (this.pessoa.vacinacao == 'vacinacao') {
+      this.listaGeralDeServicos.push({ label: 'vacinacao', name: 'Vacinação' })
+    }
+    if (this.pessoa.exames == 'exames') {
+      this.listaGeralDeServicos.push({ label: 'exames', name: 'Exames' })
+    }
+  }
 
   trazerListaDeServicos() {
 
@@ -256,7 +258,7 @@ export class DetalhesComponent implements OnInit {
   setTimeHorarios() {
     setTimeout(() => {
       this.horariosDisponiveisServico();
-    }, 1000);
+    }, 500);
   }
 
   horariosDisponiveisServico() {
@@ -269,7 +271,7 @@ export class DetalhesComponent implements OnInit {
       }
     }
   }
-  
+
   salvar() {
 
     const varContratadoAgendaProvider: ServiceContratados = new ServiceContratados;
@@ -292,15 +294,16 @@ export class DetalhesComponent implements OnInit {
             varContratadoAgendaProvider.tempoFimReplicacao = element.tempoFim;
             varContratadoAgendaProvider.dataParaOrdenacao = element.dataParaOrdenacao;
 
-              varContratadoAgendaProvider.nomePet = String(this.petSelecionado);
-              
-            alert(JSON.stringify(varContratadoAgendaProvider))
+            varContratadoAgendaProvider.nomePet = String(this.petSelecionado);
 
 
             this.serviceCriacaoAgendaProvider.salvarEmServicosContratados(varContratadoAgendaProvider)
               .subscribe((res) => {
                 this.varServiceContratados = res;
-                alert('O serviço foi contratado com sucesso!');
+                Swal.fire(
+                  'Agendado',
+                  'Seu agendamento foi feito com sucesso'
+                )
                 window.location.href = 'contratados/petclient';
               });
 
@@ -324,16 +327,7 @@ export class DetalhesComponent implements OnInit {
 
   pets() {
     for (let element of this.listaPetsBanco) {
-      this.listaPets.push({ label: String(element.id), name: element.nomePet});
+      this.listaPets.push({ label: String(element.id), name: element.nomePet });
     }
   }
-
-  handleRate(event) {
-    this.msg = 'Nota do serviço ' + event.value;
-  }
-
-  handleCancel(event) {
-    this.msg = 'Nota cancelada';
-  }
-
 }

@@ -1,3 +1,4 @@
+import { PessoaJuridica } from './../pessoa/pessoa-juridica';
 import { HistoricoPetclientService } from './historico-petclient.service';
 import { PessoaFisica } from './../pessoa/pessoa-fisica';
 import { ListaServiceContratadosClientService } from './../lista-service-contratados-client/lista-service-contratados-client.service';
@@ -70,18 +71,80 @@ export class HistoricoPetclientComponent implements OnInit {
     this.servicoContratadoAvaliado = varServiceContratado;
   }
 
+
+
   salvarAvaliacaoIndividual(servicoContratadoAvaliadoIndividual: ServiceContratados) {
     this.serviceServiceContratados.salvarAvaliacaoServico(servicoContratadoAvaliadoIndividual)
       .subscribe(res => {
-        Swal.fire(
-          'Avaliação feita',
-          'Obrigada pela sua avaliação!',
-          'success'
-        )
-        location.reload();
+        // alert('segura');
+        this.calcularMedia(servicoContratadoAvaliadoIndividual);
       });
   }
 
+  calcularMedia(servicoContratadoAvaliadoIndividual: ServiceContratados) {
+    const idProviderUpdated = servicoContratadoAvaliadoIndividual.idPetProvider;
+    let lstServicoContratadoAvaliadoIndividualAux: ServiceContratados[];
+    let lstMediaAvalicao: ServiceContratados[] = [];
+    const token = localStorage.getItem('localUser');
+    const objLogin = JSON.parse(token);
+    let soma = 0;
+    let countNotZero = 0;
+    let media = 0;
+    let varPessoaJuridica: PessoaJuridica;
+
+      this.serviceServiceContratados.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
+        this.varPetClient = retorno;
+        this.listContratadosProviderFiltro(this.varPetClient);
+        this.serviceServiceContratados.buscaContratadosCalcularMedia(servicoContratadoAvaliadoIndividual)
+        .subscribe(
+          res => {
+            lstServicoContratadoAvaliadoIndividualAux = res;
+            //console.log('res: ' + JSON.stringify(lstServicoContratadoAvaliadoIndividualAux));
+            for (const element of lstServicoContratadoAvaliadoIndividualAux) {
+                lstMediaAvalicao.push(element);
+                //console.log('adiciona: ' + element);
+                soma = element.avaliacao + soma;
+                //console.log('soma dentro: ' + soma);
+                if  (element.avaliacao !== 0)  {
+                  countNotZero++;
+                }
+              }
+              this.serviceServiceContratados.buscarPetProvider(Number(idProviderUpdated)).
+              subscribe(
+                res => {
+                  varPessoaJuridica = res;
+                  if  (soma === 0 && countNotZero === 0)  {
+                    media = 0;
+                  } else  {
+                    media = soma / countNotZero;
+                  }
+                  media = parseInt(media.toFixed(0));
+                  //console.log('soma: ' + soma);
+                  //console.log('countNotZero: ' + countNotZero);
+                  varPessoaJuridica.mediaAvaliacao = media;
+                  //console.log('media: ' + media);
+                  //console.log(JSON.stringify(varPessoaJuridica));
+                  //alert('segura');
+                  this.serviceServiceContratados.salvarMediaAvaliacao(varPessoaJuridica).
+                  subscribe(
+                    res => {
+                      Swal.fire(
+                        'Avaliação feita',
+                        'Obrigada pela sua avaliação!',
+                        'success'
+                      )
+                      alert('segura');
+                      location.reload();
+                    }
+                  )
+
+                }
+              )
+            }
+        );
+
+      });
+  }
 
 
 }

@@ -56,7 +56,7 @@
 
         <ng-container matColumnDef="excluirPet">
           <mat-header-cell *matHeaderCellDef> Excluir Pet </mat-header-cell>
-          <mat-cell *matCellDef="let element"><button mat-flat-button color="primary" type="button" (click)="excluirPet()">Excluir</button></mat-cell>
+          <mat-cell *matCellDef="let element"><button mat-flat-button color="primary" type="button" (click)="excluirPet(element.id)">Excluir</button></mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

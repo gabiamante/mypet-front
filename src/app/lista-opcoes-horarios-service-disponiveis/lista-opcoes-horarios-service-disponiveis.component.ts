@@ -49,7 +49,6 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
       this.serviceCriacaoAgendaProvider.buscaPet(this.idClientAux).subscribe(
         (response) => {
           this.lstPet = response;
-          //alert(JSON.stringify(this.lstPet));
         });
     });
 
@@ -100,7 +99,6 @@ export class ListaOpcoesHorariosServiceDisponiveisComponent implements OnInit {
         this.serviceCriacaoAgendaProvider.salvarEmServicosContratados(varContratadoAgendaProvider)
         .subscribe((res) => {
           this.varServiceContratados = res;
-          alert('O serviço foi contratado com sucesso!');
             window.location.href = 'contratados/petclient';
           });
 
