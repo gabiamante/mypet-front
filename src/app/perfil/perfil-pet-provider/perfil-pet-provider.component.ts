@@ -47,7 +47,11 @@ export class PerfilPetProviderComponent implements OnInit {
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
-        console.log('Arquivo salvo com sucesso!');
+
+        Swal.fire(
+          'Somente imagens PNG e JPG são permitidas'
+        )
+        console.log('Imagem salva com sucesso!');
       }
     });
 

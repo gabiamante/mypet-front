@@ -24,7 +24,9 @@ export class ErrorInterceptor implements HttpInterceptor{
                            errorObj = errorObj.error;
                         }
                         if(!errorObj.status){
-                            errorObj = JSON.parse(errorObj.error);
+                            errorObj = JSON.parse(errorObj);
+                            
+                          console.log(errorObj);
                         }
                         
 
@@ -37,6 +39,15 @@ export class ErrorInterceptor implements HttpInterceptor{
                           case 403:
                             this.handler403();
                             break;
+                        }
+
+                        switch(errorObj.status){
+                          case 400:
+                              if(errorObj.msg === "Somente imagens PNG e JPG são permitidas"){
+                                this.handlerImage();
+                                break;
+                              }
+                           
                         }
                         switch(errorObj.status){
                           case 401:
@@ -123,8 +134,18 @@ export class ErrorInterceptor implements HttpInterceptor{
                 'Email já cadastrado em CLIENTE',
                
               )
+      }
 
-          }
+      handlerImage(){
+        Swal.fire(
+          'Somente imagens PNG e JPG são permitidas'
+          
+         
+        )
+
+    }
+
+
 
 }
 

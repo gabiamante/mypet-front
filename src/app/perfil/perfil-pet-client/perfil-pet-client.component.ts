@@ -12,6 +12,7 @@ import {
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -110,7 +111,11 @@ export class PerfilPetClientComponent implements OnInit {
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
-        console.log('Arquivo salvo com sucesso!');
+
+        Swal.fire(
+          'Imagem salva com sucesso'
+        )
+        console.log('Imagem salva com sucesso!');
       }
     });
 
