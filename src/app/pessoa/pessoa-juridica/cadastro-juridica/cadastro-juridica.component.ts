@@ -42,20 +42,16 @@ export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
   public pessoaJuridica: PessoaJuridica = new PessoaJuridica();
   minPw = 8;
  
+  constructor(
+    private pessoaJuridicaService: PessoaService,
+    private router: Router,
+    private formBuilder: FormBuilder) {
 
-
-  constructor(private pessoaJuridicaService: PessoaService,
-              private router: Router ,private formBuilder: FormBuilder) {
-
-               
-
-    this.router = router;
 }
 
 
 
   ngOnInit() {
-   
     console.log(this.formRegister.value)
   }
   
@@ -70,22 +66,6 @@ export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
     }
     return{ matching:false};
 }
-//matchingSenha(){
-  
-  //const senha = this.formRegister.controls.senha.value;
-  //const senha2 = this.formRegister.controls.senha2.value;
-
-  //if(senha === senha2){
-    //console.log("bateu")
-  //}
- // else
-  //console.log("bateu não")
-
-
-//}
-
-
-
   public salvar() {
     
    this.pessoaJuridica.razaoSocial = this.formRegister.controls.razaoSocial.value;

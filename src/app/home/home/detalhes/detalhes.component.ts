@@ -43,6 +43,7 @@ export class DetalhesComponent implements OnInit {
   auxAvaliacoes: ServiceContratados[] = [];
   avaliacoes: ServiceContratados[] = [];
   islogged = false;
+  perfil = "";
   listaGeralDeServicos: ServicosSelecionados[] = [];
   pet: Pet;
 
@@ -63,7 +64,7 @@ export class DetalhesComponent implements OnInit {
     ]
     setTimeout(() => {
       this.trazerListaDeServicos();
-    }, 1500);
+    }, 1000);
 
     setTimeout(() => {
       this.serviceServiceContratados.listContratadosProviderFiltro(this.idProvider)
@@ -72,7 +73,7 @@ export class DetalhesComponent implements OnInit {
             this.auxAvaliacoes = res
             this.filtrarAvaliacoes()
           });
-    }, 2000)
+    }, 1000)
 
   }
 
@@ -90,17 +91,18 @@ export class DetalhesComponent implements OnInit {
 
     this.serviceCriacaoAgendaProvider.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
       this.varPessoaFisica = retorno;
+      this.perfil = retorno.tipoPerfil;
+      if (this.idClientAux != 0) {
+        if (this.perfil == "PESSOAFISICA") {
+          this.islogged = true;
+        }
+      }
       this.idClientAux = this.varPessoaFisica.id;
-
       this.serviceCriacaoAgendaProvider.buscaPet(this.idClientAux).subscribe(
         (response) => {
           this.listaPetsBanco = response;
         });
     });
-
-    if (this.idClientAux != 0) {
-      this.islogged = true;
-    }
   }
 
   filtrarAvaliacoes() {
@@ -236,12 +238,12 @@ export class DetalhesComponent implements OnInit {
 
     for (let element of this.lstCriacaoAgendaProvider) {
       if (element.servicoEscolhido == String(this.varServicosSelecionados)) {
-          var dataAgenda = new Date(element.dataParaOrdenacao);
-          console.log('data agenda: ' + dataAgenda)
-          console.log('datahoje: ' + dataHoje)
-          if (dataHoje < dataAgenda) {
-            this.listaDatas.push(element.dataCalendarioCorrecao);
-          }
+        var dataAgenda = new Date(element.dataParaOrdenacao);
+        console.log('data agenda: ' + dataAgenda)
+        console.log('datahoje: ' + dataHoje)
+        if (dataHoje < dataAgenda) {
+          this.listaDatas.push(element.dataCalendarioCorrecao);
+        }
       }
     }
   }

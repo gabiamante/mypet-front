@@ -4,6 +4,7 @@ import { CriacaoAgendaProvider } from './criacao-agenda-petprovider';
 import Swal from 'sweetalert2';
 import { CriacaoAgendaPetproviderService } from './criacao-agenda-petprovider.service';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-criacao-agenda-petprovider',
@@ -32,7 +33,8 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
   verificacaoDataEscolhida: any;
   minimumDate = new Date();
 
-  constructor(private criacaoAgendaService: CriacaoAgendaPetproviderService) {
+  constructor(private criacaoAgendaService: CriacaoAgendaPetproviderService,
+    private formBuilder: FormBuilder) {
 
 
     const token = localStorage.getItem('localUser');
@@ -75,6 +77,12 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
     });
 
   }
+  f = this.formBuilder.group({
+    'servicos' :['',Validators.required],
+    'data' :['',Validators.required],
+    'horaInicio' :['',Validators.required],
+    'horaFim' :['',Validators.required]
+  })
 
   count() {
     this.clicks++;

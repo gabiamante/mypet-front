@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 class="h3">Área Pet</h3>
+  <h3 class="h3">Eventos</h3>
 
   <hr>
 
@@ -46,42 +46,57 @@
         <button mat-flat-button color="primary" type="button" (click)="salvarPetEvent(varEvent)">Cadastrar</button>
     </div>
 
-    <!-- <div class="col">
+    <div class="col">
 
-      <h5 class="h5">Meus Pets</h5>
+      <h5 class="h5">Meus Eventos cadastrados</h5>
       
-      <mat-table [dataSource]="listaPets" class="mat-elevation-z8">
+      <mat-table [dataSource]="listaEvents" class="mat-elevation-z8">
 
-        <ng-container matColumnDef="nomePet">
-          <mat-header-cell *matHeaderCellDef> Nome do Pet </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.nomePet}} </mat-cell>
+        <ng-container matColumnDef="title">
+          <mat-header-cell *matHeaderCellDef> Nome do Evento </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="racaPet">
-          <mat-header-cell *matHeaderCellDef> Raça do Pet </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.racaPet}} </mat-cell>
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="especiePet">
-          <mat-header-cell *matHeaderCellDef> Espécie do Pet </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.especiePet}} </mat-cell>
+        <ng-container matColumnDef="local">
+          <mat-header-cell *matHeaderCellDef> Local </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.local}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="alterarPet">
-          <mat-header-cell *matHeaderCellDef> Alterar Pet </mat-header-cell>
+        <ng-container matColumnDef="data">
+          <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.data}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="start">
+          <mat-header-cell *matHeaderCellDef> Horário de Início </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.start}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="end">
+          <mat-header-cell *matHeaderCellDef> Horário de Fim </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.end}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="alterarEvento">
+          <mat-header-cell *matHeaderCellDef> Alterar Evento </mat-header-cell>
           <mat-cell *matCellDef="let element"><button mat-flat-button color="primary" type="button" data-toggle="modal"
               data-target="#modalAlterar">Alterar</button></mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="excluirPet">
-          <mat-header-cell *matHeaderCellDef> Excluir Pet </mat-header-cell>
-          <mat-cell *matCellDef="let element"><button mat-flat-button color="primary" type="button" (click)="excluirPet(element.id)">Excluir</button></mat-cell>
+        <ng-container matColumnDef="excluirEvento">
+          <mat-header-cell *matHeaderCellDef> Excluir Evento </mat-header-cell>
+          <mat-cell *matCellDef="let element"><button mat-flat-button color="primary" type="button" (click)="excluirEvento(element.id)">Excluir Evento</button></mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
-    </div> -->
+    </div>
 
   </div>
 

@@ -5,36 +5,38 @@
 </div>
 
 <div class="example-container p-5">
-  <div class="row">
-
+  <div class="row" [formGroup]="f">
     <div class="form-fields">
-      <label class="label m-1">Serviço</label><br/>
+      <label class="label m-1">Serviço</label><br />
       <p-dropdown [options]="lstServicosSelecionados" [(ngModel)]="varServicosSelecionados" optionLabel="name"
-        [showClear]="true"></p-dropdown>
+        formControlName="servicos" [showClear]="true"></p-dropdown>
     </div>
 
     <div class="form-fields">
-        <label class="label m-1">Data</label><br/>
+      <label class="label m-1">Data</label><br />
       <p-calendar [(ngModel)]="varCriacaoAgendaProvider.dataCalendario" [minDate]="minimumDate" [locale]="br"
-        dateFormat="dd/mm/yy" [disabledDates]="invalidDates" [disabledDays]="[0,6]" placeholder="Selecione a data"></p-calendar>
+        formControlName="data" dateFormat="dd/mm/yy" [disabledDates]="invalidDates" [disabledDays]="[0,6]"
+        placeholder="Selecione a data">
+      </p-calendar>
     </div>
 
     <div class="form-fields">
-        <label class="label m-1">Hora de início</label><br/>
-      <p-calendar [(ngModel)]="varCriacaoAgendaProvider.tempoInicio" [timeOnly]="true"
+      <label class="label m-1">Hora de início</label><br />
+      <p-calendar [(ngModel)]="varCriacaoAgendaProvider.tempoInicio" [timeOnly]="true" formControlName="horaInicio"
         placeholder={{varCriacaoAgendaProvider.tempoInicio}}></p-calendar>
     </div>
 
     <div class="form-fields">
-        <label class="label m-1">Hora de fim</label><br/>
-      <p-calendar [(ngModel)]="varCriacaoAgendaProvider.tempoFim" [timeOnly]="true"
+      <label class="label m-1">Hora de fim</label><br />
+      <p-calendar [(ngModel)]="varCriacaoAgendaProvider.tempoFim" [timeOnly]="true" formControlName="horaFim"
         placeholder={{varCriacaoAgendaProvider.tempoFim}}></p-calendar>
     </div>
 
     <div class="form-fields">
-        <label class="label mt-3"></label><br/>
-      <button mat-flat-button color="primary" class="label m-2" type="button" data-toggle="modal" data-target=".bd-example-modal-lg"
-        (click)="addToList(varCriacaoAgendaProvider)">
+      <label class="label mt-3"></label><br />
+      <button mat-flat-button color="primary" class="label m-2" type="button" data-toggle="modal"
+        data-target=".bd-example-modal-lg" (click)="addToList(varCriacaoAgendaProvider)" [disabled]="!f.valid"
+        title="É preciso preencher todos os campos para criar um agendamento">
         Agendar
       </button>
     </div>
@@ -44,7 +46,7 @@
 <hr class="featurette-divider m-5">
 
 <div class="row-title">
-  <h5>Sua agenda</h5>
+  <h5>Horários já disponíveis para agendamento</h5>
 </div>
 
 <div class="row">

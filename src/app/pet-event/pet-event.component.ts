@@ -10,24 +10,28 @@ import Swal from 'sweetalert2';
 })
 export class PetEventComponent implements OnInit {
 
-  displayedColumns: string[] = ['nomeEvento', 'localEvento', 'startEvento', 'endEvento', 'descriptionEvento'];
+  displayedColumns: string[] = ['title', 'description', 'local', 'data', 'start', 'end'];
   public varPessoa;
   public varEvent: PetEvent = new PetEvent;
   public listaEvents: PetEvent[] = [];
   id: number;
 
   constructor(
-    private serveciEvent: PetEventService) { }
+    private serviceEvent: PetEventService) { }
 
   ngOnInit() {
 
     const token = localStorage.getItem('localUser');
     const objLogin = JSON.parse(token);
 
-    this.serveciEvent.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
+    this.serviceEvent.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
       this.varPessoa = retorno;
       this.id = this.varPessoa.id
     });
+
+    this.serviceEvent.buscarEventos().subscribe((ret) => {
+      this.listaEvents = ret;
+    })
   }
 
   salvarPetEvent(varEvent: PetEvent){
@@ -40,11 +44,12 @@ export class PetEventComponent implements OnInit {
       this.varEvent.idProvider= this.varPessoa.id;
     }
 
-    this.serveciEvent.salvarEvento(varEvent).subscribe( res => {
+    this.serviceEvent.salvarEvento(varEvent).subscribe( res => {
       Swal.fire(
         'Evento publicado',
         'Seu evento foi publicado com sucesso!'
       )
+      location.reload();  
     });
 
   }

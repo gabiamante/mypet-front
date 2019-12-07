@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { BuscarFornecedoresComponent } from '../buscar-fornecedores.component';
 import { PesquisarService } from 'src/app/home/home.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { Input, OnInit, Component } from '@angular/core';
 
 @Component({
   selector: 'app-resultado-fornecedor',
@@ -12,14 +12,15 @@ import { Router } from '@angular/router';
 })
 export class ResultadoComponent implements OnInit {
 
-  @Input() forns: PessoaJuridica[];
+  @Input() forns: PessoaJuridica[] = [];
   servicos: ServicoEForn[] = [];
   public forn: PessoaJuridica = new PessoaJuridica();
-  public filter: string = '';
+  searchText: string;
 
   constructor(private service: PesquisarService,
     private router: Router) {
     this.router = router;
+    this.searchText = '';
   }
 
   ngOnInit() {

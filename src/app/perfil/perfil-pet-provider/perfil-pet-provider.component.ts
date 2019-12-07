@@ -4,6 +4,8 @@ import { PessoaService } from 'src/app/pessoa/pessoa.service';
 import { ActivatedRoute } from '@angular/router';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfil-pet-provider',
@@ -56,8 +58,14 @@ export class PerfilPetProviderComponent implements OnInit {
     console.log(this.pessoaJuridica);
     this.petProviderService.atualizaPessoaJuridica(this.pessoaJuridica).subscribe(
       response => {
-        alert('PetProvider alterado com sucesso!');
-        window.location.href = '/login/tela-inicial-pet-provider';
+        Swal.fire({
+          position: 'center',
+          type: 'success',
+          title: 'Seu cadastro foi alterado com sucesso!',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        location.reload()
       }
     );
   }

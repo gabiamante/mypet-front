@@ -20,14 +20,15 @@
 /* Padding abaixo do footer e texto mais suave no <body> */
 
 body {
-    color: #5a5a5a;
     margin: 0; 
     font-family: 
     Roboto, "Helvetica Neue", sans-serif;
   }
 
 
-html, body { height: 100%; }
+html, body { 
+  height: 100%;
+}
   
   
   /* CUSTOMIZA O CAROUSEL

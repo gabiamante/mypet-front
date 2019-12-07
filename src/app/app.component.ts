@@ -122,4 +122,8 @@ export class AppComponent {
   buscarPrestador(){
     window.location.href = 'administrador/buscar-fornecedor';
   }
+
+  meusEventos(){
+    window.location.href = 'petevent';
+  }
 }

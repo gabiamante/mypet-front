@@ -4,7 +4,8 @@ import { PessoaService } from '../../pessoa.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher} from '@angular/material/core';
-import Swal from 'sweetalert2';import {
+import Swal from 'sweetalert2';
+import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
@@ -46,10 +47,7 @@ export class CadastroFisicaComponent implements OnInit, ErrorStateMatcher {
 
   }, { validator: this.matchingSenha })
 
-
   public pessoaFisica: PessoaFisica = new PessoaFisica();
-
-
 
   constructor(
     private pessoaFisicaService: PessoaService,

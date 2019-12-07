@@ -39,7 +39,7 @@
 
       <div class="col-md-3 mb-3">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="CPF ou CNPJ" required formControlName="cpf" [errorStateMatcher]="matcher">
+          <input matInput placeholder="CPF" required formControlName="cpf" [errorStateMatcher]="matcher">
 
           <mat-error *ngIf="formRegister.get('cpf').hasError  && !formRegister.get('cpf').hasError('required')">
             cpf inválido
@@ -127,7 +127,7 @@
 
       <div class="col-md-1 mb-3">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Número" required formControlName="numero">
+          <input matInput placeholder="Nº" required formControlName="numero">
 
           <mat-error *ngIf="formRegister.get('numero').hasError  && !formRegister.get('numero').hasError('required')">
             Número inválido

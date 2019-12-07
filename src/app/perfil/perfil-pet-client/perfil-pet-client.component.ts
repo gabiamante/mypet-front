@@ -5,12 +5,30 @@ import { PesquisarService } from 'src/app/home/home.service';
 import { PessoaService } from 'src/app/pessoa/pessoa.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/auth/auth.service';
+import { FormBuilder, Validators, FormControl, FormGroupDirective, NgForm, FormGroup } from '@angular/forms';
+import {
+  MAT_MOMENT_DATE_FORMATS,
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+
 
 @Component({
   selector: 'app-perfil-pet-client',
   templateUrl: './perfil-pet-client.component.html',
-  styleUrls: ['./perfil-pet-client.component.css']
+  styleUrls: ['./perfil-pet-client.component.css'],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'ja-JP'},
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+  ],
 })
+
 export class PerfilPetClientComponent implements OnInit {
 
   pessoa: PessoaFisica;
@@ -21,11 +39,36 @@ export class PerfilPetClientComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 };
 
   constructor(private pesquisarService: PesquisarService,
-              private petClientService: PessoaService,
-              private router: Router,
-              private authService: AuthService) {
-                this.router = router;
-          }
+    private petClientService: PessoaService,
+    private router: Router,
+    private authService: AuthService,
+    private formBuilder: FormBuilder,
+    private _adapter: DateAdapter<any>) {
+    this.french();
+  }
+
+  french() {
+    this._adapter.setLocale('fr');
+  }
+
+  formRegister = this.formBuilder.group({
+    'nomeCompleto': ['', Validators.required],
+    'cpf': ['', Validators.required],
+    'dataNascimento': ['', Validators.required],
+    'email': ['', [Validators.required, Validators.email]],
+    'senha': ['', [Validators.required, Validators.minLength(6)]],
+    'senha2': ['', [Validators.required, Validators.minLength(6)]],
+    'logradouro': ['', Validators.required],
+    'numero': [''],
+    'complemento': [''],
+    'bairro': ['', Validators.required],
+    'cidade': ['', Validators.required],
+    'cep': ['', [Validators.required, Validators.minLength(8)]],
+    'estado': ['', Validators.required],
+    'telefoneFixo': ['', [Validators.required, Validators.minLength(10)]],
+    'telefoneCelular': ['', [Validators.required, Validators.minLength(11)]]
+
+  }, { validator: this.matchingSenha })
 
   ngOnInit() {
 
@@ -36,6 +79,24 @@ export class PerfilPetClientComponent implements OnInit {
       this.pessoaFisica = retorno;
     });
   }
+
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+
+  matchingSenha(group: FormGroup) {
+    if (group) {
+      const senha = group.controls['senha'].value;
+      const senha2 = group.controls['senha2'].value;
+
+      if (senha == senha2) {
+        return null;
+      }
+    }
+    return { matching: false };
+  }
+
 
   selectFile(event) {
     this.selectedFiles = event.target.files;
@@ -56,11 +117,11 @@ export class PerfilPetClientComponent implements OnInit {
     this.selectedFiles = undefined;
   }
 
-  public cancelar(){
+  public cancelar() {
     this.router.navigate(['login', 'tela-inicial-pet-client']);
   }
 
-  public alterar(){
+  public alterar() {
     console.log(this.pessoaFisica);
     this.petClientService.atualizaPessoaFisica(this.pessoaFisica).subscribe(
       response => {
@@ -70,7 +131,7 @@ export class PerfilPetClientComponent implements OnInit {
     );
   }
 
-  public inativar(){
+  public inativar() {
     this.petClientService.softDeletePessoaFisica(this.pessoaFisica).subscribe(
       response => {
         alert('PetClient inativado com sucesso!');

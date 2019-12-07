@@ -21,7 +21,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatStepperModule} from '@angular/material/stepper';
 import {RatingModule} from 'primeng/rating';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { SktFilterPipe } from './home/buscar-fornecedores/resultado/skt-filper.pipe';
+import { FilterPipe } from './home/buscar-fornecedores/resultado/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { SktFilterPipe } from './home/buscar-fornecedores/resultado/skt-filper.p
     DetalhesComponent,
     BuscarFornecedoresComponent,
     CardsComponent,
-    SktFilterPipe
+    FilterPipe
 
   ],
   imports: [
@@ -60,7 +60,8 @@ import { SktFilterPipe } from './home/buscar-fornecedores/resultado/skt-filper.p
     QuemSomosComponent,
     HomeComponent,
     ResultadoComponent,
-    DetalhesComponent
+    DetalhesComponent,
+    FilterPipe
   ]
 })
 export class HomeModule { }

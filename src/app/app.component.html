@@ -60,6 +60,10 @@
             <mat-icon>history</mat-icon>
             <span>Histórico</span>
           </button>
+          <button mat-menu-item *ngIf="perfil === 'SERVICO'" (click)="meusEventos()">
+            <mat-icon>calendar_today</mat-icon>
+            <span>Meus Eventos</span>
+          </button>
           <!-- CLIENTE -->
           <button mat-menu-item *ngIf="perfil === 'CLIENTE'" (click)="meuPerfilCliente()">
             <mat-icon>person</mat-icon>
@@ -76,6 +80,10 @@
           <button mat-menu-item *ngIf="perfil === 'CLIENTE'" (click)="historicoCliente()">
             <mat-icon>history</mat-icon>
             <span>Histórico</span>
+          </button>
+          <button mat-menu-item *ngIf="perfil === 'CLIENTE'" (click)="meusEventos()">
+            <mat-icon>calendar_today</mat-icon>
+            <span>Meus Eventos</span>
           </button>
           <!-- ADMIN -->
           <button mat-menu-item *ngIf="perfil === 'ADMIN'" (click)="aprovarPrestador()">
