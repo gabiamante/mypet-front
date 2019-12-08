@@ -3,34 +3,35 @@
 
   <hr>
 
-  <div class="row">
+  <div class="row" [formGroup]="f">
     <div class="col">
 
       <h5 class="h5">Cadastrar novo Pet</h5>
       <div class="col-md-7 mb-3">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Nome" [(ngModel)]="varPet.nomePet" name="nome" required>
+          <input matInput placeholder="Nome" [(ngModel)]="varPet.nomePet" name="nome" formControlName="nome" required>
         </mat-form-field>
       </div>
 
       <div class="col-md-7 mb-3">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Raça" [(ngModel)]="varPet.racaPet" name="raca" required>
+          <input matInput placeholder="Raça" [(ngModel)]="varPet.racaPet" name="raca" formControlName="raca" required>
         </mat-form-field>
       </div>
 
       <div class="col-md-7 mb-3">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Espécie" [(ngModel)]="varPet.especiePet" name="especie" required>
+          <input matInput placeholder="Espécie" [(ngModel)]="varPet.especiePet" name="especie" formControlName="especie" required>
         </mat-form-field>
       </div>
-        <button mat-flat-button color="primary" type="button" (click)="salvarPet(varPet)">Cadastrar</button>
+        <button mat-flat-button color="primary" type="button" (click)="salvarPet(varPet)" [disabled]="!f.valid"
+        title="É preciso preencher todos os campos para criar um agendamento">Cadastrar</button>
     </div>
 
     <div class="col">
 
       <h5 class="h5">Meus Pets</h5>
-      
+
       <mat-table [dataSource]="listaPets" class="mat-elevation-z8">
 
         <ng-container matColumnDef="nomePet">

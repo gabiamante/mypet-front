@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient, HttpErrorResponse, HttpEvent, HttpRequest } fr
 import { PessoaFisica } from './pessoa-fisica';
 import { PessoaJuridica } from './pessoa-juridica';
 import { Observable, throwError } from 'rxjs';
+import { LoginConjunto } from '../auth/loginConjunto';
 
 
 const API = 'http://localhost:8080';
@@ -94,6 +95,12 @@ export class PessoaService {
       .pipe();
   }
 
+  public atualizaLoginConjunto(login: LoginConjunto): Observable<LoginConjunto> {
+    httpOptions.headers = httpOptions.headers.set('Authorization', 'my-new-auth-token');
+    return this.http.put<LoginConjunto>(API + '/loginConjunto/' + login.id
+      , login, httpOptions)
+      .pipe();
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

@@ -1,10 +1,11 @@
 import { Observable } from 'rxjs';
-import { Component, OnInit, Input, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, Input, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { CriacaoAgendaProvider } from './criacao-agenda-petprovider';
 import Swal from 'sweetalert2';
 import { CriacaoAgendaPetproviderService } from './criacao-agenda-petprovider.service';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-criacao-agenda-petprovider',

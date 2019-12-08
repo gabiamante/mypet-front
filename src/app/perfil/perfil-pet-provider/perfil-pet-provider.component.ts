@@ -71,9 +71,11 @@ export class PerfilPetProviderComponent implements OnInit {
           type: 'success',
           title: 'Seu cadastro foi alterado com sucesso!',
           showConfirmButton: false,
-          timer: 1500
+          timer: 2000
         });
-        location.reload()
+        setTimeout(() => {
+          location.reload()
+        }, 2000);
       }
     );
   }

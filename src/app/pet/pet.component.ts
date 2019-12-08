@@ -3,6 +3,7 @@ import { PetService } from './pet.service';
 import { Component, OnInit } from '@angular/core';
 import { Pet } from './pet';
 import Swal from 'sweetalert2';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pet',
@@ -19,7 +20,8 @@ export class PetComponent implements OnInit {
   aux: Pet[] = [];
   public petAlterar: Pet = new Pet;
 
-  constructor(private varPetService: PetService) { }
+  constructor(private varPetService: PetService,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
 
@@ -30,17 +32,16 @@ export class PetComponent implements OnInit {
       this.varPessoaFisica = retorno;
     });
 
-    setTimeout(() => {
       this.varPetService.buscarPets(this.varPessoaFisica.id).subscribe((retorno) => {
-        this.listaPets = retorno;
-        /* for(const element of this.aux){
-          if(element.active != false){
-            this.listaPets.push(element)
-          }
-        } */
-      })
-    }, 500);
+        this.aux = retorno;
+      });
   }
+
+  f = this.formBuilder.group({
+    'nome' :['',Validators.required],
+    'raca' :['',Validators.required],
+    'especie' :['',Validators.required]
+  })
 
   salvarPet(varPet: Pet) {
 
@@ -58,6 +59,7 @@ export class PetComponent implements OnInit {
 
   excluirPet(varPet: Pet) {
     varPet.active = false;
+    console.log(JSON.stringify(varPet))
     this.varPetService.excluirPet(varPet).subscribe(res => {
       Swal.fire(
         'Pet inativado',
