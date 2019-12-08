@@ -39,20 +39,27 @@ export class AppComponent {
       if (this.pessoa.perfil == "CLIENTE") {
         this.nome = this.pessoa.nomeCompleto;
         this.perfil = "CLIENTE";
+        this.buscaEmail.buscarEmailPetCliente(obj.email).subscribe((pessoa) => {
+          this.pessoaFoto = pessoa;
+        })
       }
       if (this.pessoa.perfil == "SERVICO") {
         this.nome = this.pessoa.razaoSocial;
         this.perfil = "SERVICO";
+        this.buscaEmail.buscarEmailPetProvider(obj.email).subscribe((pessoa) => {
+          this.pessoaFoto = pessoa;
+        })
       }
       if (this.pessoa.perfil == "ADMIN") {
         this.nome = this.pessoa.razaoSocial;
         this.perfil = "ADMIN";
+        this.buscaEmail.buscarEmailPetProvider(obj.email).subscribe((pessoa) => {
+          this.pessoaFoto = pessoa;
+        })
       }
     });
 
-    this.buscaEmail.buscarEmailPetCliente(obj.email).subscribe((pessoa) => {
-      this.pessoaFoto = pessoa;
-    })
+
 
 
   }

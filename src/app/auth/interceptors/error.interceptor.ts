@@ -24,9 +24,9 @@ export class ErrorInterceptor implements HttpInterceptor{
                            errorObj = errorObj.error;
                         }
                         if(!errorObj.status){
-                            errorObj = JSON.parse(errorObj.error);
+                            errorObj = JSON.parse(errorObj);
                         }
-                        
+
 
                      //   this.toasty.error(errorObj);
                        // alert("Passou");
@@ -46,7 +46,7 @@ export class ErrorInterceptor implements HttpInterceptor{
                             break;
                           }
 
-                            
+
                         }
 
                         switch(errorObj.status){
@@ -57,7 +57,18 @@ export class ErrorInterceptor implements HttpInterceptor{
                             break;
                           }
 
-                            
+
+                        }
+
+                        switch(errorObj.status){
+                          case 400:
+
+                          if(errorObj.msg === "Somente imagens PNG e JPG são permitidas"){
+                            this.handler400();
+                            break;
+                          }
+
+
                         }
 
                         switch(errorObj.status){
@@ -68,15 +79,15 @@ export class ErrorInterceptor implements HttpInterceptor{
                             break;
                           }
 
-                            
+
                         }
-                       
+
                         switch(errorObj.status){
                           case 404:
 
                           if(errorObj.errors[0].message === "Email já existente" ){
                             this.handler404();
-                            
+
                           }
                            if(errorObj.errors[0].message === "cpf invalido"){
                             this.handlerCpf();
@@ -103,6 +114,13 @@ export class ErrorInterceptor implements HttpInterceptor{
               )
 
             }
+
+            handler400(){
+              Swal.fire(
+                'Somente imagens PNG e JPG são permitidas'
+              )
+            }
+
             handlerCpf(){
               Swal.fire(
                 'CPF ou CNPJ incorreto'
@@ -112,7 +130,7 @@ export class ErrorInterceptor implements HttpInterceptor{
                 Swal.fire(
                   'Utilize outro',
                   'Email já cadastrado em Fornecedor',
-                 
+
                 )
 
             }
@@ -121,7 +139,7 @@ export class ErrorInterceptor implements HttpInterceptor{
               Swal.fire(
                 'Utilize outro',
                 'Email já cadastrado em CLIENTE',
-               
+
               )
 
           }

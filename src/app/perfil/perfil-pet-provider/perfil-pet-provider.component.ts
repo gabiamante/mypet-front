@@ -54,7 +54,7 @@ export class PerfilPetProviderComponent implements OnInit {
           type: 'success',
           title: 'Upload de foto feito com sucesso!',
           showConfirmButton: false,
-          timer: 1500
+          timer: 2000
         });
       }
     });
