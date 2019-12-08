@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 class="h3">Meu Perfil</h3>
+  <h3 class="h3 mt-5">Meu Perfil</h3>
 
   <hr>
 
@@ -86,14 +86,13 @@
       </mat-form-field>
     </div>
   </div>
+
   <div class="row">
-    <div class="example-container">
-      <div class="col-md-12 mb-3">
-        <mat-form-field>
-          <textarea matInput placeholder="Descreva aqui mais sobre sua empresa, faça sua propaganda!"
-            [(ngModel)]="pessoaJuridica.descricaoPetProvider"></textarea>
-        </mat-form-field>
-      </div>
+    <div class="col-md-12 mb-3">
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Descreva aqui mais sobre sua empresa, faça sua propaganda!"
+          [(ngModel)]="pessoaJuridica.descricaoPetProvider" cols="300" rows="3"></textarea>
+      </mat-form-field>
     </div>
   </div>
 
@@ -151,7 +150,7 @@
 
     </div>
   </div>
-  <div class="row mt-5" style="float: right">
-    <button mat-flat-button color="primary" type="button" (click)="voltar()">Voltar</button>
+  <div class="row mt-5 mb-5" style="float: right">
+    <button mat-flat-button color="primary" type="button" (click)="inativar()">Inativar Conta</button>
     <button mat-flat-button color="primary" type="button" (click)="alterar()">Alterar Dados</button>
   </div>

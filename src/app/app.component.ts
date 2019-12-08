@@ -17,6 +17,7 @@ export class AppComponent {
   @Input() nome: string;
   pessoa: any;
   @Input() perfil: string;
+  @Input() pessoaFoto: any;
 
   constructor(
     private router: Router,
@@ -48,6 +49,12 @@ export class AppComponent {
         this.perfil = "ADMIN";
       }
     });
+
+    this.buscaEmail.buscarEmailPetCliente(obj.email).subscribe((pessoa) => {
+      this.pessoaFoto = pessoa;
+    })
+
+
   }
 
   home() {

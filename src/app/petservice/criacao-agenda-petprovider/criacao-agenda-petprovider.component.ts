@@ -403,7 +403,7 @@ export class CriacaoAgendaPetproviderComponent implements OnInit {
                 Swal.fire({
                   position: 'center',
                   type: 'success',
-                  title: 'Horário cadastrado !',
+                  title: 'Horário cadastrado!',
                   showConfirmButton: false,
                   timer: 1500
                 });

@@ -39,8 +39,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { TelaInicialLoginModule } from './perfil/tela-inicial-login.module';
 import { PetEventModule } from './pet-event/pet-event.module';
-
-
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -79,7 +78,8 @@ import { PetEventModule } from './pet-event/pet-event.module';
     MatInputModule,
     PetModule,
     TelaInicialLoginModule,
-    PetEventModule
+    PetEventModule,
+    MatCardModule
   ],
   providers: [AuthInterceptorProvider, ErrorInterceptorProvider,AuthService,
     StorageService, RoleGuardService

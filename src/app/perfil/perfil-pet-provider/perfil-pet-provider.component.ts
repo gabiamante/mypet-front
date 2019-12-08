@@ -6,6 +6,7 @@ import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-perfil-pet-provider',
@@ -24,7 +25,8 @@ export class PerfilPetProviderComponent implements OnInit {
   constructor(
     private pesquisarService: PesquisarService,
     private petProviderService: PessoaService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private authService: AuthService) { }
 
   ngOnInit(){
     const token = localStorage.getItem("localUser")
@@ -48,10 +50,13 @@ export class PerfilPetProviderComponent implements OnInit {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
 
-        Swal.fire(
-          'Somente imagens PNG e JPG são permitidas'
-        )
-        console.log('Imagem salva com sucesso!');
+        Swal.fire({
+          position: 'center',
+          type: 'success',
+          title: 'Upload de foto feito com sucesso!',
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
     });
 
@@ -70,6 +75,22 @@ export class PerfilPetProviderComponent implements OnInit {
           timer: 1500
         });
         location.reload()
+      }
+    );
+  }
+
+  public inativar() {
+    this.petProviderService.softDeletePessoaJuridica(this.pessoaJuridica).subscribe(
+      response => {
+        Swal.fire({
+          position: 'center',
+          type: 'success',
+          title: 'Cadastro inativado com sucesso... Que pena, volte logo!',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        this.authService.logout();
+        window.location.href = '/home/home';
       }
     );
   }

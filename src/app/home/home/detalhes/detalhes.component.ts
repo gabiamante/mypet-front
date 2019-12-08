@@ -239,15 +239,14 @@ export class DetalhesComponent implements OnInit {
     for (let element of this.lstCriacaoAgendaProvider) {
       if (element.servicoEscolhido == String(this.varServicosSelecionados)) {
         var dataAgenda = new Date(element.dataParaOrdenacao);
-        console.log('data agenda: ' + dataAgenda)
-        console.log('datahoje: ' + dataHoje)
         if (dataHoje < dataAgenda) {
-          this.listaDatas.push(element.dataCalendarioCorrecao);
+          if (!this.listaDatas.includes(element.dataCalendarioCorrecao)) {
+            this.listaDatas.push(element.dataCalendarioCorrecao);
+          }
         }
       }
     }
   }
-
 
   limparServicoEData() {
     this.varServicosSelecionados = null;
@@ -319,9 +318,9 @@ export class DetalhesComponent implements OnInit {
                 Swal.fire({
                   position: 'center',
                   type: 'success',
-                  title: 'Serviço agendado!',
+                  title: 'Horário cadastrado!',
                   showConfirmButton: false,
-                  timer: 1500
+                  timer: 2000
                 });
                 window.location.href = 'contratados/petclient';
               });

@@ -58,7 +58,7 @@ export class CadastroFisicaComponent implements OnInit, ErrorStateMatcher {
   }
 
   french() {
-    this._adapter.setLocale('fr');
+    this._adapter.setLocale('pt');
   }
 
   ngOnInit() { }

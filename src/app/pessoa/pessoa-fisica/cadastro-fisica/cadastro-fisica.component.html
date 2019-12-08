@@ -1,7 +1,7 @@
 <div class="container">
 
   <form role="form" [formGroup]="formRegister">
-    <h3>Cadastre-se como Cliente MyPet ainda hoje!</h3>
+    <h3 class="h3 mt-5">Cadastre-se como Cliente MyPet ainda hoje!</h3>
 
     <hr>
 
@@ -240,7 +240,7 @@
     </div>
   </form>
 
-  <div class="row mt-5" style="float: right">
+  <div class="row mt-5 mb-5" style="float: right">
     <button mat-flat-button color="primary" type="button" (click)="voltar()">Voltar</button>
     <button mat-flat-button color="primary" type="button" [disabled]="!formRegister.valid"
       (click)="salvar()">Cadastrar</button>

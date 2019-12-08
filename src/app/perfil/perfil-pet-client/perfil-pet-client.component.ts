@@ -49,7 +49,7 @@ export class PerfilPetClientComponent implements OnInit {
   }
 
   french() {
-    this._adapter.setLocale('fr');
+    this._adapter.setLocale('pt');
   }
 
   formRegister = this.formBuilder.group({
@@ -111,11 +111,13 @@ export class PerfilPetClientComponent implements OnInit {
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
-
-        Swal.fire(
-          'Imagem salva com sucesso'
-        )
-        console.log('Imagem salva com sucesso!');
+        Swal.fire({
+          position: 'center',
+          type: 'success',
+          title: 'Upload feito com sucesso!',
+          showConfirmButton: true,
+          timer: 1500
+        });
       }
     });
 
@@ -127,11 +129,16 @@ export class PerfilPetClientComponent implements OnInit {
   }
 
   public alterar() {
-    console.log(this.pessoaFisica);
     this.petClientService.atualizaPessoaFisica(this.pessoaFisica).subscribe(
       response => {
-        alert('PetClient alterado com sucesso!');
-        window.location.href = '/login/tela-inicial-pet-client';
+        Swal.fire({
+          position: 'center',
+          type: 'success',
+          title: 'Cadastro alterado com sucesso!',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        location.reload();
       }
     );
   }
@@ -139,7 +146,13 @@ export class PerfilPetClientComponent implements OnInit {
   public inativar() {
     this.petClientService.softDeletePessoaFisica(this.pessoaFisica).subscribe(
       response => {
-        alert('PetClient inativado com sucesso!');
+        Swal.fire({
+          position: 'center',
+          type: 'success',
+          title: 'Cadastro inativado com sucesso... Que pena, volte logo!',
+          showConfirmButton: false,
+          timer: 1500
+        });
         this.authService.logout();
         window.location.href = '/home/home';
       }

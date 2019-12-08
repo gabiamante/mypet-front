@@ -29,6 +29,7 @@
 
     <ng-container *ngIf="(authenticated$ | async) && (user$ | async)">
       Seja bem vindo(a), {{ nome }}!
+      <img class="rounded-circle ml-3" src="{{pessoaFoto?.fotoPerfil}}" alt="Generic placeholder image" width="40" height="40">
       <form class="form-inline my-2 my-lg-0">
         <!-- <button mat-flat-button color="primary" type="button" (click)="checkProfile()">Área Logada</button> -->
         <!-- <button mat-flat-button color="primary" type="button" (click)="logout()">Logout</button> -->
