@@ -1,3 +1,4 @@
+import { PessoaService } from 'src/app/pessoa/pessoa.service';
 import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
 import { BuscarFornecedoresComponent } from '../buscar-fornecedores.component';
 import { PesquisarService } from 'src/app/home/home.service';
@@ -25,10 +26,13 @@ export class ResultadoComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.aux = this.service.forns;
     for(const element of this.aux){
       if(element.razaoSocial != 'Administrador Geral'){
-        this.forns.push(element);
+        if(element.situacaoAprovacao  === 'Aprovado'){
+          this.forns.push(element);
+        }
       }
     }
   }
