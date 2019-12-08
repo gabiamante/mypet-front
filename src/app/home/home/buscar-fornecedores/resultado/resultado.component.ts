@@ -16,6 +16,7 @@ export class ResultadoComponent implements OnInit {
   servicos: ServicoEForn[] = [];
   public forn: PessoaJuridica = new PessoaJuridica();
   searchText: string;
+  aux: PessoaJuridica[] = [];
 
   constructor(private service: PesquisarService,
     private router: Router) {
@@ -24,7 +25,12 @@ export class ResultadoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.forns = this.service.forns;
+    this.aux = this.service.forns;
+    for(const element of this.aux){
+      if(element.razaoSocial != 'Administrador Geral'){
+        this.forns.push(element);
+      }
+    }
   }
 
   listarServicosPrestados() {

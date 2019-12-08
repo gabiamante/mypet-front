@@ -49,7 +49,6 @@ export class PerfilPetProviderComponent implements OnInit {
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
-
         Swal.fire({
           position: 'center',
           type: 'success',
