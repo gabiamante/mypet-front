@@ -1,95 +1,20 @@
-<p-table [columns]="cols" [value]="listaPessoaJuridica" selectionMode="single"
-[(selection)]="pessoaJuridicaSelecionada"
-[paginator]="true" [rows]="15"  > <!--Abrir detalhe da celula (onRowSelect)="onRowSelect($event)"
-                                    dentro da p-table -->
-    <ng-template pTemplate="caption">
-        Clique em uma pessoas jurídicas para aprovação
-    </ng-template>
-    <ng-template pTemplate="header" let-columns>
-        <tr>
-            <th *ngFor="let col of columns; index as i" [pSortableColumn]="col.field">
-                {{col.header}}
-                <p-sortIcon [field]="col.field"></p-sortIcon>
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns" let-i ="rowIndex">
-        <tr [pSelectableRow]="rowData"  expandableRows="true" (click) = "changeData(rowData)"
-            id="linhaSelecionada">
-
-            <td *ngFor="let col of columns">
-                {{rowData[col.field]}} <!--AQUI É MONTADA DINAMICAMENTE A TABELA-->
-
-            </td>
-
-        </tr>
-
-    </ng-template>
-
-    <ng-template pTemplate="summary" let-rowData>
-        <div style="text-align:left">
-           <!--
-
-           <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Aprovação"></button>
-           -->
-           <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save" ></button>
-        </div>
-    </ng-template>
-</p-table>
-
-<p-dialog header="PessoaJuridica Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '300px'}">
-    <div class="ui-g ui-fluid" *ngIf="pessoaJuridica ">
-        <div class="ui-g-12">
-            <div class="ui-g-4">
-                <label for="razaoSocial">Razão Social</label>
-            </div>
-            <div class="ui-g-8">
-                <input pInputText id="razaoSocial" [(ngModel)]="pessoaJuridica.razaoSocial" disabled />
+<h4 class="text-center pt-5">Prestadores a serem aprovado/reprovado</h4>
+<div class="row my-3 atendimento-row">
+    <div class="col-4 py-3" *ngFor="let cliente of listaPessoaJuridica">
+        <div class="card atendimento-card" >
+            <div class="card-body">
+                <h5 class="card-title">Nome Completo: {{cliente.razaoSocial}}</h5>
+                <h5 class="card-subtitle mb-2">E-mail: {{cliente.email}}</h5>
+                <h5 class="card-subtitle mb-2 text-muted">CNPJ: {{cliente.cpf}}</h5>
+                <p class="card-subtitle mb-2 text-muted">Telefone: {{cliente.telefoneFixo}}</p>
+                <p class="card-subtitle mb-2 text-muted">Celular: {{cliente.telefoneCelular}}</p>
+                <p>Endereço: {{cliente.logradouro}}, {{cliente.numero}} - {{cliente.bairro}}, {{cliente.cidade}} - {{cliente.estado}}</p>
+                <p *ngIf="cliente.situacaoAprovacao === 'Aprovado' || cliente.situacaoAprovacao === 'Reprovado'">
+                    Status do Prestador: {{cliente.situacaoAprovacao}}
+                </p>
+                <a class="card-link" *ngIf="cliente.situacaoAprovacao === ''" (click)="reprovar(cliente)"><font color="blue">Reprovar</font></a>
+                <a class="card-link" *ngIf="cliente.situacaoAprovacao === ''" (click)="aprovar(cliente)"><font color="blue">Aprovar</font></a>
             </div>
         </div>
-        <div class="ui-g-12">
-            <div class="ui-g-4">
-                <label for="year">CNPJ</label>
-            </div>
-            <div class="ui-g-8">
-                <input pInputText id="cpf" [(ngModel)]="pessoaJuridica.cpf" disabled />
-            </div>
-        </div>
-        <div class="ui-g-12">
-            <div class="ui-g-4">
-                <label for="brand">Telefone Fixo</label>
-            </div>
-            <div class="ui-g-8">
-                <input pInputText id="telefoneFixo" [(ngModel)]="pessoaJuridica.telefoneFixo" disabled />
-            </div>
-        </div>
-        <div class="ui-g-12">
-            <div class="ui-g-4">
-                <label for="color">Telefone Celular</label>
-            </div>
-            <div class="ui-g-8" >
-                <input pInputText id="telefoneCelular" [(ngModel)]="pessoaJuridica.telefoneCelular" disabled />
-            </div>
-        </div>
-
-        <div class="ui-g-12">
-            <div class="ui-g-4">
-                <label for="color">Aprovar</label>
-            </div>
-            <div class="ui-g-8" >
-
-                <p-checkbox [(ngModel)]="pessoaJuridica.apartamento" binary="true" ></p-checkbox>
-            </div>
-        </div>
-
-
     </div>
-
-    <p-footer>
-        <div class="ui-dialog-buttonpane ui-helper-clearfix">
-          <!--  <button type="button" pButton icon="fa fa-close" (click)="delete()" label="Delete"></button>-->
-            <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save" ></button>
-           <!-- <button type="button" pButton icon="fa fa-check" (click)="aprovar()" label="Aprovar" ></button>-->
-        </div>
-    </p-footer>
-</p-dialog>
+</div>

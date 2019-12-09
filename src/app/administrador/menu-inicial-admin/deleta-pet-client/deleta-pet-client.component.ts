@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { PessoaFisica } from 'src/app/pessoa/pessoa-fisica';
+import { PessoaService } from 'src/app/pessoa/pessoa.service';
+import Swal from 'sweetalert2';
+import { PessoaJuridica } from 'src/app/pessoa/pessoa-juridica';
+import { LoginConjunto } from 'src/app/auth/loginConjunto';
 
 @Component({
   selector: 'app-deleta-pet-client',
@@ -12,19 +16,35 @@ import { PessoaFisica } from 'src/app/pessoa/pessoa-fisica';
 export class DeletaPetClientComponent implements OnInit {
 
   filter: string = '';
-  petclients: PessoaFisica[] = [];
-  petclient: PessoaFisica;
+  @Input() petclients: PessoaFisica[] = [];
+  @Input() petclient: PessoaFisica;
+  aux: PessoaFisica[] = [];
+  loginConjunto: LoginConjunto;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private router: Router) {
-                this.router = router;
+              private router: Router,
+              private petClientService: PessoaService) {
   }
   ngOnInit(): void {
-
-    this.petclients = this.activatedRoute.snapshot.data['petclients'];
-
+    this.loginConjunto = null
+    this.listFromUser();
   }
-  public voltar(){
-    this.router.navigate(['administrador', 'menu-inicial-admin']);
+
+  listFromUser(){
+    this.petClientService.listPessoaFisica().subscribe(petclients => {
+      this.petclients = petclients;
+      alert(JSON.stringify(this.petclients))
+    });
   }
+
+  public softDelete(varPessoaFisica: PessoaFisica) {
+    varPessoaFisica.active = false;
+    this.petClientService.softDeletePessoaFisica(varPessoaFisica)
+    .subscribe(
+      res => {
+        this.listFromUser();
+      }
+    );
+  }
+  
 }

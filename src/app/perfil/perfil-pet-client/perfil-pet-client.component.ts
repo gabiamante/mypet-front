@@ -124,10 +124,6 @@ export class PerfilPetClientComponent implements OnInit {
     this.selectedFiles = undefined;
   }
 
-  public cancelar() {
-    this.router.navigate(['login', 'tela-inicial-pet-client']);
-  }
-
   public alterar() {
     this.petClientService.atualizaPessoaFisica(this.pessoaFisica).subscribe(
       response => {

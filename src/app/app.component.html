@@ -99,14 +99,6 @@
             <mat-icon>person_add_disabled</mat-icon>
             <span>Desabilitar Prestador</span>
           </button>
-          <button mat-menu-item *ngIf="perfil === 'ADMIN'" (click)="buscarCliente()">
-            <mat-icon>search</mat-icon>
-            <span>Alterar Cliente</span>
-          </button>
-          <button mat-menu-item *ngIf="perfil === 'ADMIN'" (click)="buscarPrestador()">
-            <mat-icon>search</mat-icon>
-            <span>Alterar Prestador</span>
-          </button>
           <!--LOGOUT-->
           <button mat-menu-item (click)="logout()">
             <mat-icon>logout</mat-icon>
