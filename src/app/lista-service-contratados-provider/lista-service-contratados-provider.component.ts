@@ -86,12 +86,17 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
     this.observacaoAtendimento.status = true;
     this.serviceServiceContratados.gravarStatusFinalizado(this.observacaoAtendimento).subscribe(
       response => {
-        Swal.fire(
-          'Serviço Finalizado',
-          'Seu serviço foi finalizado com sucesso!',
-          'success'
-        )
-        location.reload();
+        Swal.fire({
+          position: 'center',
+          type: 'success',
+          title: 'Serviço Finalizado',
+          text: 'Seu serviço foi finalizado com sucesso!',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
       });
   }
 
@@ -99,10 +104,17 @@ export class ListaServiceContratadosProviderComponent implements OnInit {
     this.observacaoAtendimento.cancelado = true;
     this.serviceServiceContratados.gravarStatusFinalizado(this.observacaoAtendimento).subscribe(
       response => {
-        Swal.fire(
-          'Seu serviço foi cancelado com sucesso!'
-        )
-        location.reload();
+        Swal.fire({
+          position: 'center',
+          type: 'success',
+          title: 'Serviço Cancelado',
+          text: 'Seu serviço foi cancelado com sucesso!',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
       });
   }
 

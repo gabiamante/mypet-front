@@ -11,7 +11,7 @@ import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import Swal from 'sweetalert2';
 
 
@@ -20,13 +20,13 @@ import Swal from 'sweetalert2';
   templateUrl: './perfil-pet-client.component.html',
   styleUrls: ['./perfil-pet-client.component.css'],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'ja-JP'},
+    { provide: MAT_DATE_LOCALE, useValue: 'ja-JP' },
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     },
-    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
   ],
 })
 
@@ -134,7 +134,9 @@ export class PerfilPetClientComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
-        location.reload();
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
       }
     );
   }
@@ -149,8 +151,10 @@ export class PerfilPetClientComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
-        this.authService.logout();
-        window.location.href = '/home/home';
+        setTimeout(() => {
+          this.authService.logout();
+          window.location.href = '/home/home';
+        }, 1500);
       }
     );
   }

@@ -74,20 +74,58 @@ export class AuthService {
         this.buscaEmail.buscarEmailLoginConjunto(obj.email).subscribe((perfil) => {
           this.pessoa = perfil
           if(this.pessoa.perfil === "CLIENTE"){
-            Swal.fire(
-              'Login feito com sucesso!'
-            )
-            window.location.href = '/home/home';
+            if (this.pessoa.active === true) {
+              window.location.href = '/home/home';
+            }
+            else {
+              Swal.fire({
+                title: 'Usuário desativado',
+                text: "Deseja reativar seu usuário?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim',
+                cancelButtonText: 'Não'
+              }).then((result) => {
+                if (result.value) {
+                  this.loginConjunto.id = this.pessoa.id;
+                  this.loginConjunto.active = true;
+                  this.buscaEmail.atualizaLoginConjunto(this.loginConjunto).subscribe(retorno => {
+                    Swal.fire({
+                      position: 'center',
+                      type: 'success',
+                      title: 'Conta Reativada!',
+                      text: 'Você será direcionado para a nossa página inicial.',
+                      showConfirmButton: false,
+                      timer: 3000
+                    });
+                    setTimeout(() => {
+                      window.location.href = '/home/home';
+                    }, 1000);
+                  })
+                }
+                else {
+                  Swal.fire({
+                    position: 'center',
+                    type: 'success',
+                    title: 'Conta Inativa',
+                    text: 'Sua conta permanece inativada.',
+                    showConfirmButton: false,
+                    timer: 3000
+                  });
+                  setTimeout(() => {
+                    this.logout();
+                    window.location.href = '/home/home';
+                  }, 1000);
+                }
+              })
           }
+        }
           else{
             if (this.pessoa.situacaoAprovacao === "Aprovado") {
               //Conferir se a pessoa está ativa
-              console.log("Aprovado")
               if (this.pessoa.active === true) {
-                console.log("Ativo")
-                Swal.fire(
-                  'Login feito com sucesso!'
-                )
                 window.location.href = '/home/home';
               }
               else {
@@ -105,21 +143,32 @@ export class AuthService {
                     this.loginConjunto.id = this.pessoa.id;
                     this.loginConjunto.active = true;
                     this.buscaEmail.atualizaLoginConjunto(this.loginConjunto).subscribe(retorno => {
-                      Swal.fire(
-                        'Conta reativada!',
-                        'Você será direcionado para a nossa página inicial.',
-                        'success'
-                      )
-                      window.location.href = '/home/home';
+                      Swal.fire({
+                        position: 'center',
+                        type: 'success',
+                        title: 'Conta Reativada!',
+                        text: 'Você será direcionado para a nossa página inicial.',
+                        showConfirmButton: false,
+                        timer: 3000
+                      });
+                      setTimeout(() => {
+                        window.location.href = '/home/home';
+                      }, 1000);
                     })
                   }
                   else {
-                    Swal.fire(
-                      'Conta não foi reativada!',
-                      'Redirecionando para home...'
-                    )
-                    this.logout();
-                    window.location.href = '/home/home';
+                    Swal.fire({
+                      position: 'center',
+                      type: 'success',
+                      title: 'Conta Inativa',
+                      text: 'Sua conta permanece inativada.',
+                      showConfirmButton: false,
+                      timer: 3000
+                    });
+                    setTimeout(() => {
+                      this.logout();
+                      window.location.href = '/home/home';
+                    }, 1000);
                   }
                 })
               }
@@ -128,23 +177,23 @@ export class AuthService {
               Swal.fire({
                 title: 'Cadastro reprovado!',
                 text: 'Favor, entrar em contato com o administrador do sistema',
-                type: 'error',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Ok'
+                type: 'error'
               });
-              this.logout();
-              window.location.href = '/home/home';
+              setTimeout(() => {
+                this.logout();
+                window.location.href = '/home/home';
+              }, 1500);
             }
             if(this.pessoa.situacaoAprovacao ===  ""){
               Swal.fire({
                 title: 'Cadastro em análise!',
                 text: 'Favor, aguardar aprovação da parte administrativa',
-                type: 'warning',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Ok'
+                type: 'warning'
               })
-              this.logout();
-              window.location.href = '/home/home';
+              setTimeout(() => {
+                this.logout();
+                window.location.href = '/home/home';
+              }, 1500);
             }
           }
         })

@@ -101,12 +101,17 @@ export class CadastroFisicaComponent implements OnInit, ErrorStateMatcher {
     this.pessoaFisica.active = true;
     this.pessoaFisicaService.salvarPessoaFisica(this.pessoaFisica).subscribe(
       response => {
-        Swal.fire(
-          'Cadastro efetuado com sucesso!',
-          'Você pode logar agora com o e-mail: ' + this.pessoaFisica.email,
-          'success'
-        )
-        window.location.href = '/home/home';
+        Swal.fire({
+          position: 'center',
+          type: 'success',
+          title: 'Cadastro efetuado com sucesso!',
+          text: 'Você pode logar agora com o e-mail: ' + this.pessoaFisica.email,
+          showConfirmButton: false,
+          timer: 3000
+        });
+        setTimeout(() => {
+          window.location.href = '/home/home';
+        }, 2500);
       }
     );
   }

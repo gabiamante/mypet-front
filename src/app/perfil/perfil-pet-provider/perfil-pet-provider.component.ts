@@ -28,7 +28,7 @@ export class PerfilPetProviderComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private authService: AuthService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     const token = localStorage.getItem("localUser")
     var obj = JSON.parse(token)
 
@@ -62,7 +62,7 @@ export class PerfilPetProviderComponent implements OnInit {
     this.selectedFiles = undefined;
   }
 
-  public alterar(){
+  public alterar() {
     console.log(this.pessoaJuridica);
     this.petProviderService.atualizaPessoaJuridica(this.pessoaJuridica).subscribe(
       response => {
@@ -75,7 +75,7 @@ export class PerfilPetProviderComponent implements OnInit {
         });
         setTimeout(() => {
           location.reload()
-        }, 2000);
+        }, 1000);
       }
     );
   }
@@ -90,8 +90,10 @@ export class PerfilPetProviderComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
-        this.authService.logout();
-        window.location.href = '/home/home';
+        setTimeout(() => {
+          this.authService.logout();
+          window.location.href = '/home/home';
+        }, 1500);
       }
     );
   }

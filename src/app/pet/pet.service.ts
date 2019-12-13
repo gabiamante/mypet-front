@@ -33,7 +33,7 @@ export class PetService {
   }
 
   excluirPet(varPet: Pet){
-    return this.http.put(API + '/pets/' + varPet.id, varPet);
+    return this.http.delete(API + '/pets/' + varPet.id);
   }
 
   alterarPet(varPet: Pet){

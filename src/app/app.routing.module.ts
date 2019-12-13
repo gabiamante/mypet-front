@@ -48,22 +48,22 @@ const routes: Routes = [
     { path: 'pessoa/fisica/cadastrar', component: CadastroFisicaComponent},
     { path: 'pessoa/juridica/cadastrar', component: CadastroJuridicaComponent},
 
-    { path: 'administrador/menu-inicial-admin', component: MenuInicialAdminComponent},
     { path: 'administrador/deletar-cliente', component: DeletaPetClientComponent},
+    // tslint:disable-next-line: max-line-length
     { path: 'administrador/deletar-fornecedor', component: DeletaPetProviderComponent},
-    { path: 'administrador/buscar-fornecedor', component: BuscarPetProviderComponent},
-    { path: 'administrador/buscar-cliente', component: BuscarPetClientComponent},
-    { path: 'administrador/alterar-cliente/:id', component: AlteraPetClientComponent},
-    { path: 'administrador/alterar-fornecedor/:id', component: AlteraPetProviderComponent},
 
     { path: 'fullcalendar/provider', component: FullCalendarProviderScheduleComponent },
 
     { path: 'pet-provider/meu-perfil', component: PerfilPetProviderComponent},
-    { path: 'pet-client/meu-perfil', component: PerfilPetClientComponent},
+    { path: 'pet-client/meu-perfil', component: PerfilPetClientComponent, canActivate: [RoleGuard], data: {expectedRole: 'CLIENTE'}},
 
+    // tslint:disable-next-line: max-line-length
     // { path: 'agendar/criacao-petprovider', component: CriacaoAgendaPetproviderComponent, canActivate: [RoleGuard], data: {expectedRole: 'SERVICO'}},
+    // tslint:disable-next-line: max-line-length
     { path: 'agendar/criacao-petprovider', component: CriacaoAgendaPetproviderComponent},
+    // tslint:disable-next-line: max-line-length
     { path: 'contratados/petprovider', component: ListaServiceContratadosProviderComponent},
+    // tslint:disable-next-line: max-line-length
     { path: 'contratados/petclient', component: ListaServiceContratadosClientComponent},
 
     { path: 'historico/petclient', component: HistoricoPetclientComponent},

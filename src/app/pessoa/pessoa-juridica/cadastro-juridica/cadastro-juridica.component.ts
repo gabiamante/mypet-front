@@ -12,12 +12,12 @@ import { ErrorStateMatcher } from '@angular/material';
   styleUrls: ['./cadastro-juridica.component.css']
 })
 export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
- 
+
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
- 
+
 
  formRegister = this.formBuilder.group({
     'razaoSocial' :['',[Validators.required,Validators.minLength(6)]],
@@ -41,7 +41,7 @@ export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
 
   public pessoaJuridica: PessoaJuridica = new PessoaJuridica();
   minPw = 8;
- 
+
   constructor(
     private pessoaJuridicaService: PessoaService,
     private router: Router,
@@ -54,7 +54,7 @@ export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
   ngOnInit() {
     console.log(this.formRegister.value)
   }
-  
+
   matchingSenha(group: FormGroup){
     if(group){
       const senha = group.controls['senha'].value;
@@ -67,7 +67,7 @@ export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
     return{ matching:false};
 }
   public salvar() {
-    
+
    this.pessoaJuridica.razaoSocial = this.formRegister.controls.razaoSocial.value;
    this.pessoaJuridica.cpf = this.formRegister.controls.cpf.value;
    this.pessoaJuridica.email = this.formRegister.controls.email.value;
@@ -184,13 +184,16 @@ export class CadastroJuridicaComponent implements OnInit, ErrorStateMatcher {
         Swal.fire({
           position: 'center',
           type: 'success',
-          title: 'Parabéns, Você pode logar agora com o e-mail cadastrado: ' + this.pessoaJuridica.email,
+          title: 'Cadastro efetuado com sucesso!',
+          text: 'Agora é só aguardar a aprovação do nosso setor administrativo.',
           showConfirmButton: false,
-          timer: 100000
+          timer: 3000
         });
-        window.location.href = 'home/home';
+        setTimeout(() => {
+          window.location.href = '/home/home';
+        }, 2500);
       }
-    ); 
+    );
   }
 
   public voltar() {

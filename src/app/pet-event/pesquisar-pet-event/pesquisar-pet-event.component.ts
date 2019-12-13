@@ -16,7 +16,7 @@ export class PesquisarPetEventComponent implements OnInit {
   ngOnInit() {
     this.serviceEvent.buscarEventos().subscribe(res => {
       this.eventos = res
-      alert(JSON.stringify(this.eventos))
+      //alert(JSON.stringify(this.eventos))
     })
   }
 

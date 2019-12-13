@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PetEventService } from './pet-event.service';
 import { PetEvent } from './pet-event';
 import Swal from 'sweetalert2';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pet-event',
@@ -14,10 +15,12 @@ export class PetEventComponent implements OnInit {
   public varPessoa;
   public varEvent: PetEvent = new PetEvent;
   public listaEvents: PetEvent[] = [];
+  public aux: PetEvent[] = [];
   id: number;
 
   constructor(
-    private serviceEvent: PetEventService) { }
+    private serviceEvent: PetEventService,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
 
@@ -30,26 +33,43 @@ export class PetEventComponent implements OnInit {
     });
 
     this.serviceEvent.buscarEventos().subscribe((ret) => {
-      this.listaEvents = ret;
-    })
+        this.listaEvents = ret;
+      })
+
+
   }
 
-  salvarPetEvent(varEvent: PetEvent){
-    if(this.varPessoa.perfil == "CLIENTE"){
+  f = this.formBuilder.group({
+    'title': ['', Validators.required],
+    'description': ['', Validators.required],
+    'local': ['', Validators.required],
+    'data': ['', Validators.required],
+    'start': ['', Validators.required],
+    'end': ['', Validators.required],
+  })
+
+  salvarPetEvent(varEvent: PetEvent) {
+    if (this.varPessoa.perfil == "CLIENTE") {
       this.varEvent.nomeCliente = this.varPessoa.nomeCompleto;
       this.varEvent.idCliente = this.varPessoa.id;
     }
-    else{
+    else {
       this.varEvent.nomeProvider = this.varPessoa.razaoSocial;
-      this.varEvent.idProvider= this.varPessoa.id;
+      this.varEvent.idProvider = this.varPessoa.id;
     }
 
-    this.serviceEvent.salvarEvento(varEvent).subscribe( res => {
-      Swal.fire(
-        'Evento publicado',
-        'Seu evento foi publicado com sucesso!'
-      )
-      location.reload();  
+    this.serviceEvent.salvarEvento(varEvent).subscribe(res => {
+      Swal.fire({
+        position: 'center',
+        type: 'success',
+        title: 'Evento publicado!',
+        text: 'Seu evento foi publicado com sucesso!',
+        showConfirmButton: false,
+        timer: 3000
+      });
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
     });
 
   }

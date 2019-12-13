@@ -102,10 +102,16 @@ export class ListaServiceContratadosClientComponent implements OnInit {
     this.observacaoAtendimento.cancelado = true;
     this.serviceServiceContratados.gravarStatusCanecelado(this.observacaoAtendimento).subscribe(
       response => {
-        Swal.fire(
-          'Seu serviço foi cancelado com sucesso!'
-        )
-        location.reload()
+        Swal.fire({
+          position: 'center',
+          type: 'success',
+          title: 'Seu serviço foi cancelado com sucesso!',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
       }
     );
   }

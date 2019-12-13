@@ -67,11 +67,15 @@ export class AprovarPessoaComponent implements OnInit {
         this.pessoaJuridicaService.atualizaPessoaJuridica(cliente).subscribe(
           response => {
             Swal.fire({
-              title: 'Prestador Aprovado',
-              text: "Agora este prestador pode entrar com o e-mail cadastrado.",
-              type: 'success'
-            })
-            location.reload();
+              position: 'center',
+              type: 'success',
+              title: 'Agora este prestador pode entrar com o e-mail cadastrado.',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            setTimeout(() => {
+              location.reload();
+            }, 1000);
           });
       }
       else {
@@ -96,47 +100,21 @@ export class AprovarPessoaComponent implements OnInit {
         this.pessoaJuridicaService.atualizaPessoaJuridica(cliente).subscribe(
           response => {
             Swal.fire({
-              title: 'Prestador Reprovado',
-              text: "",
-              type: 'success'
-            })
-            location.reload();
+              position: 'center',
+              type: 'success',
+              title: 'Prestador Reprovado.',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            setTimeout(() => {
+              location.reload();
+            }, 1000);
           });
       }
       else {
 
       }
     })
-  }
-
-  save() {
-    let listaPessoaJuridica = [...this.listaPessoaJuridica];
-    let i = 0;
-
-    /*
-    if (this.novaPessoaJuridica) {
-      //alert('Entrou no if');
-      listaPessoaJuridica.push(this.pessoaJuridica);
-    } else {
-      //alert('Entrou no else');
-      listaPessoaJuridica[this.listaPessoaJuridica.indexOf(this.pessoaJuridicaSelecionada)] = this.pessoaJuridica;
-    }
-    */
-
-    for (i = 0; i < listaPessoaJuridica.length; i++) {
-      if (listaPessoaJuridica[i].situacaoAprovacao == 'Aprovado'
-        || listaPessoaJuridica[i].situacaoAprovacao == 'Reprovado') {
-        /*console.log('Atualizar tabela = ' +
-        this.pessoaJuridicaService.atualizaPessoaJuridica(listaPessoaJuridica[i]));*/
-
-        this.pessoaJuridicaService.atualizaPessoaJuridica(listaPessoaJuridica[i])
-          .subscribe(response => { });
-      }
-    }
-
-    //this.listaPessoaJuridica = listaPessoaJuridica;
-    //this.pessoaJuridica = null;
-    //this.displayDialog = false;
   }
 
   delete() {

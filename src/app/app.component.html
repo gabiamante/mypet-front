@@ -91,10 +91,6 @@
             <mat-icon>person</mat-icon>
             <span>Aprovar Prestador</span>
           </button>
-          <button mat-menu-item *ngIf="perfil === 'ADMIN'" (click)="desabilitarCliente()">
-            <mat-icon>person_add_disabled</mat-icon>
-            <span>Desabilitar Cliente</span>
-          </button>
           <button mat-menu-item *ngIf="perfil === 'ADMIN'" (click)="desabilitarPrestador()">
             <mat-icon>person_add_disabled</mat-icon>
             <span>Desabilitar Prestador</span>

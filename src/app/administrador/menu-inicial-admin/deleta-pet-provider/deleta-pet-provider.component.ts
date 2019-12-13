@@ -44,23 +44,27 @@ export class DeletaPetProviderComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sim',
-      cancelButtonText: 'Não'
+      cancelButtonText: 'Não',
     }).then((result) => {
       if (result.value) {
         varPessoaJuridica.active = false;
         this.petProviderService.softDeletePessoaJuridica(varPessoaJuridica)
         .subscribe(
           res => {
-            Swal.fire(
-              'Conta desativada!',
-              'Esta conta foi desativada com sucesso.',
-              'success'
-            )
-            location.reload();
+              Swal.fire({
+                position: 'center',
+                type: 'success',
+                title: 'Usuário desativado com sucesso!',
+                showConfirmButton: false,
+                timer: 3000
+              });
+              setTimeout(() => {
+                location.reload();
+              }, 1000);
           });
       }
       else {
-        
+
       }
     })
   }
@@ -80,16 +84,20 @@ export class DeletaPetProviderComponent implements OnInit {
         varPessoaJuridica.active = true;
         this.petProviderService.atualizaPessoaJuridica(varPessoaJuridica).subscribe(
           res => {
-            Swal.fire(
-              'Conta reativada!',
-              'Esta conta foi reativada com sucesso.',
-              'success'
-            )
-            location.reload();
+            Swal.fire({
+              position: 'center',
+              type: 'success',
+              title: 'Usuário reativado com sucesso!',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            setTimeout(() => {
+              location.reload();
+            }, 1000);
           });
       }
       else {
-        
+
       }
     })
   }

@@ -320,9 +320,11 @@ export class DetalhesComponent implements OnInit {
                   type: 'success',
                   title: 'Horário cadastrado!',
                   showConfirmButton: false,
-                  timer: 2000
+                  timer: 3000
                 });
-                window.location.href = 'contratados/petclient';
+                setTimeout(() => {
+                  window.location.href = 'contratados/petclient';
+                }, 1000);
               });
 
 

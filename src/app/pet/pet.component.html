@@ -25,7 +25,7 @@
         </mat-form-field>
       </div>
         <button mat-flat-button color="primary" type="button" (click)="salvarPet(varPet)" [disabled]="!f.valid"
-        title="É preciso preencher todos os campos para criar um agendamento">Cadastrar</button>
+        title="É preciso preencher todos os campos para criar um pet">Cadastrar</button>
     </div>
 
     <div class="col">
@@ -49,15 +49,9 @@
           <mat-cell *matCellDef="let element"> {{element.especiePet}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="alterarPet">
-          <mat-header-cell *matHeaderCellDef> Alterar Pet </mat-header-cell>
-          <mat-cell *matCellDef="let element"><button mat-flat-button color="primary" type="button" data-toggle="modal" (click)="setAlterar(element)"
-              data-target="#modalAlterar">Alterar</button></mat-cell>
-        </ng-container>
-
         <ng-container matColumnDef="excluirPet">
-          <mat-header-cell *matHeaderCellDef> Inativar Pet </mat-header-cell>
-          <mat-cell *matCellDef="let element"><button mat-flat-button color="primary" type="button" (click)="excluirPet(element)">Inativar</button></mat-cell>
+          <mat-header-cell *matHeaderCellDef> Excluir Pet </mat-header-cell>
+          <mat-cell *matCellDef="let element"><button mat-flat-button color="primary" type="button" (click)="excluirPet(element)">Excluir</button></mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -65,41 +59,6 @@
       </mat-table>
     </div>
 
-  </div>
-
-  <!-- Modal Alterar-->
-  <div class="modal fade" id="modalAlterar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Altere aqui informações do seu Pet</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="col">
-            <div class="form-group">
-              <label for="exampleFormControlInput1">Nome do Pet</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" [(ngModel)]="petAlterar.nomePet">
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlInput2">Raça do Pet</label>
-              <input type="text" class="form-control" id="exampleFormControlInput2" [(ngModel)]="petAlterar.racaPet">
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlInput3">Espécie do Pet</label>
-              <input type="text" class="form-control" id="exampleFormControlInput3" [(ngModel)]="petAlterar.especiePet">
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button mat-flat-button color="primary" type="button" data-dismiss="modal">Fechar</button>
-          <button mat-flat-button color="primary" type="button" (click)="alterarPet(element)">Alterar</button>
-        </div>
-      </div>
-    </div>
   </div>
 
 </div>

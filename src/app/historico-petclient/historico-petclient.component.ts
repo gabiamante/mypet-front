@@ -120,49 +120,54 @@ export class HistoricoPetclientComponent implements OnInit {
     let media = 0;
     let varPessoaJuridica: PessoaJuridica;
 
-      this.serviceServiceContratados.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
-        this.varPetClient = retorno;
-        this.listContratadosProviderFiltro(this.varPetClient);
-        this.serviceServiceContratados.buscaContratadosCalcularMedia(servicoContratadoAvaliadoIndividual)
+    this.serviceServiceContratados.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
+      this.varPetClient = retorno;
+      this.listContratadosProviderFiltro(this.varPetClient);
+      this.serviceServiceContratados.buscaContratadosCalcularMedia(servicoContratadoAvaliadoIndividual)
         .subscribe(
           res => {
             lstServicoContratadoAvaliadoIndividualAux = res;
             for (const element of lstServicoContratadoAvaliadoIndividualAux) {
-                lstMediaAvalicao.push(element);
-                soma = element.avaliacao + soma;
-                if  (element.avaliacao !== 0)  {
-                  countNotZero++;
-                }
+              lstMediaAvalicao.push(element);
+              soma = element.avaliacao + soma;
+              if (element.avaliacao !== 0) {
+                countNotZero++;
               }
-              this.serviceServiceContratados.buscarPetProvider(Number(idProviderUpdated)).
+            }
+            this.serviceServiceContratados.buscarPetProvider(Number(idProviderUpdated)).
               subscribe(
                 res => {
                   varPessoaJuridica = res;
-                  if  (soma === 0 && countNotZero === 0)  {
+                  if (soma === 0 && countNotZero === 0) {
                     media = 0;
-                  } else  {
+                  } else {
                     media = soma / countNotZero;
                   }
                   media = parseInt(media.toFixed(0));
                   varPessoaJuridica.mediaAvaliacao = media;
                   this.serviceServiceContratados.salvarMediaAvaliacao(varPessoaJuridica).
-                  subscribe(
-                    res => {
-                      Swal.fire(
-                        'Avaliação feita',
-                        'Obrigada pela sua avaliação!',
-                        'success'
-                      )
-                      location.reload();
-                    }
-                  )
+                    subscribe(
+                      res => {
+                        Swal.fire({
+                          position: 'center',
+                          type: 'success',
+                          title: 'Avaliação feita',
+                          text: 'Obrigada pela sua avaliação!',
+                          showConfirmButton: false,
+                          timer: 3000
+                        });
+                        setTimeout(() => {
+                          location.reload();
+                        }, 1000);
+                      }
+                    )
 
                 }
               )
-            }
+          }
         );
 
-      });
+    });
   }
 }
 

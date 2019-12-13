@@ -13,7 +13,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class PetComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['nomePet', 'racaPet', 'especiePet', 'alterarPet', 'excluirPet'];
+  displayedColumns: string[] = ['nomePet', 'racaPet', 'especiePet', 'excluirPet'];
   public varPet: Pet = new Pet;
   public varPessoaFisica: PessoaFisica = new PessoaFisica;
   listaPets: Pet[] = [];
@@ -30,17 +30,18 @@ export class PetComponent implements OnInit {
 
     this.varPetService.buscarEmailLoginConjunto(objLogin.email).subscribe((retorno) => {
       this.varPessoaFisica = retorno;
+      this.varPetService.buscarPets(this.varPessoaFisica.id).subscribe((ret) => {
+        this.listaPets = ret;
+      });
     });
 
-      this.varPetService.buscarPets(this.varPessoaFisica.id).subscribe((retorno) => {
-        this.aux = retorno;
-      });
+
   }
 
   f = this.formBuilder.group({
-    'nome' :['',Validators.required],
-    'raca' :['',Validators.required],
-    'especie' :['',Validators.required]
+    'nome': ['', Validators.required],
+    'raca': ['', Validators.required],
+    'especie': ['', Validators.required]
   })
 
   salvarPet(varPet: Pet) {
@@ -48,40 +49,36 @@ export class PetComponent implements OnInit {
     varPet.idPetcliente = this.varPessoaFisica.id;
     this.varPetService.salvarPet(varPet).subscribe(
       response => {
-        Swal.fire(
-          'Pet cadastrado',
-          'Seu Pet foi cadastrado com sucesso!'
-        )
-        location.reload();
+        Swal.fire({
+          position: 'center',
+          type: 'success',
+          title: 'Pet cadastrado',
+          text: 'Seu Pet foi cadastrado com sucesso!',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
       }
     );
   }
 
   excluirPet(varPet: Pet) {
     varPet.active = false;
-    console.log(JSON.stringify(varPet))
     this.varPetService.excluirPet(varPet).subscribe(res => {
-      Swal.fire(
-        'Pet inativado',
-        'Seu Pet foi inativado com sucesso!'
-      )
-      location.reload();
+      Swal.fire({
+        position: 'center',
+        type: 'success',
+        title: 'Pet excluído',
+        text: 'Seu Pet foi excluído com sucesso!',
+        showConfirmButton: false,
+        timer: 3000
+      });
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
     })
-  }
-
-  alterarPet(varPet: Pet){
-    alert(JSON.stringify(varPet))
-    /* this.varPetService.alterarPet(varPet).subscribe(res => {
-      Swal.fire(
-        'Pet alterado',
-        'Seu Pet foi alterado com sucesso!'
-      )
-      location.reload();
-    }) */
-  }
-
-  setAlterar(petAlterar: Pet){
-    this.petAlterar = petAlterar;
   }
 
 }

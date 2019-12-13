@@ -13,6 +13,12 @@
                             {{contratado.tempoFim}}</h6>
                         <p class="card-text">Nome do Pet: {{contratado.nomePet}}</p>
                         <p class="card-text">Nome do Prestador: {{contratado.nomeProvider}}</p>
+                        <p class="card-text" *ngIf="contratado.cancelado === true">
+                          Motivo do Cancelamento: {{ contratado.motivoCancelamento }}
+                        </p>
+                        <p class="card-text" *ngIf="contratado.status === true">
+                          Comentários sobre serviço: {{ contratado.observacaoAtendimento }}
+                        </p>
                         <a href="#" class="card-link"
                             *ngIf="contratado.cancelado === false && contratado.avaliacao === 0" data-toggle="modal"
                             data-target="#modalAvaliacao" (click)="setModalValue(contratado)">Avaliar
